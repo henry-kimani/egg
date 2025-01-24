@@ -1,0 +1,14 @@
+---
+const { index, initial } = Astro.props;
+---
+
+<div
+    id={"panel-" + index}
+    class:list={["tab-panel"]}
+    role="tabpanel"
+    aria-labelledby={"tab-" + index}
+    tabindex="0"
+    hidden
+>
+    <slot />
+</div>

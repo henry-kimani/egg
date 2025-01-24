@@ -1,0 +1,43 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+const { index, initial } = Astro.props;
+
+const divAttributes: HTMLAttributes<"div"> = initial
+    ? { "aria-selected": "true" }
+    : {};
+---
+
+<div
+    {...divAttributes}
+    role="tab"
+    id={"tab-" + index}
+    tabindex="0"
+    aria-controls={"panel-" + index}
+    class:list={["tab-header"]}
+    class=`m-2 px-2 py-1 rounded hover:cursor-pointer text-[--sl-color-gray-2] hover:bg-[--sl-color-gray-5] dark:hover:bg-[--sl-color-gray-5] `
+>
+    <slot />
+</div>
+
+<style>
+    div[aria-selected="true"] {
+        font-weight: 600;
+        color: var(--sl-color-accent);
+        background-color: var(--sl-color-black);
+    }
+    div[aria-selected="true"]:hover {
+        background-color: var(--sl-color-black);
+    }
+    :global([data-theme="dark"]) div[aria-selected="true"] {
+        color: var(--sl-color-accent-high);
+        background-color: var(--sl-color-gray-6);
+    }
+
+    /* for mobile highlighting */
+    @media (max-width: 768px) {
+        :global([data-theme="dark"]) div[aria-selected="true"] {
+            background-color: var(--sl-color-black);
+        }
+    }
+</style>

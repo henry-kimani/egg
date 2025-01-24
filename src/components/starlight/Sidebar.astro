@@ -1,0 +1,57 @@
+---
+import SidebarPersister from "@astrojs/starlight/components/SidebarPersister.astro";
+import type { SidebarEntry } from "node_modules/@astrojs/starlight/utils/navigation";
+import SidebarSublist from "@astrojs/starlight/components/SidebarSublist.astro";
+import MobileMenuFooter from "@astrojs/starlight/components/MobileMenuFooter.astro";
+import type { Props } from "@astrojs/starlight/props";
+import TabContainer from "../tabs/TabContainer.astro";
+import TabHeader from "../tabs/TabHeader.astro";
+import TabPanel from "../tabs/TabPanel.astro";
+
+const { sidebar } = Astro.props;
+
+// Make sure that all top level items in the side bar are groups
+type Group = Extract<SidebarEntry, { type: "group" }>;
+function assertGroups(sidebar: SidebarEntry[]): asserts sidebar is Group[] {
+  for (const entry of sidebar) {
+    if (entry.type !== "group")
+      throw new Error("Top-level links are not allowed in the docs");
+  }
+}
+
+/* Convert the group label */
+assertGroups(sidebar);
+
+// look up for the current page
+const isCurrent = (sidebar: SidebarEntry[]): boolean =>
+  sidebar
+  .map(entry => entry.type === "link" ? entry.isCurrent : isCurrent(entry.entries))
+  .some(entry => entry === true);
+
+---
+
+<SidebarPersister {...Astro.props}>
+  <TabContainer>
+    <Fragment slot="tab-list">
+      {
+        sidebar.map(({ label, entries }, index) => (
+          <TabHeader initial={isCurrent(entries)} index={index}>{label}</TabHeader>
+        ))
+      }
+    </Fragment>
+    {
+      sidebar.map(({ label, entries }, index) => (
+        <>
+        <TabPanel index={index}>
+          <SidebarSublist sublist={entries} />
+        </TabPanel>
+        </>
+      ))
+    }
+  </TabContainer>
+</SidebarPersister>
+
+<div class="md:sl-hidden">
+  <MobileMenuFooter {...Astro.props} />
+</div>
+
