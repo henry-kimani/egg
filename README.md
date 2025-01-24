@@ -1,21 +1,19 @@
-# Starlight Starter Kit: Tailwind
+# EGG
 
-[![Built with Starlight](https://astro.badg.es/v2/built-with-starlight/tiny.svg)](https://starlight.astro.build)
+### What is Egg?
 
-```
-npm create astro@latest -- --template starlight/tailwind
-```
+Egg is an online content driven site made with Astro and the Starlight template.
+Egg consist of content involving Criminology.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/starlight/tree/main/examples/tailwind)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/starlight/tree/main/examples/tailwind)
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/withastro/starlight&create_from_path=examples/tailwind)
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fwithastro%2Fstarlight%2Ftree%2Fmain%2Fexamples%2Ftailwind&project-name=my-starlight-docs&repository-name=my-starlight-docs)
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+### 🚀 Project Structure
 
-## 🚀 Project Structure
+`src/content/docs/index.mdx` is the entry point of the application. 
 
-Inside of your Astro + Starlight project, you'll see the following folders and files:
+`src/content/docs` directory, contains all the contents of the site in markdown.
+
+`./astro.sidebar.ts` file, configures the sidebar and dictates what content 
+should appear on the sidebar and how its structured.
 
 ```
 .
@@ -23,33 +21,37 @@ Inside of your Astro + Starlight project, you'll see the following folders and f
 ├── src/
 │   ├── assets/
 │   ├── content/
-│   │   ├── docs/
+│   │   ├── docs/ # contents in markdown
 │   └── content.config.ts
 ├── astro.config.mjs
+├── astro.sidebar.ts # The sidebar configuration
 ├── package.json
 ├── tailwind.config.mjs
 └── tsconfig.json
 ```
 
-Starlight looks for `.md` or `.mdx` files in the `src/content/docs/` directory. Each file is exposed as a route based on its file name.
+### :grinning: Explore and Collaborate 
 
-Images can be added to `src/assets/` and embedded in Markdown with a relative link.
+Wanna explore :telescope: and inspect :mag_right: the code and prolly send a 
+1. Clone the repo and run he commands below to start it in development mode.
 
-Static assets, like favicons, can be placed in the `public/` directory.
+```bash
+git clone https://github.com/henry-kimani/egg.git
+```
 
-## 🧞 Commands
+2. Now run the command given below.
+
+:tada: You can now preview the side in development mode :sparkes:
+
+### 🧞 Commands
 
 All commands are run from the root of the project, from a terminal:
 
 | Command                   | Action                                           |
 | :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+| `pnpm install`or `pnpm i` | Installs dependencies                            |
+| `pnpm run dev`            | Starts local dev server at `localhost:4321`      |
+| `pnpm run build`          | Build your production site to `./dist/`          |
+| `pnpm run preview`        | Preview your build locally, before deploying     |
+| `pnpm run astro -- --help` | Get help using the Astro CLI                     |
 
-## 👀 Want to learn more?
-
-Check out [Starlight’s docs](https://starlight.astro.build/), read [the Astro documentation](https://docs.astro.build), or jump into the [Astro Discord server](https://astro.build/chat).
