@@ -6,3 +6,16 @@
 Add additional Tailwind styles to this file, for example with @layer:
 https://tailwindcss.com/docs/adding-custom-styles#using-css-and-layer
 */
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+  }
+  nav {
+    font-family: 'Quicksand Variable', sans-serif;
+  }
+  h1, h2, h3 {
+    font-family: 'Fredoka Variable';
+  }
+}
+
