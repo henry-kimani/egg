@@ -35,6 +35,9 @@ importers:
       '@fontsource-variable/quicksand':
         specifier: ^5.1.1
         version: 5.1.1
+      '@fontsource/dejavu-sans':
+        specifier: ^5.1.0
+        version: 5.1.0
       '@fontsource/poppins':
         specifier: ^5.1.1
         version: 5.1.1
@@ -416,6 +419,9 @@ packages:
 
   '@fontsource-variable/quicksand@5.1.1':
     resolution: {integrity: sha512-FVyhFT7QgcTf95ZR1TOowU2mtuoLWvkKw1oVhOXGsZ0/0IXJmx1/ibWbOUkAm6MPGJt8HEjcpMDZsE3WCYsJcw==}
+
+  '@fontsource/dejavu-sans@5.1.0':
+    resolution: {integrity: sha512-aE7SE5z4rsXhDu2Vtb/3iqSnAibTUyP3qoNYbvKjESHljyY68t/AAvVJaAdbANfGFc8t5MxTAwNk15BsBbytIA==}
 
   '@fontsource/poppins@5.1.1':
     resolution: {integrity: sha512-PQVKHGQOK+UpVNPzTFF9Z9ez3CIDkunfvRXGH95hiDoqWJc1shW4JFqe4tEoqnq7RtZaYrw9aWQq58L4eny5xg==}
@@ -3042,6 +3048,8 @@ snapshots:
   '@fontsource-variable/nunito@5.1.1': {}
 
   '@fontsource-variable/quicksand@5.1.1': {}
+
+  '@fontsource/dejavu-sans@5.1.0': {}
 
   '@fontsource/poppins@5.1.1': {}
 

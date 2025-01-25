@@ -27,6 +27,7 @@ export default defineConfig({
       '@fontsource-variable/nunito',
       '@fontsource/poppins',
       '@fontsource/roboto',
+      '@fontsource/dejavu-sans',
       '@fontsource-variable/inter',
       '@fontsource-variable/fredoka',
       '@fontsource-variable/quicksand',
