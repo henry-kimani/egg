@@ -1,12 +1,12 @@
-# EGG
+# EGG :moyai:
 
-### What is Egg?
+## What is Egg?
 
 Egg is an online content driven site made with Astro and the Starlight template.
 Egg consist of content involving Criminology.
 
 
-### 🚀 Project Structure
+## 🚀 Project Structure
 
 `src/content/docs/index.mdx` is the entry point of the application. 
 
@@ -30,10 +30,10 @@ should appear on the sidebar and how its structured.
 └── tsconfig.json
 ```
 
-### :grinning: Explore and Collaborate 
+## :grinning: Explore and Collaborate 
 
-Wanna explore :telescope: and inspect :mag_right: the code and prolly send a 
-1. Clone the repo and run he commands below to start it in development mode.
+Wanna explore :telescope: and inspect :mag_right: the code and prolly send a PR.
+1. Clone the repo and run the commands below to start it in development mode.
 
 ```bash
 git clone https://github.com/henry-kimani/egg.git
@@ -41,9 +41,9 @@ git clone https://github.com/henry-kimani/egg.git
 
 2. Now run the command given below.
 
-:tada: You can now preview the side in development mode :sparkes:
+:tada: You can now preview the side in development mode :sparkles:
 
-### 🧞 Commands
+## 🧞 Commands
 
 All commands are run from the root of the project, from a terminal:
 

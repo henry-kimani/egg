@@ -1,46 +1,74 @@
 ---
-title: Welcome to Starlight
-description: Get started building your docs site with Starlight.
+title: Home
+description: Get to learn Criminilogy. All Units taught in Murang'a University, Kenya.
 template: splash
 hero:
   title: |
-    Welcome to Starlight with
-    <span
-      class="font-black text-transparent
-        bg-clip-text bg-gradient-to-b
-        from-accent-700 to-accent-400
-        dark:from-accent-500 dark:to-accent-200"
-    >
-      Tailwind
-    </span>
-  tagline: Congrats on setting up a new Starlight project!
-  image:
-    file: ../../assets/houston.webp
+    Welcome to Egg 
+  tagline: Congrats on joining Egg! A place for all Criminology enthusists. 
   actions:
-    - text: Example Guide
-      link: /guides/example/
+    - text: Get Started
+      link: /getting-started/new
       icon: right-arrow
-    - text: Read the Starlight docs
-      link: https://starlight.astro.build
-      icon: external
-      variant: minimal
+    - text: About Egg 
+      link: "#about-egg"
+      icon: down-arrow
+      variant: secondary 
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import { 
+	Card, CardGrid, Aside, LinkButton, Icon
+} from '@astrojs/starlight/components';
+import { Button } from "@/components/ui/button";
 
-## Next steps
+## About Egg
 
-<CardGrid stagger>
-	<Card title="Update content" icon="pencil">
-		Edit `src/content/docs/index.mdx` to see this page change.
+### What is Egg?
+First, I know its a funny name, but in the future, you will understand why (as 
+the application evolves).
+
+Lets answer the question, What is Egg? Egg is an online platform for reading
+notes. What kind of notes you ask. Well, it consists of notes involving the 
+science, Criminilogy. The source of this notes are from the Lectures of the 
+University of Murang'a.
+
+<Aside type='caution'>
+This site has no ties, whatsoever with the Lecturers of the University. 
+Meaning, the content uploaded here is not instructed by any Official of the 
+University.
+</Aside>
+
+### Who uploads the content?
+
+The contents of this site are uploaded by a student taking the course. As the
+course progresses, content will be added and updated as soon as possible.
+
+<Aside title='Note: Not cloned notes!' type='note'>
+It would be worth noting, that the contents of this site are not a clone of the 
+lecture notes, but a modification. Meaning, the contents of the site are:
+- **Revised** - The lecture notes, have been reconsidered and ammended.
+- **Extended** - Added upon (added other useful information).
+- **Modified** - Made adjustments where necessary.
+</Aside>
+
+<CardGrid>
+	<Card title='Why make Egg?' icon='star'>
+		Egg is made to help students of the University taking the course, Bachelor of 
+		Science in Criminology and Security Studies or anyone in general who is fasinated
+		by the Science of Criminology and would like to [learn more about it.](/getting-started/new)
 	</Card>
-	<Card title="Add new content" icon="add-document">
-		Add Markdown or MDX files to `src/content/docs` to create new pages.
-	</Card>
-	<Card title="Configure your site" icon="setting">
-		Edit your `sidebar` and other config in `astro.config.mjs`.
-	</Card>
-	<Card title="Read the docs" icon="open-book">
-		Learn more in [the Starlight Docs](https://starlight.astro.build/).
-	</Card>
+
+  <Card title='How to get Started?' icon='rocket'>
+    Egg features a tutorial to help you understand its interface and how the 
+    content is organised.
+
+    <LinkButton href={'/getting-started/tutorial'}>Tutorial<Icon name="right-arrow" /></LinkButton>
+
+  </Card>
 </CardGrid>
+
+<Card title='❤️ Here for you ❤️' >
+Be rest assured, you are getting the best notes possible, that is readable, in one place 
+and can be accessed from anywhere in the world. 
+</Card>
+
