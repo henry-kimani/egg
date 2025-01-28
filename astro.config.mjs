@@ -17,6 +17,7 @@ export default defineConfig({
     title: 'Egg',
     components: {
       Sidebar: "./src/components/starlight/Sidebar.astro",
+      Footer: "./src/components/starlight/ConditionalFooter.astro",
     },
     social: {
       github: 'https://github.com/withastro/starlight',
