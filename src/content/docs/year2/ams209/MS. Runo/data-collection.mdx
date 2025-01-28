@@ -9,6 +9,7 @@ tableOfContents:
 
 import { Steps, Tabs, TabItem } from "@astrojs/starlight/components";
 import Source from "@/components/Source";
+import SimpleLatex from "@/components/math/SimpleLatex.astro";
 
 ## Sources of data
 1. **Primary data:** Its is first hand information that is freshly collected, 
@@ -196,11 +197,9 @@ Invoves a mathematical chance of selecting a respondent.
 
 1. Calculate the sample interval (k):
 
-   ```bash
-    k = N/n
-    k = 1000/100
-    k = 10 # sample interval
-   ```
+    <SimpleLatex formula="k=\frac{N}{n}" />
+    <SimpleLatex formula="k=\frac{1000}{100}" />
+    <SimpleLatex formula="k=10" />
 
 2. Choose a random starting point (r) between 1 and k. This will be the first member
     to select for the sample.
@@ -216,10 +215,11 @@ Invoves a mathematical chance of selecting a respondent.
 
     `(r+k)`: is the operation done on the samples.
 
-    `R`: Result is the number of the member that is choosen for the sample. Member
+    `r`: The random result that will be used as the number to select a random
+    sample.
     `13, 23, 33 ...` are choosen for the sample.
 
-    |S|(r + k)|R|
+    |S|<SimpleLatex formula="(r+k)"/>|r|
     |-----|-----|-----|
     |1st| 3 + 10| 13|
     |2nd| 13 + 10| 23|
@@ -362,11 +362,10 @@ the data.
       1. It undermines the ability to make generalizations. Since the sampling
       frame is unknown and the sample unit is not choosen at random, the sample
       is unlikely to represent the population being studied.
-
       2. It suffers from a number of biases. A convenience sample can 
       lead to the *under-representation* or *over-representation* of particular 
       groups. For example in a large organisation with multiple sites, the 
-      employee satisfaction very considerably between these sites. Hence, conducting
+      employee satisfaction vary considerably between these sites. Hence, conducting
       a survey only on the organisation's headerquaters can lead to biases, since
       we may have missed the difference between employee satisfaction in these sites.
       (the employee satisfaction in the headquaters differs from the non-office 

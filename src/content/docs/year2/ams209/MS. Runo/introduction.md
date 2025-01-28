@@ -6,26 +6,30 @@ sidebar:
     order: 1
 ---
 
-## Introduction
+# Introduction
 
-### Definition
+## Definition
 
 Statistics is a branch of science that deals with the collection, presentation,
-analysis and interpration of data.
+analysis and interpration of data. <br />
+The defintion points 4 key aspects:
+1. Data collection
+2. Data presentation
+3. Data analysis
+4. Data interpration
 
-### Two Broad Categories of Statistics
+## Two Broad Categories of Statistics
 
 Statistics is subdivided into two:
 
-1. **Descriptive Statistics:** A summary value and presentation taht give info
+1. **Descriptive Statistics:** A summary value and presentation that give info
 about data.
-
 2. **Inferential Statistics:** summary value calculated from the sample inorder
 to make a conclusion of the target population.
 
-### Types of variables 
+## Types of variables 
 
-#### Qualitative variables
+### 1. Qualitative variables
 
 Characteristic: a feature or quality belonging to a person, place or thing.
 
@@ -35,7 +39,7 @@ categories.
 
 ###### For Example:
 
-Male and female are vairables that describe a person's characteristic. The variables
+Male and female are variables that describe a person's characteristic. The variables
 can fall in the category, gender.
 
 | Category | Variables|
@@ -46,11 +50,10 @@ There are two classes of qualitative variables:
 
 1. **Nominal variables:** variables whose categories are just names with no 
 natural order. e.g gender, marital status, religion etc.
-
 2. **Ordinal variables:** variables whose categories have a natural order. e.g
 education level, performance category, degree classification etc.
 
-#### Quantitative variables
+### 2. Quantitative variables
 
 Quantitative variables are numerical varibles and can have mathematical operations
 applied to them. For each of these variables we can learn important information
@@ -58,15 +61,14 @@ by finding averages, standard deviations, and variances.
 
 1. **Discrete variables:** can only assume certain values and there are gaps 
 between them.
-
 2. **Continuous variables:** can assume any value in a specified range.
 
-#### Determining between qualitative and quantitative variables
+### Determining between qualitative and quantitative variables
 
 1. Is it displayed as a number? if not its qualitative.
 
 2. If a number, ask, is finding the average data tell something useful? if it
-would, then its qualitative.
+would, then its quantitative.
 
 3. Can you split the data into categories or sub-groups? If you can its a 
 qualitative variable. 
