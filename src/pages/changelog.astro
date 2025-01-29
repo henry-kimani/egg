@@ -1,0 +1,54 @@
+---
+import FormattedDate from "@/components/FormattedDate.astro";
+import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
+import { getCollection, render } from "astro:content";
+
+const changelogs = await getCollection("changelogs");
+
+// Sort the post from the latest to the olders
+changelogs.sort((a, b) => +b.data.date - +a.data.date);
+---
+
+<StarlightPage
+  frontmatter={{
+    title: "Changelog",
+    template: "splash",
+  }}
+>
+  <div class="list-none w-full h-9">
+    {
+      changelogs.map((log) => (
+        <div class="list-none relative md:flex w-full">
+          <div
+            class:list={["version-con"]}
+            class="sticky h-24 top-14 bottom-7 flex flex-col justify-center pl-9 md:basis-1/5 md:top-16 "
+          >
+            <h1 class="text-zinc-900">{log.data.versionNumber}</h1>
+            <div>
+              <FormattedDate date={log.data.date} />
+            </div>
+          </div>
+          <div class:list={["content"]} class="md:w-3/4">
+            <div>
+              {render(log).then(({ Content }) => (
+                <Content />
+              ))}
+            </div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</StarlightPage>
+
+<style>
+  .changelog {
+    list-style: none;
+  }
+  .version-con {
+    background-color: --sl-color-accent;
+  }
+  ul::marker {
+    display: none;
+  }
+</style>
