@@ -1,0 +1,34 @@
+---
+/* Get a specified markdown and render it */
+
+import { render } from "astro:content";
+import { getCollection } from "astro:content";
+import FormattedDate from "./FormattedDate.astro";
+
+const { pathname } = Astro.url;
+const { overview } = Astro.props;
+
+const releases = await getCollection("releaseNotes", ({ data }) => {
+  return data.overview === overview;
+});
+
+---
+
+{
+  pathname === "/getting-started/new" ? (
+    <div class="flex">
+      {releases.map((release) => (
+        <div class="bg-red-500">
+          <FormattedDate date={release.data.date} />
+        </div>
+        <div class="">
+          {render(release).then(({ Content }) => (
+            <Content />
+          ))}
+        </div>
+      ))}
+    </div>
+  ) : (
+    <h1>Not new page</h1>
+  )
+}
