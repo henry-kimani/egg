@@ -13,7 +13,8 @@ export default defineConfig({
     './config/*', // custom functions 
     './astro.sidebar.ts', // Sidebar configuration file
     './src/content/nav/*.ts' // Sidebar labels
-  ]), starlight({
+  ]),
+  starlight({
     title: 'Egg',
     components: {
       Sidebar: "./src/components/starlight/Sidebar.astro",
@@ -25,11 +26,7 @@ export default defineConfig({
     sidebar,
     customCss: [
       './src/tailwind.css',
-      '@fontsource-variable/nunito',
-      '@fontsource/poppins',
-      '@fontsource/roboto',
       '@fontsource/dejavu-sans',
-      '@fontsource-variable/inter',
       '@fontsource-variable/fredoka',
       '@fontsource-variable/quicksand',
       '@fontsource-variable/noto-sans-lao',
