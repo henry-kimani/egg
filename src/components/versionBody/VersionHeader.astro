@@ -1,0 +1,23 @@
+---
+/**
+ * Render the sticky headers in release notes and changelogs.
+ */
+
+import FormattedDate from "../FormattedDate.astro";
+
+interface Props {
+  date: Date;
+  version: string;
+}
+
+const { date, version } = Astro.props;
+---
+
+<div
+  class="@lg:sticky @lg:top-16"
+>
+  <h1 class="text-zinc-900/5">v{version}</h1>
+  <div class="italic">
+    <FormattedDate date={date} />
+  </div>
+</div>

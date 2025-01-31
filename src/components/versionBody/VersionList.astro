@@ -1,0 +1,35 @@
+---
+/**
+ * Render the head and body of the release notes or changelgos depending on the
+ * entries passed.
+ */
+
+import VersionHeader from "./VersionHeader.astro";
+import type { CollectionEntry } from "astro:content";
+import VersionContent from "./VersionContent.astro";
+
+interface Props {
+  entries: CollectionEntry<"changelogs">[] | CollectionEntry<"releaseNotes">[];
+}
+
+const { entries } = Astro.props;
+---
+
+<div class="@container md:px-4">
+  <hr />
+  {
+    entries.map((entry) => (
+      <div class="@lg:relative @lg:flex @lg:gap-3  pb-9">
+        <div class="@md:px-3 @lg:flex-none">
+          <VersionHeader
+            date={entry.data.date}
+            version={entry.data.versionNumber}
+          />
+        </div>
+        <div class="@lg:basis-4/5">
+          <VersionContent entry={entry} />
+        </div>
+      </div>
+    ))
+  }
+</div>
