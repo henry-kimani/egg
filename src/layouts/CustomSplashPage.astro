@@ -1,0 +1,20 @@
+---
+/**
+ * Render custom pages that are housed with starlight but are splash, meaning 
+ * they don't show the sidebar
+ */
+import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
+import type { StarlightPageProps } from "@astrojs/starlight/components/StarlightPage.astro";
+
+type Props = StarlightPageProps['frontmatter'];
+
+const { title, template } = Astro.props;
+
+---
+<StarlightPage
+  frontmatter={{
+    title, template
+  }}
+>
+  <slot />
+</StarlightPage>
