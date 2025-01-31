@@ -1,0 +1,23 @@
+---
+/**
+ * Render the header in the release notes overview page.
+ */
+
+interface Props {
+  heading: string;
+  hrefToDetails: string;
+}
+
+const { heading, hrefToDetails } = Astro.props;
+---
+
+<h3>
+  {heading}
+  <br />📜
+  <a
+    href={hrefToDetails}
+    class="font-normal text-lg underline hover:no-underline hover:cursor-pointer"
+  >
+    Release Note Details</a
+  >
+</h3>
