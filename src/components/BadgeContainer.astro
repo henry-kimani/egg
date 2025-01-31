@@ -1,0 +1,19 @@
+---
+import { Badge } from "@astrojs/starlight/components";
+import { type BadgeComponentProps } from "node_modules/@astrojs/starlight/schemas/badge";
+
+/**
+ * Render the preview with a badge and its children
+ *
+ */
+
+type Props = BadgeComponentProps;
+
+const { text, variant, size } = Astro.props;
+---
+
+<div>
+  <Badge {text} {variant} {size} />
+  <br />
+  <slot />
+</div>

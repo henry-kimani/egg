@@ -1,17 +1,20 @@
 ---
 title: Whats New? 👀
 description: This is how to get started with egg
+tableOfContents: false
 banner: 
     content: |
         Don't know where to start, check out our
         <a href="/getting-started/tutorial">Tutorial!</a>
 ---
 import ReaderReleaseNotesMd from "@/components/RenderReleaseNotesMd.astro";
+import { Badge } from '@astrojs/starlight/components';
 
 # Release Notes
 
-This includes a user friendly preview of the features added, bugs fixed and 
-updated content.<br /> 
+This includes a user friendly preview of the <Badge text="Features Added" variant="tip" />, 
+<Badge text="Bugs Fixed" variant="danger" /> and <Badge text="Updated Content" variant="success" />.
+
 Otherwise, for <a href="/changelog">Egg's changelog</a> 👈 get it here.
 
 <ReaderReleaseNotesMd overview={true} />
