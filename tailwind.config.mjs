@@ -20,5 +20,5 @@ export default {
       }
     }
   },
-  plugins: [starlightPlugin(), require("tailwindcss-animate")],
+  plugins: [starlightPlugin(), require("tailwindcss-animate"), require("@tailwindcss/container-queries")],
 };
