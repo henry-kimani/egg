@@ -11,6 +11,11 @@ const changelogs = await getCollection("changelogs");
 changelogs.sort((a, b) => +b.data.date - +a.data.date);
 ---
 
-<CustomSplashPage title="Changelog" template="splash" >
+<CustomSplashPage
+  frontmatter={{
+    title: "Changelog",
+    template: "splash",
+  }}
+>
   <VersionList entries={changelogs} />
 </CustomSplashPage>
