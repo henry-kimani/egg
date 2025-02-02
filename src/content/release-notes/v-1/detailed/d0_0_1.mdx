@@ -1,0 +1,74 @@
+---
+title: Detailed Release Note of v0.0.1
+description: This is a detailed release note for the version v0.0.1
+versionNumber: "0.0.1"
+overview: false
+date: 2025-01-29
+---
+
+import BadgeContainer from "@/components/BadgeContainer.astro";
+import { Card, Steps } from "@astrojs/starlight/components";
+import FormattedDate from "@/components/FormattedDate.astro";
+import { MessageSquareReply } from 'lucide-react';
+import VersionLogo from "@/components/versionBody/VersionLogo.astro";
+
+## We just lauched Egg! 
+
+<VersionLogo version={frontmatter.versionNumber} />
+
+
+*Feb 2nd 2025* marks the day Egg is born. Egg is still early in development and 
+new content will be added with time. We will be adding content as frequent as 
+possible.
+
+For the mean time, here is what we have managed with the first release of Egg.
+
+<hr />
+
+<BadgeContainer text="Updates" variant="success" size="large">
+
+  ### New Units for second year second semester
+
+  The following units have been added:
+
+  - [AMS209](/year2/ams209/ms-runo/data-presentation) specifically Ms. Runo.
+
+</BadgeContainer>
+
+<hr />
+
+  <BadgeContainer text="Features" variant="tip" size="large">
+
+    ### Introducing dark mode
+
+    We care about the user experience and while others are okay with light themes,
+    other are not.
+    We addressed this and added dark theme, which is more 
+    friendly to the eyes. <br />
+    The toggle button is located on the Top Navigation bar.
+    For more detailes, [learn how to change your theme](/getting-started/tutorial#theme) 
+    here.
+
+    ### We have added a feedback button
+
+    We value your feedback, both positive and negative. It fuels our innovation,
+    don't hesitate to share you thoughts, reports or issues with the UI.
+
+    To submit your feedback:
+
+    <Steps>
+
+      1. Navigate on the TopNavigation bar:
+        
+ 
+      2. Click on the icon that looks like the below icon:
+
+          <MessageSquareReply />
+
+      3. A modal window will open to submit you feedback.
+
+    </Steps>
+
+
+  </BadgeContainer>
+

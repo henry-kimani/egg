@@ -1,14 +1,28 @@
 ---
-title: Release Notes
-description: Some Release Notes
+title: Release Note v0.0.1
+description: "We have added more first and second year units. We have also update some units."
 versionNumber: "0.0.1"
-date: 2025-01-27
+date: 2025-02-02
 overview: true
 ---
 import FormattedDate from "@/components/FormattedDate.astro";
+import Header from "@/components/versionBody/RNOverviewHeader.astro";
+import BadgeContainer from '@/components/BadgeContainer.astro';
 
-### v0.0.1 Overview 
+<Header heading="The Birth of Egg" hrefToDetails={`/detailed-releasenotes/${frontmatter.versionNumber}`} />
 
-1. This is a test overview release note
-1. This is a test overview release note
-1. This is a test overview release note
+<br />
+
+<BadgeContainer text="Updated Content" variant="success" size="medium">
+
+  - New units for second year second semester.
+
+</BadgeContainer>
+
+<BadgeContainer text="Features Added" variant="tip" size="medium">
+
+  - Introducing dark mode for all users.
+  - We have added a feedback button. You are free to share your thoughts with us
+  and help us improve our platform.
+
+</BadgeContainer>
