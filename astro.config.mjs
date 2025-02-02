@@ -17,6 +17,7 @@ export default defineConfig({
   starlight({
     title: 'Egg',
     components: {
+      Hero: "./src/components/starlight/Hero.astro",
       Sidebar: "./src/components/starlight/Sidebar.astro",
       Footer: "./src/components/starlight/ConditionalFooter.astro",
     },
