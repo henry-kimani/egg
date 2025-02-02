@@ -1,0 +1,24 @@
+---
+/**
+ * Render the versionLogo for the passed version. Used in the detailed release
+ * notes route.
+ */
+import { Power } from 'lucide-react';
+
+interface Props {
+  version: string;
+}
+
+const { version } = Astro.props;
+---
+
+
+<div class="bg-orange-400/20 relative w-full h-40 flex justify-center items-center rounded-lg">
+  <div class:list={["version-logo"]} class="font-semibold bg-orange-500 p-5 rounded-lg drop-shadow-lg text-7xl text-white">{version}</div>
+</div>
+
+<style>
+  .version-logo {
+    font-family: "Fredoka Variable", sans-serif;
+  }
+</style>
