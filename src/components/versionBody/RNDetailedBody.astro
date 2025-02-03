@@ -1,14 +1,29 @@
 ---
-import CustomSplashPage from '@/layouts/CustomSplashPage.astro';
-import type { CollectionEntry } from 'astro:content';
+import CustomSplashPage from "@/layouts/CustomSplashPage.astro";
+import type { CollectionEntry } from "astro:content";
+import { render } from "astro:content";
 
 interface Props {
-  releases: CollectionEntry<'releaseNotes'>[];
+  releases: CollectionEntry<"releaseNotes">[];
   detailedVersion: string;
 }
 
 const { releases, detailedVersion } = Astro.props;
+
+// return the first element that passess the condtion
+const detailedRelease = releases.filter(
+  (release) => release.data.versionNumber == detailedVersion
+)[0];
 ---
-<CustomSplashPage title="Detailed ReleaseNote" template="splash">
-  <div>Rendering the detailed release note {detailedVersion}</div>
+
+<CustomSplashPage
+  frontmatter={{
+    title: `Release Note v${detailedRelease.data.versionNumber}`,
+    template: "splash",
+  }}
+  class="flex justify-center"
+>
+  <div class="w-full md:w-3/4">
+    {render(detailedRelease).then(({ Content }) => <Content />)}
+  </div>
 </CustomSplashPage>
