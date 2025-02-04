@@ -10,7 +10,7 @@ const { title, image, tagline, actions } = hero!;
 // Set the image default attributes
 const imageAttrs = {
   loading: "eager" as const, // load ASAP
-  decoding: "asyc" as const,
+  decoding: "async" as const,
   width: 400,
   height: 400,
   alt: image?.alt || "",
