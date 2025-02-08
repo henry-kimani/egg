@@ -1,66 +1,49 @@
 ---
 import type { Props } from "@astrojs/starlight/props";
 import Default from "@astrojs/starlight/components/Footer.astro";
-import { Mail, Github } from "lucide-react";
+import AnchorList from "../AnchorList.astro";
+import FeedbackForm from "../forms/FeedbackForm.astro";
+import { LinkButton } from "@astrojs/starlight/components"; 
+import FooterHeaders from "@/components/FooterHeaders.astro";
+import CardGridLayout from "@/layouts/CardGridLayout.astro";
 
+// Pages to display the custom Footer
 const isHomepage = Astro.props.id === "";
-const isChanglogPage = Astro.props.id === "changelog"
-const isDetailedRNPage = Astro.props.id ==="detailed-releasesnotes"
+const isChanglogPage = Astro.props.id === "changelog";
+const isDetailedRNPage = Astro.props.id === "detailed-releasesnotes";
 ---
 {
-  isHomepage || isChanglogPage || isDetailedRNPage? (
+  isHomepage || isChanglogPage || isDetailedRNPage ? (
     <footer class="h-64 w-full mt-20  dark:bg-[#1a1816]">
-      <div class="block sm:flex">
-        {/* Socials, About Us */}
-        <div class="mb-4 basis-1/2">
-          <div class="mb-4">
-            <a href="/about" class="underline underline-offset-2 decoration-2 decoration-orange-600 dark:decoration-[#eebe95] font-bold text-orange-600 dark:text-[#eebe95] text-xl">ABOUT US</div> 
-          </div>
-          <div >
-            <span class="font-black text-orange-600 dark:text-[#eebe95] text-xl">SOCIALS</span>
-            <div class="text-4xl flex gap-4 mt-1">
-              <a
-                class="text-zinc-900 hover:text-zinc-700 dark:text-white dark:hover:text-slate-400" 
-                href="http://github.com/henry-kimani"
-              >
-                <Github size={36} strokeWidth={2} />
-              </a>
-              <a 
-                class="text-zinc-900 hover:text-orange-600 dark:text-white dark:hover:text-[#eebe95]" 
-                href="mailto:ariphharts@gmail.com"
-              >
-                <Mail size={36} strokeWidth={2} />
-              </a>
-            </div>
+
+      <CardGridLayout>
+        {/* About  */}
+        <div>
+          <FooterHeaders>about</FooterHeaders>
+          <ul>
+            <AnchorList href="/about" text="More about Egg" />
+            <AnchorList href="/privacy-policy" text="Privacy and Policy" />
+            <AnchorList href="/terms-conditions" text="Terms and Condtions" />
+            <AnchorList href="/software-license" text="License" />
+          </ul>
+        </div>
+
+        {/* Socials */}
+        <div>
+          <FooterHeaders>socials</FooterHeaders>
+          <div class="flex gap-4 mt-3">
+            <LinkButton href="https://github.com/henry-kimani" icon="github" variant="secondary" >Github</LinkButton>
+            <LinkButton href="mailto:ariphharts@gmail.com" icon="email" variant="secondary" >Email</LinkButton>
           </div>
         </div>
 
         {/* Feedback */}
-        <div class="mb-4 basis-1/2">
-          <form action="" class="block" id="egg-form-feedback">
-            <label for="egg-form-feedback-input" class="block text-orange-600 dark:text-[#eebe95] font-bold text-xl">FEEDBACK</label>
-            <textarea
-              name="feedback" id="egg-form-feedback-input" 
-              class={
-                `border  mt-1 w-full h-24 max-h-auto max-w-full rounded-sm py-1 px-2 
-                border-zinc-300 dark:border-zinc-600 bg-white dark:bg-[#2b2622] 
-                focus:outline-none focus:ring focus:ring-orange-600 focus:ring-offset-1`
-              } 
-              placeholder="Share your feedback with us 😊..." 
-            />
-            <button 
-              class={
-                `block mt-1 px-4 py-1 rounded-md text-center
-                text-white dark:text-[#2b2622] bg-orange-600 dark:bg-[#eebe95]
-                hover:bg-orange-700 dark:hover:bg-[#eebe95]/75 
-                focus:ring focus:ring-slate-600 focus:ring-offest-1`
-              }
-              type="submit">Send</button>
-          </form>
+        <div class="sm:col-span-2 lg:col-span-1">
+          <FeedbackForm label="feedback" buttonText="Send" />
         </div>
-      </div>
+      </CardGridLayout>
 
-      <div class="text-center text-slate-400 mb-4">Brought to you by Egg</div>
+    <div class="text-center text-[var(--sl-color-gray-4)] ">Brought to you by, Egg 🥚</div>
     </footer>
   ) : (
     <Default {...Astro.props}>
@@ -68,17 +51,3 @@ const isDetailedRNPage = Astro.props.id ==="detailed-releasesnotes"
     </Default>
   )
 }
-
-<script>
-
-
-const feedbackForm = document.querySelector<HTMLInputElement>("#egg-form-feedback");
-const feedbackInput = document.querySelector<HTMLInputElement>("#egg-form-feedback-input");
-
-  feedbackForm?.addEventListener("submit", (event) => {
-    event.preventDefault;
-    let value = feedbackInput?.value;
-    console.log(value);
-  });
-
-</script>

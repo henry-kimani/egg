@@ -1,0 +1,18 @@
+---
+interface Props {
+  class?: string;
+  href: string;
+  text: string;
+}
+const { href, class: className, text } = Astro.props;
+---
+
+<li class="mb-1 marker:text-[var(--sl-color-accent)] dark:marker:text-[var(--sl-color-accent-high)]">
+  <a
+    class:list={[
+      className,
+      "text-[var(--sl-color-gray-2)] hover:text-[var(--sl-color-accent)] dark:text-white dark:hover:text-[var(--sl-color-accent-high)] hover:no-underline",
+    ]}
+    href={href}>{text}</a
+  >
+</li>

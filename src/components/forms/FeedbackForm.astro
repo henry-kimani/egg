@@ -1,0 +1,72 @@
+---
+import FooterHeaders from '../FooterHeaders.astro';
+
+interface Props {
+  label: string;
+  buttonText: string;
+}
+
+const { label, buttonText } = Astro.props;
+---
+
+<div class="grid">
+  <form action="" id="egg-form-feedback">
+
+    <label
+      for="egg-form-feedback-input"
+      class=""
+    >
+      <FooterHeaders>
+        {label} 
+      </FooterHeaders>
+    </label>
+
+    <div 
+      class={`grid p-2 border-2 rounded-lg
+        has-[:focus]:border-[var(--sl-color-accent)] has-[:focus]:dark:border-[var(--sl-color-accent-high)]
+      `}
+    >
+      <textarea
+        name="feedback"
+        id="egg-form-feedback-input"
+        class={`mt-1 w-full h-24 max-h-auto max-w-full rounded-sm py-1 px-2 resize-none
+          bg-[var(--sl-color-black)] dark:bg-[var(--sl-color-gray-7)] 
+          focus:outline-none`}
+        placeholder="Share your feedback with us 😊..."
+        aria-placeholder="Share your feedback with us"
+      ></textarea>
+      <div class="flex justify-between">
+        <select name="emoji-feeling *:text-5xl">
+          <option value="very-good">⭐ Rate</option>
+          <option value="very-good">🤩 Very Good</option>
+          <option value="good">😊 Good</option>
+          <option value="mid">😐 Mid</option>
+          <option value="bad">☹️  Bad</option>
+          <option value="very-bad">😡 Very Bad</option>
+        </select>
+        <button
+          class={`block mt-1 px-4 py-1 rounded-md text-center
+            text-white dark:text-[var(--sl-color-gray-5)] bg-[var(--sl-color-accent)] dark:bg-[var(--sl-color-accent-high)]
+            hover:scale-105 dark:hover:bg-[--sl-color-accent-high] 
+            focus:ring focus:ring-slate-600 focus:ring-offest-1`}
+          type="submit"
+        >
+          {buttonText}
+        </button>
+      </div>
+    </div>
+
+  </form>
+</div>
+<script>
+const feedbackForm = document.querySelector<HTMLInputElement>("#egg-form-feedback");
+const feedbackInput = document.querySelector<HTMLInputElement>(
+  "#egg-form-feedback-input"
+);
+
+  feedbackForm?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    let value = feedbackInput?.value;
+    console.log(value);
+  });
+</script>
