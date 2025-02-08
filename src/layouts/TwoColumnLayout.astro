@@ -1,0 +1,22 @@
+---
+/**
+ * 
+ * Apply Two columns for children passed using grid
+ * 
+ */
+
+export interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<section
+  class:list={[
+    className,
+    "grid sm:grid-cols-2 gap-7 md:gap-0",
+  ]}
+>
+  <slot />
+</section>

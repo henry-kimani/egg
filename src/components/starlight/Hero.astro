@@ -1,8 +1,10 @@
 ---
 import type { Props } from "@astrojs/starlight/props";
 import type { ImageMetadata } from "astro";
-import { Image } from "astro:assets";
 import { LinkButton } from "@astrojs/starlight/components";
+import TwoColumnLayout from "@/layouts/TwoColumnLayout.astro";
+import ImageContain from "@/components/ui/ImageContain.astro";
+import ContentStack from "@/components/ui/ContentStack.astro";
 
 const { hero } = Astro.props.entry.data;
 const { title, image, tagline, actions } = hero!;
@@ -17,38 +19,36 @@ const imageAttrs = {
 };
 
 // Support dark theme and light theme images
-let darkImage: ImageMetadata | undefined;
-let lightImage: ImageMetadata | undefined;
+let darkImage: ImageMetadata;
+let lightImage: ImageMetadata;
 let rawHtml: string | undefined;
 
 /**
  * Since Image is a Union type, with dark and light theme image, we separate
  * as desired below
- */
+*/
+
 if (image) {
-  if ("file" in image) {
-    // Default, when no image with out dark and light variants is passed
-    darkImage = image.file;
-  } else if ("dark" in image) {
+  if ("dark" in image) {
     // When the two variants are passed
     darkImage = image.dark;
     lightImage = image.light;
-  } else {
-    rawHtml = image.html;
   }
 }
+
+const imageData = {
+  dark: darkImage,
+  light: lightImage,
+  ...imageAttrs
+};
 ---
 
-<section
+<TwoColumnLayout
   class:list={['hero']} 
-  class="flex flex-col justify-evenly items-center gap-9 md:gap-0 md:flex-row"
 >
 
   {/* Title and tagline */}
-  <div 
-    class:list={['stack']} 
-    class="basis-1/2 flex flex-col text-center md:text-start"
-  >
+  <ContentStack isCard={false}> 
     <h1 set:html={title} />
     <div set:html={tagline} class:list={'tagline'} />
     <div>
@@ -65,46 +65,26 @@ if (image) {
         )
       }
     </div>
-  </div>
+  </ContentStack>
 
   {/* Image */}
-    {
-      darkImage && (
-        <Image
-          src={darkImage}
-          {...imageAttrs}
-          class:list={{ "light:sl-hidden basis-1/2": Boolean(lightImage) }}
-        />
-      )
-    }
-    {
-      lightImage && (
-        <Image src={lightImage} {...imageAttrs} class="dark:sl-hidden basis-1/2" />
-      )
-    }
+  <ImageContain {...imageData} />
 
-</section>
+</TwoColumnLayout>
 
 <style>
-  @media (min-width: 768px) {
-    .hero > img {
-      width: min(100%, 25rem);
-    }
-  }
-  /* Adding padding to lg: screen sizes */ 
+  /* Adding padding to lg: screen sizes */
   @media (min-width: 1100px) {
     .hero {
-      padding-block: clamp(2.5rem, calc(1rem + 10vmin), 10rem);
+      padding-block: clamp(1.5rem, calc(1rem + 10vmin), 5rem);
     }
-  }
+  } 
+
   .stack {
-    gap: clamp(1.5rem, calc(1.5rem + 1vw), 2rem);
+    gap: clamp(1rem, calc(1.5rem + 1vw), 2rem);
   }
-  img {
-    object-fit: contain;
-    width: min(70%, 20rem);
-    height: auto;
-  }
+
+
   h1 {
     font-size: clamp(var(--sl-text-5xl), calc(1rem + 5vw), var(--sl-text-6xl));
     line-height: var(--sl-line-height-headings);
