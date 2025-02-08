@@ -1,0 +1,59 @@
+---
+
+/**
+  * Receive dark and light theme images.
+  * 
+  * Position the images with object fit contain.
+  *
+  */
+import { Image } from "astro:assets";
+
+/**
+  * Render light or dark images depending on the theme
+  */
+export interface Props {
+  dark: ImageMetadata;
+  light: ImageMetadata;
+  alt: string;
+  class?: string;
+  loading: "eager" | "lazy";
+}
+
+const {
+  dark: darkImage,
+  light: lightImage,
+  alt,
+  class: className,
+  loading,
+} = Astro.props;
+
+// Added all the attributes including the optional
+const imageAttr = {
+  width: 400,
+  height: 400,
+  alt,
+  loading,
+  class: className || "",
+};
+
+
+---
+<div class:list={["grid place-items-center"]}>
+  {/* Light Image */}
+  <Image src={lightImage} {...imageAttr} class="dark:sl-hidden drop-shadow-xl" />
+
+  {/* Dark Image */}
+  <Image src={darkImage} {...imageAttr} class="light:sl-hidden" />
+</div>
+
+<style>
+  img {
+    object-fit: contain;
+    width: min(100%, 20rem);
+    height: auto;
+  }
+
+</style>
+
+
+

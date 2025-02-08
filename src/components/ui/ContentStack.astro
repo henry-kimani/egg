@@ -1,0 +1,36 @@
+---
+/*
+ * Stack the contents 
+ *
+ * */
+
+import { cn } from '@/lib/utils';
+
+interface Props {
+  class?: string;
+  isCard: boolean;
+}
+
+const { class:className, isCard } = Astro.props;
+---
+
+<div 
+  class:list={cn(
+    "stack grid", className,
+    {
+      "text-start": isCard,
+      "text-center md:text-start": !isCard,
+    } 
+  )}
+>
+  <slot />
+</div>
+
+<style>
+span {
+  background-color: red;
+}
+</style>
+
+
+
