@@ -14,7 +14,8 @@ hero:
     organized notes for every <br class="hidden md:block" /> year and unit, for free!
   image:
     alt: "An example of egg's organized content"
-    file: ../../assets/houston.webp
+    light: ../../assets/HeroLight.png
+    dark: ../../assets/HeroDark2.png
   actions:
     - text: Start Learning
       link: /getting-started/new
@@ -25,54 +26,59 @@ import {
 	Card, CardGrid, Aside, LinkButton, Icon
 } from '@astrojs/starlight/components';
 
-## About Egg
+import OrganizedContentLight from "../../assets/OrganizedContentLight.png"
+import OrganizedContentDark from "../../assets/OrganizedContentDark.png"
+import MathEquationsLight from "../../assets/MathEquationsLight.png"
+import MathEquationsDark from "../../assets/MathEquationsDark.png"
+import InfoCard from "@/components/ui/InfoCard.astro";
+import CardGridLayout from "@/layouts/CardGridLayout.astro";
+import ProfileAndName from "@/components/ui/ProfileAndName";
+import TextHero from "@/layouts/TextHero.astro";
 
-### What is Egg?
-First, I know its a funny name, but in the future, you will understand why (as 
-the application evolves).
 
-Lets answer the question, What is Egg? Egg is an online platform for reading
-notes. What kind of notes you ask. Well, it consists of notes involving the 
-science, Criminilogy. The source of this notes are from the Lectures of the 
-University of Murang'a.
+<CardGridLayout>
+  <InfoCard
+    dark={OrganizedContentDark}
+    light={OrganizedContentLight}
+    alt="Organized content for year and unit"
+    loading="eager"
+  >
+    <ProfileAndName emoji="📜" profileName="Organized Content" />
+    <span class="mt-3">
+      Notes are organized by year, each year having its corresponding units.
+    </span>
+  </InfoCard>
+  <InfoCard
+    dark={OrganizedContentDark}
+    light={OrganizedContentLight}
+    alt="Illustrations through charts, diagrams and more"
+  >
+    <ProfileAndName emoji="🍕" profileName="Crispy Illustrations" />
+    <span class="mt-3">
+      Easy to understand Illustrations throught charts, diagrams and more.
+    </span>
+  </InfoCard>
+  <InfoCard
+    dark={MathEquationsDark}
+    light={MathEquationsLight}
+    alt="Legible mathematics equations"
+    loading="eager"
+    class="sm:col-span-2 sm:flex sm:pb-3 lg:pb-0 lg:block lg:col-span-1"
+    contClasses="sm:border-t-0 sm:border-l-2 sm:border-[var(--sl-color-gray-5)] lg:border-t-2 lg:border-l-0 dark:border-0"
+  >
+    <ProfileAndName emoji="👌" profileName="Clear Math Equations" />
+    <span class="mt-3">
+      Legible mathematics equations, easy to understand.
+    </span>
+  </InfoCard>
+</CardGridLayout>
 
-<Aside type='caution'>
-This site has no ties, whatsoever with the Lecturers of the University. 
-Meaning, the content uploaded here is not instructed by any Official of the 
-University.
-</Aside>
+<TextHero
+  buttonText="Start Learning"
+  href="/getting-started/new"
+  icon="right-arrow"
+>
+  Never Miss A Criminology Lecture Again
+</TextHero>
 
-### Who uploads the content?
-
-The contents of this site are uploaded by a student taking the course. As the
-course progresses, content will be added and updated as soon as possible.
-
-<Aside title='Note: Not cloned notes!' type='note'>
-It would be worth noting, that the contents of this site are not a clone of the 
-lecture notes, but a modification. Meaning, the contents of the site are:
-- **Revised** - The lecture notes, have been reconsidered and ammended.
-- **Extended** - Added upon (added other useful information).
-- **Modified** - Made adjustments where necessary.
-</Aside>
-
-<CardGrid>
-	<Card title='Why make Egg?' icon='star'>
-		Egg is made to help students of the University taking the course, Bachelor of 
-		Science in Criminology and Security Studies or anyone in general who is fasinated
-		by the Science of Criminology and would like to [learn more about it.](/getting-started/new)
-	</Card>
-
-  <Card title='How to get Started?' icon='rocket'>
-    Egg features a tutorial to help you understand its interface and how the 
-    content is organised.
-
-    <LinkButton href={'/getting-started/tutorial'}>Tutorial<Icon name="right-arrow" /></LinkButton>
-
-  </Card>
-</CardGrid>
-
-<Card title='❤️ Here for you ❤️' >
-Be rest assured, you are getting the best notes possible, that is readable, in one place 
-and can be accessed from anywhere in the world. 
-</Card>
 

@@ -1,0 +1,43 @@
+---
+/**
+ *
+ * Render a Card used in landing page.
+ * 
+ * */
+import ContentStack from "./ContentStack.astro";
+import ImageContain from "./ImageContain.astro";
+import type { ImageContainProps } from "./ImageContain.astro";
+
+
+const { dark, light, alt, loading, class: cardClasses, contClasses } = Astro.props;
+
+const imageData = {
+  dark,
+  light,
+  alt,
+  loading,
+};
+
+---
+
+<div 
+  class="grid-con rounded-lg border-[var(--sl-color-gray-5)] border-2"
+  class:list={[cardClasses]}
+>
+  <ImageContain {...imageData} />
+  <ContentStack 
+    isCard 
+    class:list={[
+      contClasses,
+      `px-4 py-2 border-t-[var(--sl-color-gray-5)] border-t-2 dark:border-t-0 
+      `
+    ]}>
+    <slot />
+  </ContentStack>
+</div>
+
+<style>
+.grid-con {
+  margin: 0 !important;
+}
+</style>
