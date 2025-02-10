@@ -1,5 +1,6 @@
 ---
 /**
+ * Just render what you are passed (entries)
  * Render the body of the release notes or changelogs
  */
 
@@ -14,7 +15,7 @@ const { entry } = Astro.props;
 
 ---
 
-<div class="">
+<div>
   {render(entry).then(({ Content }) => (
     <Content />
   ))}

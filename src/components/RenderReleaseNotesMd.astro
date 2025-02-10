@@ -1,6 +1,7 @@
 ---
 /**
  * Render release notes as an overview (a list) or detailed as specified in the params 
+ * and if it matches the path
  */
 
 import { getCollection } from "astro:content";
@@ -20,7 +21,7 @@ const { pathname } = Astro.url;
 const { overview, detailedVersion } = Astro.props;
 
 /**
- * If the overview is true, on preview releases are returned
+ * If the overview is true, preview releases are returned
  * If the overview is false, return detailed pages
  */
 const releases = await getCollection("releaseNotes", ({ data }) => {
@@ -36,7 +37,7 @@ const releases = await getCollection("releaseNotes", ({ data }) => {
      * The above condition specifies we render the below code if we are in that 
      * route and the passed overview prop is true. 
      * 
-     * Means we are only render when we are in the required route and we are 
+     * Means we only render when we are in the required route and we are 
      * trying to overview (by setting overview to true).
      */
     <VersionList entries={releases} />

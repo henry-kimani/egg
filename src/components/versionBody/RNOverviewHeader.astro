@@ -1,7 +1,11 @@
 ---
 /**
+ * Use this component in the p.0.0.1 ..., to render the head
  * Render the header in the release notes overview page.
  */
+
+import { Icon } from "@astrojs/starlight/components";
+import { Link } from "lucide-react";
 
 interface Props {
   heading: string;
@@ -11,13 +15,11 @@ interface Props {
 const { heading, hrefToDetails } = Astro.props;
 ---
 
-<h3>
-  {heading}
-  <br />📜
-  <a
-    href={hrefToDetails}
-    class="font-normal text-lg underline hover:no-underline hover:cursor-pointer"
-  >
-    Release Note Details</a
-  >
-</h3>
+<h1 class="flex">
+  <a class="flex" href={hrefToDetails}>
+     {heading}&nbsp;<Icon class="inline-block" name="external" />
+  </a>
+</h1>
+
+
+
