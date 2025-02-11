@@ -1,0 +1,90 @@
+---
+title: Numerical Summary
+description: Numerical Summary for a set of data is refered to as a statistic
+  if the dataset is a sample and a parameter if the dataset is the entire
+  polulation.
+sidebar:
+  order: 4
+---
+
+import SimpleLatex from "@/components/math/SimpleLatex.astro";
+
+## Definition
+
+Numerical Summary for a set of data is refered to as a statistic, if the dataset
+is a sample and a parameter if the dataset is the entire population.
+
+They are catergorized as:
+- Measures of location 
+- Measures of spread
+
+Measures of locations are further classified into:
+- Measures of central tendancy (averages)
+- Measures of relative positioning (quantiles)
+
+## Measures of Central Tendency
+
+The measures of central tendecy, describes a set of data, by identifying the central
+position in the dataset, as a single value. <br />
+We can think of it as a tendency of data to cluster around a middle point.
+
+There are three different types of central tendancies:
+
+1. **Mean:** It is also known as the average. It is calcuated by adding all the values
+in a data set and dividing by the total number of values.
+2. **Median:** It is the middle value in a data set. It is calculated by arranging
+the dataset in order, from lowest to highest and finding the value in the exact
+middle.
+3. **Mode:** It the value that appears most frequently in the dataset. 
+
+## Mean
+
+### Arithemetic Mean
+
+Arithemetic mean is the simple average or sum of a series of numbers divided by
+the count of that series of numbers. In short, its a fancy ways of saying average.
+
+<SimpleLatex formula="=\frac{\text{sum of all numbers}}{\text{total number of numbers}}" />
+<br />
+
+<div>For example, the arithemetic mean of values:</div>
+
+<SimpleLatex class="inline-block" formula="x_1, x_2, \cdots, x_n" /> 
+
+<SimpleLatex formula = "{\displaystyle = \frac{x_1 + x_2 + \cdots + x_n}{n}}" />
+
+and is formed by:
+
+<SimpleLatex 
+  formula= "{
+    \displaystyle
+    \bar{x}=\sum _{i=1}^{n} \frac{Xi}{n} 
+  }"
+/>
+
+or in simple terms 
+
+<SimpleLatex formula="{\displaystyle =\frac{\sum x}{n}}" />
+
+If the data includes frequencies,
+
+<SimpleLatex formula="{\displaystyle =\frac{\sum fx}{\sum f}}" />
+
+For Example:
+
+Estimate the mean for the data below
+
+| class | freq | class bound | x | c.f | xf |
+|-------|------|-------------|----------|-----|----|
+| 6 - 9 | 5 | 4.5 - 9.5 | 7 | 5 | 35 |
+| 10 - 9 | 5 | 4.5 - 9.5 | 7 | 5 | 35 |
+| 6 - 9 | 5 | 4.5 - 9.5 | 7 | 5 | 35 |
+| 6 - 9 | 5 | 4.5 - 9.5 | 7 | 5 | 35 |
+| 6 - 9 | 5 | 4.5 - 9.5 | 7 | 5 | 35 |
+| 6 - 9 | 5 | 4.5 - 9.5 | 7 | 5 | 35 |
+| 6 - 9 | 5 | 4.5 - 9.5 | 7 | 5 | 35 |
+
+
+
+
+
