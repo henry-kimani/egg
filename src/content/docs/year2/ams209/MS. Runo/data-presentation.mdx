@@ -5,6 +5,7 @@ sidebar:
   order: 3
 ---
 import Tally from "@/components/ui/Tally";
+import Histogram from "@/components/charts/Histogram";
 import { Steps } from "@astrojs/starlight/components";
 import SimpleLatex from "@/components/math/SimpleLatex.astro";
 
@@ -107,6 +108,8 @@ The width of the bars (x-axis) is determined by the class boundaries.
 
 Construct a histogram to represent the data shown below.
 
+export const histogramFreq = [ 2, 8, 18, 13, 7, 1, 1 ];
+
 export function computeHeight(freq, classInterval = 5) {
   return freq/classInterval ;
 }
@@ -120,6 +123,10 @@ export function computeHeight(freq, classInterval = 5) {
 |120 - 124 | 7 | 1.4 |
 |125 - 129 | 1 | 0.2 |
 |130 - 134 | 1 | 0.2 |
+
+<br />
+
+<Histogram classRange="100-104" classInterval={5} frequency={histogramFreq} />
 
 ### Frequency Polygon
 
