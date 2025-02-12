@@ -15,7 +15,7 @@ export default defineConfig({
     './src/content/nav/*.ts' // Sidebar labels
   ]),
   starlight({
-    title: 'Egg',
+    title: '🥚Egg',
     components: {
       Hero: "./src/components/starlight/Hero.astro",
       Sidebar: "./src/components/starlight/Sidebar.astro",
