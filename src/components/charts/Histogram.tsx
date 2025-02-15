@@ -40,8 +40,8 @@ export default function Histogram({
         style={{ height: (ChartHeight-40) + "px"}}
       >
         <YAxis maxHeight={maxHeight} />
-        {/* conditional render, if upperBounds is greater than 0*/}
-        {BarElements}
+        { lowerBound > 1 ? <NotFromZero lowerBound={lowerBound} />: "" }
+        { BarElements }
       </div>
 
       <Label class="col-span-2 place-items-center " yAxis={false}  label="class boundaries" />
@@ -49,6 +49,17 @@ export default function Histogram({
   );
 }
 
+function NotFromZero({ lowerBound: value }: { lowerBound: number }) {
+  return (
+    <BarContainer class="relative">
+      <span className="absolute bottom-[26px]">vvvvvvv</span>
+      <Scale class="border-t border-t-[var(--sl-color-gray-2)] relative">
+        <div className="absolute !m-0 bottom-2 -right-1/4 z-10">{ value }</div>
+        <div className="absolute !m-0 top-0 -right-[1px] w-0.5 h-2 z-10 bg-[var(--sl-color-gray-2)]"></div>
+      </Scale>
+    </BarContainer>
+  );
+}
 
 function YAxis({ maxHeight }: { maxHeight: number}) {
 
@@ -66,7 +77,7 @@ function YAxis({ maxHeight }: { maxHeight: number}) {
             return (
               <div className="relative !m-0 w-full">
                 {/* pointer for the x-axis scale */}
-                <div className="absolute !m-0 top-0 right-0 rotate-90  w-0.5 h-1 z-10 bg-[var(--sl-color-gray-2)]"></div>
+                <div className="absolute !m-0 top-0 right-0 rotate-90 w-0.5 h-1 z-10 bg-[var(--sl-color-gray-2)]"></div>
                 {/* the y-axis value */}
                 <div className="absolute !m-0 -top-3 right-2 z-10">{value}</div>
               </div>
@@ -83,7 +94,7 @@ function YAxis({ maxHeight }: { maxHeight: number}) {
 
 function BarContainer({ children, class:classes }: { children: ReactNode, class?: string }) {
   return (
-    <div className={cn("flex flex-col justify-end !m-0 min-w-14 w-20 h-[460px]", classes )}>
+    <div className={cn("flex flex-col justify-end !m-0 min-w-16 max-w-20 h-[460px]", classes )}>
       { children }
     </div>
   );
