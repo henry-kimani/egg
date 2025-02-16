@@ -18,6 +18,7 @@ const { buttonText, href, icon, variant } = Astro.props;
     <h1 class="text-center">
       <slot />
     </h1>
+    <span class="tagline">Made by a comrade for comrades</span>
   </div>
 
   <div class="basis-1/6 grid place-items-center">
@@ -33,5 +34,8 @@ const { buttonText, href, icon, variant } = Astro.props;
 h1 {
   font-size: clamp( var(--sl-text-5xl), calc(1rem + 5vw), var(--sl-text-6xl)) !important;
   font-weight: 700 !important;
+}
+.tagline {
+  font-size: clamp(var(--sl-text-base), calc(0.0625rem + 2vw), var(--sl-text-xl));
 }
 </style>
