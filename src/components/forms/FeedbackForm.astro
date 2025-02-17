@@ -1,5 +1,6 @@
 ---
 import FooterHeaders from '../FooterHeaders.astro';
+import { Laugh } from 'lucide-react';
 
 interface Props {
   label: string;
@@ -36,19 +37,26 @@ const { label, buttonText } = Astro.props;
         aria-placeholder="Share your feedback with us"
       ></textarea>
       <div class="flex justify-between">
-        <select name="emoji-feeling *:text-5xl">
-          <option value="very-good">⭐ Rate</option>
-          <option value="very-good">🤩 Very Good</option>
-          <option value="good">😊 Good</option>
-          <option value="mid">😐 Mid</option>
-          <option value="bad">☹️  Bad</option>
-          <option value="very-bad">😡 Very Bad</option>
-        </select>
-        <button
+        <div>
+          <select 
+            name="emoji-feeling" 
+            id="emoji-feeling-select" 
+            class={`bg-[var(--sl-color-gray-6)] py-2 px-3 *:border-none *:text-5x rounded appearance-none
+              focus:ring focus:outline-none focus:ring-[var(--sl-color-accent-high)]`}
+          >
+            <option value="rate">⭐ Rate</option>
+            <option value="very-good">🔥 Very Good</option>
+            <option value="good">😃 Good</option>
+            <option value="fair">😐 Fair</option>
+            <option value="bad">☹️ Bad</option>
+            <option value="very-bad">😡 Very Bad</option>
+          </select>
+        </div>
+               <button
           class={`block mt-1 px-4 py-1 rounded-md text-center
             text-white dark:text-[var(--sl-color-gray-5)] bg-[var(--sl-color-accent)] dark:bg-[var(--sl-color-accent-high)]
             hover:scale-105 dark:hover:bg-[--sl-color-accent-high] 
-            focus:ring focus:ring-slate-600 focus:ring-offest-1`}
+            focus:ring focus:outline-none focus:ring-[var(--sl-color-accent)] focus:ring-offest-2`}
           type="submit"
         >
           {buttonText}
@@ -58,15 +66,22 @@ const { label, buttonText } = Astro.props;
 
   </form>
 </div>
+<style>
+option {
+  background-color: var(--sl-color-gray-6);
+}
+</style>
 <script>
 const feedbackForm = document.querySelector<HTMLInputElement>("#egg-form-feedback");
 const feedbackInput = document.querySelector<HTMLInputElement>(
   "#egg-form-feedback-input"
 );
+const emojiFeeling = document.querySelector<HTMLSelectElement>("#emoji-feeling-select");
 
-  feedbackForm?.addEventListener("submit", (event) => {
-    event.preventDefault();
-    let value = feedbackInput?.value;
-    console.log(value);
-  });
+feedbackForm?.addEventListener("submit", (event) => {
+  event.preventDefault();
+  let value = feedbackInput?.value;
+  let emoji = emojiFeeling?.value;
+  console.log(value, emoji);
+});
 </script>
