@@ -3,13 +3,14 @@ import type { StarlightIcon } from '@astrojs/starlight/types';
 import LinkButton from 'node_modules/@astrojs/starlight/user-components/LinkButton.astro';
 
 interface Props {
+  tagline: string;
   buttonText: string;
   href: string | URL;
   icon?: StarlightIcon;
   variant?: "primary" | "secondary" | "minimal";
 }
 
-const { buttonText, href, icon, variant } = Astro.props;
+const { tagline, buttonText, href, icon, variant } = Astro.props;
 
 ---
 
@@ -18,7 +19,7 @@ const { buttonText, href, icon, variant } = Astro.props;
     <h1 class="text-center">
       <slot />
     </h1>
-    <span class="tagline">Made by a comrade for comrades</span>
+    <span class="tagline">{tagline}</span>
   </div>
 
   <div class="basis-1/6 grid place-items-center">
