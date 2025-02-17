@@ -1,0 +1,116 @@
+---
+title: Tutorial 📘
+description: Get started with out tutorial
+---
+
+import ImageContain from "@/components/ui/ImageContain.astro";
+import ReaderReleaseNotesMd from "@/components/RenderReleaseNotesMd.astro";
+import { Tabs, TabItem, Icon } from "@astrojs/starlight/components";
+import ContentStructureLight from "../../../assets/tutotial/ContentStructureLight.png";
+
+
+## Hello There !
+
+Well, am guessing you are new here. Lets dive into it.
+
+
+### Content Structure
+
+- Make user understand the purpose of this section, how benefits theme
+- Use very shorts word
+
+#### Choose your device
+
+<Tabs>
+  <TabItem label="📱 Mobile">
+    The User Interface is divided into four main part.
+    - Side Navigation Bar
+    - Top Bar
+    - Main Content
+    - Page Navigator
+
+    <ImageContain
+      light="ContentStructureLight"
+      alt="Egg Contentstructure in light theme"
+      loading="lazy"
+    />
+
+  </TabItem>
+  <TabItem label="💻 PC">
+    The User Interface is divided into four main part.
+    - Side Navigation Bar
+    - Top Bar
+    - Main Content
+    - Page Navigator
+
+    ##### TODO: Show Image of the main parts
+    ##### TODO: Add an image for each part
+
+    ##### Side Navigation Bar
+
+    It is located on the left. You can use it to switch to any Year you desire.
+    Also, you can navigate to any Unit and its corresponding Topics.
+
+    ##### Top Bar
+
+    The Top Bar on the top of the site, has:
+    1. On the left, is the name of site, in this case Egg.
+    2. In the middle, is a search tab to search for any unit or topic of interest.
+    3. On the right, a select menu to change the theme of the site. We care about
+    your eyes.
+
+    ##### Main Content
+
+    This is the middle section of the page. It is where the content lies and
+    where you will be spending most of your time.
+
+    ##### Page Navigator
+
+    It is the section of the right, labelled by "On this page". You can use it
+    it to jump to various headings in the Main Content or just glance at the 
+    subtopics of a topic.
+
+
+  </TabItem>
+</Tabs>
+
+3. The subdivision of the content. 
+    - By year - Click on desired year
+    - By units - See corresponding units, have drop down to see topics
+    - By topics - Click on unit, see content
+
+4. Page Navigator
+
+    Jump through the page to desired content
+
+
+### Updates | Release Notes
+
+- What are they
+- Why should I care
+- Where do I find theme
+- Where do i get more details
+
+### Theme
+
+- Why make it
+- Where is it
+- Prof what it does, with a screenshot
+
+### Feedback
+
+- What is it
+- Why should i care - benefits (user & developers)
+- Where is it
+- screenshot
+
+
+
+
+1. Add tabs for the user to choose their device. Add logic to auto detect their
+device. Prolly by device with.
+- The sidebar, having tabs to navigate to the desired year
+
+- Their ability to change the theme
+
+
