@@ -3,11 +3,13 @@ title: Tutorial 📘
 description: Get started with out tutorial
 ---
 
+import { Image } from "astro:assets";
 import ImageContain from "@/components/ui/ImageContain.astro";
 import ReaderReleaseNotesMd from "@/components/RenderReleaseNotesMd.astro";
 import { Tabs, TabItem, Icon } from "@astrojs/starlight/components";
-import ContentStructureLight from "../../../assets/tutotial/ContentStructureLight.png";
-
+import ContentStructureLight from "../../../assets/tutorial/ContentStructureLight.png";
+import ContentStructureDark from "../../../assets/tutorial/ContentStructureDark.png";
+import DeviceImageContainer from "@/components/ui/DeviceImageContainer.astro";
 
 ## Hello There !
 
@@ -28,15 +30,11 @@ Well, am guessing you are new here. Lets dive into it.
     - Top Bar
     - Main Content
     - Page Navigator
-
-    <ImageContain
-      light="ContentStructureLight"
-      alt="Egg Contentstructure in light theme"
-      loading="lazy"
-    />
-
   </TabItem>
+
   <TabItem label="💻 PC">
+    <DeviceImageContainer  />
+
     The User Interface is divided into four main part.
     - Side Navigation Bar
     - Top Bar

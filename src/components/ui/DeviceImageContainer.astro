@@ -1,0 +1,33 @@
+---
+import  type { Props as ImageContainProps } from "@/components/ui/ImageContain.astro";
+import ImageContain from '@/components/ui/ImageContain.astro';
+
+interface Props {
+  defaultImg?: ImageContainProps,
+  mobileImg?: ImageContainProps,
+  tabletImg?: ImageContainProps,
+  pcImg?: ImageContainProps,
+};
+
+const { defaultImg, mobileImg, tabletImg, pcImg } = Astro.props;
+---
+
+{
+  defaultImg && 
+  <ImageContain dark={defaultImg.dark} light={defaultImg.light} alt={defaultImg.alt} loading='lazy'  /> 
+}
+
+{
+  mobileImg &&  
+  <ImageContain dark={mobileImg.dark} light={mobileImg.light} alt={mobileImg.alt} loading='lazy'  /> 
+}
+
+{
+  tabletImg &&  
+  <ImageContain dark={tabletImg.dark} light={tabletImg.light} alt={tabletImg.alt} loading='lazy'  /> 
+}
+
+{
+  pcImg &&  
+  <ImageContain dark={pcImg.dark} light={pcImg.light} alt={pcImg.alt} loading='lazy'  /> 
+}

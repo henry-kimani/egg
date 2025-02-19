@@ -15,7 +15,7 @@ export interface Props {
   dark: ImageMetadata;
   light: ImageMetadata;
   alt: string;
-  class?: string;
+  imgClasses?: string;
   loading: "eager" | "lazy";
 }
 
@@ -23,7 +23,7 @@ const {
   dark: darkImage,
   light: lightImage,
   alt,
-  class: className,
+  imgClasses,
   loading,
 } = Astro.props;
 
@@ -33,14 +33,13 @@ const imageAttr = {
   height: 400,
   alt,
   loading,
-  class: className || "",
 };
 
 
 ---
 <div class:list={["grid place-items-center"]}>
   {/* Light Image */}
-  <Image src={lightImage} {...imageAttr} class="dark:sl-hidden drop-shadow-xl" />
+  <Image src={lightImage} {...imageAttr} class:list={["dark:sl-hidden drop-shadow-xl", imgClasses]} />
 
   {/* Dark Image */}
   <Image src={darkImage} {...imageAttr} class="light:sl-hidden" />
