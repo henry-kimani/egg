@@ -1,0 +1,23 @@
+---
+import type { Props as ImageContainProps } from "./ImageContain.astro";
+import { Image } from "astro:assets";
+
+interface Props { 
+  imgProps: ImageContainProps;
+};
+
+const { imgProps } = Astro.props;
+
+---
+{/* Light theme image */}
+<Image 
+  class:list={["dark:sl-hidden drop-shadow-lg", imgProps.imgClasses]} 
+  src={imgProps.light} alt={imgProps.alt} 
+/>
+
+
+{/* Dark theme image */}
+<Image class:list={["light:sl-hidden", imgProps.imgClasses ]} 
+  src={imgProps.dark} alt={imgProps.alt} 
+/>
+
