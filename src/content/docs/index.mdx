@@ -14,8 +14,8 @@ hero:
     organized notes for every <br class="hidden md:block" /> year and unit, for free!
   image:
     alt: "An example of egg's organized content"
-    light: ../../assets/HeroLight.png
-    dark: ../../assets/HeroDark2.png
+    light: ../../assets/hero/HeroLight.png
+    dark: ../../assets/hero/HeroDark.png
   actions:
     - text: Start Learning
       link: /getting-started/new
@@ -26,12 +26,12 @@ import {
 	Card, CardGrid, Aside, LinkButton, Icon
 } from '@astrojs/starlight/components';
 
-import OrganizedContentLight from "../../assets/OrganizedContentLight.png"
-import OrganizedContentDark from "../../assets/OrganizedContentDark.png"
-import MathEquationsLight from "../../assets/MathEquationsLight.png"
-import MathEquationsDark from "../../assets/MathEquationsDark.png"
-import IllustrationsLight from "../../assets/IllustrationsLight.png"
-import IllustrationsDark from "../../assets/IllustrationsDark.png"
+import OrganizedContentLight from "../../assets/hero/OrganizedContentLight.png"
+import OrganizedContentDark from "../../assets/hero/OrganizedContentDark.png"
+import MathEquationsLight from "../../assets/hero/MathEquationsLight.png"
+import MathEquationsDark from "../../assets/hero/MathEquationsDark.png"
+import IllustrationsLight from "../../assets/hero/IllustrationsLight.png"
+import IllustrationsDark from "../../assets/hero/IllustrationsDark.png"
 import InfoCard from "@/components/ui/InfoCard.astro";
 import CardGridLayout from "@/layouts/CardGridLayout.astro";
 import ProfileAndName from "@/components/ui/ProfileAndName";
@@ -74,8 +74,8 @@ import TextHero from "@/layouts/TextHero.astro";
     </span>
   </InfoCard>
 </CardGridLayout>
-
 <TextHero
+  tagline="Made by a Comrade for Comrades"
   buttonText="Start Learning"
   href="/getting-started/new"
   icon="right-arrow"

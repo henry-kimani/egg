@@ -6,34 +6,94 @@ description: Get started with out tutorial
 import { Image } from "astro:assets";
 import ImageContain from "@/components/ui/ImageContain.astro";
 import ReaderReleaseNotesMd from "@/components/RenderReleaseNotesMd.astro";
-import { Tabs, TabItem, Icon } from "@astrojs/starlight/components";
+import { Tabs, TabItem, Icon, Steps } from "@astrojs/starlight/components";
+
 import ContentStructureLight from "../../../assets/tutorial/ContentStructureLight.png";
 import ContentStructureDark from "../../../assets/tutorial/ContentStructureDark.png";
+import TopBarLightMobile from "../../../assets/tutorial/TopBarLightMobile.png";
+import TopBarDarkMobile from "../../../assets/tutorial/TopBarDarkMobile.png";
+import MainContentLightMobile from "../../../assets/tutorial/MainContentLightMobile.png";
+import MainContentDarkMobile from "../../../assets/tutorial/MainContentDarkMobile.png";
+import AsideButtonLightMobile from "../../../assets/tutorial/AsideButtonLightMobile.png";
+import AsideButtonDarkMobile from "../../../assets/tutorial/AsideButtonDarkMobile.png";
+
 import DeviceImageContainer from "@/components/ui/DeviceImageContainer.astro";
 
-## Hello There !
-
-Well, am guessing you are new here. Lets dive into it.
+Hello There! Well, am guessing you are new here. Lets dive into it.
 
 
-### Content Structure
 
-- Make user understand the purpose of this section, how benefits theme
-- Use very shorts word
+## Content Structure
+
+Here, you will understand the layout of Egg and how to navigate in both Mobile 
+or PC.
 
 #### Choose your device
 
 <Tabs>
   <TabItem label="📱 Mobile">
-    The User Interface is divided into four main part.
-    - Side Navigation Bar
+    The User Interface has four main part.
     - Top Bar
+    - Side Navigation Bar
     - Main Content
     - Page Navigator
+
+    #### 1. Top Bar
+
+    <DeviceImageContainer defaultImg={{ light: TopBarLightMobile, dark: TopBarDarkMobile, alt: "Egg's mobile Top bar"}} />
+
+    It is located at the top of the site. It has:
+
+    1. The site's logo, in this case Egg.
+    2. A search Icon, to quickly search the Unit or Topic of interest.
+    3. A button to access the <a href="#side-navigation-bar">SideNavigationBar</a>.
+    
+    #### 2. Side Navigation Bar
+
+    You can use it switch to any Year you desire. Each Year has its corresponding
+    Units and Topics. 
+
+    On the <a href="#top-bar">Top Bar</a>, at the far right, press
+
+    <DeviceImageContainer 
+      defaultImg={{ 
+        light: AsideButtonLightMobile,
+        dark: AsideButtonDarkMobile,
+        alt: "Egg's mobile side navigation bar", 
+        imgClasses: "dark:drop-shadow-lg"
+      }}  
+    />
+
+    to access it.
+
+    #### 3. Main Content
+
+    This is the first thing you see in the site. Probably where you will spend 
+    most of your time.
+
+    <DeviceImageContainer 
+      defaultImg={{
+        light: MainContentLightMobile,
+        dark: MainContentDarkMobile,
+        alt: "Egg's mobile main content",
+      }}
+    />
+
+    #### 4. Page Navigator
+
+    You can use it to jump to various headings in the Main Content or just 
+    glance at the sub topics of the Unit.
+
+    You can access it by pressing the tab just below the <a href="#top-bar">Top Bar</a>, labelled 
+    "On this page".
+
+
   </TabItem>
 
   <TabItem label="💻 PC">
-    <DeviceImageContainer  />
+    <DeviceImageContainer 
+      defaultImg={{ light: ContentStructureLight, dark: ContentStructureDark, alt: "Egg's Content Structure for PC"}} 
+    />
 
     The User Interface is divided into four main part.
     - Side Navigation Bar
@@ -41,15 +101,12 @@ Well, am guessing you are new here. Lets dive into it.
     - Main Content
     - Page Navigator
 
-    ##### TODO: Show Image of the main parts
-    ##### TODO: Add an image for each part
-
-    ##### Side Navigation Bar
+    #### 1. Side Navigation Bar
 
     It is located on the left. You can use it to switch to any Year you desire.
     Also, you can navigate to any Unit and its corresponding Topics.
 
-    ##### Top Bar
+    #### 2. Top Bar
 
     The Top Bar on the top of the site, has:
     1. On the left, is the name of site, in this case Egg.
@@ -57,58 +114,99 @@ Well, am guessing you are new here. Lets dive into it.
     3. On the right, a select menu to change the theme of the site. We care about
     your eyes.
 
-    ##### Main Content
+    #### 3. Main Content
 
     This is the middle section of the page. It is where the content lies and
     where you will be spending most of your time.
 
-    ##### Page Navigator
+    #### 4. Page Navigator
 
     It is the section of the right, labelled by "On this page". You can use it
     it to jump to various headings in the Main Content or just glance at the 
-    subtopics of a topic.
-
+    sub topics of a topic.
 
   </TabItem>
 </Tabs>
 
-3. The subdivision of the content. 
-    - By year - Click on desired year
-    - By units - See corresponding units, have drop down to see topics
-    - By topics - Click on unit, see content
-
-4. Page Navigator
-
-    Jump through the page to desired content
 
 
-### Updates | Release Notes
+## Updates | Release Notes
 
-- What are they
-- Why should I care
-- Where do I find theme
-- Where do i get more details
+### What are they?
 
-### Theme
+Release notes are a user friendly preview of the updates made, features added 
+and bugs fixed. They are ment to keep you up to date with recent changes made 
+in Egg.
 
-- Why make it
-- Where is it
-- Prof what it does, with a screenshot
+We released them for every major or minor update of Egg.
 
-### Feedback
+### Where do I find them?
 
-- What is it
-- Why should i care - benefits (user & developers)
-- Where is it
-- screenshot
+Release Notes are currently divided into two.
+
+##### Quick preview
+
+To quickly skim through the Release Notes. You can find a <a href="/getting-started/new">list of the release
+notes</a> here.
+
+##### Detail preview
+
+To read a more indepth changes made in Egg for a specific version.
+
+To access a detailed preview of a
+Release Note, you will have to search it in the <a href="getting-started/new">
+list of release notes</a> and click on heading. (For that version)
+
+If you are interested in <a href="/changelog">Egg's changelog</a>, get it here.
 
 
 
+## Theme
 
-1. Add tabs for the user to choose their device. Add logic to auto detect their
-device. Prolly by device with.
-- The sidebar, having tabs to navigate to the desired year
+Since we care about your eyes and all the "All Nighters", we have two themes,
+light, to use it in bright environments and dark low lit environments.
 
-- Their ability to change the theme
+By default, the theme is set to System Default (auto).
+
+To change the theme for PC, navigate to the Top Bar on the far right.
+
+For Mobile:
+
+<Steps>
+
+  1. Navigate to the Top Bar.
+
+  2. Click on 
+      
+      <DeviceImageContainer
+        defaultImg={{
+          light: AsideButtonLightMobile,
+          dark: AsideButtonDarkMobile,
+          alt: "Button to open Egg's Side Navigation Bar"
+        }}
+      /> 
+      to access the Side Navigation Bar.
+
+  3. Scroll to the bottom. You will find a selector to select any thing.
+
+</Steps>
 
 
+
+## Feedback
+
+We encourage feedback from our users. Tell us of any issues you encounter, any
+improvements we may want to consider or just share you thoughts about the platform.
+
+This helps us improve your user experience and fuel our innovation.
+
+To share feedback:
+
+<Steps>
+
+  1. Navigate to the <a href="/">Home Page</a>.
+    
+
+  2. Scroll to the bottom and fill the feedback Form.
+
+</Steps>
