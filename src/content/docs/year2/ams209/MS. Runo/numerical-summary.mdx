@@ -8,6 +8,7 @@ sidebar:
 ---
 
 import SimpleLatex from "@/components/math/SimpleLatex.astro";
+import { Steps } from "@astrojs/starlight/components";
 
 ## Definition
 
@@ -47,9 +48,7 @@ the count of that series of numbers. In short, its a fancy ways of saying averag
 <SimpleLatex formula="=\frac{\text{sum of all numbers}}{\text{total number of numbers}}" />
 <br />
 
-<div>For example, the arithemetic mean of values:</div>
-
-<SimpleLatex class="inline-block" formula="x_1, x_2, \cdots, x_n" /> 
+For example, the arithemetic mean of values $$x_1, x_2, \cdots, x_n$$:
 
 <SimpleLatex formula = "{\displaystyle = \frac{x_1 + x_2 + \cdots + x_n}{n}}" />
 
@@ -68,21 +67,90 @@ or in simple terms
 
 If the data includes frequencies,
 
-<SimpleLatex formula="{\displaystyle =\frac{\sum fx}{\sum f}}" />
+<div class="text-3xl">$$=\frac{x_1f_1+x_2f_2+...+x_nf_n}{n}$$</div>
 
-For Example:
+<SimpleLatex formula="{\displaystyle=\frac{\sum fx}{\sum f}}" />
+
+#### Ungrouped Data
+
+Find the arithemetic mean of 4, 8, 12, 16, 20
+
+<SimpleLatex formula="\bar{x}=\frac{\Sigma x}{n}" />
+
+<SimpleLatex formula="=\frac{4+8+12+16+20}{5}" />
+
+<SimpleLatex formula="=\frac{60}{5}" />
+
+$$=12$$
+
+#### Grouped Data
 
 Estimate the mean for the data below
 
-| class | freq | class bound | x | c.f | xf |
-|-------|------|-------------|----------|-----|----|
-| 6 - 9 | 5 | 4.5 - 9.5 | 7 | 5 | 35 |
-| 10 - 9 | 5 | 4.5 - 9.5 | 7 | 5 | 35 |
-| 6 - 9 | 5 | 4.5 - 9.5 | 7 | 5 | 35 |
-| 6 - 9 | 5 | 4.5 - 9.5 | 7 | 5 | 35 |
-| 6 - 9 | 5 | 4.5 - 9.5 | 7 | 5 | 35 |
-| 6 - 9 | 5 | 4.5 - 9.5 | 7 | 5 | 35 |
-| 6 - 9 | 5 | 4.5 - 9.5 | 7 | 5 | 35 |
+| class | $$f$$ (freq) | class bound | $$x$$ | $$n$$ (c.f)| $$xf$$ |
+|-------|------|------------- |----------|-----|----|
+| 6 - 9   | 5  | 4.5 - 9.5    | 7   | 5 | 35 |
+| 10 - 14 | 12 | 9.5 - 14.5   | 12  | 17| 144 |
+| 15 - 19 | 32 | 14.5 - 19.5  | 17  |49 | 544 |
+| 20 - 24 | 40 | 19.5 - 24.5  | 22  |89 | 880 |
+| 25 - 29 | 16 | 24.5 - 29.5  | 27  |105| 432 |
+| 30 - 34 | 9  | 29.5 - 34.5  | 32  |114| 288 |
+| 35 - 39 | 6  | 34.5 - 39.5  | 37  |120| 222 |
+
+To solve the arithemetic mean for grouped data:
+
+<Steps>
+  
+  1. Find the midpoint, $$x$$.
+
+  2. Find the summation of frequency $$(\Sigma f)$$.
+
+  3. Find $$xf$$ for each row.
+
+  4. Find the summation of $$xf$$ $$(\Sigma xf)$$.
+
+  5. Apply the below formula.
+
+</Steps>
+
+<SimpleLatex formula="{\displaystyle \bar{x}=\frac{\sum fx}{\sum f}=\frac{2545}{120}=21.21}" />
+
+### Geometric Mean
+
+Let $$x_1,x_2, ... x_n$$ be the sample values. The geometric mean is given by:
+
+<SimpleLatex formula="GM=\sqrt[n]{x_1*x_2, ... x_3}"/>
+
+For data with frequencies,
+
+<SimpleLatex formula="GM=\sqrt[n]{x_1^{f1}*x_2^{f2}* ... * x_3^{f3}}"/>
+
+
+### Harmonic Mean
+
+Let $$x_1,x_2, ... x_n$$ be the sample values. The harmonic mean is given by:
+
+<SimpleLatex formula="HM=\frac{n}{\frac{1}{x_1}+\frac{1}{x_2}+...+\frac{1}{x_n}}"/>
+
+For data with frequencies,
+
+<SimpleLatex formula="HM=\frac{n}{\frac{f_1}{x_1}+\frac{f_2}{x_2}+...+\frac{f_n}{x_n}}"/>
+
+### Weighted Mean
+
+Let $$x_1,x_2, ... ,x_n$$ be values with weights $$w_1,w_2, ... , w_n$$. The $$WM$$
+is given by:
+
+<SimpleLatex formula="WM=\frac{x_1w_1+x_2w_2+...+x_nw_n}{w_1+ w_2+ ... + w_n}"/>
+
+## Median
+
+
+
+## Mode
+
+
+
 
 
 
