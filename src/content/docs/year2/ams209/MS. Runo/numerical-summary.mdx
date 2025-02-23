@@ -119,11 +119,11 @@ To solve the arithemetic mean for grouped data:
 
 Let $$x_1,x_2, ... x_n$$ be the sample values. The geometric mean is given by:
 
-<SimpleLatex formula="GM=\sqrt[n]{x_1*x_2, ... x_3}"/>
+<SimpleLatex formula="GM=\sqrt[n]{x_1\times x_2, ... \;, x_3}"/>
 
 For data with frequencies,
 
-<SimpleLatex formula="GM=\sqrt[n]{x_1^{f1}*x_2^{f2}* ... * x_3^{f3}}"/>
+<SimpleLatex formula="GM=\sqrt[n]{x_1^{f1}\times x_2^{f2}\times ... \times x_3^{f3}}"/>
 
 
 ### Harmonic Mean
@@ -145,9 +145,214 @@ is given by:
 
 ## Median
 
+### Definition
 
+It is the value of the middle most observation, obtained after arranging the 
+data in ascending or descending order. 
+
+This is called the median of the data.
+
+### Ungrouped Data
+
+Steps:
+
+<Steps>
+
+  1. Arrange the data in ascending or descending order.
+
+  2. Let the total observations be $$n$$. 
+
+</Steps>
+
+#### if n is odd:
+
+$$\text{median}=(n+1)/2$$
+
+**For example:**
+
+$$56,\;67,\;54,\;34,\;78,\;43,\;23$$. What is the median?
+
+$$arrange:\;23,\;34,\;43,\;54,\;56,\;67,\;78$$ 
+
+$$n=7$$ 
+
+$$formula=\frac{(n+1)}{2}$$
+
+
+
+$$=\frac{(7+1)}{2}$$
+$$=\frac{8}{2}$$
+$$=4$$
+
+$$4th\;observation:$$
+
+$$=54$$
+
+#### if n is even:
+
+<SimpleLatex formula="\frac{\frac{n}{2}+(\frac{n}{2} + 1)}{2}" />
+
+**For example:**
+
+$$50,\;67,\;24,\;34,\;78,\;43$$. What is the median?
+
+$$arrange:\;24,\;34,\;43,\;50,\;67,\;78$$.
+
+$$n=6$$
+
+<SimpleLatex formula="=\frac{\frac{6}{2}+(\frac{6}{2}+1)}{2}" />
+
+<SimpleLatex formula="=\frac{3+4}{2}=\frac{3^{rd}observation+4^{th}observation}{2}" />
+
+<SimpleLatex formula="=\frac{43+50}{2}" />
+
+<SimpleLatex formula="=\frac{93}{2}" />
+
+$$=46.5$$
+
+### Grouped Data
+
+<Steps>
+
+  1. Find the median class.
+
+      Let $$n$$ = total number of observations $$(\sum f)$$
+
+      The median class lies $$(n/2)$$
+
+  2. Use the following formula.
+
+      <SimpleLatex formula="=\text{LCB}+\left(\frac{\frac{n+1}{2} - cf_a}{f}\right)i" />
+      
+      Where:
+      
+      $$LCB$$ = lower class boundary of the median class
+
+      $$n$$ = $$\sum f$$
+
+      $$cf_a$$ = cumulative frequency of the class above
+
+      $$f$$ = frequency of the median class
+
+      $$i$$ = class interval
+
+</Steps>
+
+**For Example:**
+
+Find the median marks of the following distribution.
+
+| class   | freq $$(f)$$ | $$cf$$ |
+|---------|----|----|
+| 0 - 10  | 2  | 2  |  
+| 10 - 20 | 12 | 14 |
+| 20 - 30 | 22 | 36 |
+| 30 - 40 | 8  | 44 |
+| 40 - 50 | 6  | 50 |
+
+***solution***
+
+Find the median class:
+
+$$n=\sum f$$ <br />
+$$n/2\;=\;50/2\;=\;25$$
+
+The median class lies in the class, 20 - 30.
+
+<SimpleLatex formula="=\text{LCB}+\left(\frac{\frac{n+1}{2} - cf_a}{f}\right)i" />
+
+<SimpleLatex formula="=\text{20}+\left(\frac{\frac{50+1}{2} - 14}{22}\right)10" />
+
+$$=20+(0.5277)10$$
+
+$$=25.22$$
+
+Notice, we used $$20$$ as the $$LCB$$ instead of $$19.5$$. This is the because
+the $$UCB$$ of the class before and the $$LCB$$ of the median class are the same (20).
 
 ## Mode
+
+### Definition
+
+The value that appears most often in the given data.
+The observation with the highest frequency is called a mode of data.
+
+The best way to rememeber:
+
+**M** -> Most <br />
+**O** -> Often <br />
+**D** -> Data <br />
+**E** -> Entered <br />
+
+### Ungrouped Data
+**For example:**
+
+The data 6, 8, 9 , 3, 4, 6, 7, 6, 3.
+
+$$mode=6$$
+
+The value $$6$$ appears the most number of times.
+
+### Grouped Data
+
+The following steps are followed when calculating the mode for grouped data.
+
+<Steps>
+
+  1. Find the modal class i.e the class with maximum frequency.
+
+  2. Find the mode using the following formula.
+
+      <SimpleLatex formula="=LCB+\left(\frac{f-f_a}{2f-f_a-f_b} \right)i" />
+
+      Where:
+
+      $$LCB$$ = Lower class boundary of the modal class.
+
+      $$f$$ = frequency of the modal class
+
+      $$f_a$$ = frequency of the class above
+
+      $$f_b$$ = frequency of the class below
+
+      $$i$$ = class interval
+
+</Steps>
+
+**For example:**
+
+Find the mode of the given data:
+
+| Marks | N.o of students |
+|-------|-----------------|
+| 0 - 20 | 5 | 
+| 20 - 40 | 10 |
+| 40 - 60 | 12 |
+| 60 - 80 | 6  |
+| 80 - 100 | 3 |
+
+The modal class is 40 - 60, since it has the most number of students (frequency).
+
+<SimpleLatex formula="=LCB+\left(\frac{f-f_a}{2f-f_a-f_b} \right)i" />
+
+<SimpleLatex formula="=40+\left(\frac{12-10}{(2\times12)-10-6} \right)20" />
+
+<SimpleLatex formula="=40+(0.25) 20" />
+
+$$=45$$
+
+## Empirical Relationship
+
+$$Mean - Mode = 3(Mean - Median)$$
+
+$$3Median = Mode + 2Mean$$
+
+If you only have two of the above, you can find the third one. Play with the 
+formulas to find out. 
+
+This is called empirical relationship. It shows that Mean, Mode and Median are 
+closely related.
+
 
 
 
