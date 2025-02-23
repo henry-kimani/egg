@@ -1,5 +1,4 @@
 ---
-import type { Props } from "@astrojs/starlight/props";
 import Default from "@astrojs/starlight/components/Footer.astro";
 import AnchorList from "../AnchorList.astro";
 import FeedbackForm from "../forms/FeedbackForm.astro";
@@ -8,9 +7,9 @@ import FooterHeaders from "@/components/FooterHeaders.astro";
 import CardGridLayout from "@/layouts/CardGridLayout.astro";
 
 // Pages to display the custom Footer
-const isHomepage = Astro.props.id === "";
-const isChanglogPage = Astro.props.id === "changelog";
-const isDetailedRNPage = Astro.props.id === "detailed-releasesnotes";
+const isHomepage = Astro.locals.starlightRoute.id === "";
+const isChanglogPage = Astro.locals.starlightRoute.id === "changelog";
+const isDetailedRNPage = Astro.locals.starlightRoute.id === "detailed-releasesnotes/*";
 ---
 {
   isHomepage || isChanglogPage || isDetailedRNPage ? (

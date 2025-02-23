@@ -3,12 +3,11 @@ import SidebarPersister from "@astrojs/starlight/components/SidebarPersister.ast
 import type { SidebarEntry } from "node_modules/@astrojs/starlight/utils/navigation";
 import SidebarSublist from "@astrojs/starlight/components/SidebarSublist.astro";
 import MobileMenuFooter from "@astrojs/starlight/components/MobileMenuFooter.astro";
-import type { Props } from "@astrojs/starlight/props";
 import TabContainer from "../tabs/TabContainer.astro";
 import TabHeader from "../tabs/TabHeader.astro";
 import TabPanel from "../tabs/TabPanel.astro";
 
-const { sidebar } = Astro.props;
+const { sidebar } = Astro.locals.starlightRoute;
 
 // Make sure that all top level items in the side bar are groups
 type Group = Extract<SidebarEntry, { type: "group" }>;
