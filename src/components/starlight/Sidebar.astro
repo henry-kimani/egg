@@ -1,6 +1,5 @@
 ---
 import SidebarPersister from "@astrojs/starlight/components/SidebarPersister.astro";
-import type { SidebarEntry } from "node_modules/@astrojs/starlight/utils/navigation";
 import SidebarSublist from "@astrojs/starlight/components/SidebarSublist.astro";
 import MobileMenuFooter from "@astrojs/starlight/components/MobileMenuFooter.astro";
 import TabContainer from "../tabs/TabContainer.astro";
@@ -10,8 +9,9 @@ import TabPanel from "../tabs/TabPanel.astro";
 const { sidebar } = Astro.locals.starlightRoute;
 
 // Make sure that all top level items in the side bar are groups
-type Group = Extract<SidebarEntry, { type: "group" }>;
-function assertGroups(sidebar: SidebarEntry[]): asserts sidebar is Group[] {
+type SideBarEntryType = typeof sidebar;
+type Group = Extract<SideBarEntryType, { type: "group" }>;
+function assertGroups(sidebar: SideBarEntryType): asserts sidebar is Group[] {
   for (const entry of sidebar) {
     if (entry.type !== "group")
       throw new Error("Top-level links are not allowed in the docs");
@@ -22,14 +22,14 @@ function assertGroups(sidebar: SidebarEntry[]): asserts sidebar is Group[] {
 assertGroups(sidebar);
 
 // look up for the current page
-const isCurrent = (sidebar: SidebarEntry[]): boolean =>
+const isCurrent = (sidebar: SideBarEntryType): boolean =>
   sidebar
   .map(entry => entry.type === "link" ? entry.isCurrent : isCurrent(entry.entries))
   .some(entry => entry === true);
 
 ---
 
-<SidebarPersister {...Astro.props}>
+<SidebarPersister>
   <TabContainer>
     <Fragment slot="tab-list">
       {
