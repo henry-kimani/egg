@@ -38,9 +38,9 @@ the dataset in order, from lowest to highest and finding the value in the exact
 middle.
 3. **Mode:** It the value that appears most frequently in the dataset. 
 
-## Mean
+### Mean
 
-### Arithemetic Mean
+#### 1. Arithemetic Mean
 
 Arithemetic mean is the simple average or sum of a series of numbers divided by
 the count of that series of numbers. In short, its a fancy ways of saying average.
@@ -71,7 +71,7 @@ If the data includes frequencies,
 
 <SimpleLatex formula="{\displaystyle=\frac{\sum fx}{\sum f}}" />
 
-#### Ungrouped Data
+##### Arithemetic Mean for Ungrouped Data
 
 Find the arithemetic mean of 4, 8, 12, 16, 20
 
@@ -83,7 +83,7 @@ Find the arithemetic mean of 4, 8, 12, 16, 20
 
 $$=12$$
 
-#### Grouped Data
+##### Arithemetic Mean for Grouped Data
 
 Estimate the mean for the data below
 
@@ -115,7 +115,7 @@ To solve the arithemetic mean for grouped data:
 
 <SimpleLatex formula="{\displaystyle \bar{x}=\frac{\sum fx}{\sum f}=\frac{2545}{120}=21.21}" />
 
-### Geometric Mean
+#### 2. Geometric Mean
 
 Let $$x_1,x_2, ... x_n$$ be the sample values. The geometric mean is given by:
 
@@ -126,7 +126,7 @@ For data with frequencies,
 <SimpleLatex formula="GM=\sqrt[n]{x_1^{f1}\times x_2^{f2}\times ... \times x_3^{f3}}"/>
 
 
-### Harmonic Mean
+#### 3. Harmonic Mean
 
 Let $$x_1,x_2, ... x_n$$ be the sample values. The harmonic mean is given by:
 
@@ -136,23 +136,23 @@ For data with frequencies,
 
 <SimpleLatex formula="HM=\frac{n}{\frac{f_1}{x_1}+\frac{f_2}{x_2}+...+\frac{f_n}{x_n}}"/>
 
-### Weighted Mean
+#### 4. Weighted Mean
 
 Let $$x_1,x_2, ... ,x_n$$ be values with weights $$w_1,w_2, ... , w_n$$. The $$WM$$
 is given by:
 
 <SimpleLatex formula="WM=\frac{x_1w_1+x_2w_2+...+x_nw_n}{w_1+ w_2+ ... + w_n}"/>
 
-## Median
+### Median
 
-### Definition
+#### Definition
 
 It is the value of the middle most observation, obtained after arranging the 
 data in ascending or descending order. 
 
 This is called the median of the data.
 
-### Ungrouped Data
+#### Median for Ungrouped Data
 
 Steps:
 
@@ -164,7 +164,7 @@ Steps:
 
 </Steps>
 
-#### if n is odd:
+##### if n is odd:
 
 $$\text{median}=(n+1)/2$$
 
@@ -172,32 +172,27 @@ $$\text{median}=(n+1)/2$$
 
 $$56,\;67,\;54,\;34,\;78,\;43,\;23$$. What is the median?
 
-$$arrange:\;23,\;34,\;43,\;54,\;56,\;67,\;78$$ 
-
+$$arrange:\;23,\;34,\;43,\;54,\;56,\;67,\;78$$ <br />
 $$n=7$$ 
 
 $$formula=\frac{(n+1)}{2}$$
-
-
 
 $$=\frac{(7+1)}{2}$$
 $$=\frac{8}{2}$$
 $$=4$$
 
-$$4th\;observation:$$
-
+$$4th\;observation$$
 $$=54$$
 
-#### if n is even:
+##### if n is even:
 
-<SimpleLatex formula="\frac{\frac{n}{2}+(\frac{n}{2} + 1)}{2}" />
+<SimpleLatex formula="=\frac{\frac{n}{2}+(\frac{n}{2} + 1)}{2}" />
 
 **For example:**
 
 $$50,\;67,\;24,\;34,\;78,\;43$$. What is the median?
 
-$$arrange:\;24,\;34,\;43,\;50,\;67,\;78$$.
-
+$$arrange:\;24,\;34,\;43,\;50,\;67,\;78$$. <br />
 $$n=6$$
 
 <SimpleLatex formula="=\frac{\frac{6}{2}+(\frac{6}{2}+1)}{2}" />
@@ -210,7 +205,7 @@ $$n=6$$
 
 $$=46.5$$
 
-### Grouped Data
+#### Median for Grouped Data
 
 <Steps>
 
@@ -270,9 +265,9 @@ $$=25.22$$
 Notice, we used $$20$$ as the $$LCB$$ instead of $$19.5$$. This is the because
 the $$UCB$$ of the class before and the $$LCB$$ of the median class are the same (20).
 
-## Mode
+### Mode
 
-### Definition
+#### Definition
 
 The value that appears most often in the given data.
 The observation with the highest frequency is called a mode of data.
@@ -284,7 +279,7 @@ The best way to rememeber:
 **D** -> Data <br />
 **E** -> Entered <br />
 
-### Ungrouped Data
+#### Mode for Ungrouped Data
 **For example:**
 
 The data 6, 8, 9 , 3, 4, 6, 7, 6, 3.
@@ -293,7 +288,7 @@ $$mode=6$$
 
 The value $$6$$ appears the most number of times.
 
-### Grouped Data
+#### Mode for Grouped Data
 
 The following steps are followed when calculating the mode for grouped data.
 
@@ -341,7 +336,7 @@ The modal class is 40 - 60, since it has the most number of students (frequency)
 
 $$=45$$
 
-## Empirical Relationship
+### Empirical Relationship
 
 $$Mean - Mode = 3(Mean - Median)$$
 
@@ -353,6 +348,168 @@ formulas to find out.
 This is called empirical relationship. It shows that Mean, Mode and Median are 
 closely related.
 
+## Measures of Relative Positioning (Quantiles)
+
+The are values that divide a sorted dataset into $$N$$ equal parts. They are also
+known as quantiles or entiles.
+
+The most common are quartiles, deciles and percentiles
+
+### Ungrouped Data
+
+#### Quartiles
+
+They divide a sorted dataset into the lower, the middle and upper quantiles, and
+are denoted by $$Q_1,\;Q_2,\;Q_3$$ respectively.
+
+The $$k^{th}$$ quartile:
+
+$$Q_k=\frac{k}{4}(n+1)$$ where $$k=1,\;2,\;3$$
+
+Therefore:
+
+$$Q_1=\frac{1}{4}(n+1)$$
+
+$$Q_2=\frac{2}{4}(n+1)$$
+
+$$Q_3=\frac{3}{4}(n+1)$$
+
+#### Deciles and Percentiles
+
+The $$k^{th}$$ decile:
+
+$$D_k=\frac{k}{10}(n+1)$$
+
+While $$k^{th}$$ for percentiles:
+
+$$P_k=\frac{k}{100}(n+1)$$
+
+For ungrouped data, we may use linear interpolation to get the required quantile.
+
+#### Example
+
+Find the lower and upper quantiles, the $$7^{th}$$ decile and $$85^{th}$$ percentile
+of data below.
+
+$$3,\;6,\;9,\;10,\;7,\;12,\;13,\;15,\;6,\;5,\;13$$
+
+*Solution* 
+
+Sort to ascending order; <br />
+$$3,\;5\;,\;6,\;6,\;7,\;9,\;10\;,\;12,\;13,\;13,\;15$$
+
+a. Lower Quartile
+
+$$=\frac{1}{4}(n+1)$$ <br />
+$$ = \frac{1}{4}(11+1)$$ <br />
+$$ = \frac{1}{4}\times12$$ <br />
+$$=3^{rd}\;pos\;$$ <br />
+$$=\;6$$
+
+b. Upper Quartile
+
+$$=\frac{3}{4}(n+1)$$ <br />
+$$ = \frac{3}{4}(11+1)$$ <br />
+$$ = \frac{3}{4}\times12$$ <br />
+$$=9^{th}\;pos\;$$ <br />
+$$=\;13$$
+
+c. $$7^{th}$$ decile
+
+$$=\frac{k}{10}(n+1) \;\;\; k=7$$ <br />
+$$ = \frac{7}{10}(11+1)$$ <br />
+$$ = \frac{7}{10}\times12$$ <br />
+$$=8.4^{th}\;pos\;$$ <br />
+Since the answer is not within our data set, we use **linear interpolation** to 
+find the answer. <br />
+$$=8^{th}+0.4(9^{th}-8^{th})$$ <br />
+$$=12+0.4(13-12)$$ <br />
+$$=12+0.4(1)$$ <br />
+$$=12.4$$ <br />
+
+d. $$85^{th}$$ percentile
+
+$$=\frac{k}{100}(n+1) \;\;\; k=85$$ <br />
+$$ = \frac{85}{100}(11+1)$$ <br />
+$$ = \frac{85}{100}\times12$$ <br />
+$$=10.2^{th}\;pos\;$$ <br />
+We also use **linear interpolation** <br />
+$$=10^{th}+0.2(11^{th}-10^{th})$$ <br />
+$$=13+0.4(15-13)$$ <br />
+$$=13+0.2(2)$$ <br />
+$$=13.4$$ <br />
+
+### Grouped Data
+
+For grouped data the $$k^{th}$$ value is given by
+
+<SimpleLatex formula="k^{th}\text{value}=LCB+\left(\frac{k-cf_a}{f}\right)\cdot i" />
+
+where;
+
+$$LCB$$ = Lower class Boundary <br />
+$$i$$ = class interval<br />
+$$f$$ = frequency of the class boundary containing $$K^{th}$$ class<br />
+$$cf_a$$ = cumulative frequency of the class above<br />
+
+#### Consider:
+
+| class | freq | c.f | class b |
+|-------|------|-----|---------|
+| 1 - 4 | 10 | 10 | 0.5 - 4.5 |
+| 5 - 8 | 14 | 24 | 4.5 - 8.5 |
+| 9 - 12 | 20 | 44 | 8.5 - 12.5 |
+| 13 - 16 | 16 | 60 | 12.5 - 16.5 |
+| 17 - 20 | 12 | 72 | 16.5 - 20.5 |
+| 21 - 24 | 8 | 80 | 20.5 - 24.5 |
+
+Estimate the lower quatile, $$4^{th}$$ decile and $$72^{th}$$ percentile for the 
+frequency data above.
+
+**a. Lower quatile $$Q_1$$**
+
+$$K^{th}=\frac{1}{4}(80+1)$$ <br />
+$$K^{th}=\frac{1}{4}\times81$$ <br />
+$$K^{th}=20.25^{th}$$ <br />
+
+$$Q_1=LCB+\left(\frac{K^{th}-c.f_a}{f}\right)\cdot i$$
+
+$$Q_1=4.5+\left(\frac{20.25-10}{14}\right)\times 4$$
+
+$$Q_1=7.43$$
+
+**b. $$4^{th}$$ decile**
+
+$$K^{th}=\frac{4}{10}(80+1)$$ <br />
+$$K^{th}=\frac{4}{10}\times81$$ <br />
+$$K^{th}=32.4^{th}$$ <br />
+
+$$=LCB+\left(\frac{K^{th}-c.f_a}{f}\right)\cdot i$$
+
+$$=8.5+\left(\frac{32.5-24}{20}\right)\times 4$$
+
+$$=10.18$$
+
+**c. $$72^{nd}$$ percentile**
+
+$$K^{th}=\frac{4}{10}(80+1)$$ <br />
+$$K^{th}=\frac{72}{100}\times81$$ <br />
+$$K^{th}=58.32^{th}$$ <br />
+
+$$=LCB+\left(\frac{K^{th}-c.f_a}{f}\right)\cdot i$$
+
+$$=12.5+\left(\frac{58.32-44}{16}\right)\times 4$$
+
+$$=16.08$$
+
+### Variance and Standard Deviation
+
+Variance is a measurement of how far each number in a dataset is from the mean.
+
+It is used by both analysts and traders to determine volatility and market stability.
+
+Statisticians use it to see how values relate to each other instead of arranging
+numbers quantiles.
 
 
 
@@ -361,3 +518,6 @@ closely related.
 
 
 
+
+
+ 
