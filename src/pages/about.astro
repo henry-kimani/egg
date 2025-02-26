@@ -1,0 +1,53 @@
+---
+import { Aside, CardGrid, Card, LinkButton, Icon } from "@astrojs/starlight/components";
+
+---
+
+### What is Egg?
+First, I know its a funny name, but in the future, you will understand why (as 
+the application evolves).
+
+Lets answer the question, What is Egg? Egg is an online platform for reading
+notes. What kind of notes you ask. Well, it consists of notes involving the 
+science, Criminilogy. The source of this notes are from the Lectures of the 
+University of Murang'a.
+
+<Aside type='caution'>
+This site has no ties, whatsoever with the Lecturers of the University. 
+Meaning, the content uploaded here is not instructed by any Official of the 
+University.
+</Aside>
+
+### Who uploads the content?
+
+The contents of this site are uploaded by a student taking the course. As the
+course progresses, content will be added and updated as soon as possible.
+
+<Aside title='Note: Not cloned notes!' type='note'>
+It would be worth noting, that the contents of this site are not a clone of the 
+lecture notes, but a modification. Meaning, the contents of the site are:
+- **Revised** - The lecture notes, have been reconsidered and ammended.
+- **Extended** - Added upon (added other useful information).
+- **Modified** - Made adjustments where necessary.
+</Aside>
+
+<CardGrid>
+	<Card title='Why make Egg?' icon='star'>
+		Egg is made to help students of the University taking the course, Bachelor of 
+		Science in Criminology and Security Studies or anyone in general who is fasinated
+		by the Science of Criminology and would like to [learn more about it.](/getting-started/new)
+	</Card>
+
+  <Card title='How to get Started?' icon='rocket'>
+    Egg features a tutorial to help you understand its interface and how the 
+    content is organised.
+
+    <LinkButton href={'/getting-started/tutorial'}>Tutorial<Icon name="right-arrow" /></LinkButton>
+
+  </Card>
+</CardGrid>
+
+<Card title='❤️ Here for you ❤️' >
+Be rest assured, you are getting the best notes possible, that is readable, in one place 
+and can be accessed from anywhere in the world. 
+</Card>

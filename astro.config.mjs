@@ -17,20 +17,21 @@ export default defineConfig({
       [rehypeKatex, { /* Katex plugin options */ }]
     ],
   },
-  integrations: [devServerFileWatcher([
+  integrations: [
+    devServerFileWatcher([
     './config/*', // custom functions 
     './astro.sidebar.ts', // Sidebar configuration file
     './src/content/nav/*.ts' // Sidebar labels
-  ]),
-  starlight({
+    ]),
+    starlight({
       title: '🥚Egg',
       favicon: "/egglogo.svg",
-    components: {
-      Hero: "./src/components/starlight/Hero.astro",
-      Sidebar: "./src/components/starlight/Sidebar.astro",
-      Footer: "./src/components/starlight/ConditionalFooter.astro",
-    },
-    social: {
+      components: {
+        Hero: "./src/components/starlight/Hero.astro",
+        Sidebar: "./src/components/starlight/Sidebar.astro",
+        Footer: "./src/components/starlight/ConditionalFooter.astro",
+      },
+      social: {
       github: 'https://github.com/withastro/starlight',
     },
     sidebar,
@@ -41,5 +42,6 @@ export default defineConfig({
       '@fontsource-variable/quicksand',
       '@fontsource-variable/noto-sans-lao',
     ],
-  }), tailwind({ applyBaseStyles: false }), react()],
+  }),
+  tailwind({ applyBaseStyles: false }), react()],
 });
