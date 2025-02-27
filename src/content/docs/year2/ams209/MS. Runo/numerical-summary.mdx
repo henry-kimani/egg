@@ -511,6 +511,65 @@ It is used by both analysts and traders to determine volatility and market stabi
 Statisticians use it to see how values relate to each other instead of arranging
 numbers quantiles.
 
+#### Steps to calculate Variance
+
+1. Calculate the mean.
+2. For each number, subtract with the mean and square the result (squared difference).
+3. Calculate the average of those squared differences.
+
+#### Ungrouped Data
+
+Find the standard deviation of the following:
+$$610,\;450,\;160,\;420,\;310$$
+
+<SimpleLatex formula="s^2=\frac{\sum(x-\bar{x})^2}{n}" />
+
+Mean $$\bar{x}$$ = $$390$$
+
+| x | $$(x-\bar{x})^2$$ |
+|-----|--------------|
+| 610 | $$(610-390)^2=48400$$ |
+| 450 | $$(450-390)^2=3600$$ |
+| 160 | $$(160-390)^2=52900$$ |
+| 420 | $$(420-390)^2=900$$ |
+| 310 | $$(310-390)^2=6400$$ |
+|| $$\Sigma(x-\bar{x})^2=112200$$ |
+
+<SimpleLatex formula="\frac{\sum(x-\bar{x})^2}{n}=\frac{112200}{5}" />
+
+$$=22440$$ (variance)
+
+$$=\sqrt{22440}$$
+
+$$=149.80$$ (standard deviation)
+
+#### Grouped Data
+
+Estimate the variance and standard deviation
+
+| class | freq | $$x$$ | $$x^2$$ | $$x^2f$$ |
+|-------|------|-------|---------|----------|
+| 5 - 9 | 5 | 7 | 35 | 245 |
+| 10 - 14 | 12 | 12 | 144 | 1728 |
+| 15 - 19 | 32 | 17 | 544 | 9248 |
+| 20 - 24 | 40 | 22 | 880 | 19360 |
+| 25 - 29 | 16 | 27 | 432 | 11664 |
+| 30 - 34 | 9 | 32 | 288 | 9216 |
+| 35 - 39 | 6| 37 | 222 | 8214 |
+
+$$\sum xf = 2545 $$
+
+$$\sum x^2f = 59675 $$
+
+<SimpleLatex formula="s^2=\frac{\sum x^2f}{n} - \bar{x}" />
+
+<SimpleLatex formula="=\frac{59675}{120} - \frac{2545}{120}" />
+
+$$=497.29$$ (variance)
+
+$$=22.3$$ (standard deviation: square root of variance)
+
+
 
 
 
