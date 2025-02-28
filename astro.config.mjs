@@ -8,6 +8,9 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: 'Docs with Tailwind',
+      components: {
+        Hero: "./src/components/starlight/Hero.astro",
+      },
 			social: {
 				github: 'https://github.com/withastro/starlight',
 			},
@@ -24,7 +27,13 @@ export default defineConfig({
 					autogenerate: { directory: 'reference' },
 				},
 			],
-			customCss: ['./src/tailwind.css'],
+			customCss: [
+        './src/tailwind.css',
+        '@fontsource-variable/quicksand',
+        '@fontsource-variable/fredoka',
+        '@fontsource-variable/noto-sans-lao'
+      ],
+      favicon: "egglogo.svg",
 		}),
 		tailwind({ applyBaseStyles: false }),
 	],
