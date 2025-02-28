@@ -1,0 +1,53 @@
+---
+/*
+ * Render a Title, a description, optinal linkcards and profile in a container.
+ * 
+ * Their placement is defined by the prop align.
+ * 
+ */
+import ProfilePicture from './ProfilePicture.astro';
+import ResponsiveHeading from './ResponsiveHeading.astro';
+import ResponsiveTagline from './ResponsiveTagline.astro';
+import type { StarlightIcon } from '@astrojs/starlight/types';
+import { cn } from '../lib/utils';
+import { LinkButton } from '@astrojs/starlight/components';
+
+interface Props {
+  title: string;
+  description: string;
+  align: "center" | "hero" | "start"
+  profile?: string; // String for an Emoji
+  linkButtons?: {
+    name: string;
+    href: string;
+    icon: StarlightIcon | undefined;
+    variant: "primary" | "secondary" | "minimal";
+  }[];
+  parentClasses?: string;
+}
+
+const { title, description, profile, align, linkButtons, parentClasses } = Astro.props;
+---
+
+<article 
+  class:list={cn(
+    "grid", parentClasses,
+    {
+      "text-start": align === "start",
+      "text-center md:text-start": align==="hero"
+    }
+  )}
+>
+  { profile && <ProfilePicture profilePic={profile} />}
+  <div><ResponsiveHeading rawHtml={title} /></div>
+  <div><ResponsiveTagline rawHtml={description} /></div>
+  <div>
+    {linkButtons && linkButtons.map(({ name, href, icon, variant }) => <LinkButton {href} {icon} {variant}>{name}</LinkButton>)}
+  </div>
+</article>
+
+<style>
+.stack {
+  gap: clamp(1rem, calc(1.5rem + 1vw), 2rem);
+}
+</style>

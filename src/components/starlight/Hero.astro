@@ -1,0 +1,48 @@
+---
+import TitleAndDescriptionCard from "../TitleAndDescriptionCard.astro";
+import ThemedImageContainer from "../ThemedImageContainer.astro";
+import { Image } from "astro:assets";
+
+const { data } = Astro.locals.starlightRoute.entry;
+const { title=data.title, tagline, image, actions=[] } = data.hero || {};
+
+let darkImage: ImageMetadata;
+let lightImage: ImageMetadata;
+let defaultImage: ImageMetadata;
+
+if (image ) {
+  if ("dark" in image) {
+    darkImage = image.dark;
+    lightImage = image.light;
+  }
+}
+
+---
+<div class:list={["hero grid gap-10 md:gap-0 sm:grid-cols-2"]}>
+  <TitleAndDescriptionCard
+    title={title},
+    description={tagline || ""}
+    align="hero"
+    linkButtons={actions.map(({ text: name, link: href, variant })=> ({ name, href, variant, icon: "right-arrow"}))}
+    parentClasses="stack"
+  />
+
+  <article class="grid place-items-center">
+    {
+      darkImage && <ThemedImageContainer
+        dark={darkImage || "/"}
+        light={lightImage || "/"}
+        alt={image?.alt || ""}
+        loading="eager"
+      />
+    }
+  </article>
+</div>
+
+<style>
+@media (min-width: 1100px) {
+  .hero {
+    padding-block: clamp(1.5rem, calc(1rem + 10vmin), 5rem);
+  }
+}
+</style>

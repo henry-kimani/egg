@@ -1,0 +1,14 @@
+---
+/* Render only the profile  picture */
+
+interface Props {
+  profilePic: string;
+}
+
+const { profilePic } = Astro.props;
+
+---
+
+<span class="text-4xl p-3 bg-[var(--sl-color-gray-6)] rounded-full border border-[var(--sl-color-gray-5)]">
+  {profilePic}
+</span>

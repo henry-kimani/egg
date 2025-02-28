@@ -1,0 +1,36 @@
+---
+/* Render    images depending on the theme of the site */
+
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+
+interface Props {
+  dark: ImageMetadata;
+  light: ImageMetadata;
+  alt: string;
+  loading: "eager" | "lazy";
+}
+
+const { dark: darkSrc, light: lightSrc, alt, loading } = Astro.props;
+
+const imageAttr = {
+  height: 400,
+  width: 400,
+  loading,
+};
+---
+
+<Image src={darkSrc} {alt} {...imageAttr} class={"light:sl-hidden"} />
+
+<Image src={lightSrc} {alt} {...imageAttr} class={"dark:sl-hidden"} />
+
+
+<style>
+img {
+  object-fit: contain;
+  width: min(100%, 20rem);
+  height: auto;
+  filter: drop-shadow(0 20px 13px rgb(0 0 0 / 0.03))
+          drop-shadow(0 8px 5px rgb(0 0 0 / 0.08));
+}
+</style>

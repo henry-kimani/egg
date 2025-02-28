@@ -1,0 +1,19 @@
+---
+/* Render a responisive paragraph */
+
+interface Props {
+  rawHtml?: string;
+}
+
+const { rawHtml } = Astro.props;
+---
+
+<p set:html={rawHtml}>
+  <slot />
+</p>
+
+<style>
+p {
+  font-size: clamp(var(--sl-text-base), calc(0.0625rem + 2vw), var(--sl-text-xl));
+}
+</style>
