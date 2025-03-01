@@ -5,11 +5,11 @@
  * Their placement is defined by the prop align.
  * 
  */
-import ProfilePicture from './ProfilePicture.astro';
-import ResponsiveHeading from './ResponsiveHeading.astro';
-import ResponsiveTagline from './ResponsiveTagline.astro';
+import ProfilePicture from "@components/ProfilePicture.astro";
+import ResponsiveHeading from '@components/ResponsiveHeading.astro';
+import ResponsiveTagline from '@components/ResponsiveTagline.astro';
 import type { StarlightIcon } from '@astrojs/starlight/types';
-import { cn } from '../lib/utils';
+import { cn } from '@lib/utils';
 import { LinkButton } from '@astrojs/starlight/components';
 
 interface Props {
@@ -27,6 +27,8 @@ interface Props {
 }
 
 const { title, description, profile, align, linkButtons, parentClasses } = Astro.props;
+
+const isHero = align === "hero" || align === "center" ? true : false;
 ---
 
 <article 
@@ -38,9 +40,15 @@ const { title, description, profile, align, linkButtons, parentClasses } = Astro
     }
   )}
 >
-  { profile && <ProfilePicture profilePic={profile} />}
-  <div><ResponsiveHeading rawHtml={title} /></div>
-  <div><ResponsiveTagline rawHtml={description} /></div>
+  <div class="flex gap-2">
+    { profile && <div class="flex-initial grid place-items-center"> <ProfilePicture profilePic={profile} /></div> }
+    <div class="!m-0 grid place-items-center"><ResponsiveHeading {isHero} rawHtml={title} /></div>
+  </div>
+
+  <div>
+    <ResponsiveTagline {isHero} rawHtml={description} />
+  </div>
+
   <div>
     {linkButtons && linkButtons.map(({ name, href, icon, variant }) => <LinkButton {href} {icon} {variant}>{name}</LinkButton>)}
   </div>

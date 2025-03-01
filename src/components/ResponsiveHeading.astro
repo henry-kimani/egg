@@ -1,17 +1,23 @@
 ---
-/* Render responsive headings */
+/* Render responsive headings is its in a hero */
 
 interface Props {
   rawHtml?: string;
+  isHero: boolean;
 }
 
-const { rawHtml } = Astro.props;
+const { rawHtml, isHero } = Astro.props;
 
 ---
-
-<h1 set:html={rawHtml}>
-  <slot />
-</h1>
+{ isHero ?
+  <h1 set:html={rawHtml}>
+    <slot />
+  </h1>
+:
+  <h2>
+    {rawHtml}
+  </h2>
+}
 
 <style>
 h1 {

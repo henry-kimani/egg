@@ -1,0 +1,37 @@
+---
+/* Render a card with an image and a title and descriptions that gives more
+ * information about the image
+ */
+import type { ComponentProps } from 'astro/types'
+import ThemedImageContainer from './ThemedImageContainer.astro'
+import TitleAndDescriptionCard from './TitleAndDescriptionCard.astro'
+
+interface Props {
+  image: ComponentProps<typeof ThemedImageContainer> & { classes?: string };
+  description: Omit<ComponentProps<typeof TitleAndDescriptionCard>, "align">
+  conClasses?: string;
+}
+
+const { image, description, conClasses } = Astro.props;
+
+---
+
+<div class:list={["!m-0 rounded-lg border-2 border-[var(--sl-color-gray-5)]", conClasses ]}>
+  <div class:list={["grid p-3 place-items-center border-b-2 border-[var(--sl-color-gray-5)]", image.classes ]}>
+    <ThemedImageContainer
+      dark={image.dark}
+      light={image.light}
+      alt={image.alt}
+      loading={image.loading}
+    />
+  </div>
+
+  <div class="px-3">
+    <TitleAndDescriptionCard
+      title={description.title}
+      description={description.description}
+      align='start'
+      profile={description.profile}
+    />
+  </div>
+</div>

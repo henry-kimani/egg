@@ -18,14 +18,20 @@ if (image ) {
 }
 
 ---
-<div class:list={["hero grid gap-10 md:gap-0 sm:grid-cols-2"]}>
+<div class:list={["hero grid gap-7 md:gap-0 sm:grid-cols-2"]}>
   <TitleAndDescriptionCard
     title={title},
     description={tagline || ""}
     align="hero"
     linkButtons={actions.map(({ text: name, link: href, variant })=> ({ name, href, variant, icon: "right-arrow"}))}
-    parentClasses="stack"
+    parentClasses="stack" 
   />
+  {/*
+    The styles for class `.stack` are in the Component.
+    Placing the styles here does not work.
+    Also, applying the class stack in the component, applies the styles everywhere
+    the component is used. And this is not the desired outcome.
+  */}
 
   <article class="grid place-items-center">
     {

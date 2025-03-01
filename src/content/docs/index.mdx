@@ -1,16 +1,16 @@
 ---
 title: Home 🛖
-description: Learn criminology taught in universities. Featuring oranized content, for every year
+description: Learn criminology taught in universities. Featuring organized content, for every year
   and unit. Get started for free!
 template: splash
 head:
   # custom title
   - tag: title
-    content: Home | Egg
+    content: Egg | Learn Criminology with Ease
 hero:
   title: |
-    Criminology notes <br class="hidden sm:block md:hidden" /> in one place
-  tagline: Tired of scrabling for criminology notes?<br class=" md:block" /> Get
+    Criminology Notes <br class="hidden sm:block md:hidden" /> in One Place
+  tagline: Tired of scrabling for Criminology Notes?<br class=" md:block" /> Get
     organized notes for every <br class="hidden md:block" /> year and unit, for free!
   image:
     alt: "an example of egg's organized content"
@@ -22,3 +22,58 @@ hero:
       icon: right-arrow
       variant: primary
 ---
+
+import ImageDescriptionCard from "@components/ImageDescriptionCard.astro";
+import IllustrationsDark from "@assets/hero/IllustrationsDark.png";
+import IllustrationsLight from "@assets/hero/IllustrationsLight.png";
+import MathEquationsLight from "@assets/hero/MathEquationsLight.png";
+import MathEquationsDark from "@assets/hero/MathEquationsDark.png";
+import OrganizedContentLight from "@assets/hero/OrganizedContentLight.png";
+import OrganizedContentDark from "@assets/hero/OrganizedContentDark.png";
+import GridThreeColumnLayout from "@layouts/GridThreeColumnLayout.astro";
+
+<GridThreeColumnLayout>
+  <ImageDescriptionCard
+    image={{
+      dark: OrganizedContentDark,
+      light: OrganizedContentLight,
+      alt: "Organized Content for each year and unit",
+      loading: "eager",
+    }}
+    description={{
+      title: "Organized Content",
+      description: "Notes are organized by year, each year having its corresponding units.",
+      profile: "📜",
+    }}
+  />
+
+  <ImageDescriptionCard
+    image={{
+      dark: IllustrationsDark,
+      light: IllustrationsLight,
+      alt: "Illustrations throught charts, diagrams and more",
+      loading: "eager",
+    }}
+    description={{
+      title: "Crispy Illustrations",
+      description: "Easy to understand illustrations using charts, diagrams and more!",
+      profile: "🍕",
+    }}
+  />
+
+  <ImageDescriptionCard
+    image={{
+      dark: MathEquationsDark,
+      light: MathEquationsLight,
+      alt: "Legible mathematics equations",
+      loading: "eager",
+      classes: "sm:border-b-0 sm:border-r-2 lg:border-b-2 lg:border-r-0 border-[var(--sl-color-gray-5)]"
+    }}
+    description={{
+      title: "Clear Math Equations",
+      description: "Legible mathematics equations, easy to understand.",
+      profile: "👌",
+    }}
+    conClasses="sm:col-span-2 sm:flex lg:grid lg:col-span-1"
+  />
+</GridThreeColumnLayout>
