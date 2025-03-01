@@ -24,6 +24,7 @@ hero:
 ---
 
 import ImageDescriptionCard from "@components/ImageDescriptionCard.astro";
+import TitleAndDescriptionCard from "@components/TitleAndDescriptionCard.astro";
 import IllustrationsDark from "@assets/hero/IllustrationsDark.png";
 import IllustrationsLight from "@assets/hero/IllustrationsLight.png";
 import MathEquationsLight from "@assets/hero/MathEquationsLight.png";
@@ -77,3 +78,17 @@ import GridThreeColumnLayout from "@layouts/GridThreeColumnLayout.astro";
     conClasses="sm:col-span-2 sm:flex lg:grid lg:col-span-1"
   />
 </GridThreeColumnLayout>
+
+<section class="grid place-items-center text-center h-96 !mt-20 !md:m-32">
+  <TitleAndDescriptionCard
+    title="Never Miss a Criminology Lecture Again"
+    description="Made by a Comrade for Comrades"
+    align="center"
+    linkButtons={[{
+      name: "Start Learning",
+      href: "/getting-started/new",
+      icon: "right-arrow",
+      variant: "primary",
+    }]}
+  />
+</section>
