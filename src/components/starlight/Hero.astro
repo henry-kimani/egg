@@ -1,14 +1,12 @@
 ---
 import TitleAndDescriptionCard from "../TitleAndDescriptionCard.astro";
 import ThemedImageContainer from "../ThemedImageContainer.astro";
-import { Image } from "astro:assets";
 
 const { data } = Astro.locals.starlightRoute.entry;
 const { title=data.title, tagline, image, actions=[] } = data.hero || {};
 
 let darkImage: ImageMetadata;
 let lightImage: ImageMetadata;
-let defaultImage: ImageMetadata;
 
 if (image ) {
   if ("dark" in image) {

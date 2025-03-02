@@ -1,0 +1,22 @@
+---
+/* Render a list of styled anchor tags */
+
+import Anchor from "./Anchor.astro";
+
+interface Props {
+  anchors: {
+    name: string;
+    href: string;
+  }[];
+  class?: string;
+};
+
+const { anchors, class: className } = Astro.props;
+---
+<ul class:list={[className]}>
+  {anchors.map(({ name, href })=> (
+    <li class="mb-1 marker:text-[var(--sl-color-accent)] dark:marker:text-[var(--sl-color-accent-high)]">
+      <Anchor {name} {href} />
+    </li>
+  ))}
+</ul>
