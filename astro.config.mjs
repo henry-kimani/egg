@@ -2,32 +2,23 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import tailwind from '@astrojs/tailwind';
+import { sidebar } from "./astro.sidebar";
 
 // https://astro.build/config
 export default defineConfig({
 	integrations: [
 		starlight({
-			title: 'Docs with Tailwind',
+			title: 'Egg',
       components: {
         Hero: "./src/components/starlight/Hero.astro",
+        Footer: "./src/components/starlight/Footer.astro",
+        Sidebar: "./src/components/starlight/Sidebar.astro",
       },
 			social: {
 				github: 'https://github.com/withastro/starlight',
 			},
-			sidebar: [
-				{
-					label: 'Guides',
-					items: [
-						// Each item here is one entry in the navigation menu.
-						{ label: 'Example Guide', slug: 'guides/example' },
-					],
-				},
-				{
-					label: 'Reference',
-					autogenerate: { directory: 'reference' },
-				},
-			],
-			customCss: [
+			sidebar,
+      customCss: [
         './src/tailwind.css',
         '@fontsource-variable/quicksand',
         '@fontsource-variable/fredoka',
