@@ -26,9 +26,6 @@ importers:
       '@fontsource-variable/quicksand':
         specifier: ^5.1.1
         version: 5.1.1
-      '@fontsource/dejavu-sans':
-        specifier: ^5.1.0
-        version: 5.1.0
       astro:
         specifier: ^5.3.0
         version: 5.4.0(jiti@1.21.7)(rollup@4.30.1)(typescript@5.7.3)(yaml@2.7.0)
@@ -47,6 +44,13 @@ importers:
       tailwindcss:
         specifier: ^3.4.4
         version: 3.4.17
+    devDependencies:
+      '@firebase/rules-unit-testing':
+        specifier: ^4.0.1
+        version: 4.0.1(firebase@11.3.1)
+      '@types/bun':
+        specifier: ^1.2.4
+        version: 1.2.4
 
 packages:
 
@@ -469,6 +473,12 @@ packages:
     peerDependencies:
       '@firebase/app': 0.x
 
+  '@firebase/rules-unit-testing@4.0.1':
+    resolution: {integrity: sha512-Vu8iMLP+dO9hCAqUCitWZQdORyM6CxucilRZtleeTZd5bejZmyOiaBPwYm3NOYG6025ac99CEeA+ETmJRxa9zg==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      firebase: ^11.0.0
+
   '@firebase/storage-compat@0.3.16':
     resolution: {integrity: sha512-EeMuok/s0r938lEomia8XILEqSYULm7HcYZ/GTZLDWur0kMf2ktuPVZiTdRiwEV3Iki7FtQO5txrQ/0pLRVLAw==}
     engines: {node: '>=18.0.0'}
@@ -509,9 +519,6 @@ packages:
 
   '@fontsource-variable/quicksand@5.1.1':
     resolution: {integrity: sha512-FVyhFT7QgcTf95ZR1TOowU2mtuoLWvkKw1oVhOXGsZ0/0IXJmx1/ibWbOUkAm6MPGJt8HEjcpMDZsE3WCYsJcw==}
-
-  '@fontsource/dejavu-sans@5.1.0':
-    resolution: {integrity: sha512-aE7SE5z4rsXhDu2Vtb/3iqSnAibTUyP3qoNYbvKjESHljyY68t/AAvVJaAdbANfGFc8t5MxTAwNk15BsBbytIA==}
 
   '@grpc/grpc-js@1.9.15':
     resolution: {integrity: sha512-nqE7Hc0AzI+euzUwDAy0aY5hCp10r734gMGRdU+qOPX0XSceI2ULrcXB5U2xSc5VkWwalCj4M7GzCAygZl2KoQ==}
@@ -875,6 +882,9 @@ packages:
   '@types/acorn@4.0.6':
     resolution: {integrity: sha512-veQTnWP+1D/xbxVrPC3zHnCZRjSrKfhbMUlEA43iMZLu7EsnTtkJklIuwrCPbOi8YkvDQAiW05VQQFvvz9oieQ==}
 
+  '@types/bun@1.2.4':
+    resolution: {integrity: sha512-QtuV5OMR8/rdKJs213iwXDpfVvnskPXY/S0ZiFbsTjQZycuqPbMW8Gf/XhLfwE5njW8sxI2WjISURXPlHypMFA==}
+
   '@types/cookie@0.6.0':
     resolution: {integrity: sha512-4Kh9a6B2bQciAhf7FSuMRRkUWecJgJu9nPnx3yzpsfXX/c50REIqpHY4C82bXP90qrLtXtkDxTZosYO3UpOwlA==}
 
@@ -916,6 +926,9 @@ packages:
 
   '@types/unist@3.0.3':
     resolution: {integrity: sha512-ko/gIFJRv177XgZsZcBwnqJN5x/Gien8qNOn0D5bQU/zAzVf9Zt3BlcUiLqhV9y4ARk0GbT3tnUiPNgnTXzc/Q==}
+
+  '@types/ws@8.5.14':
+    resolution: {integrity: sha512-bd/YFLW+URhBzMXurx7lWByOu+xzU9+kb3RboOteXYDfW+tr+JZa99OyNmPINEGB/ahzKrEuc8rcv4gnpJmxTw==}
 
   '@ungap/structured-clone@1.2.1':
     resolution: {integrity: sha512-fEzPV3hSkSMltkw152tJKNARhOupqbH96MZWyRjNaYZOMIzbrTeQDG+MTc6Mr2pgzFQzFxAfmhGDNP5QK++2ZA==}
@@ -1071,6 +1084,9 @@ packages:
 
   buffer@5.7.1:
     resolution: {integrity: sha512-EHcyIPBQ4BSGlvjB16k5KgAJ27CIsHY/2JBmCRReo48y9rQ3MaUzWX3KVlBa4U7MyX02HdVj0K7C3WaB3ju7FQ==}
+
+  bun-types@1.2.4:
+    resolution: {integrity: sha512-nDPymR207ZZEoWD4AavvEaa/KZe/qlrbMSchqpQwovPZCKc7pwMoENjEtHgMKaAjJhy+x6vfqSBA1QU3bJgs0Q==}
 
   camelcase-css@2.0.1:
     resolution: {integrity: sha512-QOSvevhslijgYwRx6Rv7zKdMF8lbRmx+uQGx2+vDc+KI/eBnsy9kit5aj23AgGu3pa4t9AgwbnXWqS+iOY+2aA==}
@@ -3217,6 +3233,10 @@ snapshots:
       '@firebase/util': 1.10.3
       tslib: 2.8.1
 
+  '@firebase/rules-unit-testing@4.0.1(firebase@11.3.1)':
+    dependencies:
+      firebase: 11.3.1
+
   '@firebase/storage-compat@0.3.16(@firebase/app-compat@0.2.50)(@firebase/app-types@0.9.3)(@firebase/app@0.11.1)':
     dependencies:
       '@firebase/app-compat': 0.2.50
@@ -3262,8 +3282,6 @@ snapshots:
   '@fontsource-variable/noto-sans-lao@5.1.1': {}
 
   '@fontsource-variable/quicksand@5.1.1': {}
-
-  '@fontsource/dejavu-sans@5.1.0': {}
 
   '@grpc/grpc-js@1.9.15':
     dependencies:
@@ -3602,6 +3620,10 @@ snapshots:
     dependencies:
       '@types/estree': 1.0.6
 
+  '@types/bun@1.2.4':
+    dependencies:
+      bun-types: 1.2.4
+
   '@types/cookie@0.6.0': {}
 
   '@types/debug@4.1.12':
@@ -3641,6 +3663,10 @@ snapshots:
   '@types/unist@2.0.11': {}
 
   '@types/unist@3.0.3': {}
+
+  '@types/ws@8.5.14':
+    dependencies:
+      '@types/node': 17.0.45
 
   '@ungap/structured-clone@1.2.1': {}
 
@@ -3884,6 +3910,11 @@ snapshots:
     dependencies:
       base64-js: 1.5.1
       ieee754: 1.2.1
+
+  bun-types@1.2.4:
+    dependencies:
+      '@types/node': 17.0.45
+      '@types/ws': 8.5.14
 
   camelcase-css@2.0.1: {}
 
