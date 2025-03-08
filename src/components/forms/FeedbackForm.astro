@@ -10,9 +10,9 @@
     >
       {/* Input */}
       <textarea
-        name="feedback"
+        name="feedback-input"
         id="egg-form-feedback-input"
-        placeholder="You feedback is anonymous ..."
+        placeholder="Your feedback is anonymous ..."
         aria-placeholder="Share your feedback with us. It is anonymous"
         class={`w-full h-24 resize-none rounded-sm py-1 px-2
           bg-[var(--sl-color-black)] dark:bg-[var(--sl-color-gray-7)]
@@ -43,6 +43,7 @@
           </select>
         </div>
         <button
+          type="submit"
           class={`px-4 h-10 rounded-md 
             text-white dark:text-[var(--sl-color-gray-5)] bg-[var(--sl-color-accent)] dark:bg-[var(--sl-color-accent-high)]
             focus:ring focus:outline-none focus:ring-[var(--sl-color-accent)] focus:ring-offset-2 dark:focus:ring-offset-[var(--sl-color-gray-5)]
@@ -54,16 +55,42 @@
 </section>
 
 <script>
-const form = document.getElementById("egg-form-feedback") as HTMLFormElement;
-const input = document.getElementById("egg-form-feedback-input") as HTMLTextAreaElement;
-const emojiFeeling = document.getElementById("egg-emoji-feeling-select") as HTMLSelectElement;
+import { db } from "@firebase/client";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 
-form.onsubmit = (event) => {
+const feedbackForm = document.getElementById("egg-form-feedback") as HTMLFormElement;
+const feedbackFormInput = document.getElementById("egg-form-feedback-input") as HTMLInputElement;
+const feedbackFormEmoji = document.getElementById("egg-emoji-feeling-select") as HTMLSelectElement; 
+
+feedbackForm.onsubmit = async (event) => {
   event.preventDefault();
 
-  const userFeedback = input.value;
-  const userEmojiFeeling = emojiFeeling.value;
+  const feedback = new FormData(feedbackForm);
+  const feedbackInput = feedback.get("feedback-input");
+  const emojiFeeling = feedback.get("emoji-feeling");
+
+  const collRef = collection(db, "feedback");
+
+  try {
+    await addDoc(collRef, {
+      feedback: "", 
+      emoji: emojiFeeling,
+      createdAt: serverTimestamp()
+    });
+    resetFormAndThankUser();
+  } catch (error) {
+    console.log(error);
+  }
 
   // TODO: if the value subimitted is empty or the emoji feeling is empty
 };
+
+function resetFormAndThankUser() {
+  feedbackFormInput.value = "";
+  feedbackFormEmoji.value= "";
+  feedbackFormInput.placeholder = "Thank You for your feedback :)";
+  setTimeout(() => {
+    feedbackFormInput.placeholder = "Your feedback is anonymous ...";
+  } , 3000);
+}
 </script>
