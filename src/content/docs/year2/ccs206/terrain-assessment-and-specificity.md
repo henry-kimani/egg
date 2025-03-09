@@ -7,8 +7,8 @@ sidebar:
 
 ## Definition
 
-**Terrain assessment** is a critical aspect of national security that involves analyzing
-physical and geographical features of a region to evaluate thier implications for
+**Terrain assessment** is a it involves analyzing
+physical and geographical features of a region to evaluate their implications for
 defense, security and operational planning.
 
 **Specificity** in terrain assessment ensures that strategies are tailored to their
@@ -106,7 +106,7 @@ designed to protect space assets and ensure the safety and stability of space
 operations.
 
 They safe guard satellites, space-based communication networks and other space 
-infrastructure potential threats.
+infrastructure from potential threats.
 
 Key Aspects include:
 

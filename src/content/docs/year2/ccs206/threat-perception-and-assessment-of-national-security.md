@@ -11,7 +11,7 @@ sidebar:
 ## Definition
 
 They are essential components of a nation's strategic framework which involve 
-identifying, evaluating and prioritizing potential risks to the stability
+identifying, evaluating and prioritizing potential risks to the stability,
 sovereignity and well-being of the state and its citizens.
 
 ### 1. Threat Perception
