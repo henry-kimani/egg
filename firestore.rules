@@ -7,12 +7,20 @@ service cloud.firestore {
       return request.resource.data.keys().hasAll(required) &&
              request.resource.data.keys().hasOnly(allowedFields);
     }
+
+    function verifyFeedbackCollectionTypes() {
+        return request.resource.data.feedback is string
+        && request.resource.data.createdAt is timestamp;
+    }
     
 
+    // ALL DOCUMENTS
     match /{document=**} {
       allow read, write: if false;
     }
 
+
+    // FEEDACK COLLECTION
   	// No one should read the feedback
     match /feedback/{feedbackId} {
       allow read: if false;
@@ -22,9 +30,12 @@ service cloud.firestore {
     match /feedback/{feedbackId} {
       allow update: if false;
       allow delete: if false;
+
+      // Required fields: feedback & createdAt
+      // Optional field: emoji
       allow create: if verifyFields(['feedback', 'createdAt'], ['feedback', 'emoji', 'createdAt'])
-      && !(request.resource.data.feedback == '')
-      && !(request.resource.data.createdAt == '')
+        && verifyFeedbackCollectionTypes()
+        && !(request.resource.data.feedback == '') && !(request.resource.data.createdAt == '')
     }
   }
 }

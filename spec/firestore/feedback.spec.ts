@@ -46,12 +46,21 @@ describe("Feedback Form Rules", () => {
     expect(deleteDoc(docRef)).toDeny();
   });
 
-  test("fail when creating an empty feedback document", () => {
+  test("fail when creating empty/null to the feedback document", () => {
     expect(addDoc(collRef, {})).toDeny();
   })
 
   test("fail when submitting empty fields to a document", ()=> {
     expect(addDoc(collRef, { feedback: "", emoji: "", createdAt: "" })).toDeny();
+  });
+
+  test("fail when submitting invalid data types to the feedback collection", () => {
+    // reject feedback as int and createdAt as int
+    expect(addDoc(collRef, { feedback: 23, createdAt: 2900 })).toDeny();
+    expect(setDoc(docRef, { feedback: 23, createdAt: 2900 })).toDeny();
+
+    // reject feedback as int and createdAt as string
+    expect(addDoc(collRef, { feedback: 23, createdAt: "" })).toDeny();
   });
 
   test("pass when creating to feedback collection", () => {
