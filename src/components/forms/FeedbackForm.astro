@@ -73,7 +73,7 @@ feedbackForm.onsubmit = async (event) => {
 
   try {
     await addDoc(collRef, {
-      feedback: "", 
+      feedback: feedbackInput, 
       emoji: emojiFeeling,
       createdAt: serverTimestamp()
     });
