@@ -22,6 +22,7 @@ interface Props {
     href: string;
     icon: StarlightIcon | undefined;
     variant: "primary" | "secondary" | "minimal";
+    classes?: string;
   }[];
   parentClasses?: string;
 }
@@ -50,7 +51,7 @@ const isHero = align === "hero" || align === "center" ? true : false;
   </div>
 
   <div>
-    {linkButtons && linkButtons.map(({ name, href, icon, variant }) => <LinkButton {href} {icon} {variant}>{name}</LinkButton>)}
+    {linkButtons && linkButtons.map(({ name, href, icon, variant, classes }) => <LinkButton class={classes} {href} {icon} {variant}>{name}</LinkButton>)}
   </div>
 </article>
 

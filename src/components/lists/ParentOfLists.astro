@@ -1,0 +1,23 @@
+---
+/* Render a list of li elements */
+
+import StyledLiElement from "./StyledLiElement.astro";
+
+interface Props {
+  liTexts: string[];
+}
+
+const { liTexts } = Astro.props;
+---
+<ol class="p-0 !mt-2">
+  {
+    liTexts.map((text, index) => <StyledLiElement liNumber={index.toString()} >{text}</StyledLiElement>)
+  }
+</ol>
+
+<style>
+li {
+  list-style-type: none;
+}
+</style>
+

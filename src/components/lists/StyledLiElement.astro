@@ -1,0 +1,22 @@
+---
+/* Render a styled li's marker */
+
+interface Props {
+  liNumber: string;
+}
+
+const { liNumber } = Astro.props;
+---
+
+<li class="flex gap-2 items-center">
+  <div class="h-5 w-5 grid place-items-center">
+    <svg class="!h-full">
+      <circle cx="10" cy="10" r="10" class="fill-[var(--sl-color-gray-6)]" />
+      <text x="5" y="16" class="fill-[var(--sl-color-accent)] dark:fill-[var(--sl-color-accent-high)]">{liNumber}</text>
+    </svg>
+  </div>
+  <span>
+    <slot />
+  </span>
+</li>
+
