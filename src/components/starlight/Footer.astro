@@ -1,9 +1,18 @@
 ---
 import Default from "@astrojs/starlight/components/Footer.astro";
 import GridThreeColumnLayout from "@layouts/GridThreeColumnLayout.astro";
-import AnchorList from "@components/anchorlist/AnchorList.astro";
 import LinkButton from "node_modules/@astrojs/starlight/user-components/LinkButton.astro";
 import FeedbackForm from "@components/forms/FeedbackForm.astro";
+import ParentOfLists from "@components/lists/ParentOfLists.astro";
+import CustomizedLiElement from "@components/lists/CustomizedLiElement.astro";
+import ThemedAnchor from "@components/ThemedAnchor.astro";
+
+const footerLinks = [
+  { name: "More About Egg", href: "/about" },
+  { name: "Privacy and Policy", href: "/privacy-policy"},
+  { name: "Terms and Conditions", href: "/terms-conditions"},
+  { name: "License", href: "/software-license" }
+];
 
 const isHomePage = Astro.locals.starlightRoute.id === ""; 
 ---
@@ -15,15 +24,13 @@ isHomePage ? (
     {/* ABOUT */}
     <div>
       <h2>ABOUT</h2>
-      <AnchorList 
-        anchors={[
-          { name: "More About Egg", href: "/about" },
-          { name: "Privacy and Policy", href: "/privacy-policy"},
-          { name: "Terms and Conditions", href: "/terms-conditions"},
-          { name: "License", href: "/software-license" }
-        ]}
-        class="mt-2"
-      />
+      <ParentOfLists type="unordered">
+        {footerLinks.map(({ name, href }) => (
+        <CustomizedLiElement custom={false}>
+          <ThemedAnchor {name} {href} />
+        </CustomizedLiElement>
+        ))}
+      </ParentOfLists>
     </div>
 
 

@@ -1,23 +1,21 @@
 ---
 /* Render a list of li elements */
-
-import StyledLiElement from "./StyledLiElement.astro";
-
 interface Props {
-  liTexts: string[];
+  type: "ordered" | "unordered";
+  classes?: string;
 }
 
-const { liTexts } = Astro.props;
+const { classes, type } = Astro.props;
 ---
-<ol class="p-0 !mt-2">
-  {
-    liTexts.map((text, index) => <StyledLiElement liNumber={index.toString()} >{text}</StyledLiElement>)
-  }
-</ol>
 
-<style>
-li {
-  list-style-type: none;
+{
+  type === "ordered" ? (
+    <ol class:list={[`p-0 !mt-2`, classes]}>
+      <slot />
+    </ol>
+  ) : (
+    <ul class:list={[`p-0 !mt-2`, classes]}>
+      <slot />
+    </ul>
+  )
 }
-</style>
-

@@ -4,51 +4,16 @@ description: Checkout whats new in egg.
 tableOfContents: false
 ---
 
-import ParentOfLists from "@components/lists/ParentOfLists.astro";
 import { LinkButton } from "@astrojs/starlight/components";
 import TitleAndDescriptionCard from "@components/TitleAndDescriptionCard.astro";
+import WhatsNewPageHeader from "@components/whatsnewpage/WhatsNewPageHeader.astro";
+import GradientContainer from "@components/GradientContainer.astro";
 
-<div 
-  class={`
-    w-full p-3 md:p-5 rounded-xl text-[var(--sl-color-gray-6)] md:flex
-    bg-gradient-to-b  from-red-500 to-60% to-[var(--sl-color-accent)]
-    dark:from-[var(--sl-color-accent-high)] dark:to-[var(--sl-color-accent-high)]
-  `}
->
-  <div class="md:basis-1/4 flex w-full md:block">
-    <div class="basis-1/2 ">
-      <h1 class="!text-5xl !text-[var(--sl-color-gray-7)]">v0.0.1</h1>
-    </div>
-    <div class="basis-1/2  grid !m-0">
-      <h3 class="!text-[var(--sl-color-gray-7)]">Released !</h3>
-      <span class="italic text-[var(--sl-color-gray-5)] dark:text-[var(--sl-color-gray-4)]">Feb 2, 2025</span>
-    </div>
-  </div>
-  <div class="w-full !mt-1 md:basis-3/4">
-    <div class="md:pl-8">
-      <h3 class="!text-[var(--sl-color-gray-7)] !text-2xl">Features</h3>
-      <ParentOfLists liTexts={[ "Sign In", "Dark Theme", "More Units!" ]} />
-    </div>
-    <div class="flex items-center justify-end">
-      <LinkButton 
-        href="/" 
-        icon="open-book" 
-        variant="primary" 
-        class={`
-          !m-0 !bg-[var(--sl-color-gray-7)] !text-[var(--sl-color-accent)] border-none
-          dark:!bg-[var(--sl-color-gray-6)] dark:!text-[var(--sl-color-accent-high)]
-        `}
-      >Read More</LinkButton>
-    </div>
-  </div>
-
-</div>
+<WhatsNewPageHeader />
 
 <div class="sm:flex grid gap-4">
-  <div 
-    class={`w-full rounded-xl
-    bg-gradient-to-br from-blue-500 to-blue-700
-    `}
+  <GradientContainer
+    color="blue"
   >
     <TitleAndDescriptionCard
       title="Tutorial"
@@ -67,13 +32,10 @@ import TitleAndDescriptionCard from "@components/TitleAndDescriptionCard.astro";
       }]}
       parentClasses="p-4 !text-white"
     />
-  </div>
-
-  <div 
-    class={`w-full !m-0 rounded-xl
-    bg-gradient-to-br from-green-500 to-green-600
-    dark:to-green-700
-    `}
+  </GradientContainer>
+  <GradientContainer
+    color="green"
+    classes="!m-0"
   >
     <TitleAndDescriptionCard
       title="Anouncements"
@@ -92,5 +54,5 @@ import TitleAndDescriptionCard from "@components/TitleAndDescriptionCard.astro";
       }]}
       parentClasses="p-4 !text-white"
     />
-  </div>
+  </GradientContainer>
 </div>

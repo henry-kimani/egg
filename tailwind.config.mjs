@@ -1,4 +1,3 @@
-import colors from 'tailwindcss/colors';
 import starlightPlugin from '@astrojs/starlight-tailwind';
 
 // Generated color palettes
@@ -20,7 +19,12 @@ export default {
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)'
       }
-		},
+    },
+    listStyleType: {
+      "square" : "square",
+      "alpha" : "lower-alpha",
+      "roman": "lower-roman"
+    }
 	},
 	plugins: [starlightPlugin()],
 };
