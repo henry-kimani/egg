@@ -1,0 +1,52 @@
+---
+/* Render a specific release note */
+import { type CollectionEntry, render, getCollection } from 'astro:content';
+import StarlightSplashLayout from "@layouts/StarlightSplashLayout.astro";
+import GradientContainer from '@components/GradientContainer.astro';
+
+interface Props {
+  releaseNote: CollectionEntry<"releaseNotes">
+}
+
+export async function getStaticPaths() {
+  const releaseNotes = await getCollection("releaseNotes");
+  return releaseNotes.map(releaseNote => ({
+    params: { release: releaseNote.id },
+    props: { releaseNote }
+  }));
+}
+
+const { releaseNote } = Astro.props;
+const { title, description, version } = releaseNote.data;
+
+const { Content } = await render(releaseNote);
+console.log(Content);
+---
+
+<StarlightSplashLayout {title} {description}>
+  <div class="sm:flex sm:relative md:gap-10">
+
+    <div class="sm:basis-1/5 flex-none sm:top-40 sm:sticky">
+      <div class="w-24 md:w-28">
+        <GradientContainer classes='grid place-items-center p-1 rounded-lg' color='default'>
+          <h2 class="!text-[var(--sl-color-gray-7)]">{version}</h2>
+        </GradientContainer>
+      </div>
+      <div class="!mt-2 mb-4">
+        <span>Feb 2, 2025</span>
+      </div>
+    </div>
+
+    <div class="sm:basis-4/5 ">
+      <Content />
+    </div>
+
+  </div>
+</StarlightSplashLayout>
+
+<style>
+#_top {
+  background-color: red !important;
+}
+</style>
+

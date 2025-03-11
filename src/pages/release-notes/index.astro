@@ -1,0 +1,26 @@
+---
+/* Render all releases in a list */
+import { getCollection } from "astro:content";
+import ParentOfLists from "@components/lists/ParentOfLists.astro";
+import CustomizedLiElement from "@components/lists/CustomizedLiElement.astro";
+import ThemedAnchor from "@components/ThemedAnchor.astro";
+import StarlightSplashLayout from "@layouts/StarlightSplashLayout.astro";
+
+
+const releaseNotes = await getCollection("releaseNotes");
+const title = "Release Notes Index";
+const description = "Choose from all Egg's release notes to read. Get to know where are coming from";
+---
+<StarlightSplashLayout {title} {description}>
+  <ParentOfLists type="unordered">
+    {releaseNotes.map(releaseNote => (
+    <CustomizedLiElement custom={false}>
+      <ThemedAnchor 
+        name={releaseNote.data.title} 
+        href={`${releaseNote.id}`}
+      />
+    </CustomizedLiElement>
+    ))}
+  </ParentOfLists>
+</StarlightSplashLayout>
+
