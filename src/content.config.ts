@@ -8,7 +8,8 @@ const releaseNotes = defineCollection({
   schema: docsSchema({
     extend: z.object({
       version: z.string(),
-      features: z.array(z.string())
+      features: z.array(z.string()),
+      date: z.date({ coerce: true })
     })
   }),
 });
@@ -16,6 +17,6 @@ const releaseNotes = defineCollection({
 const docs = defineCollection({
   loader: docsLoader(), 
   schema: docsSchema(), 
-})
+}    )
 
 export const collections = { docs, releaseNotes };
