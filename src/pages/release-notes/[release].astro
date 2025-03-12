@@ -24,16 +24,18 @@ console.log(Content);
 ---
 
 <StarlightSplashLayout {title} {description}>
-  <div class="sm:flex sm:relative md:gap-10">
+  <div class="sm:flex md:gap-10">
 
-    <div class="sm:basis-1/5 flex-none sm:top-40 sm:sticky">
-      <div class="w-24 md:w-28">
-        <GradientContainer classes='grid place-items-center p-1 rounded-lg' color='default'>
-          <h2 class="!text-[var(--sl-color-gray-7)]">{version}</h2>
-        </GradientContainer>
-      </div>
-      <div class="!mt-2 mb-4">
-        <span>Feb 2, 2025</span>
+    <div class="sm:basis-1/5 flex-none ">
+      <div class="sm:!top-24 mt-7 sm:sticky">
+        <div class="w-24 md:w-28">
+          <GradientContainer classes='grid place-items-center p-1 rounded-lg' color='default'>
+            <h2 class="!text-[var(--sl-color-gray-7)]">{version}</h2>
+          </GradientContainer>
+        </div>
+        <div class="!mt-2 mb-4">
+          <span>Feb 2, 2025</span>
+        </div>
       </div>
     </div>
 
