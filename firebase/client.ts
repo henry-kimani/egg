@@ -1,8 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
-const clientEnv = import.meta.env;
-
 const firebaseConfig = {
   apiKey: import.meta.env.FIREBASE_CLIENT_APIKEY,
   authDomain: import.meta.env.FIREBASE_CLIENT_AUTHDOMAIN,
