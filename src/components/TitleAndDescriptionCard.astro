@@ -1,29 +1,29 @@
 ---
 /*
  * Render a Title, a description, optinal linkcards and profile in a container.
- * 
+ *
  * Their placement is defined by the prop align.
- * 
+ *
  */
 import ProfilePicture from "@components/ProfilePicture.astro";
-import ResponsiveHeading from '@components/ResponsiveHeading.astro';
-import ResponsiveTagline from '@components/ResponsiveTagline.astro';
-import type { StarlightIcon } from '@astrojs/starlight/types';
-import { cn } from '@lib/utils';
-import { LinkButton } from '@astrojs/starlight/components';
+import ResponsiveHeading from "@components/ResponsiveHeading.astro";
+import ResponsiveTagline from "@components/ResponsiveTagline.astro";
+import { cn } from "@lib/utils";
+import VariantButton from "@components/VariantButton.astro";
+import type { ComponentProps } from "astro/types";
+
+type LinkName = {
+  name: string
+};
+
+type LinkButtonType = ComponentProps<typeof VariantButton> & LinkName;
 
 interface Props {
   title: string;
   description: string;
-  align: "center" | "hero" | "start"
+  align: "center" | "hero" | "start";
   profile?: string; // String for an Emoji
-  linkButtons?: {
-    name: string;
-    href: string;
-    icon: StarlightIcon | undefined;
-    variant: "primary" | "secondary" | "minimal";
-    classes?: string;
-  }[];
+  linkButtons: LinkButtonType[];
   parentClasses?: string;
 }
 
@@ -32,18 +32,21 @@ const { title, description, profile, align, linkButtons, parentClasses } = Astro
 const isHero = align === "hero" || align === "center" ? true : false;
 ---
 
-<article 
-  class:list={cn(
-    "grid", parentClasses,
-    {
-      "text-start": align === "start",
-      "text-center md:text-start": align==="hero"
-    }
-  )}
+<article
+  class:list={cn("grid", parentClasses, {
+    "text-start": align === "start",
+    "text-center md:text-start": align === "hero",
+  })}
 >
   <div class="flex gap-2">
-    { profile && <div class="flex-initial grid place-items-center"> <ProfilePicture profilePic={profile} /></div> }
-    <div class="!m-0 grid place-items-center"><ResponsiveHeading {isHero} rawHtml={title} /></div>
+    { profile && (
+      <div class="flex-initial grid place-items-center">
+        <ProfilePicture profilePic={profile} />
+      </div>
+    )}
+    <div class="!m-0 grid place-items-center">
+      <ResponsiveHeading {isHero} rawHtml={title} />
+    </div>
   </div>
 
   <div>
@@ -51,12 +54,19 @@ const isHero = align === "hero" || align === "center" ? true : false;
   </div>
 
   <div>
-    {linkButtons && linkButtons.map(({ name, href, icon, variant, classes }) => <LinkButton class={classes} {href} {icon} {variant}>{name}</LinkButton>)}
+    {
+      linkButtons &&
+        linkButtons.map(({ name, href, icon, variant, classes, theme, link }) => (
+          <VariantButton {href} {icon} {variant} {classes} {theme} {link}>
+            {name}
+          </VariantButton>
+        ))
+    }
   </div>
 </article>
 
 <style>
-.stack {
-  gap: clamp(1rem, calc(1.5rem + 1vw), 2rem);
-}
+  .stack {
+    gap: clamp(1rem, calc(1.5rem + 1vw), 2rem);
+  }
 </style>
