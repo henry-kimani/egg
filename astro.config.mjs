@@ -13,6 +13,7 @@ export default defineConfig({
         Hero: "./src/components/starlight/Hero.astro",
         Footer: "./src/components/starlight/Footer.astro",
         Sidebar: "./src/components/starlight/Sidebar.astro",
+        Header: "src/components/starlight/Header.astro"
       },
 			social: {
 				github: 'https://github.com/withastro/starlight',
