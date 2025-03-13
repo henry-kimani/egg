@@ -9,21 +9,21 @@ import ProfilePicture from "@components/ProfilePicture.astro";
 import ResponsiveHeading from "@components/ResponsiveHeading.astro";
 import ResponsiveTagline from "@components/ResponsiveTagline.astro";
 import { cn } from "@lib/utils";
-import VariantButton from "@components/VariantButton.astro";
+import VariantLinkButton from "@components/buttons/VariantLinkButton.astro";
 import type { ComponentProps } from "astro/types";
 
 type LinkName = {
   name: string
 };
 
-type LinkButtonType = ComponentProps<typeof VariantButton> & LinkName;
+type LinkButtonType = ComponentProps<typeof VariantLinkButton> & LinkName;
 
 interface Props {
   title: string;
   description: string;
   align: "center" | "hero" | "start";
   profile?: string; // String for an Emoji
-  linkButtons: LinkButtonType[];
+  linkButtons?: LinkButtonType[];
   parentClasses?: string;
 }
 
@@ -56,10 +56,10 @@ const isHero = align === "hero" || align === "center" ? true : false;
   <div>
     {
       linkButtons &&
-        linkButtons.map(({ name, href, icon, variant, classes, theme, link }) => (
-          <VariantButton {href} {icon} {variant} {classes} {theme} {link}>
+        linkButtons.map(({ name, href, icon, variant, classes, theme }) => (
+          <VariantLinkButton {href} {icon} {variant} {classes} {theme}>
             {name}
-          </VariantButton>
+          </VariantLinkButton>
         ))
     }
   </div>

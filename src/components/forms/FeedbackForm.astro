@@ -1,3 +1,6 @@
+---
+import VariantButton from "@components/buttons/VariantButton.astro"
+---
 
 <section>
   <form id="egg-form-feedback">
@@ -42,13 +45,14 @@
             <option value="very-bad">😡 Very Bad</option>
           </select>
         </div>
-        <button
-          type="submit"
-          class={`px-4 h-10 rounded-md 
-            text-white dark:text-[var(--sl-color-gray-5)] bg-[var(--sl-color-accent)] dark:bg-[var(--sl-color-accent-high)]
-            focus:ring focus:outline-none focus:ring-[var(--sl-color-accent)] focus:ring-offset-2 dark:focus:ring-offset-[var(--sl-color-gray-5)]
-          `}
-        >Send</button>
+        <VariantButton
+          icon="telegram"
+          theme="simple"
+          variant="primary"
+          classes="h-10"
+          buttonLabel="submit the feedback from the feedback form"
+          iconLabel="submit feedback"
+        />
       </div>
     </div>
     <form>

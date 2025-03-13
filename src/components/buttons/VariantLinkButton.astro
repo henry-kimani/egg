@@ -1,0 +1,23 @@
+---
+/* Render diffrent buttons depending on theme */
+import { LinkButton } from "@astrojs/starlight/components";
+import { cn } from "@lib/utils";
+import { buttonThemes } from "@lib/themes";
+import type { ComponentProps } from "astro/types";
+import type VariantButton from "./VariantButton.astro";
+
+interface Props extends ComponentProps<typeof VariantButton> {
+  href: string;
+}
+
+const { href, icon, variant, classes, theme } = Astro.props;
+---
+
+<LinkButton
+  {href} {icon} {variant}
+  class:list={cn([classes], buttonThemes(theme))}
+>
+  <slot/>
+</LinkButton>   
+
+

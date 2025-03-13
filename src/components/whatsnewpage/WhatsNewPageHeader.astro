@@ -1,11 +1,11 @@
 ---
-import { LinkButton } from "@astrojs/starlight/components";
 import ParentOfLists from "@components/lists/ParentOfLists.astro";
 import CustomizedLiElement from "@components/lists/CustomizedLiElement.astro";
 import GradientContainer from "@components/GradientContainer.astro";
 import FormatDate from "@components/FormatDate.astro";
 import { getCollection } from "astro:content";
 import { latestCollection } from "@lib/utils";
+import VariantLinkButton from "@components/buttons/VariantLinkButton.astro";
 
 const releaseNotes = await getCollection("releaseNotes"); 
 const latestReleaseNote = latestCollection(releaseNotes);
@@ -40,15 +40,12 @@ const features = latestReleaseNote.data.features;
       </ParentOfLists>
     </div>
     <div class="flex items-center justify-end">
-      <LinkButton 
+      <VariantLinkButton
         href={`/release-notes/${latestReleaseNote.id}`} 
         icon="open-book" 
         variant="primary" 
-        class={`
-          !m-0 !bg-[var(--sl-color-gray-7)] !text-[var(--sl-color-accent)] border-none
-          dark:!bg-[var(--sl-color-gray-6)] dark:!text-[var(--sl-color-accent-high)]
-        `}
-      >Read More</LinkButton>
+        theme="orange"
+      >Read More</VariantLinkButton>
     </div>
   </div>
 
