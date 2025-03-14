@@ -3,9 +3,9 @@ import SiteTitle from "@astrojs/starlight/components/SiteTitle.astro";
 import Search from "@astrojs/starlight/components/Search.astro";
 import SocialIcons from "@astrojs/starlight/components/SocialIcons.astro";
 import ThemeSelect from "@astrojs/starlight/components/ThemeSelect.astro";
-import Modal from "@components/Modal.astro";
-import FeedbackForm from "@components/forms/FeedbackForm.astro";
 import VariantButton from "@components/buttons/VariantButton.astro";
+import Modal from "@components/modals/Modal.astro";
+import FeedbackForm from "@components/forms/FeedbackForm.astro";
 ---
 
 <div class="header sl-flex">
@@ -13,12 +13,10 @@ import VariantButton from "@components/buttons/VariantButton.astro";
     <SiteTitle />
   </div>
 
-  <div class="sl-flex print:hidden">
+  <div class="flex justify-between items-center md:w-full print:hidden">
     <Search />
-  </div>
 
-  <div class="sl:hidden md:sl-flex print:hidden right-group">
-    <div class="sl-flex social-icons">
+    <div class="grid place-items-center ml-3">
       <VariantButton
         icon="comment"
         theme="simple"
@@ -30,6 +28,11 @@ import VariantButton from "@components/buttons/VariantButton.astro";
       <Modal>
         <FeedbackForm />
       </Modal>
+    </div>
+  </div>
+
+  <div class="sl-hidden md:sl-flex print:hidden right-group">
+    <div class="sl-flex social-icons">
       <SocialIcons />
     </div>
     <ThemeSelect />
