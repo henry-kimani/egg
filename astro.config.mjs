@@ -8,12 +8,17 @@ import { sidebar } from "./astro.sidebar";
 export default defineConfig({
 	integrations: [
 		starlight({
-			title: 'Egg',
+      title: 'Egg',
+      logo: {
+        src: "./src/assets/egglogo.png",
+        alt: "Egg's Logo",
+      },
       components: {
         Hero: "./src/components/starlight/Hero.astro",
         Footer: "./src/components/starlight/Footer.astro",
         Sidebar: "./src/components/starlight/Sidebar.astro",
-        Header: "src/components/starlight/Header.astro"
+        Header: "./src/components/starlight/Header.astro",
+        MobileMenuFooter: "./src/components/starlight/MobileMenuFooter.astro",
       },
 			social: {
 				github: 'https://github.com/withastro/starlight',
