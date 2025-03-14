@@ -85,7 +85,7 @@ import VariantButton from "@components/buttons/VariantButton.astro";
       /* 1. (site title): runs up until the main content column's left edge or
       * or the width of the title, which ever is the largest */
       minmax(
-        calc(var(--__sidebar-width) + max(0rem, var(--__main-column-fr) - var(--sl-nav-pad))),
+        calc(var(--__sidebar-width) + max(0rem, var(--__main-column-fr) - var(--sl-nav-gap))),
         auto
       )
       /* 2. (search box): all the free space available. */
