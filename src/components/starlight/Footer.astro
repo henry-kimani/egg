@@ -14,11 +14,15 @@ const footerLinks = [
   { name: "Release Notes Index", href: "/release-notes" }
 ];
 
-const isHomePage = Astro.locals.starlightRoute.id === ""; 
+const routeId = Astro.locals.starlightRoute.id;
+
+const isHomePage = routeId === ""; 
+const isAboutPage = routeId === "about"; 
+const isReleaseNoteIndexPage = routeId === "release-notes"; 
 ---
 
 {
-isHomePage ? (
+isHomePage || isAboutPage || isReleaseNoteIndexPage ? (
 <footer class="grid h-64">
   <GridThreeColumnLayout>
     {/* ABOUT */}

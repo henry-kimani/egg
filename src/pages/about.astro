@@ -1,0 +1,90 @@
+---
+import StarlightSplashLayout from "@layouts/StarlightSplashLayout.astro";
+import ThemedImageContainer from "@components/ThemedImageContainer.astro";
+import VariantLinkButton from "@components/buttons/VariantLinkButton.astro";
+import EggLogo from "@assets/egglogo.png";
+
+const title = 'ABOUT';
+const description = `Egg is an online platform, where you can get access to 
+  criminology notes from any where in the world.`;
+---
+
+<StarlightSplashLayout {title} {description}>
+  <div class="w-full grid place-items-center">
+    <div class="max-w-[45rem] text-lg">
+
+      <div class="grid gap-4 place-items-center">
+        <ThemedImageContainer
+          dark={EggLogo}
+          light={EggLogo}
+          alt="Egg's logo"
+          loading="eager"
+        />
+        <caption class="!m-20">Egg's logo</caption>
+      </div>
+
+      <article>
+        <h3>The Pain</h3>
+        <p>
+          As a fellow criminology student, I know the pain of last minute note 
+          hunting. The frantic searches, the missed details, the feeling of being
+          overwhelmed, especially as exams near - it's a shared experience.
+        </p>
+        <p>
+          I observed my classmates, including myself, constantly scrambling for 
+          criminology lecture notes. "It doesn't have to be this way".
+        </p>
+        <p>
+          All I wanted is all my notes in one convenient place, neatly organized 
+          and I can access them from anywhere in the world without the hustle of 
+          keeping track of all my physical exercise books.
+        </p>
+      </article>
+
+      <article>
+        <h3>The Solution</h3>
+        <p>
+          That is why I created Egg, a centralized platform where you can access 
+          comprehensive criminology notes for all four years of your degree neatly
+          organized. From every unit to every topic. Just perfect for exam an prep.
+        </p>
+      </article>
+
+      <p>
+        Egg is packed with alot of features to help you navigate and have an easy 
+        time while studing. It features dark theme for all nighters, (we value
+        your eyes) among others. Check <a href="/docs">our documentation</a> 
+        for more in depth details.
+      </p>
+
+      <p>
+        Say goodbye to the stress of note hunting and hello to efficient, effective
+        studying. 
+      </p>
+
+      <article>
+        <h3>Our Motive</h3>
+        <p>
+          As the Egg team, we are committed to continously updating and improving
+          the site to meet your needs. Your feedback is valuable and we encourage
+          you to share your suggestions. It helps us improve you experience and fuel
+          our innovation.
+          <br>
+          Also, be sure to read our <a href="/privacy-policy">Privacy and Policy</a>
+          and <a href="/terms-conditions">Terms and Conditions</a>.
+        </p>
+      </article>
+
+      <article class="grid place-items-center text-center h-36 !my-20 !md:m-32">
+        <h3>Finally, refief from the stress of note hunting.</h3>
+        <VariantLinkButton
+          theme="simple"
+          variant="primary"
+          icon="right-arrow"
+          href="/getting-started/new"
+        >Start Learning</VariantLinkButton>
+      </article>
+
+    </div>
+  </div>
+</StarlightSplashLayout>
