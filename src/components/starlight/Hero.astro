@@ -21,7 +21,9 @@ if (image ) {
     title={title},
     description={tagline || ""}
     align="hero"
-    linkButtons={actions.map(({ text: name, link: href, variant })=> ({ name, href, variant, icon: "right-arrow"}))}
+    linkButtons={
+    actions.map(({ text: name, link: href, variant })=> ({ name, href, variant, icon: "right-arrow", theme: "simple" }))
+    }
     parentClasses="stack" 
   />
   {/*
