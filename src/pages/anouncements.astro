@@ -1,0 +1,25 @@
+---
+import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
+import AnouncementsCardLayout from "@layouts/AnouncementsCardLayout.astro";
+---
+
+<StarlightPage
+  frontmatter={{
+    title: "Anouncements",
+    description: "These are the anouncements made the egg team",
+    pagefind: false,
+    tableOfContents: false
+  }}
+>
+  <AnouncementsCardLayout
+    title="Egg Sunrise"
+    icon="sun"
+    date={new Date(2025, 4, 16)}
+  >
+    <p>We are happy to anounce that Egg has been launched and is free for anyone
+      to use. However the software should be used as outline in the <a href="term-of-use">
+      Terms Of Use</a>.
+    </p>
+
+  </AnouncementsCardLayout>
+</StarlightPage>

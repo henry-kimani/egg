@@ -9,21 +9,21 @@ import ThemedAnchor from "@components/ThemedAnchor.astro";
 
 const footerLinks = [
   { name: "More About Egg", href: "/about" },
-  { name: "Privacy and Policy", href: "/privacy-policy"},
-  { name: "Terms and Conditions", href: "/terms-conditions"},
+  { name: "Privacy Policy", href: "/privacy-policy"},
+  { name: "Terms of Use", href: "/terms-of-use"},
   { name: "Release Notes Index", href: "/release-notes" }
 ];
 
 const routeId = Astro.locals.starlightRoute.id;
 
 const isHomePage = routeId === ""; 
-const isAboutPage = routeId === "about"; 
-const isReleaseNoteIndexPage = routeId === "release-notes"; 
+const isAboutPage = routeId === "about";
+const isReleaseNoteIndexPage = routeId.startsWith("release-notes");
 ---
 
 {
 isHomePage || isAboutPage || isReleaseNoteIndexPage ? (
-<footer class="grid h-64">
+<footer class="grid h-64 mt-20">
   <GridThreeColumnLayout>
     {/* ABOUT */}
     <div>
