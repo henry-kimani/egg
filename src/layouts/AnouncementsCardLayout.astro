@@ -1,0 +1,24 @@
+---
+import { Card } from "@astrojs/starlight/components";
+import type { StarlightIcon } from "@astrojs/starlight/types";
+import FormatDate from "@components/FormatDate.astro";
+
+interface Props {
+  title: string;
+  icon?: StarlightIcon;
+  date: Date;
+}
+
+const { title, icon, date } = Astro.props;
+---
+
+<Card
+  {title}
+  {icon}
+>
+  <span class="italic"><FormatDate {date}/></span>
+  <hr />
+  <br />
+
+  <slot />
+</Card>
