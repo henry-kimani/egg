@@ -3,6 +3,7 @@
 import { type CollectionEntry, render, getCollection } from 'astro:content';
 import StarlightSplashLayout from "@layouts/StarlightSplashLayout.astro";
 import GradientContainer from '@components/GradientContainer.astro';
+import FormatDate from '@components/FormatDate.astro';
 
 interface Props {
   releaseNote: CollectionEntry<"releaseNotes">
@@ -17,13 +18,13 @@ export async function getStaticPaths() {
 }
 
 const { releaseNote } = Astro.props;
-const { title, description, version } = releaseNote.data;
+const { title, description, version, date } = releaseNote.data;
 
 const { Content } = await render(releaseNote);
 console.log(Content);
 ---
 
-<StarlightSplashLayout {title} {description}>
+<StarlightSplashLayout {title} description={description || ""}>
   <div class="sm:flex md:gap-10">
 
     <div class="sm:basis-1/5 flex-none ">
@@ -34,7 +35,7 @@ console.log(Content);
           </GradientContainer>
         </div>
         <div class="!mt-2 mb-4">
-          <span>Feb 2, 2025</span>
+          <span><FormatDate {date} /></span>
         </div>
       </div>
     </div>
