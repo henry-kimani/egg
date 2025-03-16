@@ -1,5 +1,6 @@
 export default {
   start: "Getting Started",
+  "docs": "Documentation",
   // values used in the sidebar
   year1: "Year One",
   "one.ccs100": "CCS 100: Introduction to Criminology",
