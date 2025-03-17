@@ -42,7 +42,9 @@ const { title, description } = Astro.props;
     </nav>
 
     <main>
-      <slot />
+      <div>
+        <slot />
+      </div>
     </main>
 
     <footer>
@@ -67,16 +69,12 @@ const { title, description } = Astro.props;
 * {
   font-family: 'TiemposTextRegular';
   margin: 0;
+  line-height: 1.7em;
+  font-size: 19px;
   padding: 0;
   box-sizing: border-box;
 }
-
-h1 {
-  font-weight: 700;
-}
-
 nav {
-  background-color: red;
   height: 3rem;
   display: flex;
   justify-content: space-between;
@@ -84,13 +82,54 @@ nav {
   margin: 0 1rem;
 }
 
-.logo-con {
-  display: grid;
+h1 {
+  font-weight: 700;
 }
 
 ul {
-  display: flex;
+  display: grid;
+  grid-auto-flow: column;
   list-style-type: none;
+  place-items: center;
+  gap: 1rem;
+}
+
+a {
+  color: #333;
+}
+a:hover {
+  text-decoration-line: none;
+  color: orangered;
+}
+
+.site-name {
+  font-weight: 700;
+  font-size: 1.5em;
+  color: orangered;
+}
+
+.logo-con {
+  display: grid;
+  grid-auto-flow: column;
+  place-items: center;
+  gap: .5rem
+}
+
+main, footer {
+  color: #242424;
+  display: grid;
+  place-items: center;
+  padding: 0 1rem;
+}
+
+main div {
+  margin-bottom: 3rem;
+}
+
+@media (min-width: 700px) {
+  main div {
+    width: 670px;
+  }
 }
 
 </style>
