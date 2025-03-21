@@ -6,7 +6,6 @@ import { sidebar } from "./astro.sidebar";
 import { devServerFileWatcher } from "./config/dev-server-file-watcher";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
-import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
@@ -48,6 +47,5 @@ export default defineConfig({
       favicon: "egglogo.svg",
 		}),
 		tailwind({ applyBaseStyles: false }),
-    react()
 	],
 });

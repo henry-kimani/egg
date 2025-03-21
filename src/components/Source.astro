@@ -1,0 +1,27 @@
+---
+interface Props {
+  href?: string;
+  name: string; // Quote: name of the person, Ref: name of that reference
+  type: "quote" | "ref" | "readmore";
+}
+
+const { href, name, type } = Astro.props;
+---
+
+<i class="text-end">
+  {
+    type === "ref" ? (
+      <p>
+        Source:&nbsp;
+        <a href={href}>{name}</a>
+      </p>
+    ) : type === "quote" ? (
+      <p>~{name}</p>
+    ) : (
+      <p>
+        ∴&nbsp;
+        <a href={href}>{name}</a>
+      </p>
+    )
+  }
+</i>

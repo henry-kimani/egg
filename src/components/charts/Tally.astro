@@ -1,0 +1,21 @@
+---
+interface Props {
+  bars: number;
+}
+
+const tallyBars = ["|", "||", "|||", "||||"];
+
+const { bars } = Astro.props;
+---
+
+<div>
+  {bars <= 4 ? (
+      <span>{tallyBars[bars - 1]}</span>
+    ) : (
+      <span class="relative">
+        <span>{tallyBars[bars - 2]}</span>
+        <div class="absolute w-0.5 h-8 -top-1 right-1/2 rotate-90 bg-[var(--sl-color-gray-3)]" />
+      </span>
+    )
+  }
+</div>

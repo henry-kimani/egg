@@ -4,8 +4,7 @@ description: Data can be presentened in tallys, bar graphs, histrograms and more
 sidebar:
   order: 3
 ---
-import Tally from "@components/charts/Tally";
-import Histogram from "@components/charts/Histogram";
+import Tally from "@components/charts/Tally.astro";
 import { Steps } from "@astrojs/starlight/components";
 import SimpleLatex from "@components/math/SimpleLatex.astro";
 
@@ -86,7 +85,7 @@ easier to comprehend.
 This includes:
 1. Pie charts
 2. Bar charts
-3. Histrograms
+3. Histograms
 4. Frequency polygon
 5. Cumulative freq graph
 
@@ -126,7 +125,6 @@ export function computeHeight(freq, classInterval = 5) {
 
 <br />
 
-<Histogram classRange="100-104" classInterval={5} frequency={histogramFreq} />
 
 ### Frequency Polygon
 
