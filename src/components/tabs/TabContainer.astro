@@ -3,7 +3,11 @@ const { index } = Astro.props;
 ---
 {/* This component houses the  */}
 {/* container for the headers(tabs) */}
-<div class:list={["tab-container"]} class="bg-[--sl-color-gray-6] dark:bg-[--sl-color-gray-6] md:dark:bg-[#1a1816] rounded-md">
+<div
+  class:list={["tab-container"]} 
+  class="bg-[--sl-color-gray-6] dark:bg-[--sl-color-gray-6] md:dark:bg-[#1a1816] rounded-md"
+  role="tablist"
+>
   <slot name="tab-list" />
 </div>
 
@@ -22,19 +26,17 @@ const { index } = Astro.props;
   const panels = document.querySelectorAll(".tab-panel");
 
   tabs.forEach((tab, index) => {
-    // Show the panel for the initial tab
+    // Show the panel of the initial tab
     if (tab.getAttribute('aria-selected') === "true") {
        panels[index].hidden = false;
     }
 
     tab.addEventListener("click", (event) => {
-      /**
-       * Hide all the panels and only show the panel of the clicked tab
-       */
+      /* Hide the panels of all the tabs and reset the styles of the tabs */
       tabs.forEach((tab) => tab.setAttribute("aria-selected", false));
       panels.forEach((panel) => (panel.hidden = true));
 
-      // set the new values
+      // Show the click tab
       const activeTab = event.target;
       activeTab.setAttribute("aria-selected", true);
       panels[index].hidden = false;

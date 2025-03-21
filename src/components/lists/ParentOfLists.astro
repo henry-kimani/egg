@@ -1,0 +1,21 @@
+---
+/* Render a list of li elements */
+interface Props {
+  type: "ordered" | "unordered";
+  classes?: string;
+}
+
+const { classes, type } = Astro.props;
+---
+
+{
+  type === "ordered" ? (
+    <ol class:list={[`p-0 !mt-2`, classes]}>
+      <slot />
+    </ol>
+  ) : (
+    <ul class:list={[`p-0 !mt-2`, classes]}>
+      <slot />
+    </ul>
+  )
+}

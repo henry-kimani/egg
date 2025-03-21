@@ -1,0 +1,46 @@
+---
+import type { StarlightIcon } from '@astrojs/starlight/types';
+import type { ThemeVariants } from '@lib/themes';
+import { Icon } from "@astrojs/starlight/components";
+import { cn } from '@lib/utils';
+import { buttonThemes } from '@lib/themes';
+
+interface Props {
+  id?: string;
+  classes?: string;
+  icon: StarlightIcon | undefined;
+  theme: ThemeVariants;
+  variant: "primary" | "secondary" | "minimal";
+  buttonLabel?: string;
+  iconLabel?: string;
+}
+
+const { id, classes, icon, theme, variant, buttonLabel, iconLabel } = Astro.props;
+---
+
+<button 
+  {id}
+  aria-label={buttonLabel}
+  class:list={cn(buttonThemes(theme), [classes],
+    `cursor-pointer px-3 py-1 focus:ring focus:outline-none focus:ring-[var(--sl-color-accent)] focus:ring-offset-2 dark:focus:ring-offset-[var(--sl-color-gray-5)]`,
+    {
+      "flex gap-2 items-center rounded-md bg-[var(--sl-color-accent)] text-[var(--sl-color-black)] dark:bg-[var(--sl-color-accent-high)]": variant === "primary",
+      "": variant === "secondary",
+      "bg-[var(--sl-color-gray-7)] hover:text-[var(--sl-color-accent)] dark:hover:text-[var(--sl-color-accent-high)]": variant === "minimal"
+    }
+  )}
+>
+  <slot />
+  <Icon class='grid place-items-center' name={icon || "pencil"} label={iconLabel} />
+</button>
+
+<script>
+// Script to open and close the modal
+const modal = document.getElementById("dialog") as HTMLDialogElement;
+const closeModalButton = document.getElementById("close-modal-button") as HTMLButtonElement;
+const openModalButton = document.getElementById("open-modal-button") as HTMLButtonElement;
+
+closeModalButton.onclick = () => { modal.close(); };
+openModalButton.onclick = () => { modal.showModal(); };
+</script>
+

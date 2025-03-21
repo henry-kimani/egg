@@ -1,96 +1,55 @@
 ---
-import type { ImageMetadata } from "astro";
-import { LinkButton } from "@astrojs/starlight/components";
-import TwoColumnLayout from "@/layouts/TwoColumnLayout.astro";
-import ImageContain from "@/components/ui/ImageContain.astro";
-import ContentStack from "@/components/ui/ContentStack.astro";
+import TitleAndDescriptionCard from "../TitleAndDescriptionCard.astro";
+import ThemedImageContainer from "../ThemedImageContainer.astro";
 
-const { hero } = Astro.locals.starlightRoute.entry.data;
-const { title, image, tagline, actions } = hero!;
+const { data } = Astro.locals.starlightRoute.entry;
+const { title=data.title, tagline, image, actions=[] } = data.hero || {};
 
-// Set the image default attributes
-const imageAttrs = {
-  loading: "eager" as const, // load ASAP
-  decoding: "async" as const,
-  width: 400,
-  height: 400,
-  alt: image?.alt || "",
-};
-
-// Support dark theme and light theme images
 let darkImage: ImageMetadata;
 let lightImage: ImageMetadata;
 
-/**
- * Since Image is a Union type, with dark and light theme image, we separate
- * as desired below
-*/
-
-if (image) {
+if (image ) {
   if ("dark" in image) {
-    // When the two variants are passed
     darkImage = image.dark;
     lightImage = image.light;
   }
 }
 
-const imageData = {
-  dark: darkImage,
-  light: lightImage,
-  ...imageAttrs
-};
 ---
+<div class:list={["hero grid gap-7 md:gap-0 sm:grid-cols-2"]}>
+  <TitleAndDescriptionCard
+    title={title},
+    description={tagline || ""}
+    align="hero"
+    linkButtons={
+    actions.map(({ text: name, link: href, variant })=> ({ name, href, variant, icon: "right-arrow", theme: "simple" }))
+    }
+    parentClasses="stack" 
+  />
+  {/*
+    The styles for class `.stack` are in the Component.
+    Placing the styles here does not work.
+    Also, applying the class stack in the component, applies the styles everywhere
+    the component is used. And this is not the desired outcome.
+    The styles are to be scope only in that component
+  */}
 
-<TwoColumnLayout
-  class:list={['hero']} 
->
-
-  {/* Title and tagline */}
-  <ContentStack isCard={false}> 
-    <h1 set:html={title} />
-    <div set:html={tagline} class:list={'tagline'} />
-    <div>
-      {
-        actions.map(
-          ({ attrs, icon, link: href, text, variant }) => (
-            <LinkButton
-              {href} {variant} icon={icon?.name} {...attrs}
-            >
-              {text}
-              {icon?.html && <Fragment set:html={icon.html} />}
-            </LinkButton>
-          )
-        )
-      }
-    </div>
-  </ContentStack>
-
-  {/* Image */}
-  <ImageContain {...imageData} />
-
-</TwoColumnLayout>
+  <article class="grid place-items-center">
+    {
+      darkImage && <ThemedImageContainer
+        dark={darkImage || "/"}
+        light={lightImage || "/"}
+        alt={image?.alt || ""}
+        loading="eager"
+      />
+    }
+  </article>
+</div>
 
 <style>
-  /* Adding padding to lg: screen sizes */
-  @media (min-width: 1100px) {
-    .hero {
-      padding-block: clamp(1.5rem, calc(1rem + 10vmin), 5rem);
-    }
-  } 
-
-  .stack {
-    gap: clamp(1rem, calc(1.5rem + 1vw), 2rem);
+@media (min-width: 1100px) {
+  .hero {
+    padding-block: clamp(1.5rem, calc(1rem + 10vmin), 5rem);
   }
-
-
-  h1 {
-    font-size: clamp(var(--sl-text-5xl), calc(1rem + 5vw), var(--sl-text-6xl));
-    line-height: var(--sl-line-height-headings);
-    font-weight: 700;
-    color: var(--sl-color-white)
-  }
-  /* Scale the tagline dynamically */
-  .tagline {
-    font-size: clamp(var(--sl-text-base), calc(0.0625rem + 2vw), var(--sl-text-xl));
-  }
+}
 </style>

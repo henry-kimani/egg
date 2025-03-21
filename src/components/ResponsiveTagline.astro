@@ -1,0 +1,25 @@
+---
+/* Render a responisive paragraph, 
+ * If its a hero, render it responsive otherwise stick to the defaults
+*/
+
+interface Props {
+  rawHtml?: string;
+  isHero: boolean
+}
+
+const { rawHtml, isHero } = Astro.props;
+---
+{ isHero ?
+  <p class="hero" set:html={rawHtml}>
+    <slot />
+  </p>
+:
+  <p>{rawHtml}</p>
+}
+
+<style>
+.hero {
+  font-size: clamp(var(--sl-text-base), calc(0.0625rem + 2vw), var(--sl-text-xl));
+}
+</style>

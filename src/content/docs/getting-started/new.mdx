@@ -1,16 +1,52 @@
 ---
-title: Release Notes
-description: This is how to get started with egg
+title: What's New? 👀
+description: Checkout whats new in egg. 
 tableOfContents: false
-sidebar: 
-  label: Whats New? 👀
-banner: 
-    content: |
-        Don't know where to start? Check out the 
-        <a href="/getting-started/tutorial">Tutorial!</a>
 ---
-import RenderReleaseNotesMd from "@/components/RenderReleaseNotesMd.astro";
-import { Badge } from '@astrojs/starlight/components';
 
-<RenderReleaseNotesMd overview={true} />
+import { LinkButton } from "@astrojs/starlight/components";
+import TitleAndDescriptionCard from "@components/TitleAndDescriptionCard.astro";
+import WhatsNewPageHeader from "@components/whatsnewpage/WhatsNewPageHeader.astro";
+import GradientContainer from "@components/GradientContainer.astro";
 
+<WhatsNewPageHeader />
+
+<div class="sm:flex grid gap-4">
+  <GradientContainer
+    color="blue"
+  >
+    <TitleAndDescriptionCard
+      title="Tutorial"
+      description="New here? Learn how to nagivate in Egg!"
+      align="start"
+      profile="📘"
+      linkButtons={[{
+        name:"Start",
+        href:"/docs/tutorial",
+        variant:"primary",
+        icon:"rocket",
+        theme:"blue" 
+      }]}
+      parentClasses="p-4 !text-white"
+    />
+  </GradientContainer>
+  <GradientContainer
+    color="green"
+    classes="!m-0"
+  >
+    <TitleAndDescriptionCard
+      title="Anouncements"
+      description="Get to what we are planning about Egg's future."
+      align="start"
+      profile="🔊"
+      linkButtons={[{
+        name:"Inform Me",
+        href:"/anouncements",
+        variant:"primary",
+        icon:"approve-check-circle",
+        theme:"green"
+      }]}
+      parentClasses="p-4 !text-white"
+    />
+  </GradientContainer>
+</div>

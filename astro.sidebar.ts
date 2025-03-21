@@ -6,7 +6,9 @@ import { group } from './config/sidebar';
 
 export const sidebar = [
   group("start", {
-    items: [ '', 'getting-started/new', 'getting-started/tutorial'],
+    items: [ '', 'getting-started/new', 
+      group("docs", { autogenerate: { directory: "docs", collapsed: true } })
+    ],
   }),
   group("year1", {
     items: [

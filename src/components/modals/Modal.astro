@@ -1,0 +1,26 @@
+---
+import VariantButton from "@components/buttons/VariantButton.astro"
+---
+<div class="w-full">
+  <dialog 
+    aria-modal="true" 
+    id="dialog"
+    class=`z-30 absolute w-full md:w-1/2 border-4 border-[var(--sl-color-accent)] dark:border-[var(--sl-color-accent-high)]
+      dark:bg-[var(--sl-color-gray-6)] backdrop:backdrop-blur-md  translate-y-[50%] translate-x-4
+      md:translate-x-[50%]`
+  >
+    <VariantButton
+      icon="close"
+      theme="simple"
+      variant="primary"
+      id="close-modal-button"
+      classes="absolute w-9 h-9 right-4"
+      buttonLabel="close pop-up"
+      iconLabel="close pop-up"
+    />
+    {/* The scripts to open and close the modal are in the VariantButton component
+    since for it to work it has to be in that scope. and I didn't want to make 
+    the script global */}
+    <slot />
+  </dialog>
+</div>

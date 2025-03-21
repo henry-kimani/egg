@@ -10,16 +10,16 @@ https://tailwindcss.com/docs/adding-custom-styles#using-css-and-layer
 @layer base {
   :root {
     --radius: 0.5rem;
-    --sl-font: 'DejaVu Sans', sans-serif;
+    --sl-font: 'Dejavu Sans', sans-serif;
   }
   nav, h4 {
-    font-family: 'Quicksand Variable', sans-serif;
+    font-family: 'QuickSand Variable', sans-serif;
   }
   h1, h2, h3 {
     font-family: 'Fredoka Variable', sans-serif;
   }
   strong {
-    font-family: "Noto Sans Lao Variable", sans-serif;
+    font-family: 'Noto Sans Lao Variable', sans-serif;
     letter-spacing: .01rem;
     font-weight: 800;
   }

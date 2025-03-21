@@ -1,53 +1,102 @@
 ---
-import { Aside, CardGrid, Card, LinkButton, Icon } from "@astrojs/starlight/components";
+import StarlightSplashLayout from "@layouts/StarlightSplashLayout.astro";
+import ThemedImageContainer from "@components/ThemedImageContainer.astro";
+import VariantLinkButton from "@components/buttons/VariantLinkButton.astro";
+import EggLogo from "@assets/egglogo.png";
 
+const title = 'ABOUT';
+const description = `Egg is an online platform, where you can get access to 
+  criminology notes from any where in the world.`;
 ---
 
-### What is Egg?
-First, I know its a funny name, but in the future, you will understand why (as 
-the application evolves).
+<StarlightSplashLayout {title} {description}>
+  <div class="w-full grid place-items-center">
+    <div class="max-w-[45rem] text-lg">
 
-Lets answer the question, What is Egg? Egg is an online platform for reading
-notes. What kind of notes you ask. Well, it consists of notes involving the 
-science, Criminilogy. The source of this notes are from the Lectures of the 
-University of Murang'a.
+      <h1 class="text-center">Your Criminology Notes Hub</h1>
 
-<Aside type='caution'>
-This site has no ties, whatsoever with the Lecturers of the University. 
-Meaning, the content uploaded here is not instructed by any Official of the 
-University.
-</Aside>
+      <div class="grid gap-4 place-items-center bg-orange-500/25">
+        <ThemedImageContainer
+          dark={EggLogo}
+          light={EggLogo}
+          alt="Egg's logo"
+          loading="eager"
+        />
+      </div>
 
-### Who uploads the content?
+      <article>
+        <h2>Problem and Solution</h2>
+        <article aria-label="The pain of users before egg">
+          <h3>The Pain</h3>
+          <p>
+            As a fellow criminology student, I know the pain of last minute note 
+            hunting. The frantic searches, the missed details, the feeling of being
+            overwhelmed, especially as exams near - it's a shared experience.
+          </p>
+          <p>
+            I observed my classmates, including myself, constantly scrambling for 
+            criminology lecture notes. "It doesn't have to be this way".
+          </p>
+          <p>
+            All I wanted is all my notes in one convenient place, neatly organized 
+            and I can access them from anywhere in the world without the hustle of 
+            keeping track of all my physical exercise books.
+          </p>
+        </article>
 
-The contents of this site are uploaded by a student taking the course. As the
-course progresses, content will be added and updated as soon as possible.
+        <article aria-label="The solution by Egg to the pain encountered by users">
+          <h3>The Solution</h3>
+          <p>
+            That is why I created Egg, a centralized platform where you can access 
+            comprehensive criminology notes for all four years of your degree neatly
+            organized. From every unit to every topic. Just perfect for exam an prep.
+          </p>
+        </article>
 
-<Aside title='Note: Not cloned notes!' type='note'>
-It would be worth noting, that the contents of this site are not a clone of the 
-lecture notes, but a modification. Meaning, the contents of the site are:
-- **Revised** - The lecture notes, have been reconsidered and ammended.
-- **Extended** - Added upon (added other useful information).
-- **Modified** - Made adjustments where necessary.
-</Aside>
+      </article>
 
-<CardGrid>
-	<Card title='Why make Egg?' icon='star'>
-		Egg is made to help students of the University taking the course, Bachelor of 
-		Science in Criminology and Security Studies or anyone in general who is fasinated
-		by the Science of Criminology and would like to [learn more about it.](/getting-started/new)
-	</Card>
+      <article class="!mt-14">
+        <h2>More about Egg</h2>
+        <p>
+          Egg was created on Mar 16, 2025.
+        </p>
+        <p>
+          Egg is packed with alot of features to help you navigate and have an easy 
+          time while studing. It features dark theme for all nighters, (we value
+          your eyes) among others. Check <a href="/docs/features">our documentation</a> 
+          for more in depth details.
+        </p>
+      </article>
 
-  <Card title='How to get Started?' icon='rocket'>
-    Egg features a tutorial to help you understand its interface and how the 
-    content is organised.
+      <article class="!mt-14">
+        <h2>Our Motive</h2>
+        <p>
+          As the Egg team, we are committed to continously updating and improving
+          the site to meet your needs. Your feedback is valuable and we encourage
+          you to share your suggestions. It helps us improve you experience and fuel
+          our innovation.
+          <br>
+          Also, be sure to read our <a href="/privacy-policy">Privacy Policy</a>
+          and <a href="/terms-of-use">Terms of Use</a>.
+        </p>
+      </article>
 
-    <LinkButton href={'/getting-started/tutorial'}>Tutorial<Icon name="right-arrow" /></LinkButton>
+      <p>
+        Say goodbye to the stress of note hunting and hello to efficient, effective
+        studying. 
+      </p>
 
-  </Card>
-</CardGrid>
 
-<Card title='❤️ Here for you ❤️' >
-Be rest assured, you are getting the best notes possible, that is readable, in one place 
-and can be accessed from anywhere in the world. 
-</Card>
+      <article class="grid place-items-center text-center h-36 !my-20 !md:m-32">
+        <h3>Finally, refief from the stress of note hunting.</h3>
+        <VariantLinkButton
+          theme="simple"
+          variant="primary"
+          icon="right-arrow"
+          href="/getting-started/new"
+        >Start Learning</VariantLinkButton>
+      </article>
+
+    </div>
+  </div>
+</StarlightSplashLayout>

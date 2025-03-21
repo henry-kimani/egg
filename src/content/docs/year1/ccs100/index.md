@@ -5,6 +5,7 @@ sidebar:
     badge: 
         text: New
         variant: note
+draft: true
 ---
 
 This is an introduction to Criminal Justice System

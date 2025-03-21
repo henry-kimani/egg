@@ -1,0 +1,20 @@
+---
+import SocialIcons from "@astrojs/starlight/components/SocialIcons.astro";
+import ThemeSelect from "@astrojs/starlight/components/ThemeSelect.astro";
+---
+
+<div class="mobile-preferences sl-flex">
+  <div class="sl-flex social-icons">
+    <SocialIcons />
+  </div>
+  <ThemeSelect />
+</div>
+
+<style>
+.social-icons {
+  margin-inline-end: auto;
+  gap: 1rem;
+  align-items: center;
+  padding-block: 1rem;
+}
+</style>

@@ -1,0 +1,63 @@
+---
+import Default from "@astrojs/starlight/components/Footer.astro";
+import GridThreeColumnLayout from "@layouts/GridThreeColumnLayout.astro";
+import LinkButton from "node_modules/@astrojs/starlight/user-components/LinkButton.astro";
+import FeedbackForm from "@components/forms/FeedbackForm.astro";
+import ParentOfLists from "@components/lists/ParentOfLists.astro";
+import CustomizedLiElement from "@components/lists/CustomizedLiElement.astro";
+import ThemedAnchor from "@components/ThemedAnchor.astro";
+
+const footerLinks = [
+  { name: "More About Egg", href: "/about" },
+  { name: "Privacy Policy", href: "/privacy-policy"},
+  { name: "Terms of Use", href: "/terms-of-use"},
+  { name: "Release Notes Index", href: "/release-notes" }
+];
+
+const routeId = Astro.locals.starlightRoute.id;
+
+const isHomePage = routeId === ""; 
+const isAboutPage = routeId === "about";
+const isReleaseNoteIndexPage = routeId.startsWith("release-notes");
+---
+
+{
+isHomePage || isAboutPage || isReleaseNoteIndexPage ? (
+<footer class="grid h-64 mt-20">
+  <GridThreeColumnLayout>
+    {/* ABOUT */}
+    <div>
+      <h2>ABOUT</h2>
+      <ParentOfLists type="unordered">
+        {footerLinks.map(({ name, href }) => (
+        <CustomizedLiElement custom={false}>
+          <ThemedAnchor {name} {href} />
+        </CustomizedLiElement>
+        ))}
+      </ParentOfLists>
+    </div>
+
+
+    {/* SOCIALS */}
+    <div>
+      <h2>SOCIALS</h2>
+      <div class="flex gap-3 mt-3">
+        <LinkButton href="https://github.com/henry-kimani" icon="github" variant="secondary">Github</LinkButton>
+        <LinkButton href="mailto:ariphharts@gmail.com" icon="email" variant="secondary">Email</LinkButton>
+      </div>
+    </div>   
+
+
+    {/* FEEDBACK */}
+    <div class="sm:col-span-2 lg:col-span-1">
+      <FeedbackForm />
+    </div>
+  </GridThreeColumnLayout>
+  <span class="grid place-items-center text-[var(--sl-color-gray-3)] m-10">Brought to you by, Egg 🥚</span>
+  </footer>
+  ): (
+    <Default>
+      <slot />
+    </Default>
+  )
+}

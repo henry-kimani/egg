@@ -1,0 +1,137 @@
+---
+title: Tutorial 📘
+description: Get started with out tutorial
+tableOfContents: false
+---
+
+import { Tabs, TabItem, Icon, Steps } from "@astrojs/starlight/components";
+import { Image } from "astro:assets";
+import ContentStructureLight from "@assets/tutorial/ContentStructureLight.png";
+import ContentStructureDark from "@assets/tutorial/ContentStructureDark.png";
+import TopBarLightMobile from "@assets/tutorial/TopBarLightMobile.png";
+import TopBarDarkMobile from "@assets/tutorial/TopBarDarkMobile.png";
+import MainContentLightMobile from "@assets/tutorial/MainContentLightMobile.png";
+import MainContentDarkMobile from "@assets/tutorial/MainContentDarkMobile.png";
+import AsideButtonLightMobile from "@assets/tutorial/AsideButtonLightMobile.png";
+import AsideButtonDarkMobile from "@assets/tutorial/AsideButtonDarkMobile.png";
+import ThemedImageContainer from "@components/ThemedImageContainer.astro";
+
+Hello There! Well, am guessing you are new here. Lets dive into it.
+
+Here, you will understand the layout of Egg and how to navigate in both Mobile 
+or PC.
+
+### Choose your device
+
+<Tabs>
+  <TabItem label="📱 Mobile">
+    The User Interface has four main part.
+    - Top Bar
+    - Side Navigation Bar
+    - Main Content
+    - Page Navigator
+
+    #### 1. Top Bar
+
+    <ThemedImageContainer
+      dark={TopBarDarkMobile}
+      light={TopBarLightMobile}
+      alt="a section of the egg's topbar"
+      loading="lazy"
+    />
+
+    It is located at the top of the site. It has:
+
+    1. The site's logo, in this case Egg.
+    2. A search Icon, to quickly search the Unit or Topic of interest.
+    3. A feedback button, to submit feedback.
+    4. A button to access the <a href="#side-navigation-bar">SideNavigationBar</a>.
+    
+    #### 2. Side Navigation Bar
+
+    You can use it switch to any Year you desire. Each Year has its corresponding
+    Units and Topics. 
+
+    On the <a href="#top-bar">Top Bar</a>, at the far right, press
+
+      <div class="w-10">
+        <ThemedImageContainer
+          dark={AsideButtonDarkMobile}
+          light={AsideButtonLightMobile}
+          alt="button to open the aside"
+          loading="lazy"
+        />
+      </div>
+
+    to access it.
+
+    #### 3. Main Content
+
+    <ThemedImageContainer 
+      dark={MainContentDarkMobile}
+      light={MainContentLightMobile}
+      alt="a section of egg's main content in mobile view"
+    />
+
+    This is the first thing you see in the site. Probably where you will spend 
+    most of your time.
+
+    #### 4. Page Navigator
+
+    You can use it to jump to various headings in the Main Content or just 
+    glance at the sub topics of the Unit.
+
+    You can access it by pressing the tab just below the <a href="#top-bar">Top Bar</a>, labelled 
+    "On this page".
+
+
+  </TabItem>
+
+  <TabItem label="💻 PC">
+
+    <Image
+      src={ContentStructureDark}
+      alt="the layout of egg in pc or large screens"
+      loading="lazy"
+      class="light:sl-hidden"
+    />
+    <Image
+      src={ContentStructureLight}
+      alt="the layout of egg in pc or large screens"
+      loading="lazy"
+      class="dark:sl-hidden"
+    />
+
+    The User Interface is divided into four main part.
+    - Side Navigation Bar
+    - Top Bar
+    - Main Content
+    - Page Navigator
+
+    #### 1. Side Navigation Bar
+
+    It is located on the left. You can use it to switch to any Year you desire.
+    Also, you can navigate to any Unit and its corresponding Topics.
+
+    #### 2. Top Bar
+
+    The Top Bar on the top of the site, has:
+    1. On the left, is the name of site, in this case Egg.
+    2. In the middle, is a search tab to search for any unit or topic of interest.
+    3. On the right, a select menu to change the theme of the site. We care about
+    your eyes.
+
+    #### 3. Main Content
+
+    This is the middle section of the page. It is where the content lies and
+    where you will be spending most of your time.
+
+    #### 4. Page Navigator
+
+    It is the section of the right, labelled by "On this page". You can use it
+    it to jump to various headings in the Main Content or just glance at the 
+    sub topics of a topic.
+
+  </TabItem>
+</Tabs>
+

@@ -1,0 +1,136 @@
+---
+import Header from '@components/starlight/Header.astro';
+import Footer from '@components/starlight/Footer.astro';
+import { Image } from 'astro:assets';
+import Egglogo from "@assets/egglogo.png";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{title} | Egg</title>
+    <meta name="description" content={description}>
+    <meta name="viewport" content="width=device-width, intial-scale=1.0">
+  </head>
+  <body>
+
+    <nav>
+      <div class="logo-con">
+        <div class="logo-img">
+          <Image 
+            src={Egglogo} 
+            alt={"The logo of Egg"} 
+            loading={"eager"} 
+            width={40}
+            height={40}
+          />
+        </div>
+        <span class="site-name">Egg</span>
+      </div>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/docs/features">Docs</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <div>
+        <slot />
+      </div>
+    </main>
+
+    <footer>
+      <ul>
+        <li><a href="/terms-of-use">Terms of Use</a></li>
+        <li><a href="/privacy-policy">Privacy Policy</a></li>
+      </ul>
+    </footer>
+
+  </body>
+</html>
+
+
+<style>
+@font-face {
+  font-family: "TiemposTextRegular";
+  src: url("/fonts/TestTiemposText-Regular.otf");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+* {
+  font-family: 'TiemposTextRegular';
+  margin: 0;
+  line-height: 1.7em;
+  font-size: 19px;
+  padding: 0;
+  box-sizing: border-box;
+}
+nav {
+  height: 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 1rem;
+}
+
+h1 {
+  font-weight: 700;
+}
+
+ul {
+  display: grid;
+  grid-auto-flow: column;
+  list-style-type: none;
+  place-items: center;
+  gap: 1rem;
+}
+
+a {
+  color: #333;
+}
+a:hover {
+  text-decoration-line: none;
+  color: orangered;
+}
+
+.site-name {
+  font-weight: 700;
+  font-size: 1.5em;
+  color: orangered;
+}
+
+.logo-con {
+  display: grid;
+  grid-auto-flow: column;
+  place-items: center;
+  gap: .5rem
+}
+
+main, footer {
+  color: #242424;
+  display: grid;
+  place-items: center;
+  padding: 0 1rem;
+}
+
+main div {
+  margin-bottom: 3rem;
+}
+
+@media (min-width: 700px) {
+  main div {
+    width: 670px;
+  }
+}
+
+</style>
+

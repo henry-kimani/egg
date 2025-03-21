@@ -1,0 +1,27 @@
+---
+/* Render responsive headings is its in a hero */
+
+interface Props {
+  rawHtml?: string;
+  isHero: boolean;
+}
+
+const { rawHtml, isHero } = Astro.props;
+
+---
+{ isHero ?
+  <h1 set:html={rawHtml} />
+:
+  <h2>
+    <slot />
+  </h2>
+}
+
+<style>
+h1 {
+  font-size: clamp(var(--sl-text-5xl), calc(1rem + 5vw), var(--sl-text-6xl));
+  line-height: var(--sl-line-height-headings);
+  font-weight: 700;
+  color: var(--sl-color-white);
+}
+</style>

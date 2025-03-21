@@ -1,86 +1,98 @@
 ---
 title: Home 🛖
-description: Learn criminology taught in universities. Featuring oranized content, for every year
+description: Learn criminology taught in universities. Featuring organized content, for every year
   and unit. Get started for free!
 template: splash
 head:
   # custom title
   - tag: title
-    content: Home | Egg
+    content: Egg | Learn Criminology with Ease
 hero:
   title: |
     Criminology Notes <br class="hidden sm:block md:hidden" /> in One Place
-  tagline: Tired of scrabling for criminology notes?<br class=" md:block" /> Get
+  tagline: Tired of scrabling for Criminology Notes?<br class=" md:block" /> Get
     organized notes for every <br class="hidden md:block" /> year and unit, for free!
   image:
-    alt: "An example of egg's organized content"
+    alt: "an example of egg's organized content"
     light: ../../assets/hero/HeroLight.png
     dark: ../../assets/hero/HeroDark.png
   actions:
     - text: Start Learning
       link: /getting-started/new
       icon: right-arrow
+      variant: primary
 ---
 
-import { 
-	Card, CardGrid, Aside, LinkButton, Icon
-} from '@astrojs/starlight/components';
+import ImageDescriptionCard from "@components/ImageDescriptionCard.astro";
+import TitleAndDescriptionCard from "@components/TitleAndDescriptionCard.astro";
+import IllustrationsDark from "@assets/hero/IllustrationsDark.png";
+import IllustrationsLight from "@assets/hero/IllustrationsLight.png";
+import MathEquationsLight from "@assets/hero/MathEquationsLight.png";
+import MathEquationsDark from "@assets/hero/MathEquationsDark.png";
+import OrganizedContentLight from "@assets/hero/OrganizedContentLight.png";
+import OrganizedContentDark from "@assets/hero/OrganizedContentDark.png";
+import GridThreeColumnLayout from "@layouts/GridThreeColumnLayout.astro";
+import ResponsiveHeading from "@components/ResponsiveHeading.astro";
 
-import OrganizedContentLight from "../../assets/hero/OrganizedContentLight.png"
-import OrganizedContentDark from "../../assets/hero/OrganizedContentDark.png"
-import MathEquationsLight from "../../assets/hero/MathEquationsLight.png"
-import MathEquationsDark from "../../assets/hero/MathEquationsDark.png"
-import IllustrationsLight from "../../assets/hero/IllustrationsLight.png"
-import IllustrationsDark from "../../assets/hero/IllustrationsDark.png"
-import InfoCard from "@/components/ui/InfoCard.astro";
-import CardGridLayout from "@/layouts/CardGridLayout.astro";
-import ProfileAndName from "@/components/ui/ProfileAndName";
-import TextHero from "@/layouts/TextHero.astro";
+<GridThreeColumnLayout>
+  <ImageDescriptionCard
+    image={{
+      dark: OrganizedContentDark,
+      light: OrganizedContentLight,
+      alt: "Organized Content for each year and unit",
+      loading: "eager",
+    }}
+    description={{
+      title: "Organized Content",
+      description: "Notes are organized by year, each year having its corresponding units.",
+      profile: "📜",
+    }}
+  />
 
+  <ImageDescriptionCard
+    image={{
+      dark: IllustrationsDark,
+      light: IllustrationsLight,
+      alt: "Illustrations throught charts, diagrams and more",
+      loading: "eager",
+    }}
+    description={{
+      title: "Crispy Illustrations",
+      description: "Easy to understand illustrations using charts, diagrams and more!",
+      profile: "🍕",
+    }}
+  />
 
-<CardGridLayout>
-  <InfoCard
-    dark={OrganizedContentDark}
-    light={OrganizedContentLight}
-    alt="Organized content for year and unit"
-    loading="eager"
-  >
-    <ProfileAndName emoji="📜" profileName="Organized Content" />
-    <span class="mt-3">
-      Notes are organized by year, each year having its corresponding units.
-    </span>
-  </InfoCard>
-  <InfoCard
-    dark={IllustrationsDark}
-    light={IllustrationsLight}
-    alt="Illustrations through charts, diagrams and more"
-  >
-    <ProfileAndName emoji="🍕" profileName="Crispy Illustrations" />
-    <span class="mt-3">
-      Easy to understand Illustrations throught charts, diagrams and more.
-    </span>
-  </InfoCard>
-  <InfoCard
-    dark={MathEquationsDark}
-    light={MathEquationsLight}
-    alt="Legible mathematics equations"
-    loading="eager"
-    class="sm:col-span-2 sm:flex sm:pb-3 lg:pb-0 lg:block lg:col-span-1"
-    contClasses="sm:border-t-0 sm:border-l-2 sm:border-[var(--sl-color-gray-5)] lg:border-t-2 lg:border-l-0 dark:border-0"
-  >
-    <ProfileAndName emoji="👌" profileName="Clear Math Equations" />
-    <span class="mt-3">
-      Legible mathematics equations, easy to understand.
-    </span>
-  </InfoCard>
-</CardGridLayout>
-<TextHero
-  tagline="Made by a Comrade for Comrades"
-  buttonText="Start Learning"
-  href="/getting-started/new"
-  icon="right-arrow"
->
-  Never Miss A Criminology Lecture Again
-</TextHero>
+  <ImageDescriptionCard
+    image={{
+      dark: MathEquationsDark,
+      light: MathEquationsLight,
+      alt: "Legible mathematics equations",
+      loading: "eager",
+      classes: "sm:border-b-0 sm:border-r-2 lg:border-b-2 lg:border-r-0 border-[var(--sl-color-gray-5)]"
+    }}
+    description={{
+      title: "Clear Math Equations",
+      description: "Legible mathematics equations, easy to understand.",
+      profile: "👌",
+    }}
+    conClasses="sm:col-span-2 sm:flex lg:grid lg:col-span-1"
+  />
+</GridThreeColumnLayout>
 
+<section class="grid place-items-center text-center h-96 !mt-20 !md:m-32">
+  <TitleAndDescriptionCard
+    title="Never Miss a Criminology Lecture Again"
+    description="Made by a Comrade for Comrades"
+    align="center"
+    linkButtons={[{
+      name: "Start Learning",
+      href: "/getting-started/new",
+      icon: "right-arrow",
+      variant: "primary",
+    }]}
+  />
+</section>
+
+{/* The footer is rendered by starlight and does not need to be included here. */}
 

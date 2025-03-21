@@ -1,0 +1,72 @@
+---
+/*
+ * Render a Title, a description, optinal linkcards and profile in a container.
+ *
+ * Their placement is defined by the prop align.
+ *
+ */
+import ProfilePicture from "@components/ProfilePicture.astro";
+import ResponsiveHeading from "@components/ResponsiveHeading.astro";
+import ResponsiveTagline from "@components/ResponsiveTagline.astro";
+import { cn } from "@lib/utils";
+import VariantLinkButton from "@components/buttons/VariantLinkButton.astro";
+import type { ComponentProps } from "astro/types";
+
+type LinkName = {
+  name: string
+};
+
+type LinkButtonType = ComponentProps<typeof VariantLinkButton> & LinkName;
+
+interface Props {
+  title: string;
+  description: string;
+  align: "center" | "hero" | "start";
+  profile?: string; // String for an Emoji
+  linkButtons?: LinkButtonType[];
+  parentClasses?: string;
+}
+
+const { title, description, profile, align, linkButtons, parentClasses } = Astro.props;
+
+const isHero = align === "hero" || align === "center" ? true : false;
+---
+
+<article
+  class:list={cn("grid", parentClasses, {
+    "text-start": align === "start",
+    "text-center md:text-start": align === "hero",
+  })}
+>
+  <div class="flex gap-2">
+    { profile && (
+      <div class="flex-initial grid place-items-center">
+        <ProfilePicture profilePic={profile} />
+      </div>
+    )}
+    <div class="!m-0 grid place-items-center">
+      <ResponsiveHeading {isHero} rawHtml={title}>{title}</ResponsiveHeading>
+    </div>
+  </div>
+
+  <div>
+    <ResponsiveTagline {isHero} rawHtml={description} />
+  </div>
+
+  <div>
+    {
+      linkButtons &&
+        linkButtons.map(({ name, href, icon, variant, classes, theme }) => (
+          <VariantLinkButton {href} {icon} {variant} {classes} {theme}>
+            {name}
+          </VariantLinkButton>
+        ))
+    }
+  </div>
+</article>
+
+<style>
+  .stack {
+    gap: clamp(1rem, calc(1.5rem + 1vw), 2rem);
+  }
+</style>

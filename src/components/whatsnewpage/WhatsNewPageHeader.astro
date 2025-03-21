@@ -1,0 +1,54 @@
+---
+import ParentOfLists from "@components/lists/ParentOfLists.astro";
+import CustomizedLiElement from "@components/lists/CustomizedLiElement.astro";
+import GradientContainer from "@components/GradientContainer.astro";
+import FormatDate from "@components/FormatDate.astro";
+import { getCollection } from "astro:content";
+import { latestCollection } from "@lib/utils";
+import VariantLinkButton from "@components/buttons/VariantLinkButton.astro";
+
+const releaseNotes = await getCollection("releaseNotes"); 
+const latestReleaseNote = latestCollection(releaseNotes);
+const date = latestReleaseNote.data.date;
+const features = latestReleaseNote.data.features;
+---
+<GradientContainer 
+  classes="p-3 md:p-5 md:flex" 
+  color="default"
+>
+  <div class="md:basis-1/4 flex w-full md:block">
+    <div class="basis-1/2 ">
+      <h1 class="!text-5xl !text-[var(--sl-color-gray-7)]">{latestReleaseNote.data.version}</h1>
+    </div>
+    <div class="basis-1/2  grid !m-0">
+      <h3 class="!text-[var(--sl-color-gray-7)]">Released !</h3>
+      <span class="italic text-[var(--sl-color-gray-5)] dark:text-[var(--sl-color-gray-4)]">
+        <FormatDate {date} />
+      </span>
+    </div>
+  </div>
+
+  <div class="w-full !mt-1 md:basis-3/4">
+    <div class="md:pl-8">
+      <h3 class="!text-[var(--sl-color-gray-7)] !text-2xl">Features</h3>
+      <ParentOfLists type="unordered">
+        {features.map((feature, index) => (
+        <CustomizedLiElement custom liNumber={index+1}>
+          { feature }
+        </CustomizedLiElement>
+        ))}
+      </ParentOfLists>
+    </div>
+    <div class="flex items-center justify-end">
+      <VariantLinkButton
+        href={`/release-notes/${latestReleaseNote.id}`} 
+        icon="open-book" 
+        variant="primary" 
+        theme="orange"
+      >Read More</VariantLinkButton>
+    </div>
+  </div>
+
+</GradientContainer>
+
+

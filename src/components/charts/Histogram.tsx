@@ -1,5 +1,5 @@
-import { createHistogramHeight } from "@/lib/charts"; 
-import { cn } from "@/lib/utils";
+import { createHistogramHeight } from "@lib/charts"; 
+import { cn } from "@lib/utils";
 import type { ReactNode } from "react";
 
 type HistogramComponentProps = {

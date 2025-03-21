@@ -1,0 +1,68 @@
+---
+title: Features 🤠
+description: Get to see some the cool features that Egg has to offer, and more
+sidebar:
+  order: 2
+---
+
+import { Steps, Icon } from "@astrojs/starlight/components";
+import ThemedImageContainer from "@components/ThemedImageContainer.astro";
+import AsideButtonLightMobile from "@assets/tutorial/AsideButtonLightMobile.png";
+import AsideButtonDarkMobile from "@assets/tutorial/AsideButtonDarkMobile.png";
+import TopBarLightMobile from "@assets/tutorial/TopBarLightMobile.png";
+import TopBarDarkMobile from "@assets/tutorial/TopBarDarkMobile.png";
+
+## Theme
+
+Since we care about your eyes and all the "All Nighters", we have two themes,
+light, to use it in bright environments and dark low lit environments.
+
+By default, the theme is set to System Default (auto).
+
+To change the theme for PC, navigate to the Top Bar on the far right.
+
+For Mobile:
+
+<Steps>
+
+  0. Navigate to the Top Bar.
+
+  1. Click on 
+      <div class="w-10">
+        <ThemedImageContainer
+          dark={AsideButtonDarkMobile}
+          light={AsideButtonLightMobile}
+          alt="button to open the aside"
+          loading="lazy"
+        />
+      </div>
+      to access the Side Navigation Bar.
+
+  2. Scroll to the bottom. You will find a selector to choose your theme.
+
+</Steps>
+
+
+
+## Feedback
+
+We encourage feedback from our users. Tell us of any issues you encounter, any
+improvements we may want to consider or just share you thoughts about the platform.
+
+This helps us improve your user experience and fuel our innovation.
+
+To share feedback:
+
+<Steps>
+
+  0. Navigate to the Top Bar.
+      <ThemedImageContainer 
+        dark={TopBarDarkMobile}
+        light={TopBarLightMobile}
+        alt="the topbar showcasing the feedback button"
+        loading="lazy"
+      />
+    
+  1. Click on the button labelled <Icon name="comment" />
+
+</Steps>
