@@ -14,9 +14,6 @@ import TopBarDarkMobile from "@assets/tutorial/TopBarDarkMobile.png";
 
 ## Theme
 
-Since we care about your eyes and all the "All Nighters", we have two themes,
-light, to use it in bright environments and dark low lit environments.
-
 By default, the theme is set to System Default (auto).
 
 To change the theme for PC, navigate to the Top Bar on the far right.
@@ -25,9 +22,15 @@ For Mobile:
 
 <Steps>
 
-  0. Navigate to the Top Bar.
+  1. Navigate to the Top Bar.
+      <ThemedImageContainer 
+        dark={TopBarDarkMobile}
+        light={TopBarLightMobile}
+        alt="a section of egg's topbar"
+        loading="eager"
+      />
 
-  1. Click on 
+  2. Click on 
       <div class="w-10">
         <ThemedImageContainer
           dark={AsideButtonDarkMobile}
@@ -38,7 +41,7 @@ For Mobile:
       </div>
       to access the Side Navigation Bar.
 
-  2. Scroll to the bottom. You will find a selector to choose your theme.
+  3. Scroll to the bottom. You will find a selector to choose your theme.
 
 </Steps>
 
@@ -55,7 +58,7 @@ To share feedback:
 
 <Steps>
 
-  0. Navigate to the Top Bar.
+  1. Navigate to the Top Bar.
       <ThemedImageContainer 
         dark={TopBarDarkMobile}
         light={TopBarLightMobile}
@@ -63,6 +66,6 @@ To share feedback:
         loading="lazy"
       />
     
-  1. Click on the button labelled <Icon name="comment" />
+  2. Click on the button labelled <Icon name="comment" />
 
 </Steps>

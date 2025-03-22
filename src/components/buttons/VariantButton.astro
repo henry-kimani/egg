@@ -22,7 +22,7 @@ const { id, classes, icon, theme, variant, buttonLabel, iconLabel } = Astro.prop
   {id}
   aria-label={buttonLabel}
   class:list={cn(buttonThemes(theme), [classes],
-    `cursor-pointer px-3 py-1 focus:ring focus:outline-none focus:ring-[var(--sl-color-accent)] focus:ring-offset-2 dark:focus:ring-offset-[var(--sl-color-gray-5)]`,
+    `cursor-pointer px-3 !border-none py-1 focus:ring focus:outline-none focus:ring-[var(--sl-color-accent)] focus:ring-offset-2 dark:focus:ring-offset-[var(--sl-color-gray-5)]`,
     {
       "flex gap-2 items-center rounded-md bg-[var(--sl-color-accent)] text-[var(--sl-color-black)] dark:bg-[var(--sl-color-accent-high)]": variant === "primary",
       "": variant === "secondary",
