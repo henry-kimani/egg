@@ -1,0 +1,36 @@
+---
+import VariantButton from "./buttons/VariantButton.astro";
+import Modal from "./modals/Modal.astro";
+
+---
+
+<Modal dialogId="cookies-dialog">
+  <div class="sticky bottom-1">
+    <h3>Have a Cookie !</h3>
+    <p>Buy continuing to use this site you have accepted our <a href="/terms-of-use">
+      Terms of use</a> and <a href="/privacy-policy">Privacy Policy</a>.
+    </p>
+
+    <div class="w-full flex">
+      <VariantButton
+        id="close-modal-button"
+        theme="simple"
+        variant="primary"
+        icon="approve-check"
+      >I understand</VariantButton>
+    </div>
+  </div>
+</Modal>
+
+<script>
+const modal = document.getElementById('cookies-dialog') as HTMLDialogElement;
+const close = document.getElementById('close-modal-button') as HTMLButtonElement;
+
+if ( localStorage.getItem("cookies-consent") === null ) {
+  modal?.showModal();
+  localStorage.setItem("cookies-consent", "true");
+}
+
+close.onclick = () => modal.close();
+
+</script>

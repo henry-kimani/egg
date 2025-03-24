@@ -1,10 +1,16 @@
 ---
 import VariantButton from "@components/buttons/VariantButton.astro"
+
+interface Props {
+  dialogId: string;
+}
+
+const { dialogId } = Astro.props;
 ---
 <div class="w-full">
   <dialog 
     aria-modal="true" 
-    id="dialog"
+    id={dialogId || "dialog"}
     class=`z-30 absolute w-full md:w-1/2 border-4 border-[var(--sl-color-accent)] dark:border-[var(--sl-color-accent-high)]
       dark:bg-[var(--sl-color-gray-6)] backdrop:backdrop-blur-md  translate-y-[50%] translate-x-4
       md:translate-x-[50%]`
