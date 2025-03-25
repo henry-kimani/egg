@@ -1,8 +1,11 @@
 ---
 import VariantButton from "@components/buttons/VariantButton.astro"
+
+interface Props {
+}
 ---
 
-<section>
+<submit-feedback>
   <form id="egg-form-feedback">
     <label for="egg-form-feedback-input"><h2>FEEDBACK</h2></label>
 
@@ -56,9 +59,10 @@ import VariantButton from "@components/buttons/VariantButton.astro"
       </div>
     </div>
     <form>
-</section>
+</submit-feedback>
 
-<script>
+<script src="./SubmitFeedback.ts">
+/*
 import { db } from "@firebase/client";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 
@@ -97,4 +101,5 @@ function resetFormAndThankUser() {
     feedbackFormInput.placeholder = "Your feedback is anonymous ...";
   } , 3000);
 }
+*/
 </script>
