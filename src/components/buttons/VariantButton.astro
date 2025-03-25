@@ -33,14 +33,3 @@ const { id, classes, icon, theme, variant, buttonLabel, iconLabel } = Astro.prop
   <slot />
   <Icon class='grid place-items-center' name={icon || "pencil"} label={iconLabel} />
 </button>
-
-<script>
-// Script to open and close the modal
-const modal = document.getElementById("dialog") as HTMLDialogElement;
-const closeModalButton = document.getElementById("close-modal-button") as HTMLButtonElement;
-const openModalButton = document.getElementById("open-modal-button") as HTMLButtonElement;
-
-closeModalButton.onclick = () => { modal.close(); };
-openModalButton.onclick = () => { modal.showModal(); };
-</script>
-

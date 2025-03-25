@@ -4,16 +4,15 @@ import Modal from "./modals/Modal.astro";
 
 ---
 
-<Modal dialogId="cookies-dialog">
+<Modal dialogId="cookies-dialog" closeId="close-cookies-modal">
   <div class="sticky bottom-1">
     <h3>Have a Cookie !</h3>
     <p>Buy continuing to use this site you have accepted our <a href="/terms-of-use">
       Terms of use</a> and <a href="/privacy-policy">Privacy Policy</a>.
     </p>
-
     <div class="w-full flex">
       <VariantButton
-        id="close-modal-button"
+        id="consent-to-cookies"
         theme="simple"
         variant="primary"
         icon="approve-check"
@@ -24,13 +23,23 @@ import Modal from "./modals/Modal.astro";
 
 <script>
 const modal = document.getElementById('cookies-dialog') as HTMLDialogElement;
-const close = document.getElementById('close-modal-button') as HTMLButtonElement;
+const close = document.getElementById('close-cookies-modal') as HTMLButtonElement;
+const consent = document.getElementById('consent-to-cookies') as HTMLButtonElement;
 
 if ( localStorage.getItem("cookies-consent") === null ) {
+  // Ask user to accept cookies
   modal?.showModal();
+
+  // TODO: Save preferences in firestore
+  // Save their preferences locally
   localStorage.setItem("cookies-consent", "true");
 }
 
-close.onclick = () => modal.close();
+close.onclick = () => closeModal();
+consent.onclick = () => closeModal();
+
+function closeModal() {
+  modal.close();
+}
 
 </script>

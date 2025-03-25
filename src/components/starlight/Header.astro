@@ -18,14 +18,15 @@ import FeedbackForm from "@components/forms/FeedbackForm.astro";
 
     <div class="grid place-items-center ml-3">
       <VariantButton
+        id="open-feedback-modal"
         icon="comment"
         theme="simple"
         variant="minimal"
-        id="open-modal-button"
         buttonLabel="Open a feedback form in a pop-up"
         iconLabel="feedback icon to open a pop-up with a feedback form"
+        classes="open-modal-button"
       />
-      <Modal dialogId="feedback-dialog">
+      <Modal dialogId="feedback-form-modal" closeId="close-feedback-modal">
         <FeedbackForm />
       </Modal>
     </div>
@@ -99,3 +100,12 @@ import FeedbackForm from "@components/forms/FeedbackForm.astro";
   }
 }
 </style>
+
+<script>
+const feedbackFormModal = document.getElementById('feedback-form-modal') as HTMLDialogElement;
+const openFeedbackForm = document.getElementById('open-feedback-modal') as HTMLButtonElement;
+const closeFeedbackForm = document.getElementById('close-feedback-modal') as HTMLButtonElement;
+
+openFeedbackForm.onclick = () => feedbackFormModal.showModal();
+closeFeedbackForm.onclick = () => feedbackFormModal.close();
+</script>
