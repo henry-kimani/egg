@@ -11,7 +11,8 @@
       "@assets/*": [ "./src/assets/*" ],
       "@lib/*": [ "./src/lib/*" ],
       "@layouts/*": [ "./src/layouts/*" ],
-      "@firebase/*": [ "./firebase/*" ]
+      "@firebase/*": [ "./firebase/*" ],
+      "@scripts/*": [ "./src/scripts/*" ]
     }
   }
 }
