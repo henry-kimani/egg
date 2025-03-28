@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist",
+    "source": ".",
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -20,6 +20,9 @@
     "singleProjectMode": true,
     "firestore": {
       "port": 8080
+    },
+    "auth": {
+      "port": 9099
     }
   },
   "firestore": {

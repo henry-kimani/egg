@@ -1,6 +1,6 @@
 import { describe, expect, test, beforeAll, afterAll } from "bun:test";
 import { setup, teardown } from "./helpers";
-import { mockFeedback } from "./mockData";
+import { mockFeedback, mockUser } from "./mockData";
 import { collection, getDocs, updateDoc, doc, setDoc, deleteField, deleteDoc, addDoc, serverTimestamp } from "firebase/firestore";
 
 describe("Feedback Form Rules", () => {
