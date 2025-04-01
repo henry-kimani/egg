@@ -1,5 +1,5 @@
 export default {
-  start: "Getting Started",
+  start: "Dashboard",
   "docs": "Documentation",
   // values used in the sidebar
   year1: "Year One",
