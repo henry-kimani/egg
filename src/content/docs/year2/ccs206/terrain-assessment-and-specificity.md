@@ -7,7 +7,7 @@ sidebar:
 
 ## Definition
 
-**Terrain assessment** is a it involves analyzing
+**Terrain assessment** it involves analyzing
 physical and geographical features of a region to evaluate their implications for
 defense, security and operational planning.
 
