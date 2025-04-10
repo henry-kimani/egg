@@ -51,8 +51,8 @@ export default defineConfig({
       }),
       tailwind({ applyBaseStyles: false }),
 	],
-
   adapter: node({
     mode: "standalone",
   }),
+  output: 'server',
 });

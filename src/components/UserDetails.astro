@@ -1,0 +1,50 @@
+---
+import AcceptCookies from './AcceptCookies.astro';
+
+interface Props {
+  userDisplayName: string | "Guest";
+}
+
+const { userDisplayName } = Astro.props;
+---
+
+{ userDisplayName !== "Guest"? (
+  <div>Hello</div>
+  <span>User: { userDisplayName }</span>
+):
+  <div>Sign In to Continue</div>
+  <button id="sign-in">Sign In</button>
+}
+
+<AcceptCookies />
+
+<script>
+import { auth } from "@firebase/client";
+import { GoogleAuthProvider, inMemoryPersistence, signInWithPopup } from "firebase/auth";
+
+const button = document.querySelector("#sign-in");
+
+auth.setPersistence(inMemoryPersistence);
+
+button?.addEventListener("click", async() => {
+  const provider = new GoogleAuthProvider();
+  const result = await signInWithPopup(auth, provider);
+
+  const idToken = await result.user.getIdToken();
+  console.log(idToken);
+
+  const res = await fetch("/api/auth/signin", {
+    headers: {
+      'Authorization': `Bearer ${idToken}`,
+    }
+  });
+
+  if (res.redirected)
+    window.location.assign(res.url);
+
+  console.log(res.statusText);
+
+});
+
+</script>
+

@@ -1,0 +1,30 @@
+---
+import UserDetails from "@components/UserDetails.astro";
+import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
+import { adminAuth } from '@firebase/server';
+import type { UserRecord } from 'firebase-admin/auth';
+import FormalDocumentLayout from "@layouts/FormalDocumentLayout.astro";
+
+export const prerender = false;
+
+let userDisplayName: string;
+
+if (!Astro.cookies.has("__session")) {
+  userDisplayName = "Guest";
+} else {
+  const sessionCookie = Astro.cookies.get("__session").value;
+  const decodeCookie = await adminAuth.verifySessionCookie(sessionCookie);
+  const user = await adminAuth.getUser(decodeCookie.uid);
+  userDisplayName = user.displayName;
+}
+
+---
+<StarlightPage frontmatter={{
+  title:`Greetings ${userDisplayName.split(" ")[0]}!`,
+  description: "This is the user dashboard"
+}}
+>
+  <UserDetails {userDisplayName} />
+</StarlightPage>
+
+
