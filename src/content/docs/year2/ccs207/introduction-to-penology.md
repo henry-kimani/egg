@@ -1,13 +1,15 @@
 ---
 title: Introduction to Penology
 description: Learn an introductory of penology
-order: 1
+sidebar:
+    order: 1
 draft: true
 ---
+# History of Punishment
 
+# Evolution of punishment in kenya
 
-
-Theories of Punishment
+# Theories of Punishment
 1. The Retributive Theory
 2. The Deterrent Theory
 3. The Preventive Theory
