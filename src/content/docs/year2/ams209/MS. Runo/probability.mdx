@@ -3,18 +3,21 @@ title: Probability
 description: Probability is the numerical measure of chance
 ---
 
+import { Aside, Tabs, TabItem } from "@astrojs/starlight/components";
+import SimpleLatex from "@components/math/SimpleLatex.astro";
+
 Probability is the numerical measure of chance.
 
 ## Definition of terms
 
-**Range probability:**
-P(A) -> Probability an event will happen
-P(A') -> Probability an event will not happen
+##### Range probability
 
-P(A') = 1 - P(A)
-P(A) + P(A') = 1
+P(A) - Probability an event will happen <br />
+P(A') - Probability an event will not happen<br />
+P(A') = 1 - P(A)<br />
+P(A) + P(A') = 1<br />
 
-**Probability Space:**
+##### Probability Space:
 A list of all possible outcomes.
 
 ## Experimental Probability
@@ -30,35 +33,44 @@ the past.
 
 It is given by
 
-$$=\frac{\text{number of favourable outcomes}}{\text{total n.o of trials}}$$
+<SimpleLatex formula="\frac{\text{number of favourable outcomes}}{\text{total n.o of trials}}" />
 
-**Example 1:**
+### Examples
 
-A boy had a fair die with faces marked 1 - 6. He threw his die up 50 times and
-each time he recorded the number of top faces. The result of his experiment is
-as shown below.
+<Tabs>
+  <TabItem label="Example 1" >
+  <Aside type="tip" title="Example">
 
-| face | 1 | 2 | 3 | 4 | 5 | 6 |
-|------|---|---|---|---|---|---|
-|n.o of times a face has shown up| 11 | 6 | 7 | 9 | 9 | 8 |
+    A boy had a fair die with faces marked 1 - 6. He threw his die up 50 times and
+    each time he recorded the number of top faces. The result of his experiment is
+    as shown below.
 
-What is the probability of getting
-a. 1
+    | face | 1 | 2 | 3 | 4 | 5 | 6 |
+    |------|---|---|---|---|---|---|
+    |n.o of times a face has shown up| 11 | 6 | 7 | 9 | 9 | 8 |
 
-$$P(1) = \frac{11}{50}$$
+    <br />
+    What is the probability of getting:
 
-b. 6
+    a. 1 <br />
+    $$P(1) = \frac{11}{50}$$
 
-$$P(6) = \frac{8}{50}$$
+    b. 6 <br />
+      $$P(6) = \frac{8}{50}$$
+    </Aside>
+  </TabItem>
 
-**Example 2:**
+  <TabItem label="Example 2">
+    <Aside title="Example 2" type="tip">
+      From past records out of 10 matches, a school football team has played, it has
+      won seven. How many matches would they win in the next 30 matches.
 
-From past records out of 10 matches, a school football team has played, it has
-won seven. How many matches would they win in the next 30 matches.
-
-$$P(winning a match) = \frac{7}{10}$$
-$$\text{in 30 matches} = \frac{7}{10} \times 30$$
-$$=21 \text{matches}$$
+      $$P(winning a match) = \frac{7}{10}$$ <br />
+      $$\text{in 30 matches} = \frac{7}{10} \times 30$$ <br />
+      $$=21 \text{matches}$$ <br />
+    </Aside>
+  </TabItem>
+</Tabs>
 
 ## Theoretical Probability
 
@@ -67,37 +79,45 @@ probability.
 
 It is calculated by:
 
-$$=\frac{\text{n.o of favourable outcomes}}{\text{total number of outcomes}}$$
+<SimpleLatex formula="=\frac{\text{n.o of favourable outcomes}}{\text{total number of outcomes}}" />
 
-**Example 1:**
+### Examples
 
-A basket contains 5 red balls, 4 green balls and 3 blue balls. If a ball is picked
-at random from the basket, find:
+<Tabs>
+  <TabItem label="Example 1" >
+    <Aside title="Example" type="tip">
+      A basket contains 5 red balls, 4 green balls and 3 blue balls. If a ball is picked
+      at random from the basket, find:
 
-a. The probability of picking a blue ball.
+      a. The probability of picking a blue ball.
 
-$$P(Blue) = \frac{3}{5+4+3}$$
-$$\frac{3}{12}$$
+      $$P(Blue) = \frac{3}{5+4+3}$$ <br />
+      $$\frac{3}{12}$$
 
-b. The probability of not picking a red ball.
+      b. The probability of not picking a red ball.
 
-$$P(Red') = 1 - P(Red)$$
-$$= 1 - \frac{5}{12}$$
-$$= \frac{7}{12}$$
+      $$P(Red') = 1 - P(Red)$$ <br />
+      $$= 1 - \frac{5}{12}$$ <br />
+      $$= \frac{7}{12}$$ <br />
+    </Aside>
+  </TabItem>
 
-**Example 2:**
+  <TabItem label="Example 2">
+    <Aside title="Example" type="tip">
+      A bag contains 6 black balls and some brown ones. If a ball is picked at random 
+      and the probability of picking a black ball is 0.25, find the number of brown 
+      balls.
 
-A bag contains 6 black balls and some brown ones. If a ball is picked at random 
-and the probability of picking a black ball is 0.25, find the number of brown 
-balls.
+      $$P(Brown) = 1 - P(Black)$$
+      $$P(Brown) = 0.75$$
 
-$$P(Brown) = 1 - P(Black)$$
-$$P(Brown) = 0.75$$
-
-$$0.25=6$$
-$$0.75=?$$
-$$\frac{6\times0.75}{0.25}$$
-$$=19 brown balls$$
+      $$0.25=6$$
+      $$0.75=?$$
+      $$\frac{6\times0.75}{0.25}$$
+      $$=19 brown balls$$
+    </Aside>
+  </TabItem>
+</Tabs>
 
 When all possible outcomes are countable, they are said to be discrete.
 
@@ -119,7 +139,7 @@ P(A or B) = P(A) + P(B)
 
 [or]: we add
 
-**Example:**
+<Aside type="tip" title="Example">
 
 If a coin is tossed, probability of getting a head or a tails is:
 
@@ -127,6 +147,8 @@ $$\text{the occurance of one outcome excludes the other hence we add}$$
 P(H or T) = P(H) + P(T)
 $$=\frac{1}{2}+\frac{1}{2}$$
 $$=1$$
+
+</Aside>
 
 ### Independent Events
 
@@ -136,54 +158,63 @@ the other.
 The probability of them occuring is given by the product of their individual 
 probabilities.
 
-P(A and B) = P(A) x P(B)
+$$P(A\;and\;B) = P(A) \times P(B)$$
 
 [and]: we multiply
 
-**Example 1:**
+<Tabs>
+  <TabItem label="Example 1">
+    <Aside type="tip" title="Example">
+      A coin tosses twice. What is the probability of getting a tail in both tosses.
 
-A coin tosses twice. What is the probability of getting a tail in both tosses.
+      $$the\;outcome\;of\;the\;2^{nd}\;toss\;is\;independent\;from\;the\;1^{st}$$ <br />
 
-$$\text{the probability of the 2^{nd} toss is independent from the 1^{st}}$$ <br />
-P(T and T)<br />
-$$=\frac{1}{2}\times\frac{1}{2}$$<br />
-$$=\frac{1}{4}$$<br />
+      $$P(T and T)$$<br />
+      $$=\frac{1}{2}\times\frac{1}{2}$$<br />
+      $$=\frac{1}{4}$$<br />
+    </Aside>
+  </TabItem>
 
-**Example 2:**
+  <TabItem label="Example 2">
+    <Aside type="tip" title="Example">
+      A boy throws a fair coin and a regular tetrahedron with four faces marked 1, 2, 3 &
+      4. Find the probability that he gets a three on the tetrahedron and a head from 
+      the coin.
 
-A boy throws a fair coin and a regular tetrahedron with four faces marked 1, 2, 3 &
-4. Find the probability that he gets a three on the tetrahedron and a head from 
-the coin.
+      $$P(H) = \frac{1}{2}$$ <br />
+      $$P(3) = \frac{1}{4}$$
 
-$$P(H) = \frac{1}{2}$$
-$$P(3) = \frac{1}{4}$$
+      $$\text{coin is independent from tetrahedron, we multiply}$$
 
-$$\text{coin is independent from tetrahedron, we multiply}$$
+      $$P(H and 3) = \frac{1}{2}\times\frac{1}{4}$$
 
-$$P(H and 3) = \frac{1}{2}\times\frac{1}{4}$$
+      $$=\frac{1}{8}$$
+    </Aside>
+  </TabItem>
 
-$$=\frac{1}{8}$$
+  <TabItem label="Example 3">
+    <Aside type="tip" title="Example">
+    A bag contains 8 black balls and 5 white ones. If two balls are drawn from the bag,
+    one at a time, find the probability of drawing a black and white ball.
 
-**Example 3:**
+    a. Without replacement
 
-A bag contains * black balls and 5 white ones. If two balls are drawn from the bag,
-one at a time, find the probability of drawing a black and white ball.
+    $$\text{Black followed by White}$$ <br />
+    $$P(B) = \frac{8}{13}$$<br />
+    $$P(W) = \frac{5}{12}$$<br />
+    $$P(B and W) = \frac{8}{13}\times\frac{5}{12}$$<br />
+    $$=\frac{10}{39}$$<br />
 
-a. Without replacement
+    $$\text{White followed by Black}$$<br />
+    $$P(W) = \frac{5}{13}$$<br />
+    $$P(B) = \frac{8}{12}$$<br />
+    $$P(W and B) = \frac{5}{13}\times\frac{8}{12}$$<br />
+    $$=\frac{10}{39}$$<br />
 
-$$\text{Black followed by White}$$ <br />
-$$P(B) = \frac{8}{13}$$<br />
-$$P(W) = \frac{5}{12}$$<br />
-$$P(B and W) = \frac{8}{13}\times\frac{5}{12}$$<br />
-$$=\frac{10}{39}$$<br />
-
-$$\text{White followed by Black}$$<br />
-$$P(W) = \frac{5}{13}$$<br />
-$$P(B) = \frac{8}{12}$$<br />
-$$P(W and B) = \frac{5}{13}\times\frac{8}{12}$$<br />
-$$=\frac{10}{39}$$<br />
-
-$$P()$$
+    $$P()$$
+    </Aside>
+  </TabItem>
+</Tabs>
 
 ## Tree Diagram
 
