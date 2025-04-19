@@ -1,0 +1,109 @@
+---
+import { PAGE_TITLE_ID } from "node_modules/@astrojs/starlight/constants";
+
+const routeData = Astro.locals.starlightRoute;
+const pageTitle = routeData.entry.data.title;
+let greeting: string | undefined;
+let userName: string | undefined;
+
+const isDashboardProfile = routeData.id === "dashboard/profile";
+
+if (isDashboardProfile) {
+  greeting = pageTitle?.split(" ")[0];
+  userName = pageTitle?.split(" ")[1];
+}
+---
+
+{
+  isDashboardProfile ? (
+    <h1 id={PAGE_TITLE_ID}>
+      <span class="user-greeting">{greeting}</span>&nbsp;
+      <span 
+        class="username-dashboard output-type from-[var(--sl-color-accent)] to-red-600 dark:from-[var(--sl-color-accent-high)] dark:to-[var(--sl-color-accent-high)]">
+      </span>
+      <span class="caret"></span>
+    </h1>
+  ) : (
+    <h1
+      id={PAGE_TITLE_ID}
+      class="text-[var(--sl-color-accent)] dark:text-[var(--sl-color-accent-high)]"
+    >
+      {pageTitle}
+    </h1>
+  )
+}
+
+<style>
+.username {
+}
+  @layer starlight.core {
+    h1 {
+      margin-top: 1rem;
+      font-size: var(--sl-text-h1);
+      line-height: var(--sl-line-height-headings);
+      font-weight: 600;
+    }
+    .user-greeting {
+      color: var(--sl-color-white);
+      transform: translate(5px, 5px) !important;
+      animation: greetingScaleUp 1s ease-in-out 1 forwards;
+    }
+    .username-dashboard {
+      background-image: linear-gradient(var(--tw-gradient-stops));
+      background-clip: text;
+      text-fill-color: transparent;
+      -webkit-text-fill-color: transparent;
+  }
+
+  .caret {
+    display: inline-block;
+    width: 4px;
+    height: 1em;
+    background-color: var(--sl-color-white);
+    margin-left: 5px !important;
+    transform: translateY(3px);
+    animation: blinkCaret .80s step-end infinite;
+  }
+
+  @keyframes blinkCaret {
+    from, to {
+      background-color: transparent;
+    }
+    50% {
+      background-color: var(--sl-color-white);
+    }
+  }
+  
+
+    @keyframes greetingScaleUp {
+      from {
+        transform: translateX(20em);
+        opacity: 0;
+        scale: 0;
+      }
+      to {
+        transform: translateX(0em);
+        opacity: 1;
+        scale: 1;
+      }
+    }
+  }
+</style>
+
+<script define:vars={{userName}} is:inline>
+  const inputUsername = userName;
+  const output = document.querySelector(".output-type");
+  const typingSpeed = 250;
+
+  // RECURSION
+  let i=0;
+  function typeCharacter(){
+    if (i <= inputUsername.length){
+      output.innerText += inputUsername.charAt(i);
+      i++;
+      setTimeout(typeCharacter, typingSpeed);
+    }
+  }
+  document.addEventListener("DOMContentLoaded", () => typeCharacter() )
+
+</script>
