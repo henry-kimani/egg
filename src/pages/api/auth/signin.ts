@@ -25,12 +25,12 @@ export const GET:APIRoute = async({request, cookies, redirect}) => {
   }
 
   // Create the session cookie
-  const fiveMins= 60*60*24*5; // 2 mins
+  const fiveMins= 60*5*1000; 
   const sessionCookie = await adminAuth.createSessionCookie(idToken, { expiresIn: fiveMins });
   
   cookies.set("__session", sessionCookie, {
     path: "/"
   })
 
-  return redirect("/dashboard/new");
+  return redirect("/dashboard/profile");
 }

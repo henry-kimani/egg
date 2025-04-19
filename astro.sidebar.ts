@@ -6,7 +6,7 @@ import { group } from './config/sidebar';
 
 export const sidebar = [
   group("start", {
-    items: [ '', 'dashboard/profile',
+    items: [ '',
       group("docs", { autogenerate: { directory: "docs", collapsed: true } })
     ],
   }),

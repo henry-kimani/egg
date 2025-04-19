@@ -3,27 +3,36 @@ import { adminAuth } from "@firebase/server";
 
 export const onRequest = defineMiddleware(async(context, next) => {
 
+  const unAllowedRoutes = [
+    'year1',
+    'year2',
+  ];
 
-  // Check if the current request is allowed to access the resource
-  /*const idToken = context.cookies.get("__session")?.value;
+  const sessionCookie = context.cookies.get("__session")?.value;
+  const currentPath = context.url.pathname;
 
-  if(idToken) {
+  if (sessionCookie) {
     try {
-      await adminAuth.verifyIdToken(idToken);
+      // Verify the cookies and check if its revoked
+      await adminAuth.verifySessionCookie(sessionCookie, true);
+      console.log("Good, Cookie found!");
     } catch(err) {
-      context.cookies.delete("__session");
+      if(err.code === 'auth/session-cookie-expired') {
+        context.cookies.delete("__session", { path: "/" });
+        return Response.redirect(new URL("/dashboard/profile", context.url.href));
+      }
+      return Response.redirect(new URL("/", context.url.href));
     }
-  } else {
-    context.redirect("/");
-  } */
+  } 
+
+  // Protect content routes for unAuthorized requests
+  if (!sessionCookie && 
+    (currentPath.startsWith("/year1") || currentPath.startsWith("/year2"))
+  ) {
+    return Response.redirect(new URL("/dashboard/profile", context.url.href));
+  }
+
 
   return next();
-
-  // 1. Make the username available in the locals
-  // 2. On every request:
   //    - Make sure the user is logged in otherwise show a accept cookies modal
-  //    - Log in the user anonymously
-  //    - Confirm its not an
-  /* When an account is upgraged to a permanent one, prevent the user from getting
-   * signed in again to anonymous account. */
 });
