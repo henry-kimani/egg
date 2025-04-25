@@ -21,16 +21,20 @@ export const onRequest = defineMiddleware(async(context, next) => {
         context.cookies.delete("__session", { path: "/" });
         return Response.redirect(new URL("/dashboard/profile", context.url.href));
       }
-      return Response.redirect(new URL("/", context.url.href));
+      if (err.code === 'auth/argument-error') {
+        return Response.redirect(new URL("/error", context.url.href));
+      }
+      return Response.redirect(new URL("/error", context.url.href));
     }
   } 
 
   // Protect content routes for unAuthorized requests
+  /*
   if (!sessionCookie && 
     (currentPath.startsWith("/year1") || currentPath.startsWith("/year2"))
   ) {
     return Response.redirect(new URL("/dashboard/profile", context.url.href));
-  }
+  }*/
 
 
   return next();

@@ -81,19 +81,22 @@ auth.setPersistence(inMemoryPersistence);
 
 signIn?.addEventListener("click", async() => {
   const provider = new GoogleAuthProvider();
-  const result = await signInWithPopup(auth, provider);
+  try {
+    const result = await signInWithPopup(auth, provider);
 
-  const idToken = await result.user.getIdToken();
+    const idToken = await result.user.getIdToken();
 
-  const res = await fetch("/api/auth/signin", {
-    headers: {
-      'Authorization': `Bearer ${idToken}`,
-    }
-  });
+    const res = await fetch("/api/auth/signin", {
+      headers: {
+        'Authorization': `Bearer ${idToken}`,
+      }
+    });
 
-  if (res.redirected)
-    window.location.assign(res.url);
-
+    if (res.redirected)
+      window.location.assign(res.url);
+  } catch(error) {
+    window.location.assign("/error");
+  }
 });
 
 </script>
