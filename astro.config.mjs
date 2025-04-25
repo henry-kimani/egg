@@ -36,7 +36,8 @@ export default defineConfig({
         Sidebar: "./src/components/starlight/Sidebar.astro",
         Header: "./src/components/starlight/Header.astro",
         MobileMenuFooter: "./src/components/starlight/MobileMenuFooter.astro",
-        PageTitle: "./src/components/starlight/PageTitle.astro"
+        PageTitle: "./src/components/starlight/PageTitle.astro",
+        ContentPanel: "./src/components/starlight/ContentPanel.astro"
       },
       social: {
         github: 'https://github.com/withastro/starlight',

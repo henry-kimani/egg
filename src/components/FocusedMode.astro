@@ -1,0 +1,86 @@
+---
+/* Render a button to engage focused mode
+ * Focused mode does two things
+ * - temporarily closes the sidebar
+ * - lower the opacity of the pageTableOfContents
+*/
+import VariantButton from "@components/buttons/VariantButton.astro";
+const currentPathname = Astro.url.pathname;
+
+// Allowed paths to show the focused mode button
+const isAllowedPathname = currentPathname.startsWith("/year1") || currentPathname.startsWith("/year2");;
+---
+{ isAllowedPathname ?
+  <focused-mode>
+    <VariantButton
+      id="variant-focused-mode"
+      icon="open-book"
+      theme="simple"
+      variant="primary"
+    >
+      Focused Mode 
+    </VariantButton>
+  </focused-mode>
+: ""
+}
+
+<style>
+focused-mode {
+  position: fixed;
+  bottom: clamp(.5em, calc(1px + 1vw), 2em);
+}
+</style>
+
+<script>
+class FocusedMode extends HTMLElement {
+
+  constructor() {
+    super();
+    this.focusedMode = "0";
+  }
+
+  get focusedMode() {
+    return sessionStorage.getItem("focused-mode");
+  }
+
+  set focusedMode(value) {
+    if (value){
+      sessionStorage.setItem("focused-mode", value);
+    }
+  }
+
+  connectedCallback() {
+    const sidebar = document.getElementById("starlight__sidebar") as HTMLDivElement;
+    const toc = document.querySelector(".right-sidebar") as HTMLDivElement;
+    const focusedButton = this.querySelector('button') as HTMLButtonElement;
+
+    focusedButton.addEventListener("click", () => {
+
+      if (this.focusedMode === "1") {
+        // if focused mode is on, close it
+        this.focusedMode = "0";
+        sidebar.style.transform = "translateX(0px)";
+        toc.style.opacity = "1";
+        toc.style.borderInlineStart = "1px solid var(--sl-color-hairline)";
+      } else {
+        // Otherwise, activate it
+        this.focusedMode = "1";
+        sidebar.style.transform = "translateX(-400px)";
+        toc.style.opacity = ".2";
+        toc.style.border = "none";
+      }
+    });
+
+    toc?.addEventListener("mouseover", () => {
+      if (this.focusedMode === "1")
+        toc.style.opacity = "1";
+    });
+
+    toc?.addEventListener("mouseout", () => {
+      if (this.focusedMode === "1")
+        toc.style.opacity = ".2";
+    });
+  }
+}
+customElements.define('focused-mode', FocusedMode);
+</script>
