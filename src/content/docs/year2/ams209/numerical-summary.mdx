@@ -8,7 +8,7 @@ sidebar:
 ---
 
 import SimpleLatex from "@components/math/SimpleLatex.astro";
-import { Steps } from "@astrojs/starlight/components";
+import { Steps, Tabs, TabItem, Aside } from "@astrojs/starlight/components";
 
 ## Definition
 
@@ -43,59 +43,65 @@ middle.
 #### 1. Arithemetic Mean
 
 Arithemetic mean is the simple average or sum of a series of numbers divided by
-the count of that series of numbers. In short, its a fancy ways of saying average.
+the count of that series of numbers. In short, its a fancy way of saying average.
 
-<SimpleLatex formula="=\frac{\text{sum of all numbers}}{\text{total number of numbers}}" />
-<br />
+<div class="text-2xl">$$=\frac{\text{sum of all numbers}}{\text{total number of numbers}}$$</div>
 
-For example, the arithemetic mean of values $$x_1, x_2, \cdots, x_n$$:
+###### Ungrouped Data
 
-<SimpleLatex formula = "{\displaystyle = \frac{x_1 + x_2 + \cdots + x_n}{n}}" />
+The arithemetic mean of values $$x_1, x_2, \cdots, x_n$$:
 
-and is formed by:
+$${\displaystyle \bar{x} = \frac{x_1 + x_2 + \cdots + x_n}{n}}$$
 
-<SimpleLatex 
-  formula= "{
-    \displaystyle
-    \bar{x}=\sum _{i=1}^{n} \frac{Xi}{n} 
-  }"
-/>
+$$\displaystyle\bar{x}=\sum _{i=1}^{n} \frac{Xi}{n}$$
 
 or in simple terms 
 
-<SimpleLatex formula="{\displaystyle =\frac{\sum x}{n}}" />
+$${\displaystyle =\frac{\sum x}{n}}$$
 
-If the data includes frequencies,
+###### Grouped Data
 
-<div class="text-3xl">$$=\frac{x_1f_1+x_2f_2+...+x_nf_n}{n}$$</div>
+Grouped data is data that is given in form of class intervals and contains 
+frequencies for each class.
 
-<SimpleLatex formula="{\displaystyle=\frac{\sum fx}{\sum f}}" />
+To find arithemetic mean for grouped data,
 
-##### Arithemetic Mean for Ungrouped Data
+<div class="text-2xl">$$=\frac{x_1f_1+x_2f_2+...+x_nf_n}{n}$$</div>
+
+$${\displaystyle=\frac{\sum fx}{\sum f}}$$
+
+
+<Aside type="tip" title="Examples">
+
+  <Tabs>
+    <TabItem label="Ungrouped Data">
 
 Find the arithemetic mean of 4, 8, 12, 16, 20
 
-<SimpleLatex formula="\bar{x}=\frac{\Sigma x}{n}" />
+$$\bar{x}=\frac{\Sigma x}{n}$$
 
-<SimpleLatex formula="=\frac{4+8+12+16+20}{5}" />
+$$=\frac{4+8+12+16+20}{5}$$
 
-<SimpleLatex formula="=\frac{60}{5}" />
+$$=\frac{60}{5}$$
 
 $$=12$$
 
+      </TabItem>
+
+      <TabItem label="Grouped Data">
 ##### Arithemetic Mean for Grouped Data
 
 Estimate the mean for the data below
 
-| class | $$f$$ (freq) | class bound | $$x$$ | $$n$$ (c.f)| $$xf$$ |
-|-------|------|------------- |----------|-----|----|
-| 6 - 9   | 5  | 4.5 - 9.5    | 7   | 5 | 35 |
-| 10 - 14 | 12 | 9.5 - 14.5   | 12  | 17| 144 |
-| 15 - 19 | 32 | 14.5 - 19.5  | 17  |49 | 544 |
-| 20 - 24 | 40 | 19.5 - 24.5  | 22  |89 | 880 |
-| 25 - 29 | 16 | 24.5 - 29.5  | 27  |105| 432 |
-| 30 - 34 | 9  | 29.5 - 34.5  | 32  |114| 288 |
-| 35 - 39 | 6  | 34.5 - 39.5  | 37  |120| 222 |
+| class | $$f$$ (freq) | class bound | $$x$$ | $$xf$$ |
+|-------|------|------------- |----------|----|
+| 6 - 9   | 5  | 4.5 - 9.5    | 7   |35 |
+| 10 - 14 | 12 | 9.5 - 14.5   | 12  |144 |
+| 15 - 19 | 32 | 14.5 - 19.5  | 17  |544 |
+| 20 - 24 | 40 | 19.5 - 24.5  | 22  |880 |
+| 25 - 29 | 16 | 24.5 - 29.5  | 27  |432 |
+| 30 - 34 | 9  | 29.5 - 34.5  | 32  |288 |
+| 35 - 39 | 6  | 34.5 - 39.5  | 37  |222 |
 
 To solve the arithemetic mean for grouped data:
 
@@ -113,18 +119,33 @@ To solve the arithemetic mean for grouped data:
 
 </Steps>
 
-<SimpleLatex formula="{\displaystyle \bar{x}=\frac{\sum fx}{\sum f}=\frac{2545}{120}=21.21}" />
+      $${\displaystyle \bar{x}=\frac{\sum fx}{\sum f}=\frac{2545}{120}=21.21}$$
+    </TabItem>
+  </Tabs>
+
+</Aside>
 
 #### 2. Geometric Mean
 
+###### Ungrouped Data
+
 Let $$x_1,x_2, ... x_n$$ be the sample values. The geometric mean is given by:
 
-<SimpleLatex formula="GM=\sqrt[n]{x_1\times x_2, ... \;, x_3}"/>
+<div class="text-xl">$$GM=\sqrt[n]{x_1\times x_2, ... \;, x_3}$$</div>
 
+###### Grouped Data
 For data with frequencies,
 
-<SimpleLatex formula="GM=\sqrt[n]{x_1^{f1}\times x_2^{f2}\times ... \times x_3^{f3}}"/>
+$$GM=\sqrt[n]{x_1^{f1}\times x_2^{f2}\times ... \times x_3^{f3}}$$
 
+<Aside type="tip" title="Examples" >
+  <Tabs>
+    <TabItem label="Grouped Data">
+    </TabItem>
+    <TabItem label="Ungrouped Data">
+    </TabItem>
+  </Tabs>
+</Aside>
 
 #### 3. Harmonic Mean
 
@@ -145,14 +166,12 @@ is given by:
 
 ### Median
 
-#### Definition
-
 It is the value of the middle most observation, obtained after arranging the 
 data in ascending or descending order. 
 
 This is called the median of the data.
 
-#### Median for Ungrouped Data
+##### Ungrouped Data
 
 Steps:
 
@@ -164,7 +183,7 @@ Steps:
 
 </Steps>
 
-##### if n is odd:
+###### if n is odd:
 
 $$\text{median}=(n+1)/2$$
 
