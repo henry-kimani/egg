@@ -90,14 +90,15 @@ if (isDashboardProfile) {
   const typingSpeed = 250;
 
   // RECURSION
-  let i=0;
-  function typeCharacter(){
-    if (i <= inputUsername.length){
-      output.innerText += inputUsername.charAt(i);
-      i++;
-      setTimeout(typeCharacter, typingSpeed);
+  if (userName) {
+    let i=0;
+    function typeCharacter(){
+      if (i <= inputUsername.length){
+        output.innerText += inputUsername.charAt(i);
+        i++;
+        setTimeout(typeCharacter, typingSpeed);
+      }
     }
+    document.addEventListener("DOMContentLoaded", () => typeCharacter() )
   }
-  document.addEventListener("DOMContentLoaded", () => typeCharacter() )
-
 </script>

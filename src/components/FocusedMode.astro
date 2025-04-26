@@ -50,9 +50,11 @@ class FocusedMode extends HTMLElement {
   }
 
   connectedCallback() {
+    const TABLET_WIDTH = 1152;
     const sidebar = document.getElementById("starlight__sidebar") as HTMLDivElement;
     const toc = document.querySelector(".right-sidebar") as HTMLDivElement;
     const focusedButton = this.querySelector('button') as HTMLButtonElement;
+    const isGreaterTablet = window.innerWidth >= TABLET_WIDTH; // Check: Greater that a tablet
 
     focusedButton.addEventListener("click", () => {
 
@@ -60,24 +62,30 @@ class FocusedMode extends HTMLElement {
         // if focused mode is on, close it
         this.focusedMode = "0";
         sidebar.style.transform = "translateX(0px)";
-        toc.style.opacity = "1";
-        toc.style.borderInlineStart = "1px solid var(--sl-color-hairline)";
+        if (isGreaterTablet) {
+          toc.style.opacity = "1";
+          toc.style.borderInlineStart = "1px solid var(--sl-color-hairline)";
+        }
       } else {
         // Otherwise, activate it
         this.focusedMode = "1";
         sidebar.style.transform = "translateX(-400px)";
-        toc.style.opacity = ".2";
-        toc.style.border = "none";
+        if (isGreaterTablet) {
+          toc.style.opacity = ".2";
+          toc.style.border = "none";
+        }
       }
     });
 
+    /* Allow the opacity to be change for the toc, if the screen is greater that
+     * a tablet */
     toc?.addEventListener("mouseover", () => {
-      if (this.focusedMode === "1")
+      if (this.focusedMode === "1" && isGreaterTablet)
         toc.style.opacity = "1";
     });
 
     toc?.addEventListener("mouseout", () => {
-      if (this.focusedMode === "1")
+      if (this.focusedMode === "1" && isGreaterTablet)
         toc.style.opacity = ".2";
     });
   }

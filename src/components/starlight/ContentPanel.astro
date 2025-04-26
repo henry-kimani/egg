@@ -5,7 +5,8 @@ import FocusedMode from "@components/FocusedMode.astro";
 
 <Default>
   <slot />
-  <div>
+  {/* Only show the focused mode button for tablet sizes and above */}
+  <div class="hidden min-[800px]:block">
     <FocusedMode />
   </div>
 </Default>
