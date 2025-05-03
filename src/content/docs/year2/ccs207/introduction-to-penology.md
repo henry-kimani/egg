@@ -3,7 +3,6 @@ title: Introduction to Penology
 description: Learn an introductory of penology
 sidebar:
     order: 1
-draft: true
 ---
 # History of Punishment
 
