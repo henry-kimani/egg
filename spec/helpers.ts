@@ -19,6 +19,8 @@ export function setup() {
     const auth = testEnvApp.authenticatedContext(user.uid);
     const db = auth.firestore();
 
+    writeMockData(db, data);
+
     return db;
   }
 
@@ -27,14 +29,18 @@ export function setup() {
     const db = unAuth.firestore();
     
     // Write mock data before rules
+    writeMockData(db, data); 
+
+    return db;
+  }
+
+  async function writeMockData(db, data: typeof mockFeedback) {
     if (data) {
-      for (const key in data) {
+      for (const key in data){
         const docRef = doc(db, key);
         await setDoc(docRef, data[key]);
       }
     }
-
-    return db;
   }
 
   function customMatchers() {

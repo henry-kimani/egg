@@ -8,7 +8,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "test_firestore": "bun test spec/firestore/* --watch"
+    "test_firestore": "bun test spec/firestore/* --watch",
+    "test_auth": "bun test spec/auth/* --watch"
   },
   "dependencies": {
     "@astrojs/node": "^9.1.3",

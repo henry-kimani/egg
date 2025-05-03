@@ -1,4 +1,5 @@
 import { serverTimestamp } from "firebase/firestore";
+
 export const mockUser = {
   uid: "henryTest",
 };
