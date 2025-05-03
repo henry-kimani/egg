@@ -22,7 +22,6 @@ import Modal from "./modals/Modal.astro";
 </Modal>
 
 <script>
-import { anonymousAuth } from "@scripts/anonymousAuth";
 const modal = document.getElementById('cookies-dialog') as HTMLDialogElement;
 const close = document.getElementById('close-cookies-modal') as HTMLButtonElement;
 const consent = document.getElementById('consent-to-cookies') as HTMLButtonElement;
@@ -34,7 +33,6 @@ if ( localStorage.getItem("cookies-consent") === null ) {
   // TODO: Save preferences in firestore
   // Save their preferences locally
   localStorage.setItem("cookies-consent", "true");
-  anonymousAuth();
 }
 
 close.onclick = () => closeModal();
