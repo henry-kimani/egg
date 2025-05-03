@@ -1,0 +1,50 @@
+---
+import UserDetails from "@components/UserDetails.astro";
+import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
+import { adminAuth } from '@firebase/server';
+import WhatsNewPageHeader from "@components/whatsnewpage/WhatsNewPageHeader.astro";
+
+export const prerender = false;
+
+let userDisplayName: string | undefined;
+let photoURL: string | undefined;
+let email: string | undefined;
+
+if (Astro.cookies.has("__session")) {
+  const sessionCookie = Astro.cookies.get("__session").value;
+
+  try {
+    const decodeCookie = await adminAuth.verifySessionCookie(sessionCookie);
+    const user = await adminAuth.getUser(decodeCookie.uid);
+    userDisplayName = user.displayName;
+    email = user.email;
+    photoURL = user.photoURL;
+  } catch (error) {
+    return error;
+  }
+}
+
+---
+<StarlightPage frontmatter={{
+  title: userDisplayName ? `Greetings ${userDisplayName.split(" ")[0]}!`: "Greetings Guest!",
+  description: "This is the user dashboard",
+  tableOfContents: false
+}}
+>
+  <UserDetails {userDisplayName} {photoURL} {email} />
+
+  <h1>What's New? 👀</h1>
+
+  <WhatsNewPageHeader />
+</StarlightPage>
+
+<style>
+.logo-profile {
+  clip-path: url(#cliPath1);
+}
+
+</style>
+
+
+
+

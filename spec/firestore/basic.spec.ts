@@ -1,6 +1,6 @@
-import { setup, teardown } from "./helpers";
+import { setup, teardown } from "../helpers";
 import { describe, test, expect, beforeAll, afterAll } from "bun:test";
-import { mockFeedback } from "./mockData";
+import { mockFeedback } from "../mockData";
 import { addDoc, collection, getDocs } from "firebase/firestore";
 
 describe("Database Rules", () => {
@@ -24,7 +24,6 @@ describe("Database Rules", () => {
   test("fail when writing to an unauthorized collection", async() => {
     expect(addDoc(collRef, {})).toDeny();
   });
-
 
 });
 

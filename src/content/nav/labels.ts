@@ -1,5 +1,7 @@
+import type { SidebarLink } from "node_modules/@astrojs/starlight/utils/routing/types";
+
 export default {
-  start: "Getting Started",
+  start: "Dashboard",
   "docs": "Documentation",
   // values used in the sidebar
   year1: "Year One",
@@ -23,3 +25,15 @@ export default {
   "two.ccs208": "CCS 208: Criminal Psychology",
   "two.ams209": "AMS 209: Social Statistics"
 }
+
+export function userProfileEntry(pathname: string): SidebarLink {
+  return {
+  type: "link",
+  label: "Profile 🤩",
+  href: "/dashboard/profile",
+  badge: undefined,
+  isCurrent: pathname === "/dashboard/profile",
+  attrs: {}
+  };
+};
+

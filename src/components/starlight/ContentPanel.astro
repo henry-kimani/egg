@@ -1,0 +1,12 @@
+---
+import Default from "@astrojs/starlight/components/ContentPanel.astro";
+import FocusedMode from "@components/FocusedMode.astro";
+---
+
+<Default>
+  <slot />
+  {/* Only show the focused mode button for tablet sizes and above */}
+  <div class="hidden min-[800px]:block">
+    <FocusedMode />
+  </div>
+</Default>

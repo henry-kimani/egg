@@ -1,17 +1,17 @@
 import { describe, expect, test, beforeAll, afterAll } from "bun:test";
-import { setup, teardown } from "./helpers";
-import { mockFeedback, mockUser } from "./mockData";
+import { setup, teardown } from "../helpers";
+import { mockFeedback, mockUser } from "../mockData";
 import { collection, getDocs, updateDoc, doc, setDoc, deleteField, deleteDoc, addDoc, serverTimestamp } from "firebase/firestore";
 
 describe("Feedback Form Rules", () => {
-  let unAuthDB;
+  let authDB;
   let collRef;
   let docRef;
 
   beforeAll(async() => {
-    unAuthDB = await setup().unAuthenticate(mockFeedback);
-    collRef = collection(unAuthDB, "feedback");
-    docRef = doc(unAuthDB, Object.keys(mockFeedback)[0]);
+    authDB = await setup().authenticate(mockUser, mockFeedback);
+    collRef = collection(authDB, "feedback");
+    docRef = doc(authDB, Object.keys(mockFeedback)[0]);
   });
 
   afterAll(async()=> {

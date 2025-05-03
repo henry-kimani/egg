@@ -7,6 +7,8 @@ import { devServerFileWatcher } from "./config/dev-server-file-watcher";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 
+import node from "@astrojs/node";
+
 // https://astro.build/config
 export default defineConfig({
   markdown: {
@@ -15,13 +17,14 @@ export default defineConfig({
       [rehypeKatex, { /* Katex plugin options */ }]
     ],
   },
-	integrations: [
+  integrations: [
     devServerFileWatcher([
       './config/*',
       './astro.sidebar.ts',
-      './src/content/nav/*.ts'
+      './src/content/nav/*.ts',
+      './src/middleware.ts',
     ]),
-		starlight({
+    starlight({
       title: 'Egg',
       logo: {
         src: "./src/assets/egglogo.png",
@@ -33,11 +36,13 @@ export default defineConfig({
         Sidebar: "./src/components/starlight/Sidebar.astro",
         Header: "./src/components/starlight/Header.astro",
         MobileMenuFooter: "./src/components/starlight/MobileMenuFooter.astro",
+        PageTitle: "./src/components/starlight/PageTitle.astro",
+        ContentPanel: "./src/components/starlight/ContentPanel.astro"
       },
-			social: {
-				github: 'https://github.com/withastro/starlight',
-			},
-			sidebar,
+      social: {
+        github: 'https://github.com/withastro/starlight',
+      },
+      sidebar,
       customCss: [
         './src/tailwind.css',
         '@fontsource-variable/quicksand',
@@ -45,7 +50,13 @@ export default defineConfig({
         '@fontsource-variable/noto-sans-lao'
       ],
       favicon: "egglogo.svg",
-		}),
-		tailwind({ applyBaseStyles: false }),
-	],
+      routeMiddleware: './src/routeData.ts',
+      prerender: false,
+    }),
+    tailwind({ applyBaseStyles: false }),
+  ],
+  adapter: node({
+    mode: "standalone",
+  }),
+  output: 'server',
 });

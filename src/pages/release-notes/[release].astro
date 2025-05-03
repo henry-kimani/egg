@@ -9,6 +9,8 @@ interface Props {
   releaseNote: CollectionEntry<"releaseNotes">
 }
 
+export const prerender = true;
+
 export async function getStaticPaths() {
   const releaseNotes = await getCollection("releaseNotes");
   return releaseNotes.map(releaseNote => ({

@@ -1,0 +1,103 @@
+---
+import AcceptCookies from './AcceptCookies.astro';
+import EggGuestProfile from "@assets/eggprofile.svg";
+import { Image } from "astro:assets";
+import VariantButton from './buttons/VariantButton.astro';
+
+interface Props {
+  userDisplayName: string | undefined;
+  photoURL: string | undefined;
+  email: string | undefined;
+}
+
+const { userDisplayName, photoURL, email } = Astro.props;
+---
+<div class="flex">
+  <div class=""> {photoURL ? (
+    <svg
+      width="200px"
+      height="200px"
+      viewBox="0 0 210 297"
+      version="1.1"
+      id="svg1"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <defs
+        id="defs1">
+        <clipPath
+          clipPathUnits="userSpaceOnUse"
+          id="clipPath2">
+          <path
+            d="M 103.36749,1.2370634 C 22.46386,0.70848017 -32.368824,148.25663 -11.771804,215.01953 c 8.8321736,28.6285 51.863327,82.36813 116.067824,81.70911 68.31514,-0.70118 107.69896,-53.24138 116.99638,-82.40867 C 242.87187,146.62217 184.2711,1.7656479 103.36749,1.2370634 Z"
+            id="path3"
+            style="stroke-width:1.78496" />
+        </clipPath>
+      </defs>
+      <image
+        id="image1"
+        x="-42"
+        y="0.45322046"
+        preserveAspectRatio="xMidYMid slice"
+        xlink:href={photoURL}
+        width="297.5173"
+        height="297.52036"
+        clip-path="url(#clipPath2)"
+        transform="matrix(0.81150328,0,0,0.81150328,15.573648,21.638022)" 
+      />
+    </svg> ): (
+    <div>
+      <Image width={200} height={200} src={EggGuestProfile} alt="guest profile photo" />
+    </div>
+    )}
+  </div>
+
+  <div class="basis-2/3">
+    <h3>{ userDisplayName || "Anonymous" }</h3> 
+    { userDisplayName ? (
+      <div>
+        <div>{ email }</div>
+        <form action="/api/auth/signout" method="get">
+          <VariantButton theme='simple' icon='right-caret' variant='primary'>Sign Out</VariantButton>
+        </form>
+      </div>
+    ):(
+      <div>
+        <div>Sign in to unlock all notes</div>
+        <VariantButton id='sign-in' theme='simple' icon='right-caret' variant='primary'>Sign In</VariantButton>
+      </div>
+    )}
+  </div>
+</div>
+  <AcceptCookies />
+
+<script>
+import { auth } from "@firebase/client";
+import { GoogleAuthProvider, inMemoryPersistence, signInWithPopup } from "firebase/auth";
+
+const signIn = document.querySelector("#sign-in");
+
+auth.setPersistence(inMemoryPersistence);
+
+signIn?.addEventListener("click", async() => {
+  const provider = new GoogleAuthProvider();
+  try {
+    const result = await signInWithPopup(auth, provider);
+
+    const idToken = await result.user.getIdToken();
+
+    const res = await fetch("/api/auth/signin", {
+      headers: {
+        'Authorization': `Bearer ${idToken}`,
+      }
+    });
+
+    if (res.redirected)
+      window.location.assign(res.url);
+  } catch(error) {
+    window.location.assign("/error");
+  }
+});
+
+</script>
+

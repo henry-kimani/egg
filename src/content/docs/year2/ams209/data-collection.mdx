@@ -1,0 +1,612 @@
+---
+title: Data Collection
+sidebar: 
+  order: 2
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 4
+---
+
+import { Steps, Tabs, TabItem } from "@astrojs/starlight/components";
+import Source from "@components/Source.astro";
+import SimpleLatex from "@components/math/SimpleLatex.astro";
+
+## Sources of data
+1. **Primary data:** Its is first hand information that is freshly collected, 
+compiled and published for some purpose. They are original in character and 
+haven't undergone any statistical treatment.
+
+2. **Secondary data:** Second hand information mainly obtained from published 
+sources such as encyclopedias, media reports etc. The are not original in 
+character and have undergone some statistical treatment atleast once.
+
+## Data collection methods
+
+It is the first step of any invesigation and can be done directly or indirectly.
+It is subdivided as shown below
+
+`<Component />`
+
+### 1. Experimental methods
+
+The investigator in the laboratory tests the hypothesis about the cause-and-effect
+relationship by manipulation the independent variables under controlled conditions.
+
+### 2. Non-experimental methods
+
+The investigator does not control or change any aspect of the situation under 
+study but simply describes what naturally occurs at a certain point or period 
+of time. Most of the methods are widely used on social sciences.
+
+##### a. Field Study
+<strong id="#def-hypothesis">Hypothesis:</strong> A proposed explanation, made on the basis of limited information.
+
+Field study, field research, fieldwork is the collection of raw data outside a
+laboratory, library or workplace setting.
+
+It aims at testing hypothesis in natural life situations. It 
+differs from field experiment since the researcher does not control or 
+manipulate the independent variables, however, both of them (field study and 
+field experiment) are carried out in natural conditions.
+
+  <Tabs>
+    <TabItem label="Merits">
+      1. The method is easy and is carried out in natural conditions.
+      2. Its easy to obtain data with large numbers of variables.
+    </TabItem>
+    <TabItem label="Demerits">
+      1. Independent Variables are not manipulated.
+      2. Cooperation of the organisation is often difficult to obtain.
+      3. Data is likely to contain unknown sampling biases.
+      4. The dross rate (proportion of irrelevant data) may be high in such
+      studies.
+      5. Measurement is not precise as in laboratory because of influence in
+      confounding(confusing) variables.
+    </TabItem>
+  </Tabs>
+
+##### b. Census
+
+Is a study that obtains information from every member of a population. In most
+studies, its not practical because of the cost and/or time required.
+
+##### c. Sample Survey
+
+Is a study that obtains data from a subset(a "sample") of a population in order
+to estimate population attributes/characteristics.
+
+For example, say you want to know the average income of people in a city. Instead
+of surveying every single person, you would conduct a sample survey by randomly
+selecting 1000 residents and asking them about their income. Based on the data 
+from this sample, you can estimate the average income of the entire city.
+
+##### d. Case Survey
+
+It is a method of intensively exploring and analyzing the life of a single social
+unit e.g person, family, institution, cultural group or an entire community. 
+
+> *A case study is an in-depth, detailed examination of a particular
+case (or cases) with in a real-world context.* 
+<Source href="https://en.wikipedia.org/wiki/Case_study" name="Wikipedia" type="ref" />
+
+The units are studied in nature, they are no attempts to exercise experiment or
+statistical control and phenomena.
+
+The researcher has discretion in gathering information from a variety of sources
+such as diaries, letters, autobiograhpies.
+
+<Tabs>
+  <TabItem label="Merits">
+      1. Its less expensive that other methods.
+      2. Its very intensive in nature - aims at studing a few units rather than several.
+      3. Data collection is flexible since the researcher is free to approach the
+      problem from any single angle.
+      4. Data is collected from natural settings.
+  </TabItem>
+  <TabItem label="Demerits">
+      1. Lacks internal validity which is basic to scientific evidence.
+      2. Since they focus on one unit of the defined population, they can't make
+      claims about how things work in general. Meaning, you can't assume what you
+      learnt from one unit applies to a wider population.
+      3. They are more time consuming than other methods.
+  </TabItem>
+</Tabs>
+
+##### e. Experiment
+
+Its a controlled study in which the researcher attempts to understand cause-and-effect
+relationships. The information is drawn from the individuals/units under the 
+experiment. 
+
+The study is "controlled" in the sence the researcher controls how
+*subjects are assigned* to groups and which *treatments each group receives.*
+
+##### f. Observational Study
+
+Like experiment, they attempt to understand the cause-and-effect relationship.
+However, the researcher is unable to control the subjects are 
+assigned to groups and/or which treatments each group receives. The invesigator
+can only directly observe.
+
+## Sampling
+
+Sampling is the scientific process of selecting a representative sample.
+
+### Defintion of terms
+- **Population:** The entire set of individuals, objects or events that a researcher
+is interested in studying.
+- **Sample:** A subset of population selected for a study.
+- **Sample Design:** The scheme, plan or strategy used to select a sample from 
+the population
+- **Sample Unit:** The element selected from the population for the inclusion in
+the sample.
+- **Unit of Analysis:** A statistical unit is an object of statistical survey 
+(for example, an individual) and the bearer of statistical characteristics. 
+Therefore, Unit of Analysis is the unit at which analysis will be done for 
+inferring about the application.
+- **Sampling Frames:** This is the list of all individuals (units), used in 
+probability sampling, as the basis for the selection process of 
+the sample.
+
+### Sample Procedure 
+
+Steps taken when choosing a sample. It can either be through probability sampling
+or non-probability sampling.
+
+`<Component />`
+
+#### Sampling Procedure
+
+1. How to select the elements?
+2. How to estimate the populations characteristics?
+
+#### Probability Sampling
+
+Invoves a mathematical chance of selecting a respondent.
+
+##### 1. Simple Random Sampling (SRS)
+
+  It involes selecting elements randomly from the sampling frame. Each element
+  has an equal probability of being selected from the list (of sample size *n* 
+  and total population *N* ).
+
+  <Tabs>
+    <TabItem label="Demerits">
+      1. **Lack of a listing frame:** the method requires the sampling frame to
+      be available, which is not the case for many populations.
+      2. **Problem of small area estimation or domain analysis:** 
+      3. **Not cost effective:** It requires covering the whole population from 
+      a large geographical area. Interviewing few samples spread sparsely over
+      a large area would be very costly.
+    </TabItem>
+    <TabItem label="Implementating It">
+      1. Listing (sampling) frame.
+      2. Use a random values from a published table or computer generated.
+      3. Selecting the sample based of the random values.
+    </TabItem>
+  </Tabs>
+
+##### 2. Systematic Sampling
+
+  Members of a population are selected from a random starting point and then at 
+  regular intervals.
+
+  Consider a population of 1000 students $$N=1000$$ and a sample size of $$100$$ $$n=100$$.
+
+<Steps>
+
+1. Calculate the sample interval (k):
+
+    <SimpleLatex formula="k=\frac{N}{n}" />
+    <SimpleLatex formula="k=\frac{1000}{100}" />
+    <SimpleLatex formula="k=10" />
+
+2. Choose a random starting point (r) between 1 and k. This will be the first member
+    to select for the sample.
+
+    ```bash
+    # Between 1 to k = 10
+    r = 3
+    ```
+
+3. Select subsequent members.
+
+    $$S$$ : Represents the choosen sample unit.
+
+    $$(r+k)$$ : is the operation done on the samples.
+
+    $$r$$ : The random result that will be used as the number to select a random
+    sample.
+    $$13, 23, 33 ...$$ are choosen for the sample.
+
+    |$$S$$|$$(r+k)$$|$$r$$|
+    |-----|-----|-----|
+    |1st| 3 + 10| 13|
+    |2nd| 13 + 10| 23|
+    |3rd| 23 + 10| 33|
+    
+</Steps>
+
+  <Tabs>
+    <TabItem label="Advantages">
+      1. Provides a better random sampling distribution that SRS.
+      2. Simple to implement.
+      3. May be started without a complete listing frame.
+      4. With ordered list, the variance may be smaller that SRS.
+    </TabItem>
+    <TabItem label="Disadvantages">
+      1. Periodic. There is a recurring pattern in the population that aligns 
+      with the sampling interval, and can lead to biased results.
+      2. Linear Trend. This trend makes it easy to predict the sample units, 
+      therefore, the sample units cannot be considered fully random.
+    </TabItem>
+  </Tabs>
+
+  ###### When to use systematic sampling
+
+  1. Prefered over SRS.
+  2. When no list of population exists.
+  3. When the list is roughly of random order.
+  4. Small area/population.
+
+##### 3. Stratified Sampling.
+
+  Involves dividing the population into groups called *strata* and sampling (randomly
+  selecting) is performed separately on each *stratum*.
+
+  The technique is used when:
+  1. The population may have different values for the responses of interest.
+  2. When we want to improve our estimation for each group separately.
+  3. To ensure adequate sample size for each group.
+
+  In stratified sampling designs:
+  1. Stratum variables are mutually exclusive (no over lapping). Meaning two or 
+  more events cannot happend simultaneosly hence reducing sampling errors.
+  2. The population (elements) should be homogenous within stratum and heterogeneous
+  between the strata.
+
+  <Tabs>
+    <TabItem label="Advantages">
+      1. You can study and make estimations of the variations for each stratum.
+      2. Disproportionate (not in proportion to) sample may be selected for each 
+      stratum.
+      3. The precision is likely to increase, as variance maybe smaller than simple 
+      random case with same sample size.
+      4. Field works, can be organised using the strata. (by geographical areas 
+      or regions)
+      5. Reduced survey costs.
+    </TabItem>
+    <TabItem label="Disadvantages">
+      1. A sampling frame is needed for each stratum.
+      2. The analysis method is complex.
+      3. Data analysis should take a sampling weight to counter the disproportionate
+      sampling of the strata.
+    </TabItem>
+  </Tabs>
+
+###### Allocation of Stratified Sampling
+  The major task is appropriate allocation of samples to different strata.
+
+  **Types of allocations methods:**
+1. Equal allocation. <br />
+2. Proportion to stratum size. <br />
+3. Cost based sample allocation. <br />
+
+##### 4. Cluster Sampling
+
+It involves dividing the population into clusters and randomly selecting clusters
+to sample. Clusters are constructed as the sampling frame when there is unavailable
+or too expensive to construct.
+
+  <Tabs>
+    <TabItem label="Advantages">
+      1. Cheap.
+      2. Easy and quick to make.
+    </TabItem>
+    <TabItem label="Disadvantages">
+      1. Less informative and less efficient per elements in the sample, due to 
+      similarities of elements withing the same cluster. 
+
+      The loss of efficiency, can be compensated by increasing the overall sample
+      size.
+    </TabItem>
+  </Tabs>
+
+##### 5. Multistage
+
+`To Do: `
+
+##### Advantages of Probability Sampling
+
+1. Provides a quantitative measure (e.g margin or error, confidence intervals) 
+of the extent of variation, due to random effects.<br/>
+Probability sampling, by its nature, introduces randomness. But it also gives us 
+the random tools to understand and measure randomness.
+2. Provides data of know quality.
+3. Provides data in a timely fashion.
+4. Provides acceptable data at a minimum cost.
+5. Better control over non-sampling sources of errors.
+6. Mathematical statistics and probability can be applied to analyze and interpret
+the data.
+
+
+#### Non-probability Sampling
+
+  This is any sampling method where, some elements of the population have no chance
+  of selection, or where the probability of selection can't be accurately 
+  determined. (also called, "out of coverage", "undercovered").
+
+  > *Not all members of the population have an equal chance of being selected. 
+  This introduces some bias, but may be necessary is certain situations.*
+  <Source name="A.I: Gemini" type="quote" />
+  
+  It is often used in situations where a researcher cannot select the kinds of 
+  probability samples used in large-scale social surveys. 
+
+##### a. Convenience
+  
+  This method involves choosing the individuals that are easy to find or accessible.
+
+  <Tabs>
+    <TabItem label="Advantages">
+      1. Its very fast to carry out with few rules governinig how the sample should
+      be collected.
+      2. The relative time and cost is small, in comparison to probability sampling
+      techniques. Hence you can achieve the sample size you want relatively fast 
+      and inexpensive way.
+      3. The convenience sample may help you gather useful data the would not have 
+      been possible using probability sampling techniques, since they require
+      a more formal access to lists of populations.
+    </TabItem>
+    <TabItem label="Disadvantages">
+      1. It undermines the ability to make generalizations. Since the sampling
+      frame is unknown and the sample unit is not choosen at random, the sample
+      is unlikely to represent the population being studied.
+      2. It suffers from a number of biases. A convenience sample can 
+      lead to the *under-representation* or *over-representation* of particular 
+      groups. For example in a large organisation with multiple sites, the 
+      employee satisfaction vary considerably between these sites. Hence, conducting
+      a survey only on the organisation's headerquaters can lead to biases, since
+      we may have missed the difference between employee satisfaction in these sites.
+      (the employee satisfaction in the headquaters differs from the non-office 
+      workers).
+    </TabItem>
+  </Tabs>
+
+##### b. Purposive/Judgement
+
+  Elements are choosen based on the purpose of the study. 
+
+  As other non-probability sampling techniques, it does not produce a sample 
+  that is representative of a large population. <br />
+  However, it can be what is needed in some cases e.g study of an organisation, 
+  community etc.
+
+  <Tabs>
+    <TabItem label="Advantages">
+      1. It provides a widerange of qualitative research designs which is needed
+      in such research, for example, sampling strategy and sampling technique.
+      2. Purposive sampling techniques have different goals, therefore provide
+      researchers with the justification to make generalizations from the sample
+      that is being studied.
+      3. Purposive sampling allows for multiple phases in qualitative research.
+      Therefore, a researcher has a widerange of non-probability sampling techniques
+      to draw from.
+    </TabItem>
+    <TabItem label="Disadvantages">
+      1. It is highly prone to bias since the researcher sampled the units based
+      on his/her judgement.
+      2. The subjectivity (influenced by personal feelings, tastes or opinion) 
+      and non-probability based nature (not being random) of the unit selection,
+      make it difficult to defend representativeness of a sample or argue the 
+      sampling achieved theoretical/analytic/logical generalizations.
+    </TabItem>
+  </Tabs>
+
+##### c. Quota Sampling 
+
+  It is designed to overcome the flaws of availability sampling (convenience 
+  sampling). Rather than taking anyone, you set quotas to ensure that the sample
+  you get, represents certain characteristics in proportion to the widespread 
+  population.
+
+  However, you would need to know the characteristics ahead of time.
+
+  The primary problems is, even when you know the quota sample is representative
+  of particular characteristics, there is no way to know if the sample is representative
+  in terms of other characteristics. Say, we have quotas of age and gender, there
+  is no way to know if they represent income or education or other factors.
+
+  Also, interviews can be biased. Say the reseacher is to self-select males 
+  between ages of 18-25, they are most likely to choose better-dressed, more
+  approachable or less threatening individuals.
+
+  ###### Steps of creating a quota sample
+
+  1. Choose the relavent group characteristics and divided the population 
+  according to gender.
+  2. Calculate the quota (number of units that should be included in each group).
+  3. Continue to invite units until the quota for each group is met.
+
+  <Tabs>
+    <TabItem label="Advantages">
+      1. Useful when you are unable to obtain a probability sample, but still
+      want a sample that is representative as possible of the population being
+      studied.
+      2. Unlike stratified random sampling, it is quicker and easier to carry out
+      because it does not require a sampling frame and use of strict random 
+      sampling techniques.
+      3. The quota sample improves the representation of a particular *stata*
+      within a population while ensuring they are not over-represented.
+      4. It allows comparison of groups.
+    </TabItem>
+    <TabItem label="Disadvantages">
+      1. Since the sample is not choosen at random, its difficult to determine 
+      possible sampling error.
+      2. Therefore, its is *biased* (for not choosing randomly) hence thus no
+      statistical inferences from the sample to the population leading to 
+      problems of external validity.
+    </TabItem>
+  </Tabs>
+
+##### d. Snowball
+
+  The researcher identifies one member of the population, speaks to them and 
+  ask them to identify other individuals and refer them to the researcher.
+
+  > *In sociology and statistics research, snowball sampling (or chain sampling,
+  chain-referfal sampling, referral sampling) is a non-probability sampling 
+  technique where existing study subjects recruit subjects from among their 
+  aquiaintances. Thus the sample group is said to grow like a snowball.*
+  <Source href="https://en.wikipedia.org/wiki/Snowball_sampling" name="Wikipedia" type="ref" />
+
+  It is useful in cases where the members of a special population are difficult 
+  to locate. For example, people affected with HIV/AIDS.
+
+  <Tabs>
+    <TabItem label="Advantages">
+      1. Allows the researcher to reach populations that are difficult to sample
+      when using other sampling methods.
+      2. The process is cheap, simple and cost-efficient.
+      3. Requires little planning and fewer workforce compared to other sampling
+      techniques.
+    </TabItem>
+    <TabItem label="Disadvantages">
+      1. The researcher has little control over the sampling technique, since 
+      subjects are mainly obtained depending on the previous subjects.
+      2. Representativeness is not guaranteed because the researcher has no idea
+      of the true distribution of the population and the sample.
+      3. There is potential sampling bias, since initial subjects tend to refer
+      individuals that they know well.
+    </TabItem>
+  </Tabs>   
+
+### Limitations of Sampling
+
+1. The sampling frame may need complete enumeration.
+2. Errors of sampling may be high in small areas.
+3. May not be appropriate for the study objectives/questions.
+4. Representativeness may be vague.
+
+## Survey Administration
+
+#### a. Self-Administarted Survey
+
+  This is any survey that requires the respondent to complete the questionnaire 
+  by themselves. <br />
+  They are useful in describing the characteristics of large populations and make 
+  large sample feasible (achievable).
+
+  <Tabs>
+    <TabItem label="Advantages">
+      1. **Low cost:** No extensive training is required to administer the survey.
+      Additionally, processing and analysis are usually simpler and cheaper than
+      for other methods.
+      2. **Reduction in biasing error:** The questionnaire reduces the bias that
+      might result from personal characteristics of interviewers and/or their 
+      interviewing skills.
+      3. **Greater anonymity:** Absence of the interviewer provides greater 
+      anonymity especially for sensitive issues.
+      4. **Convenient to the respondents:** They may complete at whenever they want.
+      5. **May provide reliable information:** They have an allowance to consult
+      others or check records to avoid recall bias.
+    </TabItem>
+    <TabItem label="Disadvantages">
+      1. **Requires simple questions:** 
+      2. **No opportunity to probing:** The answers are accepted as final and researchers
+      have no opportunity to clarify ambiguous answers.
+      3. **Low response rate:** The respondents may not answer all the questions 
+      and/or may not return the questionnaire.
+      4. The respondent must be literate to read and understand the questionnaire.
+      5. Introduce self-selection bias.
+      6. Not suitable for complex questionnaire.
+    </TabItem>
+  </Tabs>
+
+#### b. Inverview Surveys
+
+  It involves asking questions orally and record respondent's answers. It reduces
+  the number of "don't know" or "no answer" responses as compared to questionnaires.
+
+  The interviewer can also offer clarification if the question is mis-understood. <br />
+  The interviewer should have good observation, listening and recording skills.
+  They should also be familiar with the study objectives.
+
+  <Tabs>
+    <TabItem label="Advantages">
+      1. **Flexibility:** This allows the interviewer to clarify terms if unclear.
+      2. **Control of the interview situation:** They can ensure the interview
+      is private and respondents do not have an opportunity to consult on another.
+      before giving their answers.
+      3. **High response rate:** The response time from the respondent in interviews
+      are higher than questionnare.
+      4. May record non-verbal behavior, activities or facilities.
+      5. A complext questionnare maybe used.
+      6. Illiterate respondents may participate.
+    </TabItem>
+    <TabItem label="Disadvantages">
+      1. **Higher costs:** Costs are involved in selecting, training and supervising 
+      interviewers; Paying them.
+      2. **Interviwer bias:** The flexibility allows for interviewer's personal
+      influence and bias.
+      3. **Lack of anonymity:** Often the interviewer knows all the respondents
+      resulting in fear and intimidation by the respondent, especially in sensitive
+      questions.
+      4. Less accessibility
+      5. Inconvinience
+      6 Often no opportunity to consult records, families, relatives.
+    </TabItem>
+  </Tabs>
+
+#### c. Telephone Interiew
+
+  <Tabs>
+    <TabItem label="Advantages">
+      1. Less expensive.
+      2. Shorter data collection period than personal interviews.
+      3. Better response that mail surveys.
+    </TabItem>
+    <TabItem label="Disadvantages">
+      1. Biased against households without a telephone or an unlisted number.
+      2. Non-response during the telephone interview.
+      3. Difficult for sensitive issues or complex issues.
+      4. Limited to verbal responses. Cannot observe non-verbal ques.
+    </TabItem>
+  </Tabs>
+
+#### d. Focus Groups
+
+  Focus groups are a group of people who poses certain characteristics and provide
+  information of a qualitative nature in a focused discussion. <br />
+  They are generally composed of 6-10 people.
+
+  Size is controlled by two factors:
+  - Small enough for everyone to participate.
+  - Large enough to provide divesity.
+
+  This groups is special in terms of:
+  - Purpose
+  - Size
+  - Composition
+  - Procedures
+
+  Participants are selected because they have certain characteristics in common
+  that relate to the topic at hand, such as parents of gang members. <br />
+  Generally, they are unfamilar with each other.
+
+  <Tabs>
+    <TabItem label="Advantages">
+      1. Flexibility allows the moderator to probe (inquire) for more in-depth
+      analysis and ask participants to elaborate on their responses.
+      2. Outcomes are quickly known.
+      3. Less costly in planning and conducting than large surveys and personal 
+      interviews.
+    </TabItem>
+    <TabItem label="Disadvantages">
+      1. A skilled moderator is essential.
+      2. Because of the qualitative nature of the data, differences between groups
+      can be troublesome to analyze.
+      3. Groups are difficult to assemeble since people may take time to come and
+      designate a place at particular time.
+    </TabItem>
+  </Tabs>

@@ -30,7 +30,6 @@ if ( localStorage.getItem("cookies-consent") === null ) {
   // Ask user to accept cookies
   modal?.showModal();
 
-  // TODO: Save preferences in firestore
   // Save their preferences locally
   localStorage.setItem("cookies-consent", "true");
 }
