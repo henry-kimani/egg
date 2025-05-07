@@ -1,19 +1,22 @@
 ---
+import config from "virtual:starlight/user-config";
 import SiteTitle from "@astrojs/starlight/components/SiteTitle.astro";
 import Search from "@astrojs/starlight/components/Search.astro";
-import SocialIcons from "@astrojs/starlight/components/SocialIcons.astro";
-import ThemeSelect from "@astrojs/starlight/components/ThemeSelect.astro";
-import VariantButton from "@components/buttons/VariantButton.astro";
-import Modal from "@components/modals/Modal.astro";
-import FeedbackForm from "@components/forms/FeedbackForm.astro";
+import ProfileMenu from "@components/user/ProfileMenu.astro";
+
+const shouldRenderSearch = 
+  config.pagefind || config.components.Search !== '@astro/starlight/components/Search.astro';
+
 ---
 
-<div class="header sl-flex">
-  <div class="title-wrapper sl-flex">
+<div class="header">
+  <div class="title- wrapper sl-flex">
     <SiteTitle />
   </div>
 
-  <Search />
+  <div class="search print:hidden">
+    {shouldRenderSearch && <Search />}
+  </div>
 
   {/* 
   <div class="flex justify-between items-center md:w-full print:hidden">
@@ -34,38 +37,30 @@ import FeedbackForm from "@components/forms/FeedbackForm.astro";
   </div>
   */}
 
-  <div class="sl-hidden md:sl-flex print:hidden right-group">
-    <div class="sl-flex social-icons">
-      <SocialIcons />
-    </div>
-    <ThemeSelect />
+  <div class="print:hidden flex items-center">
+    <ProfileMenu />
   </div>
 </div>
 
 <style>
 .header {
+  display: grid;
+  grid-template-columns: auto 1fr auto; 
+  grid-auto-flow: column;
   gap: var(--sl-nav-gap);
-  justify-content: space-between;
-  align-items: center;
+  align-content: center;
   height: 100%;
 }
 
+.search {
+  place-self: end;
+}
+
 .title-wrapper{
+  overflow: clip;
   padding: 0.25rem;
   margin: -0.25rem;
   min-width: 0;
-}
-
-.right-group,
-.social-icons {
-  gap: 1rem;
-  align-items: center;
-}
-
-.social-icons::after {
-  content: '';
-  height: 2rem;
-  border-inline-end: 1px solid var(--sl-color-gray-5);
 }
 
 @media (min-width: 50rem) {
@@ -98,7 +93,9 @@ import FeedbackForm from "@components/forms/FeedbackForm.astro";
       1fr
       /* 3. (right items): use the space that they need. */
       auto;
-    align-content: center;
+  }
+  .search {
+    width: 100%;
   }
 }
 </style>

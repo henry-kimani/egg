@@ -1,0 +1,76 @@
+---
+/* Render only the profile  picture */
+
+interface Props {
+  profilePic: string;
+}
+
+const { profilePic } = Astro.props;
+
+---
+<profile-menu-button>
+  <button
+    aria-expanded="false"
+    aria-controls="user-profile-menu"
+    class=`header-profile grid place-items-center cursor-pointer
+      bg-[var(--sl-color-gray-6)] rounded-full border border-[var(--sl-color-gray-5)]
+      dark:bg-[var(--sl-color-black)]
+    `
+  >
+    {profilePic}
+  </button>
+</profile-menu-button>
+
+<script>
+class ProfileMenuButton extends HTMLElement {
+  btn = this.querySelector("button")!;
+
+  constructor() {
+    super();
+
+    // Toggle 'aria-expanded' when clicked
+    this.btn.addEventListener("click", () => this.toggleExpanded());
+
+    // Close the profile menu on Escape
+    const parentSection = this.closest('section');
+    if ( parentSection) {
+      parentSection?.addEventListener('keyup', (e) => this.closeOnEscape(e));
+    }
+  }
+
+  setExpanded(expanded: boolean) {
+    this.setAttribute("aria-expanded", String(expanded));
+  }
+
+  toggleExpanded() {
+    this.setExpanded(this.getAttribute('aria-expanded') !== 'true');
+  }
+
+  closeOnEscape(e: KeyboardEvent) {
+    if (e.code === "Escape") {
+      this.setExpanded(false);
+      this.btn.focus();
+    }
+  }
+}
+
+customElements.define("profile-menu-button", ProfileMenuButton);
+</script>
+
+<style>
+.header-profile {
+  width: var(--sl-menu-button-size); 
+  height: var(--sl-menu-button-size);
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+@media (min-width: 50em) {
+  .header-profile {
+    width: 2.75rem; 
+    height: 2.75rem;
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+}
+</style>
