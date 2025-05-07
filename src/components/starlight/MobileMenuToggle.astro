@@ -9,7 +9,8 @@ import { Icon } from "@astrojs/starlight/components";
 		aria-controls="starlight__sidebar"
 		class="sl-flex md:sl-hidden"
 	>
-		<Icon name="bars" />
+		<Icon name="bars" class="open-menu" />
+		<Icon name="bars" class="close-menu" />
 	</button>
 </starlight-menu-button>
 
@@ -54,7 +55,7 @@ import { Icon } from "@astrojs/starlight/components";
 	button {
 		position: fixed;
 		top: calc((var(--sl-nav-height) - var(--sl-menu-button-size)) / 2);
-		inset-inline-end: var(--sl-nav-pad-x);
+		inset-inline-start: var(--sl-nav-pad-x);
 		z-index: var(--sl-z-index-navbar);
 		border: 0;
 		border-radius: 50%;
@@ -65,12 +66,20 @@ import { Icon } from "@astrojs/starlight/components";
 		color: var(--sl-color-black);
 		box-shadow: var(--sl-shadow-md);
 		cursor: pointer;
-	}
+  }
 
 	[aria-expanded='true'] button {
 		background-color: var(--sl-color-gray-2);
 		box-shadow: none;
 	}
+
+  [aria-expanded='true'] button .open-menu {
+    display: none;
+  }
+
+  :not([aria-expanded='true']) button .close-menu {
+    display: none;
+  }
 
 	:global([data-theme='light']) button {
 		background-color: var(--sl-color-black);
