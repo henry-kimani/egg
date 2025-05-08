@@ -1,0 +1,33 @@
+---
+import { Icon } from "@astrojs/starlight/components";
+import type { StarlightIcon } from "@astrojs/starlight/types";
+
+interface Props {
+  id?: string;
+  icon: StarlightIcon;
+}
+
+const { id, icon } = Astro.props;
+---
+
+<button class="rounded-md" {id}>
+  <span><Icon name={icon} /></span>
+  <span><slot /></span>
+</button>
+
+<style>
+button {
+  display: flex;
+  gap: 1em;
+  padding: calc(var(--sl-nav-pad-y) / 2);
+  width: 100%;
+  background-color: transparent;
+}
+button:hover {
+  background-color: var(--sl-color-gray-5);
+  cursor: pointer;
+}
+:global([data-theme="light"]) button:hover {
+  background-color: var(--sl-color-gray-6);
+}
+</style>

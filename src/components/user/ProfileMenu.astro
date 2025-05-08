@@ -1,34 +1,60 @@
 ---
 import ProfilePicture from "@components/user/ProfilePicture.astro";
 import ThemeSelect from "@astrojs/starlight/components/ThemeSelect.astro";
+import FeedbackForm from "@components/forms/FeedbackForm.astro";
+import Modal from "@components/modals/Modal.astro";
 import FocusedMode from "@components/FocusedMode.astro";
+import ProfileButton from "@components/user/ProfileButton.astro";
 ---
 
 <section>
   <ProfilePicture profilePic="M" />
   <div
-    id="user-profile-menu" 
-    class="profile-menu absolute w-52 h-52 rounded-md"
+    id="user-profile-menu"
+    class="profile-menu absolute w-52 h-auto rounded-md"
   >
-    <ThemeSelect />
-    <FocusedMode />
+    <div>
+      <ThemeSelect />
+    </div>
+
+    <div>
+      <ProfileButton id="open-feedback-modal" icon="comment">Feedback</ProfileButton>
+      <Modal dialogId="feedback-form-modal" closeId="close-feedback-modal">
+        <FeedbackForm />
+      </Modal>
+    </div>
+
+    <div class="hidden md:block">
+      <FocusedMode />
+    </div>
   </div>
-  </section>
+</section>
 
 <style>
-.profile-menu {
-  visibility: var(--profile-menu-visibility, hidden);
-  top: calc(var(--sl-nav-height) + var(--sl-nav-pad-y));
-  right: var(--sl-nav-pad-y);
-  background-color: var(--sl-color-gray-6);
-  border: 1px solid var(--sl-color-gray-5);
-}
+  .profile-menu {
+    visibility: var(--profile-menu-visibility, hidden);
+    top: calc(var(--sl-nav-height) + var(--sl-nav-pad-y));
+    right: var(--sl-nav-pad-y);
+    background-color: var(--sl-color-gray-6);
+    border: 1px solid var(--sl-color-gray-5);
+    padding: var(--sl-nav-pad-y);
+    display: grid;
+  }
 
-:global([aria-expanded='true']) ~ .profile-menu {
-  --profile-menu-visibility: visible; 
-}
+  :global([aria-expanded="true"]) ~ .profile-menu {
+    --profile-menu-visibility: visible;
+  }
 
-:global([data-theme="light"]) .profile-menu {
-  background-color: var(--sl-color-gray-7);
-}
+  :global([data-theme="light"]) .profile-menu {
+    background-color: var(--sl-color-gray-7);
+  }
 </style>
+
+<script>
+  const feedbackFormModal = document.getElementById("feedback-form-modal") as HTMLDialogElement;
+  const openFeedbackForm = document.getElementById("open-feedback-modal") as HTMLButtonElement;
+  const closeFeedbackForm = document.getElementById("close-feedback-modal") as HTMLButtonElement;
+
+  openFeedbackForm.onclick = () => feedbackFormModal.showModal();
+  closeFeedbackForm.onclick = () => feedbackFormModal.close();
+</script>
