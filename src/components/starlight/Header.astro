@@ -18,25 +18,6 @@ const shouldRenderSearch =
     {shouldRenderSearch && <Search />}
   </div>
 
-  {/* 
-  <div class="flex justify-between items-center md:w-full print:hidden">
-    <div class="grid place-items-center ml-3">
-      <VariantButton
-        id="open-feedback-modal"
-        icon="comment"
-        theme="simple"
-        variant="minimal"
-        buttonLabel="Open a feedback form in a pop-up"
-        iconLabel="feedback icon to open a pop-up with a feedback form"
-        classes="open-modal-button"
-      />
-      <Modal dialogId="feedback-form-modal" closeId="close-feedback-modal">
-        <FeedbackForm />
-      </Modal>
-    </div>
-  </div>
-  */}
-
   <div class="print:hidden flex items-center">
     <ProfileMenu />
   </div>
@@ -100,11 +81,3 @@ const shouldRenderSearch =
 }
 </style>
 
-<script>
-const feedbackFormModal = document.getElementById('feedback-form-modal') as HTMLDialogElement;
-const openFeedbackForm = document.getElementById('open-feedback-modal') as HTMLButtonElement;
-const closeFeedbackForm = document.getElementById('close-feedback-modal') as HTMLButtonElement;
-
-openFeedbackForm.onclick = () => feedbackFormModal.showModal();
-closeFeedbackForm.onclick = () => feedbackFormModal.close();
-</script>

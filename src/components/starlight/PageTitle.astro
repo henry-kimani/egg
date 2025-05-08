@@ -43,7 +43,6 @@ if (isDashboardProfile) {
     }
     .user-greeting {
       color: var(--sl-color-white);
-      transform: translate(5px, 5px) !important;
       animation: greetingScaleUp 1s ease-in-out 1 forwards;
     }
     .username-dashboard {
@@ -51,27 +50,26 @@ if (isDashboardProfile) {
       background-clip: text;
       text-fill-color: transparent;
       -webkit-text-fill-color: transparent;
-  }
-
-  .caret {
-    display: inline-block;
-    width: 4px;
-    height: 1em;
-    background-color: var(--sl-color-white);
-    margin-left: 5px !important;
-    transform: translateY(3px);
-    animation: blinkCaret .80s step-end infinite;
-  }
-
-  @keyframes blinkCaret {
-    from, to {
-      background-color: transparent;
     }
-    50% {
+
+    .caret {
+      display: inline-block;
+      width: 4px;
+      height: 1em;
       background-color: var(--sl-color-white);
+      margin-left: 5px !important;
+      transform: translateY(3px);
+      animation: blinkCaret .80s step-end infinite;
     }
-  }
-  
+
+    @keyframes blinkCaret {
+      from, to {
+        background-color: transparent;
+      }
+      50% {
+        background-color: var(--sl-color-white);
+      }
+    }
 
     @keyframes greetingScaleUp {
       from {

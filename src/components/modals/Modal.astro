@@ -1,4 +1,12 @@
 ---
+/* For each components that will use the modal, the script to open and close the
+ * modal, will be put in that component.
+ *
+ * The only things required are the dialogId and closeId to be passed as props.
+ *
+ * The openId(button) for that modal will also be put in that component, but will
+ * not be passed as a prop in the modal */
+
 import VariantButton from "@components/buttons/VariantButton.astro"
 
 interface Props {
