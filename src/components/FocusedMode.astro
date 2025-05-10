@@ -88,56 +88,55 @@ class FocusedMode extends HTMLElement {
     sessionStorage.setItem("focused-mode", value ? "1" : "0");
   }
 
-  activate() {
+  async activate() {
     this.focusedMode = true;
+
+    if (!this.sidebar) return;
     
-    this.sidebar.animate([
+    const hideSidebarAnimation = this.sidebar.animate([
       { opacity: 1, transform: "translateX(0)"}, // from
       { opacity: 0, transform: "translateX(-400px)"}, // to
-    ], {
-        duration: 300,
-        easing: 'ease-out'
-      });
+    ], { duration: 300, easing: 'ease-out' });
 
+    await hideSidebarAnimation.finished;
     this.sidebar.style.opacity = "0";
+    this.sidebar.style.transform = "translateX(-400px)";
 
     // Table of contents
-    if (this.isPC) {
-      this.toc.animate([
+    if (this.isPC && this.toc) {
+      const tocAnimation = this.toc.animate([
         { opacity: 1}, // from 
         { opacity: .2} // to
-      ], {
-          duration: 300,
-          easing: "ease-out"
-        });
+      ], { duration: 100, easing: "ease-out" });
+
+      await tocAnimation.finished;
       this.toc.style.opacity = ".2";
       this.toc.style.border = "none";
     }
   }
 
-  deactivate() {
+  async deactivate() {
     this.focusedMode = false;
 
-    this.sidebar.animate([
+    if (!this.sidebar) return; // Guarde clause
+
+    const showSidebarAnimation = this.sidebar.animate([
       { opacity: 0, transform: "translateX(-400px)"}, // from
       { opacity: 1, transform: "translateX(0)"}, // to
-    ], {
-        duration: 150,
-        easing: 'ease-in',
-    });
+    ], { duration: 150, easing: 'ease-in' });
 
+    await showSidebarAnimation.finished;
     this.sidebar.style.opacity = "1";
     this.sidebar.style.transform = "translateX(0)";
 
     // Table of contents
-    if (this.isPC) {
-      this.toc.animate([
+    if (this.isPC && this.toc) {
+      const tocAnimation = this.toc.animate([
         { opacity: .2}, // from 
         { opacity: 1} // to
-      ], {
-          duration: 150,
-          easing: "ease-out"
-        });
+      ], { duration: 100, easing: "ease-out" });
+
+      await tocAnimation.finished;
       this.toc.style.opacity = "1";
       this.toc.style.borderInlineStart = "1px solid var(--sl-color-hairline)";
     }
