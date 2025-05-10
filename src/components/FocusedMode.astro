@@ -32,29 +32,64 @@ class FocusedMode extends HTMLElement {
   starlightButton = this.querySelector("starlight-menu-button");
   isPC = window.innerWidth >= this.TABLET_WIDTH; // Check: Greater that a tablet
 
+  /* For order of operations, since using focusedMode, which we would have initialized
+   * in the constructor would have called the setter */
+  private _focusedModeInternal = false;
+
   constructor() {
     super();
 
-    // Check if the window is a pc
-    window.onresize = () => {
-      this.isPC = window.innerWidth >= this.TABLET_WIDTH; // Check: Greater that a tablet
-    };
+    this._focusedModeInternal = sessionStorage.getItem("focused-mode") === "1";
 
-    this.focusedMode = "0";
-  }
-
-  get focusedMode() {
-    return sessionStorage.getItem("focused-mode");
-  }
-
-  set focusedMode(value) {
-    if (value){
-      sessionStorage.setItem("focused-mode", value);
+    if (this._focusedModeInternal) {
+      // intial styles if focused mode was active
+      this._applyInitialStyles();
     }
   }
 
+  // Apply styles without animation for initial styles if focused mode was on
+  private _applyInitialStyles() {
+    this.sidebar.style.opacity = "0";
+    this.sidebar.style.transform = "translateX(-400px)";
+    
+    if (this.isPC && this.toc) {
+      this.toc.style.opacity = ".2";
+      this.toc.style.border = "none";
+    }
+  }
+
+  // Using arrow function to preserve 'this'
+  private handleResize = () => {
+    this.isPC = window.innerWidth >= this.TABLET_WIDTH;
+
+    // Re-evaluate TOC visibility if focused mode is active
+    if (this.focusedMode) {
+      if (this.isPC && this.toc) {
+        // If hover is active during resize
+        const isHoveringTOC = this.toc.matches(":hover");
+        this.toc.style.opacity = isHoveringTOC? "1": ".2";
+        this.toc.style.border = "none";
+      } else {
+        // TOC was styles for PC, reset it
+        if (this.toc) {
+          this.toc.style.opacity = "1";
+          this.toc.style.borderInlineStart = "1px solid var(--sl-color-hairline)";
+        }
+      }
+    }
+  }
+
+  get focusedMode() {
+    return this._focusedModeInternal;
+  }
+
+  set focusedMode(value: boolean) {
+    this._focusedModeInternal = value;
+    sessionStorage.setItem("focused-mode", value ? "1" : "0");
+  }
+
   activate() {
-    this.focusedMode = "1";
+    this.focusedMode = true;
     
     this.sidebar.animate([
       { opacity: 1, transform: "translateX(0)"}, // from
@@ -81,17 +116,18 @@ class FocusedMode extends HTMLElement {
   }
 
   deactivate() {
-    this.focusedMode = "0";
+    this.focusedMode = false;
 
     this.sidebar.animate([
       { opacity: 0, transform: "translateX(-400px)"}, // from
       { opacity: 1, transform: "translateX(0)"}, // to
     ], {
         duration: 150,
-        easing: 'ease-in'
+        easing: 'ease-in',
     });
 
     this.sidebar.style.opacity = "1";
+    this.sidebar.style.transform = "translateX(0)";
 
     // Table of contents
     if (this.isPC) {
@@ -109,7 +145,7 @@ class FocusedMode extends HTMLElement {
 
   connectedCallback() {    
     this.focusedButton.addEventListener("click", () => {
-      if (this.focusedMode === "1") {
+      if (this.focusedMode) {
         // if focused mode is on, close it
         this.deactivate();
       } else {
@@ -118,17 +154,24 @@ class FocusedMode extends HTMLElement {
       }
     });
 
+    window.addEventListener("resize", this.handleResize);
+
     /* Allow the opacity to be change for the toc, if the screen is greater that
      * a tablet i.e a PC */
     this.toc?.addEventListener("mouseover", () => {
-      if (this.focusedMode === "1" && this.isPC)
+      if (this.focusedMode && this.isPC)
         this.toc.style.opacity = "1";
     });
 
     this.toc?.addEventListener("mouseout", () => {
-      if (this.focusedMode === "1" && this.isPC)
+      if (this.focusedMode && this.isPC)
         this.toc.style.opacity = ".2";
     });
+  }
+
+  disconnectedCallback() {
+    // Clean up: removing global event listeners
+    window.removeEventListener("resize", this.handleResize);
   }
 }
 customElements.define('focused-mode', FocusedMode);
