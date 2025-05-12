@@ -4,7 +4,7 @@
  * - temporarily closes the sidebar
  * - lower the opacity of the pageTableOfContents
 */
-import ProfileButton from "@components/user/ProfileButton.astro";
+import DropdownChidMenu from "@components/buttons/DropdownChildButton.astro";
 
 const currentPathname = Astro.url.pathname;
 
@@ -13,7 +13,7 @@ const isAllowedPathname = currentPathname.startsWith("/year1") || currentPathnam
 ---
 { isAllowedPathname ?
   <focused-mode>
-    <ProfileButton icon="open-book">Focused Mode</ProfileButton>
+    <DropdownChidMenu icon="open-book">Focused Mode</DropdownChidMenu>
   </focused-mode>
 : ""
 }

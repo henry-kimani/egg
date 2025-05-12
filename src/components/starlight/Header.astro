@@ -2,7 +2,7 @@
 import config from "virtual:starlight/user-config";
 import SiteTitle from "@astrojs/starlight/components/SiteTitle.astro";
 import Search from "@astrojs/starlight/components/Search.astro";
-import ProfileMenu from "@components/user/ProfileMenu.astro";
+import ProfileDropdownMenu from "@components/user/ProfileDropdownMenu.astro";
 
 const shouldRenderSearch = 
   config.pagefind || config.components.Search !== '@astro/starlight/components/Search.astro';
@@ -19,7 +19,7 @@ const shouldRenderSearch =
   </div>
 
   <div class="print:hidden flex items-center">
-    <ProfileMenu />
+    <ProfileDropdownMenu />
   </div>
 </div>
 

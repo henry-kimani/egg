@@ -1,24 +1,30 @@
 ---
-import ProfilePicture from "@components/user/ProfilePicture.astro";
+import ProfileDropdownMenuButton from "./ProfileDropdownMenuButton.astro";
 import ThemeSelect from "@astrojs/starlight/components/ThemeSelect.astro";
 import FeedbackForm from "@components/forms/FeedbackForm.astro";
 import Modal from "@components/modals/Modal.astro";
 import FocusedMode from "@components/FocusedMode.astro";
-import ProfileButton from "@components/user/ProfileButton.astro";
+import DropdownChildButton from "@components/buttons/DropdownChildButton.astro";
+import TitleAndDescriptionCard from "@components/TitleAndDescriptionCard.astro";
+import UserDetails from "./UserDetails.astro";
 ---
 
 <section>
-  <ProfilePicture profilePic="M" />
+  <ProfileDropdownMenuButton profilePic="M" />
   <div
     id="user-profile-menu"
     class="profile-menu absolute w-52 h-auto rounded-md"
   >
     <div>
+      <UserDetails />
+    </div>
+
+    <div>
       <ThemeSelect />
     </div>
 
     <div>
-      <ProfileButton id="open-feedback-modal" icon="comment">Feedback</ProfileButton>
+      <DropdownChildButton id="open-feedback-modal" icon="comment">Feedback</DropdownChildButton>
       <Modal dialogId="feedback-form-modal" closeId="close-feedback-modal">
         <FeedbackForm />
       </Modal>
