@@ -18,8 +18,8 @@ const { id, icon } = Astro.props;
 <style>
 button {
   display: flex;
-  gap: 1em;
-  padding: calc(var(--sl-nav-pad-y) / 2);
+  gap: var(--sl-nav-pad-y);
+  padding: .5em var(--sl-nav-pad-y);
   width: 100%;
   background-color: transparent;
 }
