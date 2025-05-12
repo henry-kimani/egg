@@ -19,7 +19,35 @@ const isAllowedPathname = currentPathname.startsWith("/year1") || currentPathnam
 }
 
 <style>
+:global(.hide-sidebar) {
+  transform: translateX(-400px) !important;
+  opacity: 0 !important;
+  transition: all 0.3s ease-in;
+}
 
+:global(.show-sidebar) {
+  transform: translateX(0px) !important;
+  opacity: 1 !important;
+  transition: all 0.1s ease-out;
+}
+
+/* Adding 'important' to override inline styles */
+:global(.hide-toc) {
+  opacity: .2 !important;
+  border: none !important;
+  transition: all 0.1s ease-in;
+}
+
+:global(.show-toc) {
+  opacity: 1 !important;
+  border: 1px solid var(--sl-color-hairline) !important;
+  transition: all 0.1s ease-out;
+}
+
+:global(.show-toc-on-hover) {
+  opacity: 1;
+  border: 1px solid var(--sl-color-hairline);
+}
 </style>
 
 <script>
@@ -92,26 +120,14 @@ class FocusedMode extends HTMLElement {
     this.focusedMode = true;
 
     if (!this.sidebar) return;
-    
-    const hideSidebarAnimation = this.sidebar.animate([
-      { opacity: 1, transform: "translateX(0)"}, // from
-      { opacity: 0, transform: "translateX(-400px)"}, // to
-    ], { duration: 300, easing: 'ease-out' });
 
-    await hideSidebarAnimation.finished;
-    this.sidebar.style.opacity = "0";
-    this.sidebar.style.transform = "translateX(-400px)";
+    this.sidebar.classList.remove("show-sidebar");
+    this.sidebar.classList.add("hide-sidebar");
 
     // Table of contents
     if (this.isPC && this.toc) {
-      const tocAnimation = this.toc.animate([
-        { opacity: 1}, // from 
-        { opacity: .2} // to
-      ], { duration: 100, easing: "ease-out" });
-
-      await tocAnimation.finished;
-      this.toc.style.opacity = ".2";
-      this.toc.style.border = "none";
+      this.toc.classList.remove("show-toc");
+      this.toc.classList.add("hide-toc");
     }
   }
 
@@ -120,25 +136,13 @@ class FocusedMode extends HTMLElement {
 
     if (!this.sidebar) return; // Guarde clause
 
-    const showSidebarAnimation = this.sidebar.animate([
-      { opacity: 0, transform: "translateX(-400px)"}, // from
-      { opacity: 1, transform: "translateX(0)"}, // to
-    ], { duration: 150, easing: 'ease-in' });
-
-    await showSidebarAnimation.finished;
-    this.sidebar.style.opacity = "1";
-    this.sidebar.style.transform = "translateX(0)";
+    this.sidebar.classList.remove('hide-sidebar');
+    this.sidebar.classList.add("show-sidebar");
 
     // Table of contents
     if (this.isPC && this.toc) {
-      const tocAnimation = this.toc.animate([
-        { opacity: .2}, // from 
-        { opacity: 1} // to
-      ], { duration: 100, easing: "ease-out" });
-
-      await tocAnimation.finished;
-      this.toc.style.opacity = "1";
-      this.toc.style.borderInlineStart = "1px solid var(--sl-color-hairline)";
+      this.toc.classList.remove("hide-toc");
+      this.toc.classList.add("show-toc");
     }
   }
 
@@ -158,13 +162,13 @@ class FocusedMode extends HTMLElement {
     /* Allow the opacity to be change for the toc, if the screen is greater that
      * a tablet i.e a PC */
     this.toc?.addEventListener("mouseover", () => {
-      if (this.focusedMode && this.isPC)
-        this.toc.style.opacity = "1";
+      if (this.focusedMode && this.isPC) 
+        this.toc.classList.add("show-toc-on-hover");
     });
 
     this.toc?.addEventListener("mouseout", () => {
       if (this.focusedMode && this.isPC)
-        this.toc.style.opacity = ".2";
+        this.toc.classList.remove("show-toc-on-hover");
     });
   }
 
