@@ -5,34 +5,54 @@ import FeedbackForm from "@components/forms/FeedbackForm.astro";
 import Modal from "@components/modals/Modal.astro";
 import FocusedMode from "@components/FocusedMode.astro";
 import DropdownChildButton from "@components/buttons/DropdownChildButton.astro";
-import TitleAndDescriptionCard from "@components/TitleAndDescriptionCard.astro";
-import UserDetails from "./UserDetails.astro";
+import SpecificHeading from "@components/headings/SpecificHeading.astro";
+import ProfileIcon from "@components/user/ProfileIcon.astro";
+import VariantButton from "@components/buttons/VariantButton.astro";
 ---
 
 <section>
+  {/* Dropdown Button */}
   <ProfileDropdownMenuButton profilePic="M" />
+
+  {/* Dropdown Menu */}
   <div
     id="user-profile-menu"
-    class="profile-menu absolute w-52 h-auto rounded-md"
+    class="profile-menu absolute w-56 h-auto rounded-md"
   >
-    <div>
-      <UserDetails />
+    <!-- Profile -->
+    <div class="flex items-center gap-1 border-b-2 border-b-[--sl-color-gray-5]">
+      <ProfileIcon shape="egg" size="small" photo="" />
+      <div class="h-full">
+        <SpecificHeading heading="h3">Anonymous</SpecificHeading>
+        <VariantButton
+          icon="right-caret"
+          theme="simple"
+          variant="primary"
+          classes="mt-2 text-sm text-center"
+        >Dashboard</VariantButton>
+      </div>
     </div>
 
+    <!-- Buttons -->
     <div>
-      <ThemeSelect />
+      <div>
+        <ThemeSelect />
+      </div>
+
+      <div>
+        <DropdownChildButton id="open-feedback-modal" icon="comment">Feedback</DropdownChildButton>
+        <Modal dialogId="feedback-form-modal" closeId="close-feedback-modal">
+          <FeedbackForm />
+        </Modal>
+      </div>
+
+      <div class="hidden md:block">
+        <FocusedMode />
+      </div>
     </div>
 
-    <div>
-      <DropdownChildButton id="open-feedback-modal" icon="comment">Feedback</DropdownChildButton>
-      <Modal dialogId="feedback-form-modal" closeId="close-feedback-modal">
-        <FeedbackForm />
-      </Modal>
-    </div>
-
-    <div class="hidden md:block">
-      <FocusedMode />
-    </div>
+    <!-- Log out -->
+    <div></div>
   </div>
 </section>
 

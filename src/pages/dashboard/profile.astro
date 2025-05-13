@@ -1,5 +1,5 @@
 ---
-import UserDetails from "@components/user/UserDetails.astro";
+import ProfileCard from "@components/user/ProfileCard.astro";
 import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
 import { adminAuth } from '@firebase/server';
 import WhatsNewPageHeader from "@components/whatsnewpage/WhatsNewPageHeader.astro";
@@ -31,7 +31,7 @@ if (Astro.cookies.has("__session")) {
   tableOfContents: false
 }}
 >
-  <UserDetails {userDisplayName} {photoURL} {email} />
+  <ProfileCard {userDisplayName} {photoURL} {email} />
 
   <h1>What's New? 👀</h1>
 
@@ -44,7 +44,4 @@ if (Astro.cookies.has("__session")) {
 }
 
 </style>
-
-
-
 

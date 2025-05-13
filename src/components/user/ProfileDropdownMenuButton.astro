@@ -2,7 +2,7 @@
 /* Render only the profile  picture */
 
 interface Props {
-  profilePic: string;
+  profilePic: string | undefined;
 }
 
 const { profilePic } = Astro.props;
@@ -17,7 +17,7 @@ const { profilePic } = Astro.props;
       dark:bg-[var(--sl-color-black)]
     `
   >
-    {profilePic}
+    {profilePic || "G"}
   </button>
 </profile-menu-button>
 
