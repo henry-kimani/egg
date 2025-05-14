@@ -1,0 +1,18 @@
+---
+import Select from "./Select.astro";
+console.log(Astro.locals.t("themeSelect.light"));
+---
+
+<starlight-theme-select>
+  <Select
+    icon="laptop"
+    label={Astro.locals.t('themeSelect.accessibleLabel')}
+    value="auto"
+    options={[
+      { label: Astro.locals.t("themeSelect.dark"), selected: false, value: 'dark' },
+      { label: Astro.locals.t("themeSelect.light"), selected: false, value: 'light' },
+      { label: Astro.locals.t("themeSelect.auto"), selected: true, value: 'auto' }
+    ]}
+    width="0.625rem"
+  />
+</starlight-theme-select>

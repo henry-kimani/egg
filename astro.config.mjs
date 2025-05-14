@@ -38,6 +38,7 @@ export default defineConfig({
         MobileMenuFooter: "./src/components/starlight/MobileMenuFooter.astro",
         PageTitle: "./src/components/starlight/PageTitle.astro",
         PageFrame: "./src/components/starlight/PageFrame.astro",
+        ThemeSelect: "./src/components/starlight/ThemeSelect.astro",
       },
       social: {
         github: 'https://github.com/withastro/starlight',

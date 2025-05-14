@@ -1,6 +1,6 @@
 ---
 import ProfileDropdownMenuButton from "./ProfileDropdownMenuButton.astro";
-import ThemeSelect from "@astrojs/starlight/components/ThemeSelect.astro";
+import ThemeSelect from "@components/starlight/ThemeSelect.astro";
 import FeedbackForm from "@components/forms/FeedbackForm.astro";
 import Modal from "@components/modals/Modal.astro";
 import FocusedMode from "@components/FocusedMode.astro";
@@ -24,12 +24,14 @@ import VariantButton from "@components/buttons/VariantButton.astro";
       <ProfileIcon shape="egg" size="small" photo="" />
       <div class="h-full">
         <SpecificHeading heading="h3">Anonymous</SpecificHeading>
-        <VariantButton
-          icon="right-caret"
-          theme="simple"
-          variant="primary"
-          classes="mt-2 text-sm text-center"
-        >Dashboard</VariantButton>
+        <a href="/dashboard/profile" class="no-underline">
+          <VariantButton
+            icon="right-caret"
+            theme="simple"
+            variant="primary"
+            classes="mt-2 text-sm text-center"
+          >Dashboard</VariantButton>
+        </a>
       </div>
     </div>
 
@@ -63,7 +65,7 @@ import VariantButton from "@components/buttons/VariantButton.astro";
     right: var(--sl-nav-pad-y);
     background-color: var(--sl-color-gray-6);
     border: 1px solid var(--sl-color-gray-5);
-    padding: 5px;
+    padding: 0.275rem;
     display: grid;
   }
 

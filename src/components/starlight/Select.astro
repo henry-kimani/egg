@@ -1,0 +1,65 @@
+---
+import { Icon } from "@astrojs/starlight/components";
+
+interface Props {
+  label: string;
+  value: string;
+  icon: Parameters<typeof Icon>[0]['name'];
+  width?: string;
+  options: Array<{
+    label: string;
+    value: string;
+    selected: boolean;
+  }>;
+}
+
+/**
+ * The 'autocomplete=off' attribute is used to prevent the browser from automatically 
+ * selecting a value for this input, e.g based on the user's previous selections 
+ * this as this could lead to incorrect values being selected. For example, when
+ * user switches languages and uses the back button.
+ *
+ * Note this attribute is only usefula when a value is not restored at a later stage
+ * e.g the bfcache that ignores this attribute when restoring the value.
+ */
+---
+
+<label class="rounded-md" >
+  <span class="sr-only">{Astro.props.label}</span> 
+  <Icon name={Astro.props.icon} class="icon label-icon" />
+  <select value={Astro.props.value} autocomplete="off">
+    {
+      Astro.props.options.map(({ value, selected, label }) => (
+        <option {value} {selected} {label}>{label}</option>
+      ))
+    }
+  </select>
+</label>
+
+<style>
+label {
+  --sl-label-icon-size: 0.875rem;
+  --sl-caret-size: 1.25rem;
+  --sl-inline-padding: 0.5rem;
+  position: relative;
+  display: flex;
+  gap: var(--sl-nav-pad-y);
+  align-items: center;
+  color: var(--sl-color-gray-1);
+  padding: .687em var(--sl-nav-pad-y);
+}
+
+label:hover {
+  background-color: var(--sl-color-gray-5);
+}
+
+select {
+  width: 100%;
+  background-color: transparent;
+  text-overflow: ellipsis;
+  color: inherit;
+  cursor: pointer;
+}
+</style>
+
+
