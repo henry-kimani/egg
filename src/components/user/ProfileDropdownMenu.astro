@@ -20,7 +20,7 @@ import VariantButton from "@components/buttons/VariantButton.astro";
     class="profile-menu absolute w-56 h-auto rounded-md"
   >
     <!-- Profile -->
-    <div class="flex items-center gap-1 border-b-2 border-b-[--sl-color-gray-5]">
+    <div class="flex items-center gap-1 p-1 border-b border-b-[--sl-color-gray-5]">
       <ProfileIcon shape="egg" size="small" photo="" />
       <div class="h-full">
         <SpecificHeading heading="h3">Anonymous</SpecificHeading>
@@ -36,7 +36,7 @@ import VariantButton from "@components/buttons/VariantButton.astro";
     </div>
 
     <!-- Buttons -->
-    <div>
+    <div class="p-1">
       <div>
         <ThemeSelect />
       </div>
@@ -54,7 +54,9 @@ import VariantButton from "@components/buttons/VariantButton.astro";
     </div>
 
     <!-- Log out -->
-    <div></div>
+    <div class="border-t border-[--sl-color-gray-5] p-1">
+      <DropdownChildButton icon="external">Log out</DropdownChildButton>
+    </div>
   </div>
 </section>
 
@@ -65,7 +67,6 @@ import VariantButton from "@components/buttons/VariantButton.astro";
     right: var(--sl-nav-pad-y);
     background-color: var(--sl-color-gray-6);
     border: 1px solid var(--sl-color-gray-5);
-    padding: 0.275rem;
     display: grid;
   }
 
