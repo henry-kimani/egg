@@ -23,7 +23,6 @@ const { releaseNote } = Astro.props;
 const { title, description, version, date } = releaseNote.data;
 
 const { Content } = await render(releaseNote);
-console.log(Content);
 ---
 
 <StarlightSplashLayout {title} description={description || ""}>

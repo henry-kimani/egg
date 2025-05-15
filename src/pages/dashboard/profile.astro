@@ -20,7 +20,7 @@ if (Astro.cookies.has("__session")) {
     email = user.email;
     photoURL = user.photoURL;
   } catch (error) {
-    return error;
+    return Astro.redirect("/error");
   }
 }
 
