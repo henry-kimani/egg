@@ -1,4 +1,7 @@
 ---
+/* Render the profile icon of the user that contains the profile photo in various
+ * shapes */
+
 import { Image } from 'astro:assets';
 import EggGuestProfile from "@assets/eggprofile.svg";
 
@@ -11,12 +14,13 @@ interface Props {
 const { shape, size, photo: photoURL } = Astro.props;
 
 const profileSize = size === "small" ? 70 : 200;
+console.log(photoURL);
 ---
 
 <!-- Egg -->
 { shape === "egg" ? ( 
   <div>
-    {photoURL ? 
+    {photoURL === undefined || photoURL ? 
       <svg
       width=`${profileSize}px`
       height=`${profileSize}px`
@@ -50,7 +54,7 @@ const profileSize = size === "small" ? 70 : 200;
       />
       </svg> 
     : 
-    <div>
+    <div class="grid place-items-center">
       <Image width={profileSize} height={profileSize} src={EggGuestProfile} alt="your profile photo" />
     </div> 
     }

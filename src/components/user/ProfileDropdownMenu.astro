@@ -8,11 +8,27 @@ import DropdownChildButton from "@components/buttons/DropdownChildButton.astro";
 import SpecificHeading from "@components/headings/SpecificHeading.astro";
 import ProfileIcon from "@components/user/ProfileIcon.astro";
 import VariantButton from "@components/buttons/VariantButton.astro";
+import { adminAuth } from "@firebase/server";
+
+let displayName: string | undefined;
+let photoURL: string | undefined;
+
+if (Astro.cookies.has("__session")) {
+  const sessionCookie = Astro.cookies.get("__session").value;
+
+  try {
+    const decodedCookie = await adminAuth.verifySessionCookie(sessionCookie);
+    const user = await adminAuth.getUser(decodedCookie.uid);
+    photoURL = user.photoURL;
+    displayName = user.displayName;
+  } catch {
+  }
+}
 ---
 
 <section>
   {/* Dropdown Button */}
-  <ProfileDropdownMenuButton profilePic="M" />
+  <ProfileDropdownMenuButton profilePic={displayName} />
 
   {/* Dropdown Menu */}
   <div
@@ -21,9 +37,9 @@ import VariantButton from "@components/buttons/VariantButton.astro";
   >
     <!-- Profile -->
     <div class="flex items-center gap-1 p-1 border-b border-b-[--sl-color-gray-5]">
-      <ProfileIcon shape="egg" size="small" photo="" />
+      <ProfileIcon shape="egg" size="small" photo={photoURL} />
       <div class="h-full">
-        <SpecificHeading heading="h3">Anonymous</SpecificHeading>
+        <SpecificHeading heading="h3">{displayName || "Anonymous"}</SpecificHeading>
         <a href="/dashboard/profile" class="no-underline">
           <VariantButton
             icon="right-caret"

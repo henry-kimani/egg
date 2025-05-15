@@ -1,5 +1,7 @@
 ---
-/* Render only the profile  picture */
+/* Render the button that opens the profile dropdown menu
+ * Using the attribute 'aria-expanded', to hide and show the profile dropdown menu
+*/
 
 interface Props {
   profilePic: string | undefined;
@@ -17,7 +19,8 @@ const { profilePic } = Astro.props;
       dark:bg-[var(--sl-color-black)]
     `
   >
-    {profilePic || "G"}
+    {/* Show the user's first letter otherwise show the guest's */}
+    {profilePic?.charAt(0) || "G"}
   </button>
 </profile-menu-button>
 
