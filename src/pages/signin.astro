@@ -1,0 +1,52 @@
+---
+import VariantButton from "@components/buttons/VariantButton.astro";
+import TitleAndDescriptionCard from "@components/TitleAndDescriptionCard.astro";
+---
+
+<div>
+  <div>
+    <TitleAndDescriptionCard
+      title="Sign in"
+      description="Sign in to unlock all notes"
+      align="start"
+    />
+  </div>
+  <div>
+    <VariantButton
+      id="sign-in-button"
+      icon="seti:godot"
+      theme="simple"
+      variant="primary"
+    >Sign In With Google</VariantButton>
+  </div>
+</div>
+
+<script>
+import { auth } from "@firebase/client";
+import { GoogleAuthProvider, inMemoryPersistence, signInWithPopup } from "firebase/auth";
+
+const signIn = document.getElementById("sign-in-button");
+
+auth.setPersistence(inMemoryPersistence);
+
+signIn?.addEventListener("click", async() => {
+  const provider = new GoogleAuthProvider();
+  try {
+    const result = await signInWithPopup(auth, provider);
+
+    const idToken = await result.user.getIdToken();
+
+    const res = await fetch("/api/auth/signin", {
+      headers: {
+        'Authorization': `Bearer ${idToken}`,
+      }
+    });
+
+    if (res.redirected)
+      window.location.assign(res.url);
+  } catch(error) {
+    window.location.assign("/error");
+  }
+});
+
+</script>
