@@ -18,3 +18,15 @@ interface ImportMetaEnv {
   readonly SECRET_FIREBASE_CLIENT_X509_CERT_URL: string;
   readonly SECRET_FIREBASE_UNIVERSE_DOMAIN: string;
 }
+
+type User = {
+  displayName: string;
+  email: string;
+  photoURL: string | undefined;
+};
+
+declare namespace App {
+  interface Locals {
+    user: User;
+  }
+}

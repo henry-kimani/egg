@@ -2,13 +2,6 @@
 /* Render the button that opens the profile dropdown menu
  * Using the attribute 'aria-expanded', to hide and show the profile dropdown menu
 */
-
-interface Props {
-  profilePic: string | undefined;
-}
-
-const { profilePic } = Astro.props;
-
 ---
 <profile-menu-button>
   <button
@@ -18,18 +11,21 @@ const { profilePic } = Astro.props;
       bg-[var(--sl-color-gray-6)] rounded-full border border-[var(--sl-color-gray-5)]
       dark:bg-[var(--sl-color-black)]
     `
-  >
-    {/* Show the user's first letter otherwise show the guest's */}
-    {profilePic?.charAt(0) || "G"}
-  </button>
+  ></button>
 </profile-menu-button>
 
 <script>
+import { $userInfo } from "@stores/userInfoStore";
+
 class ProfileMenuButton extends HTMLElement {
   btn = this.querySelector("button")!;
 
   constructor() {
     super();
+
+    $userInfo.subscribe(user => {
+      this.btn.innerText = user.displayName.charAt(0);
+    });
 
     // Toggle 'aria-expanded' when clicked
     this.btn.addEventListener("click", () => this.toggleExpanded());
@@ -55,6 +51,7 @@ class ProfileMenuButton extends HTMLElement {
       this.btn.focus();
     }
   }
+
 }
 
 customElements.define("profile-menu-button", ProfileMenuButton);

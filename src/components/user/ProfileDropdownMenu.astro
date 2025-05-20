@@ -5,30 +5,15 @@ import FeedbackForm from "@components/forms/FeedbackForm.astro";
 import Modal from "@components/modals/Modal.astro";
 import FocusedMode from "@components/FocusedMode.astro";
 import DropdownChildButton from "@components/buttons/DropdownChildButton.astro";
-import SpecificHeading from "@components/headings/SpecificHeading.astro";
-import ProfileIcon from "@components/user/ProfileIcon.astro";
-import VariantButton from "@components/buttons/VariantButton.astro";
-import { adminAuth } from "@firebase/server";
+import ProfileCard from "@components/user/ProfileCard";
 
-let displayName: string | undefined;
-let photoURL: string | undefined;
+const serverUser = Astro.locals.user;
 
-if (Astro.cookies.has("__session")) {
-  const sessionCookie = Astro.cookies.get("__session").value;
-
-  try {
-    const decodedCookie = await adminAuth.verifySessionCookie(sessionCookie);
-    const user = await adminAuth.getUser(decodedCookie.uid);
-    photoURL = user.photoURL;
-    displayName = user.displayName;
-  } catch {
-  }
-}
 ---
 
 <section>
   {/* Dropdown Button */}
-  <ProfileDropdownMenuButton profilePic={displayName} />
+  <ProfileDropdownMenuButton />
 
   {/* Dropdown Menu */}
   <div
@@ -36,19 +21,16 @@ if (Astro.cookies.has("__session")) {
     class="profile-menu absolute w-56 h-auto rounded-md"
   >
     <!-- Profile -->
-    <div class="flex items-center gap-1 p-1 border-b border-b-[--sl-color-gray-5]">
-      <ProfileIcon shape="egg" size="small" photo={photoURL} />
-      <div class="h-full">
-        <SpecificHeading heading="h3">{displayName || "Anonymous"}</SpecificHeading>
-        <a href="/dashboard/profile" class="no-underline">
-          <VariantButton
-            icon="right-caret"
-            theme="simple"
-            variant="primary"
-            classes="mt-2 text-sm text-center"
-          >Dashboard</VariantButton>
-        </a>
-      </div>
+    <div class="gap-1 p-1 border-b border-b-[--sl-color-gray-5]">
+      <ProfileCard client:load
+        iconSize="small"
+        button={{
+          buttonHref: "/dashboard/profile",
+          buttonContent: "Dashboard",
+        }}
+        description=""
+        showPargraph={false}
+      />
     </div>
 
     <!-- Buttons -->
@@ -102,4 +84,16 @@ if (Astro.cookies.has("__session")) {
 
   openFeedbackForm.onclick = () => feedbackFormModal.showModal();
   closeFeedbackForm.onclick = () => feedbackFormModal.close();
+</script>
+
+<script>
+import { setUserInfo } from "@stores/userInfoStore";
+
+setUserInfo({
+  displayName: "Henry",
+  email: "kimanihenry14489@gmail.com",
+  photoURL: "https://unsplash.com"
+});
+
+console.log("setting user info");
 </script>
