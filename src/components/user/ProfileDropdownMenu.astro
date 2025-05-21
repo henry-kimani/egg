@@ -60,16 +60,17 @@ const serverUser = Astro.locals.user;
 
 <style>
   .profile-menu {
-    visibility: var(--profile-menu-visibility, hidden);
+    scale: var(--profile-menu-visibility, 0);
     top: calc(var(--sl-nav-height) + var(--sl-nav-pad-y));
     right: var(--sl-nav-pad-y);
     background-color: var(--sl-color-gray-6);
     border: 1px solid var(--sl-color-gray-5);
     display: grid;
+    transition: transform 0.1s ease-out;
   }
 
   :global([aria-expanded="true"]) ~ .profile-menu {
-    --profile-menu-visibility: visible;
+    --profile-menu-visibility: 1;
   }
 
   :global([data-theme="light"]) .profile-menu {
@@ -86,14 +87,3 @@ const serverUser = Astro.locals.user;
   closeFeedbackForm.onclick = () => feedbackFormModal.close();
 </script>
 
-<script>
-import { setUserInfo } from "@stores/userInfoStore";
-
-setUserInfo({
-  displayName: "Henry",
-  email: "kimanihenry14489@gmail.com",
-  photoURL: "https://unsplash.com"
-});
-
-console.log("setting user info");
-</script>
