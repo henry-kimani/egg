@@ -1,35 +1,46 @@
 ---
 import VariantButton from "@components/buttons/VariantButton.astro";
-import TitleAndDescriptionCard from "@components/TitleAndDescriptionCard.astro";
+import ResponsiveTagline from "@components/paragraphs/ResponsiveTagline.astro";
+import StarlightSplashLayout from "@layouts/StarlightSplashLayout.astro";
 ---
+<StarlightSplashLayout
+  title="Sign in"
+  description="Sign in to Egg with either google or apple"
+>
+  <div class="grid place-items-center">
+    <div>
+      <ResponsiveTagline isHero>
+        Sign in to unlock all notes
+      </ResponsiveTagline>
+    </div>
 
-<div>
-  <div>
-    <TitleAndDescriptionCard
-      title="Sign in"
-      description="Sign in to unlock all notes"
-      align="start"
-    />
+    <div class="grid text-md md:w-96">
+      <VariantButton
+        id="sign-in-with-google"
+        icon="seti:firebase"
+        theme="simple"
+        variant="primary"
+        classes="!text-center"
+      >Sign In With Google</VariantButton>
+      <VariantButton
+        id="sign-in-with-apple"
+        icon="apple"
+        theme="simple"
+        variant="primary"
+      >Sign In With Apple</VariantButton>
+    </div>
   </div>
-  <div>
-    <VariantButton
-      id="sign-in-button"
-      icon="seti:godot"
-      theme="simple"
-      variant="primary"
-    >Sign In With Google</VariantButton>
-  </div>
-</div>
+</StarlightSplashLayout>
 
 <script>
 import { auth } from "@firebase/client";
 import { GoogleAuthProvider, inMemoryPersistence, signInWithPopup } from "firebase/auth";
 
-const signIn = document.getElementById("sign-in-button");
+const signInWithGoogle = document.getElementById("sign-in-with-google");
 
 auth.setPersistence(inMemoryPersistence);
 
-signIn?.addEventListener("click", async() => {
+signInWithGoogle?.addEventListener("click", async() => {
   const provider = new GoogleAuthProvider();
   try {
     const result = await signInWithPopup(auth, provider);

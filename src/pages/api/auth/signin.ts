@@ -25,8 +25,8 @@ export const GET:APIRoute = async({request, cookies, redirect}) => {
   }
 
   // Create the session cookie
-  const fiveMins= 60*5*1000; 
-  const sessionCookie = await adminAuth.createSessionCookie(idToken, { expiresIn: fiveMins });
+  const tenMins = 60*10*1000; 
+  const sessionCookie = await adminAuth.createSessionCookie(idToken, { expiresIn: tenMins });
   
   cookies.set("__session", sessionCookie, {
     path: "/"
