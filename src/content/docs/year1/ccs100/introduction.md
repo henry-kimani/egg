@@ -26,6 +26,8 @@ technical support agencies that perform criminal justice functions.
 #### Major Goals of the CJS
 
 1. Justice
+
+    Justice involves, the affording the consititutional rights of the accused
 2. Controlling crime
 3. Prevention
 

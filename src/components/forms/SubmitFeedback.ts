@@ -23,7 +23,6 @@ class SubmitFeedback extends HTMLElement {
     feedbackForm?.addEventListener("submit", async(event) => {
       event.preventDefault();
       const feedback = new FormData(feedbackForm);
-      console.log(feedback);
       const feedbackInput = feedback.get("feedback-input");
       const emojiFeeling = feedback.get("emoji-feeling");
 
