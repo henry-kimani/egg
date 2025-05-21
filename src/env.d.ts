@@ -20,6 +20,8 @@ interface ImportMetaEnv {
 }
 
 type User = {
+  isLoggedIn: boolean;
+  uid: string;
   displayName: string;
   email: string;
   photoURL: string | undefined;

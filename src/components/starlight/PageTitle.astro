@@ -1,32 +1,30 @@
 ---
 import { PAGE_TITLE_ID } from "node_modules/@astrojs/starlight/constants";
+import { cn } from "@lib/utils";
 
 const routeData = Astro.locals.starlightRoute;
 const pageTitle = routeData.entry.data.title;
-let greeting: string | undefined;
-let userName: string | undefined;
 
 const isDashboardProfile = routeData.id === "dashboard/profile";
+const centerPageTitle = routeData.id === "signin";
 
-if (isDashboardProfile) {
-  greeting = pageTitle?.split(" ")[0];
-  userName = pageTitle?.split(" ")[1];
-}
 ---
 
 {
   isDashboardProfile ? (
     <h1 id={PAGE_TITLE_ID}>
-      <span class="user-greeting">{greeting}</span>&nbsp;
+      <span class="user-greeting">Greetings</span>&nbsp;
       <span 
         class="username-dashboard output-type from-[var(--sl-color-accent)] to-red-600 dark:from-[var(--sl-color-accent-high)] dark:to-[var(--sl-color-accent-high)]">
       </span>
-      <span class="caret"></span>
     </h1>
-  ) : (
+) : (
     <h1
       id={PAGE_TITLE_ID}
-      class="text-[var(--sl-color-accent)] dark:text-[var(--sl-color-accent-high)]"
+      class={cn(`text-[var(--sl-color-accent)] dark:text-[var(--sl-color-accent-high)]`, 
+      {
+        "text-center" : centerPageTitle
+      })}
     >
       {pageTitle}
     </h1>
@@ -43,7 +41,7 @@ if (isDashboardProfile) {
     }
     .user-greeting {
       color: var(--sl-color-white);
-      animation: greetingScaleUp 1s ease-in-out 1 forwards;
+      /* animation: greetingScaleUp 1s ease-in-out 1 forwards;*/
     }
     .username-dashboard {
       background-image: linear-gradient(var(--tw-gradient-stops));
@@ -82,21 +80,32 @@ if (isDashboardProfile) {
   }
 </style>
 
-<script define:vars={{userName}} is:inline>
-  const inputUsername = userName;
-  const output = document.querySelector(".output-type");
-  const typingSpeed = 250;
+<script>
+  import { $userInfo } from "@stores/userInfoStore";
 
-  // RECURSION
-  if (userName) {
+  const outputUserName = document.querySelector(".output-type") as HTMLSpanElement;
+
+  // Get the first name
+  $userInfo.subscribe(user => {
+    if (user) {
+      const inputUsername = user.displayName.split(" ")[0]; // Get the first name
+      outputUserName.textContent = inputUsername;
+    }
+  });
+
+
+  // const typingSpeed = 250;
+
+  /* RECURSION
+  if (inputUsername) {
     let i=0;
     function typeCharacter(){
       if (i <= inputUsername.length){
-        output.innerText += inputUsername.charAt(i);
+        outputUserName.innerText += inputUsername.charAt(i);
         i++;
         setTimeout(typeCharacter, typingSpeed);
       }
     }
     document.addEventListener("DOMContentLoaded", () => typeCharacter() )
-  }
+  }*/
 </script>

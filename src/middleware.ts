@@ -15,9 +15,19 @@ export const onRequest = defineMiddleware(async(context, next) => {
 
       if (userInfo) {
         context.locals.user = {
+          isLoggedIn: true,
+          uid: userInfo.uid,
           displayName: userInfo.displayName || "Guest",
           email: userInfo.email || "",
           photoURL: userInfo.photoURL,
+        };
+      } else {
+        context.locals.user = {
+          isLoggedIn: false,
+          uid: "",
+          displayName: "Guest",
+          email: "",
+          photoURL: "",
         };
       }
 
