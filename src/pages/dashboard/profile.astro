@@ -2,6 +2,7 @@
 import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
 import WhatsNewPageHeader from "@components/whatsnewpage/WhatsNewPageHeader.astro";
 import ProfileCard from "@components/user/ProfileCard";
+import ServerProfile from "@components/user/ServerProfile.astro";
 import AcceptCookies from "@components/AcceptCookies.astro";
 
 export const prerender = false;
@@ -13,15 +14,11 @@ export const prerender = false;
   tableOfContents: false
 }}
 >
-  <ProfileCard client:load
+  <ProfileCard client:load 
     iconSize="large"
-    button={{
-      buttonHref: "/signin",
-      buttonContent: "Sign In"
-    }}
     description="Sign In to unlock all notes"
     showPargraph
-  />
+  /> 
 
   <AcceptCookies />
 

@@ -1,7 +1,7 @@
 /* Render the profile icon of the user that contains the profile photo in various
  * shapes */
 
-import GuestProfilePic from "./GuestProfilePic";
+import eggprofilesvg from "@assets/eggprofile.svg";
 
 interface Props {
   shape: "egg" | "circle";
@@ -47,7 +47,11 @@ export default function ProfileIcon ({ shape, size, photo: photoURL }: Props) {
     : 
       <div class="grid place-items-center">
         {/* Image when not signed in */}
-        <GuestProfilePic profileSize={profileSize} />
+        <img 
+          src={eggprofilesvg.src} 
+          alt={"Guest Profile Icon"}
+          width={profileSize}
+        />
       </div> 
     }</div>
   ) : (
