@@ -105,7 +105,7 @@ class SigninSignout extends HTMLElement {
     return `
       <div class="sign-out-button">
         <form action="/api/auth/signout" class="grid">
-          <button class="text-start hover:cursor-pointer w-full p-[0.45rem] rounded-md bg-transparent hover:bg-[--sl-color-gray-6] dark:hover:bg-[--sl-color-gray-5]">
+          <button class="text-start hover:cursor-pointer w-full p-[0.45rem] pl-10 rounded-md bg-transparent hover:bg-[--sl-color-gray-6] dark:hover:bg-[--sl-color-gray-5]">
             Sign Out
           </button>
         </form>
@@ -117,7 +117,7 @@ class SigninSignout extends HTMLElement {
     return `
       <div class="sign-in-button grid">
         <a 
-          class="no-underline text-[--sl-color-white] p-[0.45rem] rounded-md hover:bg-[--sl-color-gray-6] dark:hover:bg-[--sl-color-gray-5]" 
+          class="no-underline text-[--sl-color-white] p-[0.45rem] pl-10 rounded-md hover:bg-[--sl-color-gray-6] dark:hover:bg-[--sl-color-gray-5]" 
           href="/signin"
         >Sign In</a>
       </div>
