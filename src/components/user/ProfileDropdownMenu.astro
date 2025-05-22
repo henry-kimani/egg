@@ -6,9 +6,6 @@ import Modal from "@components/modals/Modal.astro";
 import FocusedMode from "@components/FocusedMode.astro";
 import DropdownChildButton from "@components/buttons/DropdownChildButton.astro";
 import ProfileCard from "@components/user/ProfileCard";
-
-const serverUser = Astro.locals.user;
-
 ---
 
 <section>
@@ -52,9 +49,10 @@ const serverUser = Astro.locals.user;
     </div>
 
     <!-- Log out -->
-    <div class="border-t border-[--sl-color-gray-5] p-1">
-      <DropdownChildButton icon="external">Log out</DropdownChildButton>
+    <div class="grid border-t border-[--sl-color-gray-5] p-1">
+      <signin-signout />
     </div>
+    
   </div>
 </section>
 
@@ -85,5 +83,54 @@ const serverUser = Astro.locals.user;
 
   openFeedbackForm.onclick = () => feedbackFormModal.showModal();
   closeFeedbackForm.onclick = () => feedbackFormModal.close();
+</script>
+
+<script>
+import { $userInfo } from "@stores/userInfoStore";
+
+class SigninSignout extends HTMLElement {
+  constructor() {
+    super();
+
+    $userInfo.subscribe( user => {
+      if (user && user.isLoggedIn) {
+        this.renderToDom(this.renderSignOut());
+      } else {
+        this.renderToDom(this.renderSignIn());
+      }
+    })
+  }
+
+  renderSignOut() {
+    return `
+      <div class="sign-out-button">
+        <form action="/api/auth/signout" class="grid">
+          <button class="text-start hover:cursor-pointer w-full p-[0.45rem] rounded-md bg-transparent hover:bg-[--sl-color-gray-6] dark:hover:bg-[--sl-color-gray-5]">
+            Sign Out
+          </button>
+        </form>
+      </div>
+    `;
+  }
+
+  renderSignIn() {
+    return `
+      <div class="sign-in-button grid">
+        <a 
+          class="no-underline text-[--sl-color-white] p-[0.45rem] rounded-md hover:bg-[--sl-color-gray-6] dark:hover:bg-[--sl-color-gray-5]" 
+          href="/signin"
+        >Sign In</a>
+      </div>
+    `;
+  }
+
+  renderToDom(markUp: string) {
+    if (markUp) {
+      this.innerHTML = markUp;
+    }
+  }
+}
+
+customElements.define('signin-signout', SigninSignout);
 </script>
 
