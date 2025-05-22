@@ -1,8 +1,5 @@
 ---
 import VariantButton from "@components/buttons/VariantButton.astro"
-
-interface Props {
-}
 ---
 
 <submit-feedback>
@@ -61,45 +58,4 @@ interface Props {
     <form>
 </submit-feedback>
 
-<script src="./SubmitFeedback.ts">
-/*
-import { db } from "@firebase/client";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
-
-const feedbackForm = document.getElementById("egg-form-feedback") as HTMLFormElement;
-const feedbackFormInput = document.getElementById("egg-form-feedback-input") as HTMLInputElement;
-const feedbackFormEmoji = document.getElementById("egg-emoji-feeling-select") as HTMLSelectElement; 
-
-feedbackForm.onsubmit = async (event) => {
-  event.preventDefault();
-
-  const feedback = new FormData(feedbackForm);
-  const feedbackInput = feedback.get("feedback-input");
-  const emojiFeeling = feedback.get("emoji-feeling");
-
-  const collRef = collection(db, "feedback");
-
-  try {
-    await addDoc(collRef, {
-      feedback: feedbackInput, 
-      emoji: emojiFeeling,
-      createdAt: serverTimestamp()
-    });
-    resetFormAndThankUser();
-  } catch (error) {
-    console.log(error);
-  }
-
-  // TODO: if the value subimitted is empty or the emoji feeling is empty
-};
-
-function resetFormAndThankUser() {
-  feedbackFormInput.value = "";
-  feedbackFormEmoji.value= "";
-  feedbackFormInput.placeholder = "Thank You for your feedback :)";
-  setTimeout(() => {
-    feedbackFormInput.placeholder = "Your feedback is anonymous ...";
-  } , 3000);
-}
-*/
-</script>
+<script src="./SubmitFeedback.ts"/>
