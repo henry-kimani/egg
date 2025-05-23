@@ -2,6 +2,7 @@
 title: "Introduction to Criminal Justice System"
 sidebar: 
     label: Introduction
+    order: 1
 tableOfContents:
     minHeadingLevel: 4
     maxHeadingLevel: 5
@@ -27,8 +28,14 @@ technical support agencies that perform criminal justice functions.
 
 1. Justice
 
-    Justice involves, the affording the consititutional rights of the accused
+    Justice involves, the affording the consititutional rights of the accused, no
+    one is unfairly disadvantaged based on race, gender or financial status and
+    seeking to hold the guilty accountable and protecting their rights.
+
 2. Controlling crime
+
+    
+
 3. Prevention
 
 #### Characteristics
