@@ -50,7 +50,7 @@ const serverUserInfo = Astro.locals.user;
 
 	:global([data-has-sidebar]) .header {
 		padding-inline-start: calc(var(--sl-nav-gap) + var(--sl-nav-pad-x) + var(--sl-menu-button-size));
-	}
+  }
 
 	.sidebar-pane {
 		visibility: var(--sl-sidebar-visibility, hidden);
@@ -65,7 +65,7 @@ const serverUserInfo = Astro.locals.user;
 
 	:global([aria-expanded='true']) ~ .sidebar-pane {
 		--sl-sidebar-visibility: visible;
-	}
+  }
 
 	.sidebar-content {
 		height: 100%;
@@ -96,7 +96,12 @@ const serverUserInfo = Astro.locals.user;
 			width: var(--sl-sidebar-width);
 			background-color: var(--sl-color-bg-sidebar);
 			border-inline-end: 1px solid var(--sl-color-hairline-shade);
-		}
-	}
+    }
+
+    /* Focused mode: only apply focused mode to bigger screens */
+    :global([data-focused-mode='true']) .sidebar-pane {
+      visibility: hidden;
+    }
+  }
 </style>
 

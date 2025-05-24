@@ -19,17 +19,6 @@ const isAllowedPathname = currentPathname.startsWith("/year1") || currentPathnam
 }
 
 <style>
-:global(.hide-sidebar) {
-  transform: translateX(-400px) !important;
-  opacity: 0 !important;
-  transition: all 0.3s ease-in;
-}
-
-:global(.show-sidebar) {
-  transform: translateX(0px) !important;
-  opacity: 1 !important;
-  transition: all 0.1s ease-out;
-}
 
 /* Adding 'important' to override inline styles */
 :global(.hide-toc) {
@@ -51,131 +40,51 @@ const isAllowedPathname = currentPathname.startsWith("/year1") || currentPathnam
 </style>
 
 <script>
-class FocusedMode extends HTMLElement {
-  focusedButton = this.querySelector('button') as HTMLButtonElement;
-  TABLET_WIDTH = 1152;
-  sidebar = document.getElementById("starlight__sidebar") as HTMLDivElement;
-  toc = document.querySelector(".right-sidebar") as HTMLDivElement;
-  theme = document.documentElement.dataset.theme;
-  starlightButton = this.querySelector("starlight-menu-button");
-  isPC = window.innerWidth >= this.TABLET_WIDTH; // Check: Greater that a tablet
+type FocusedMode = boolean;
 
-  /* For order of operations, since using focusedMode, which we would have initialized
-   * in the constructor would have called the setter */
-  private _focusedModeInternal = false;
+const storageKey = "focused-mode";
 
+/* Get a type safe value of focused mode i.e boolean type*/
+function parseFocusedMode(theme: unknown): FocusedMode {
+  if (theme === "true") return true
+    else if (theme === "false") return false;
+      else return false;
+}
+
+function loadFocusedMode(): FocusedMode {
+  /* Make sure local storage exists before loading focused mode and Parse the value
+   * found to FocusedMode type*/
+  return parseFocusedMode(typeof localStorage !== "undefined" && localStorage.getItem(storageKey));
+}
+
+function storeFocusedMode(focusedMode: FocusedMode): void {
+  /* Store a string value of focusedMode, local storage does not accept booleans */
+  if (typeof localStorage !== "undefined") {
+    localStorage.setItem(storageKey, String(focusedMode===true || focusedMode===false ? focusedMode : false));
+  }
+}
+
+function onFocusedModeChange(focusedMode: FocusedMode) {
+  /* When focused mode changes, store it and update the DOM */
+  storeFocusedMode(focusedMode);
+  document.documentElement.dataset.focusedMode = String(loadFocusedMode());
+}
+
+class Focused extends HTMLElement {
+  btn = this.querySelector("button");
   constructor() {
     super();
 
-    this._focusedModeInternal = sessionStorage.getItem("focused-mode") === "1";
+    /* Load focused mode from storage to make changes to the UI */
+    onFocusedModeChange(loadFocusedMode()); 
 
-    if (this._focusedModeInternal) {
-      // intial styles if focused mode was active
-      this._applyInitialStyles();
-    }
-  }
-
-  // Apply styles without animation for initial styles if focused mode was on
-  private _applyInitialStyles() {
-    this.sidebar.style.opacity = "0";
-    this.sidebar.style.transform = "translateX(-400px)";
-    
-    if (this.isPC && this.toc) {
-      this.toc.style.opacity = ".2";
-      this.toc.style.border = "none";
-    }
-  }
-
-  // Using arrow function to preserve 'this'
-  private handleResize = () => {
-    this.isPC = window.innerWidth >= this.TABLET_WIDTH;
-
-    // Re-evaluate TOC visibility if focused mode is active
-    if (this.focusedMode) {
-      if (this.isPC && this.toc) {
-        // If hover is active during resize
-        const isHoveringTOC = this.toc.matches(":hover");
-        this.toc.style.opacity = isHoveringTOC? "1": ".2";
-        this.toc.style.border = "none";
-      } else {
-        // TOC was styles for PC, reset it
-        if (this.toc) {
-          this.toc.style.opacity = "1";
-          this.toc.style.borderInlineStart = "1px solid var(--sl-color-hairline)";
-        }
-      }
-    }
-  }
-
-  get focusedMode() {
-    return this._focusedModeInternal;
-  }
-
-  set focusedMode(value: boolean) {
-    this._focusedModeInternal = value;
-    sessionStorage.setItem("focused-mode", value ? "1" : "0");
-  }
-
-  async activate() {
-    this.focusedMode = true;
-
-    if (!this.sidebar) return;
-
-    this.sidebar.classList.remove("show-sidebar");
-    this.sidebar.classList.add("hide-sidebar");
-
-    // Table of contents
-    if (this.isPC && this.toc) {
-      this.toc.classList.remove("show-toc");
-      this.toc.classList.add("hide-toc");
-    }
-  }
-
-  async deactivate() {
-    this.focusedMode = false;
-
-    if (!this.sidebar) return; // Guarde clause
-
-    this.sidebar.classList.remove('hide-sidebar');
-    this.sidebar.classList.add("show-sidebar");
-
-    // Table of contents
-    if (this.isPC && this.toc) {
-      this.toc.classList.remove("hide-toc");
-      this.toc.classList.add("show-toc");
-    }
-  }
-
-  connectedCallback() {    
-    this.focusedButton.addEventListener("click", () => {
-      if (this.focusedMode) {
-        // if focused mode is on, close it
-        this.deactivate();
-      } else {
-        // Otherwise, activate it
-        this.activate();
-      }
+    this.btn?.addEventListener("click", () => {
+      onFocusedModeChange(!loadFocusedMode());
     });
 
-    window.addEventListener("resize", this.handleResize);
-
-    /* Allow the opacity to be change for the toc, if the screen is greater that
-     * a tablet i.e a PC */
-    this.toc?.addEventListener("mouseover", () => {
-      if (this.focusedMode && this.isPC) 
-        this.toc.classList.add("show-toc-on-hover");
-    });
-
-    this.toc?.addEventListener("mouseout", () => {
-      if (this.focusedMode && this.isPC)
-        this.toc.classList.remove("show-toc-on-hover");
-    });
-  }
-
-  disconnectedCallback() {
-    // Clean up: removing global event listeners
-    window.removeEventListener("resize", this.handleResize);
+    window.addEventListener("resize", () => {});
   }
 }
-customElements.define('focused-mode', FocusedMode);
+
+customElements.define('focused-mode', Focused);
 </script>
