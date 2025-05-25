@@ -43,7 +43,7 @@ import ProfileCard from "@components/user/ProfileCard";
         </Modal>
       </div>
 
-      <div class="hidden md:block">
+      <div class="focused-mode">
         <FocusedMode />
       </div>
     </div>
@@ -73,6 +73,16 @@ import ProfileCard from "@components/user/ProfileCard";
 
   :global([data-theme="light"]) .profile-menu {
     background-color: var(--sl-color-gray-7);
+  }
+
+  .focused-mode {
+    display: none;
+  }
+
+  @media (min-width: 50rem) {
+    .focused-mode {
+      display: block;
+    }
   }
 </style>
 

@@ -13,31 +13,10 @@ const isAllowedPathname = currentPathname.startsWith("/year1") || currentPathnam
 ---
 { isAllowedPathname ?
   <focused-mode>
-    <DropdownChidMenu icon="open-book">Focused Mode</DropdownChidMenu>
+    <DropdownChidMenu id="focused-mode-button" icon="open-book">Focused Mode</DropdownChidMenu>
   </focused-mode>
 : ""
 }
-
-<style>
-
-/* Adding 'important' to override inline styles */
-:global(.hide-toc) {
-  opacity: .2 !important;
-  border: none !important;
-  transition: all 0.1s ease-in;
-}
-
-:global(.show-toc) {
-  opacity: 1 !important;
-  border: 1px solid var(--sl-color-hairline) !important;
-  transition: all 0.1s ease-out;
-}
-
-:global(.show-toc-on-hover) {
-  opacity: 1;
-  border: 1px solid var(--sl-color-hairline);
-}
-</style>
 
 <script>
 type FocusedMode = boolean;
