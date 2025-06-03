@@ -63,37 +63,6 @@ and the image of the society as unable to control and supervise young people.
 young people, its a normal face of growing up while to a small group, as a stage
 of what will become a lifetime of anti-social behavior.
 
-### Theoretical Explanations
-
-#### Freedom (Classical School) and Determinism (Positivist School)
-
-Criminal theories views a human subject (criminal in this case), at one extreme
-end, as active agents who create and shape their world and bear responsibility
-of their choices and decisions they make.
-
-On the other end, passive subjects whose behavior is shaped by a variety of forces
-largely beyond their control (Henry and Milovanovic, 1996).
-
-These extreme positions are characterized in as 'freedom and determinism' and
-in criminology as classical and positivist school.
-
-#### Freedom (Classical School)
-
-The classical tradition(Beccaria, 1963) is founded on the view the offender is a
-rational actor and emphasizes the role of free will in dictating behavior
-(including offending).
-
-Offending behavior is a result of application of choice on the part of the
-individiual, specifically, a calculation of the costs and benefits of a particular
-course of action.
-
-Offending, in common with other form of human behavior, is motivated the will to
-pleasure and enjoyment and to avoid pain.
-
-
-
-#### Determinism (Positivist School)
-
 #### Why is justice administered differently for juveniles in the criminal justice system
 
 1. **Developmental Differences**
@@ -137,3 +106,60 @@ pleasure and enjoyment and to avoid pain.
     - International Conventions: Such as United Nations Conventions, emphasize the
     need for special protection and consideration for minors in the criminal justice
     system.
+    - Juvenile Justice System: Many countries have distinct procedures and facilities
+    tailored to young offenders, focusing on rehabilitation rather than punishment.
+
+### Theoretical Explanations
+
+#### Freedom (Classical School) and Determinism (Positivist School)
+
+Criminalogical theories views a human subject (the offender in this case), at one extreme
+end, as active agents who create and shape their world and bear responsibility
+of their choices and decisions they make.
+
+On the other end, passive subjects whose behavior is shaped by a variety of forces
+largely beyond their control (Henry and Milovanovic, 1996).
+
+These extreme positions are characterized in as 'freedom and determinism' and
+in criminology as classical and positivist school respectively.
+
+#### Freedom (Classical School)
+
+The classical tradition(Beccaria, 1963) is founded on the view, the offender is a
+rational actor and emphasizes the role of free will in dictating behavior
+(including offending).
+
+Offending behavior is a result of application of choice on the part of the
+individiual, specifically, a calculation of the costs and benefits of a particular
+course of action.
+
+Offending, in common with other form of human behavior, is motivated by their 
+desire to seek pleasure and enjoyment and to avoid pain.
+
+As a rational actor, free to choose their course of action in any given situation,
+the offender bears full responsibility for his or her behavior.
+
+
+#### Determinism (Positivist School)
+
+In contrast positivism - in its **extreme manifestation** - view the offender as a
+'puppet' or entirely a passive victim of external or internal forces. When viewed
+in this way, the offender tends to bear little to no responsibility of his or
+her actions hence he ought to be 'treated' or 'helped', much like someone suffering
+from a physical illness, in an attempt to remove the causes of this offending.
+
+In **less extreme** version, the offenders' behavior is not entirely determined,
+however, their ability to exercise free will is likely restrained by factors not
+entirely within their control (e.g age, poverty or mental illness). In this
+scenario, offenders bear some responsibility for their offending, they can claim
+some mitigation for their behavior and might be possible to prevent reoffending
+if the factors that led them are tackled or confronted.
+
+Thus positivism recommends interventions aimed at changing people and/or their
+social/environmental cirmustances. It also recommends expert intervention involving
+diagnosis - identification of the causes of offending - and their subsequent
+removal.
+
+They are three main types of positivist explanations that will be discussed on 
+the next topic.
+
