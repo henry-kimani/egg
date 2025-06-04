@@ -3,10 +3,20 @@
 import { LinkButton } from "@astrojs/starlight/components";
 import { cn } from "@lib/utils";
 import { buttonThemes } from "@lib/themes";
-import type { ComponentProps } from "astro/types";
-import type VariantButton from "./VariantButton.astro";
+import { type ThemeVariants } from "@lib/themes";
+import { type StarlightIcon } from "@astrojs/starlight/types";
 
-interface Props extends ComponentProps<typeof VariantButton> {
+interface VariantButton {
+  id?: string;
+  classes?: string;
+  icon: StarlightIcon | undefined;
+  theme: ThemeVariants;
+  variant: "primary" | "secondary" | "minimal";
+  buttonLabel?: string;
+  iconLabel?: string;
+}
+
+interface Props extends VariantButton {
   href: string;
 }
 

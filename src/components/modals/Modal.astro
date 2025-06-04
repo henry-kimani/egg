@@ -3,11 +3,15 @@
  * modal, will be put in that component.
  *
  * The only things required are the dialogId and closeId to be passed as props.
+ * dialogId: To know which dialog to target
+ * closeId: To know which dialog to close
  *
  * The openId(button) for that modal will also be put in that component, but will
  * not be passed as a prop in the modal */
 
-import VariantButton from "@components/buttons/VariantButton.astro"
+import AstroButton from "@components/buttons/AstroButton.astro";
+import { Icon } from "@astrojs/starlight/components";
+import { focusClasses } from "@components/buttons/buttonVariants";
 
 interface Props {
   dialogId: string;
@@ -20,19 +24,17 @@ const { dialogId, closeId } = Astro.props;
   <dialog 
     aria-modal="true" 
     id={dialogId}
-    class=`dialog z-30 absolute w-full md:w-1/2 border-4 border-[var(--sl-color-accent)] dark:border-[var(--sl-color-accent-high)]
+    class:list={[focusClasses, `dialog z-30 absolute w-full md:w-1/2 border-4 border-[var(--sl-color-accent)] dark:border-[var(--sl-color-accent-high)]
       dark:bg-[var(--sl-color-gray-6)] backdrop:backdrop-blur-md  translate-y-[50%] translate-x-4
-      md:translate-x-[50%]`
+      md:translate-x-[50%]`]}
   >
-    <VariantButton
-      icon="close"
-      theme="simple"
-      variant="primary"
+    <AstroButton
       id={closeId}
-      classes="absolute w-9 h-9 right-4"
-      buttonLabel="close pop-up"
-      iconLabel="close pop-up"
-    />
+      size="icon"
+      class="absolute right-4"
+    >
+      <Icon name="close" />
+    </AstroButton>
     <slot />
   </dialog>
 </div>

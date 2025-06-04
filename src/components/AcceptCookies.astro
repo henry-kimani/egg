@@ -1,7 +1,7 @@
 ---
-import VariantButton from "./buttons/VariantButton.astro";
+import AstroButton from "@components/buttons/AstroButton.astro";
+import { Icon } from "@astrojs/starlight/components";
 import Modal from "./modals/Modal.astro";
-
 ---
 
 <Modal dialogId="cookies-dialog" closeId="close-cookies-modal">
@@ -11,12 +11,9 @@ import Modal from "./modals/Modal.astro";
       Terms of use</a> and <a href="/privacy-policy">Privacy Policy</a>.
     </p>
     <div class="w-full flex">
-      <VariantButton
+      <AstroButton
         id="consent-to-cookies"
-        theme="simple"
-        variant="primary"
-        icon="approve-check"
-      >I understand</VariantButton>
+      >I understand <Icon name="approve-check"/></AstroButton>
     </div>
   </div>
 </Modal>

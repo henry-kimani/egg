@@ -1,5 +1,6 @@
 ---
-import VariantButton from "@components/buttons/VariantButton.astro"
+import AstroButton from "@components/buttons/AstroButton.astro";
+import { Icon } from "@astrojs/starlight/components";
 ---
 
 <submit-feedback>
@@ -45,14 +46,10 @@ import VariantButton from "@components/buttons/VariantButton.astro"
             <option value="very-bad">😡 Very Bad</option>
           </select>
         </div>
-        <VariantButton
-          icon="telegram"
-          theme="simple"
-          variant="primary"
-          classes="h-10"
-          buttonLabel="submit the feedback from the feedback form"
-          iconLabel="submit feedback"
-        />
+        <AstroButton 
+          size='icon'
+          label="submit the feedback from the feedback form"
+        ><Icon name="telegram" /></AstroButton>
       </div>
     </div>
     <form>

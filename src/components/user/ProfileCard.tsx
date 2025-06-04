@@ -3,11 +3,11 @@ import SpecificHeading from '@components/headings/SpecificHeading';
 import { $userInfo } from '@stores/userInfoStore';
 import { useStore } from '@nanostores/preact';
 import SignInSignOut from "./SignInSignOut";
-import SimpleButton from "@components/buttons/SimpleButton";
+import { ReactLink } from "@components/buttons/ReactLink";
 
 interface Props {
   iconSize: 'large' | 'small';
-  description: string | undefined;
+  description?: string | undefined;
   showPargraph: boolean;
   button?: {
     buttonHref: string;
@@ -37,10 +37,13 @@ export default function ProfileCard(props: Props) {
           { showPargraph ? <div>{ description ? description : user.email }</div> : "" }
 
           {button ? 
-            <a class={"no-underline"} href={button.buttonHref}>
-              <SimpleButton class="text-sm">{button.buttonContent}</SimpleButton>
-            </a>
-          : <SignInSignOut />
+            <ReactLink
+              href={button.buttonHref}
+              size="sm"
+            >
+              {button.buttonContent}
+            </ReactLink>
+            : <SignInSignOut />
           }
         </div>
       </div> 

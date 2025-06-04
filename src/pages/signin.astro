@@ -1,7 +1,9 @@
 ---
-import VariantButton from "@components/buttons/VariantButton.astro";
 import ResponsiveTagline from "@components/paragraphs/ResponsiveTagline.astro";
 import StarlightSplashLayout from "@layouts/StarlightSplashLayout.astro";
+import ReactButton from "@components/buttons/ReactButton";
+import AstroButton from "@components/buttons/AstroButton.astro";
+import { Icon } from "@astrojs/starlight/components";
 ---
 <StarlightSplashLayout
   title="Sign in"
@@ -15,19 +17,14 @@ import StarlightSplashLayout from "@layouts/StarlightSplashLayout.astro";
     </div>
 
     <div class="grid text-md md:w-96">
-      <VariantButton
+      <AstroButton
+        variant="primary"
+        size="md"
         id="sign-in-with-google"
-        icon="seti:firebase"
-        theme="simple"
-        variant="primary"
-        classes="!text-center"
-      >Sign In With Google</VariantButton>
-      <VariantButton
-        id="sign-in-with-apple"
-        icon="apple"
-        theme="simple"
-        variant="primary"
-      >Sign In With Apple</VariantButton>
+      >
+        Continue With Google
+        <Icon name="right-arrow" />
+      </AstroButton>
     </div>
   </div>
 </StarlightSplashLayout>
