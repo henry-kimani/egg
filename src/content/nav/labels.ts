@@ -14,7 +14,7 @@ export default {
   "one.ccs108": "CCS 108: Introduction to Security Studies",
 
   year2: "Year Two",
-  "two.ccs200": "CCS 200: Criminal Law",
+  "two.ccs200": "CCS 200: Law of Evidence",
   "two.ccs201": "CCS 201: Juvenile Delinquency",
   "two.ccs202": "CCS 202: Crime Prevention and Management",
   "two.ccs203": "CCS 203: Introduction to Rehabilitation of Offenders",

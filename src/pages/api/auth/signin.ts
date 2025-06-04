@@ -17,7 +17,6 @@ export const GET:APIRoute = async({request, cookies, redirect}) => {
   try {
     await adminAuth.verifyIdToken(idToken);
   } catch (error) {
-    console.log("Error While Verifying Token", error);
     return new Response(
       "Invalid Token",
       { status: 403 }
@@ -29,7 +28,9 @@ export const GET:APIRoute = async({request, cookies, redirect}) => {
   const sessionCookie = await adminAuth.createSessionCookie(idToken, { expiresIn: tenMins });
   
   cookies.set("__session", sessionCookie, {
-    path: "/"
+    path: "/",
+    sameSite: 'lax',
+    httpOnly: true,
   })
 
   return redirect("/dashboard/profile");
