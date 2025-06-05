@@ -2,7 +2,15 @@
 import config from "virtual:starlight/user-config";
 import SiteTitle from "@astrojs/starlight/components/SiteTitle.astro";
 import Search from "@astrojs/starlight/components/Search.astro";
-import ProfileDropdownMenu from "@components/user/ProfileDropdownMenu.astro";
+import Dropdown from "@components/dropdown/Dropdown.astro";
+import DropdownTrigger from "@components/dropdown/DropdownTrigger.astro";
+import DropdownContent from "@components/dropdown/DropdownContent.astro";
+import DropdownGroup from "@components/dropdown/DropdownGroup.astro";
+import AstroButton from "@components/buttons/AstroButton.astro";
+import ThemeSelect from "./ThemeSelect.astro";
+import ModalFeedbackForm from "@components/modals/ModalFeedbackForm.astro";
+import ProfileCard from "@components/user/ProfileCard";
+import FocusedMode from "@components/FocusedMode.astro";
 
 const shouldRenderSearch = 
   config.pagefind || config.components.Search !== '@astro/starlight/components/Search.astro';
@@ -19,9 +27,113 @@ const shouldRenderSearch =
   </div>
 
   <div class="print:hidden flex items-center">
-    <ProfileDropdownMenu />
+    <Dropdown>
+      <DropdownTrigger controlsId="profile-dropdown-menu">
+        <AstroButton
+          class="rounded-full"
+          size="icon"
+          variant="secondary"
+        ><span class="user-first-letter text-2xl"></span></AstroButton>
+      </DropdownTrigger>
+      <DropdownContent id="profile-dropdown-menu">
+        {/* User Profile */}
+        <DropdownGroup border>
+          <ProfileCard
+            client:load
+            iconSize="small"
+            button={{
+              buttonHref: "/dashboard/profile",
+              buttonContent: "Dashboard"
+            }}
+            showPargraph={false}
+          />
+        </DropdownGroup>
+
+        {/* Site Settings */}
+        <DropdownGroup border>
+          <ThemeSelect />
+          <ModalFeedbackForm />
+          <FocusedMode />
+        </DropdownGroup>
+
+        {/* SignIn and SignOut button */}
+        <DropdownGroup border={false}>
+          <signin-signout />
+        </DropdownGroup>
+      </DropdownContent>
+    </Dropdown>
   </div>
 </div>
+
+<script>
+class ModalFeedbackForm extends HTMLElement {
+  modalFeedbackForm = this.querySelector('#feedback-form-modal') as HTMLDialogElement;
+  openFeedbackFormModal = this.querySelector('#open-feedback-modal') as HTMLButtonElement;
+  closeFeedbackFormModal = this.querySelector('#close-feedback-modal') as HTMLButtonElement;
+
+  constructor() {
+    super();
+
+    this.openFeedbackFormModal?.addEventListener("click", () => this.modalFeedbackForm.showModal());
+    this.closeFeedbackFormModal?.addEventListener("click", () => this.modalFeedbackForm.close());
+  }
+}
+customElements.define("modal-feedback-form", ModalFeedbackForm);
+</script>
+
+<script>
+import { $userInfo } from "@stores/userInfoStore";
+
+class SigninSignout extends HTMLElement {
+  userFirstLetter = document.querySelector(".user-first-letter") as HTMLSpanElement;
+
+  constructor() {
+    super();
+
+    $userInfo.subscribe( user => {
+      /* Change the first letter for the profile dropdown trigger button */
+      this.userFirstLetter.textContent = user.displayName[0];
+
+      if (user && user.isLoggedIn) {
+        this.renderToDom(this.renderSignOut());
+      } else {
+        this.renderToDom(this.renderSignIn());
+      }
+    })
+  }
+
+  renderSignOut() {
+    return `
+      <div class="sign-out-button">
+        <form action="/api/auth/signout" class="grid">
+          <button class="text-start hover:cursor-pointer w-full p-1 pl-12 rounded-md bg-transparent hover:bg-[--sl-color-gray-6] dark:hover:bg-[--sl-color-gray-5]">
+            Sign Out
+          </button>
+        </form>
+      </div>
+    `;
+  }
+
+  renderSignIn() {
+    return `
+      <div class="sign-in-button grid">
+        <a 
+          class="no-underline text-[--sl-color-white] p-1 pl-12 rounded-md hover:bg-[--sl-color-gray-6] dark:hover:bg-[--sl-color-gray-5]" 
+          href="/signin"
+        >Sign In</a>
+      </div>
+    `;
+  }
+
+  renderToDom(markUp: string) {
+    if (markUp) {
+      this.innerHTML = markUp;
+    }
+  }
+}
+
+customElements.define('signin-signout', SigninSignout);
+</script>
 
 <style>
 .header {

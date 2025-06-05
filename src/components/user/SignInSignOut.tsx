@@ -1,18 +1,20 @@
 import { useStore } from "@nanostores/preact";
 import { $userInfo } from "@stores/userInfoStore";
 import { ReactLink } from "@components/buttons/ReactLink";
+import ReactButton from "@components/buttons/ReactButton";
+import type { ComponentProps } from "preact";
 
-export default function SignInSignOut(){
+export default function SignInSignOut({ variant }: ComponentProps<typeof ReactButton>){
 
   const user = useStore($userInfo);
 
   return user.isLoggedIn ? 
-    <ReactLink
-      className="text-red-400"
-      href="/api/auth/signout"
-    >Sign Out</ReactLink>
+    <form class="grid" action="/api/auth/signout">
+      <ReactButton variant={variant}>Sign Out</ReactButton>
+    </form>
     :
     <ReactLink
       href="/signin"
+      variant={variant}
     >Sign In</ReactLink>
 }

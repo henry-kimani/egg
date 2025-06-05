@@ -3,8 +3,12 @@
  * Focused mode does two things
  * - temporarily closes the sidebar
  * - lower the opacity of the pageTableOfContents
+ * 
+ * Check PageFrame.astro and TwoColumnLayout.astro to see how focused mode changes
+ * 
 */
-import DropdownChidMenu from "@components/buttons/DropdownChildButton.astro";
+import AstroButton from "@components/buttons/AstroButton.astro";
+import { Icon } from "@astrojs/starlight/components";
 
 const currentPathname = Astro.url.pathname;
 
@@ -12,11 +16,26 @@ const currentPathname = Astro.url.pathname;
 const isAllowedPathname = currentPathname.startsWith("/year1") || currentPathname.startsWith("/year2");;
 ---
 { isAllowedPathname ?
-  <focused-mode>
-    <DropdownChidMenu id="focused-mode-button" icon="open-book">Focused Mode</DropdownChidMenu>
+<focused-mode class="grid">
+  <AstroButton
+    id="focused-mode-button"
+    variant="minimal"
+    class="justify-start gap-4 pl-4"
+  >
+    <Icon name="open-book" />
+    FocusedMode
+  </AstroButton>
   </focused-mode>
 : ""
 }
+
+<style>
+/* Change the background color if focused mode is on */
+:global([data-focused-mode='true']) #focused-mode-button {
+  background-color: var(--sl-color-accent);
+  color: white;
+}
+</style>
 
 <script>
 type FocusedMode = boolean;

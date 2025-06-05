@@ -1,0 +1,74 @@
+---
+import { focusClasses } from '@components/buttons/buttonVariants';
+
+interface Props {
+  controlsId: string;
+  class?: string;
+}
+
+const { class: className, controlsId } = Astro.props;
+
+---
+<dropdown-trigger
+  aria-expanded="false"
+  class:list={[focusClasses, className]}
+  aria-controls={controlsId}
+>
+  <span class="notification-label absolute h-2 w-2 bg-red-500 rounded-full right-6"></span>
+  <slot />
+</dropdown-trigger>
+
+<script>
+class DropdownTrigger extends HTMLElement {
+  btn = this.querySelector('button');
+
+  constructor() {
+    super();
+
+    const closestParent = this.closest('section');
+
+    this.btn?.addEventListener('click', () => this.toggleExpanded());
+    window.addEventListener('keyup', (e) => this.closeOnEscape(e));
+    window.addEventListener("click", (e) => { 
+      /* On closing, make sure what is being clicked on is not the trigger button or the dropdown itself*/
+      if (!(this.btn?.contains(e.target as Node) || closestParent?.contains(e.target as Node))) {
+        this.closeOnOutSideClick();
+      }
+    });
+  }
+
+  setExpanded(expanded: boolean) {
+    this.setAttribute('aria-expanded', String(expanded));
+  }
+
+  toggleExpanded() {
+    this.setExpanded(this.getAttribute('aria-expanded') !== 'true');
+  }
+
+  closeOnEscape(e: KeyboardEvent) {
+    if (e.code === "Escape") {
+      this.setExpanded(false);
+      this.btn?.focus();
+    }
+  }
+
+  closeOnOutSideClick() {
+    this.setExpanded(false);
+  }
+}
+customElements.define('dropdown-trigger', DropdownTrigger);
+</script>
+
+<style>
+/* Show the notification-label on large devices when focused mode is on*/
+.notification-label {
+  display: none;
+}
+
+@media (min-width: 50em) {
+  :global([data-focused-mode="true"]) .notification-label {
+    display: block;
+  }
+}
+</style>
+

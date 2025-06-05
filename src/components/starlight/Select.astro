@@ -1,16 +1,11 @@
 ---
 import { Icon } from "@astrojs/starlight/components";
+import type { StarlightIcon } from "@astrojs/starlight/types";
+import { focusClasses } from "@components/buttons/buttonVariants";
 
 interface Props {
   label: string;
   value: string;
-  icon: Parameters<typeof Icon>[0]['name'];
-  width?: string;
-  options: Array<{
-    label: string;
-    value: string;
-    selected: boolean;
-  }>;
 }
 
 /**
@@ -24,51 +19,11 @@ interface Props {
  */
 ---
 
-<label class="rounded-md" >
-  <span class="sr-only">{Astro.props.label}</span> 
-  <Icon name={Astro.props.icon} class="icon label-icon" />
-  <select value={Astro.props.value} autocomplete="off">
-    {
-      Astro.props.options.map(({ value, selected, label }) => (
-        <option {value} {selected} {label}>{label}</option>
-      ))
-    }
-  </select>
-</label>
+<select aria-label={Astro.props.label} value={Astro.props.value} autocomplete="off" class:list={["bg-transparent hover:bg-[--sl-color-gray-5] rounded-md p-2", focusClasses]}>
+  <option value="auto">&nbsp;💻&nbsp;&nbsp;&nbsp;Auto</option>
+  <option value="light">&nbsp;☀️&nbsp;&nbsp;&nbsp;Light</option>
+  <option value="dark">&nbsp;🌙&nbsp;&nbsp;&nbsp;Dark</option>
+</select>
 
-<style>
-label {
-  --sl-label-icon-size: 0.875rem;
-  --sl-caret-size: 1.25rem;
-  --sl-inline-padding: 0.5rem;
-  position: relative;
-  display: flex;
-  gap: var(--sl-nav-pad-y);
-  align-items: center;
-  color: var(--sl-color-gray-1);
-  padding: .687em var(--sl-nav-pad-y);
-}
-
-label:hover {
-  background-color: var(--sl-color-gray-5);
-}
-:global([data-theme="light"]) label:hover {
-  background-color: var(--sl-color-gray-6);
-}
-
-select {
-  width: 100%;
-  background-color: transparent;
-  text-overflow: ellipsis;
-  color: inherit;
-  cursor: pointer;
-}
-option {
-  color: var(--sl-color-gray-5);
-}
-:global([data-theme="light"]) option {
-  color: var(--sl-color-accent);
-}
-</style>
 
 

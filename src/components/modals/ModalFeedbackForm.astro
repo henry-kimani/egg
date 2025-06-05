@@ -1,0 +1,20 @@
+---
+import AstroButton from "@components/buttons/AstroButton.astro";
+import Modal from "@components/modals/Modal.astro";
+import FeedbackForm from "@components/forms/FeedbackForm.astro";
+import { Icon } from "@astrojs/starlight/components";
+---
+{/* The script to open and close the modal is in the Header.astro file, 
+Where this is rendered */}
+<modal-feedback-form class="grid">
+  <AstroButton
+    class='justify-start gap-4 pl-4'
+    id="open-feedback-modal"
+    variant="minimal"
+  ><Icon name="comment" />Feedback</AstroButton>
+  <Modal dialogId="feedback-form-modal" closeId="close-feedback-modal">
+    <FeedbackForm />
+  </Modal>
+</modal-feedback-form>
+
+

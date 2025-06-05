@@ -1,0 +1,36 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+interface Props extends HTMLAttributes<'div'> {};
+
+const { class: className, ...props } = Astro.props;
+
+---
+
+<section
+  {...props}
+  class:list={[className, "dropdown-content absolute w-56 h-auto rounded-md"]}
+>
+  <slot />
+</section>
+
+<style>
+.dropdown-content {
+  scale: var(--dropdown-content-visibility, 0);
+  top: calc(var(--sl-nav-height) + var(--sl-nav-pad-y));
+  right: var(--sl-nav-pad-y);
+  background-color: var(--sl-color-gray-6);
+  border: 1px solid var(--sl-color-gray-5);
+  display: grid;
+}
+
+/* show the dropdown content when aria-expanded = true*/
+:global([aria-expanded='true']) ~ .dropdown-content {
+  --dropdown-content-visibility: 1;
+}
+
+:global([data-theme="light"]) .dropdown-content {
+  background-color: var(--sl-color-gray-7);
+}
+
+</style>
