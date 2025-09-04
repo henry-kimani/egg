@@ -23,10 +23,10 @@ const isAllowedPathname = currentPathname.startsWith("/year1") || currentPathnam
     class="justify-start gap-4 pl-4"
   >
     <Icon name="open-book" />
-    FocusedMode
+    Focused Mode
   </AstroButton>
   </focused-mode>
-: ""
+: null
 }
 
 <style>
@@ -34,6 +34,20 @@ const isAllowedPathname = currentPathname.startsWith("/year1") || currentPathnam
 :global([data-focused-mode='true']) #focused-mode-button {
   background-color: var(--sl-color-accent);
   color: white;
+}
+:global([data-focused-mode='true'][data-theme='dark']) #focused-mode-button {
+  background-color: var(--sl-color-accent-high);
+  color: var(--sl-color-accent-low);
+}
+
+focused-mode {
+  display: none !important;
+}
+
+@media (min-width: 50rem) {
+  focused-mode {
+    display: grid !important;
+  }
 }
 </style>
 
