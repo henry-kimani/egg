@@ -34,7 +34,7 @@ export default function ProfileCard(props: Props) {
       <div>
         <SpecificHeading heading='h3'>{ user.displayName }</SpecificHeading> 
         <div class="grid gap-4">
-          { showPargraph ? <div>{ description ? description : user.email }</div> : "" }
+          { showPargraph && <div>{ user.email ? user.email : description }</div> }
 
           {button ? 
             <ReactLink

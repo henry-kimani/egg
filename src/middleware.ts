@@ -10,8 +10,8 @@ export const onRequest = defineMiddleware(async(context, next) => {
   /* Check if the current request is allowed by verifying its session cookie */
   if (sessionCookie) {
     try {
-      const decodedTokenId = await adminAuth.verifySessionCookie(sessionCookie);
-      const userInfo = await adminAuth.getUser(decodedTokenId.uid);
+      const decodedClaims = await adminAuth.verifySessionCookie(sessionCookie);
+      const userInfo = await adminAuth.getUser(decodedClaims.uid);
 
       if (userInfo) {
         context.locals.user = {
@@ -25,7 +25,7 @@ export const onRequest = defineMiddleware(async(context, next) => {
         context.locals.user = {
           isLoggedIn: false,
           uid: "",
-          displayName: "Guest",
+          displayName: "Anonymous",
           email: "",
           photoURL: "",
         };
@@ -34,24 +34,26 @@ export const onRequest = defineMiddleware(async(context, next) => {
     } catch(err: any) {
       // Deleting the invalid cookie
       if(err.code === 'auth/session-cookie-expired') {
-        console.log("expired cookie");
         context.cookies.delete("__session", { path: "/" });
         return Response.redirect(new URL("/signin", context.url.href));
       }
       if (err.code === 'auth/argument-error') {
+        console.log(err);
         return Response.redirect(new URL("/error", context.url.href));
       }
+
+      context.cookies.delete("__session", { path: "/" });
       return Response.redirect(new URL("/error", context.url.href));
     }
-  } 
+  } else {
+  }
 
   // Protect content routes from unAuthorized requests
   if (!sessionCookie && 
     (currentPath.startsWith("/year1") || currentPath.startsWith("/year2"))
   ) {
     return Response.redirect(new URL("/signin", context.url.href));
-  }
+  } 
 
   return next();
-  //    - Make sure the user is logged in otherwise show a accept cookies modal
 });

@@ -23,15 +23,23 @@ export const GET:APIRoute = async({request, cookies, redirect}) => {
     );   
   }
 
-  // Create the session cookie
-  const tenMins = 60*10*1000; 
-  const sessionCookie = await adminAuth.createSessionCookie(idToken, { expiresIn: tenMins });
-  
-  cookies.set("__session", sessionCookie, {
-    path: "/",
-    sameSite: 'lax',
-    httpOnly: true,
-  })
+  try {
+    // Create the session cookie
+    const tenMins = 60*10*1000; 
+    const sessionCookie = await adminAuth.createSessionCookie(idToken, { expiresIn: tenMins });
+
+    cookies.set("__session", sessionCookie, {
+      path: "/",
+      sameSite: 'lax',
+      httpOnly: true,
+    });
+
+  } catch {
+    return new Response(
+      "Server Error",
+      { status: 500 }
+    );
+  }
 
   return redirect("/dashboard/profile");
 }
