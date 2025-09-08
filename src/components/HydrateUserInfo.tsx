@@ -28,5 +28,5 @@ export default function HydrateUserInfo({ user }: Props) {
     }
 
   }, [ user ]);
-  return <></> 
+  return null;
 }
