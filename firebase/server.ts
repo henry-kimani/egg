@@ -20,9 +20,10 @@ const serviceAccount = {
 
 const initApp = () => {
   if (envVars.PROD) {
-    console.log("PROD env detected. Using default Service Account");
     return initializeApp();
   }
+
+  console.log("PROD env detected. Using default Service Account");
 
   return initializeApp({
     credential: cert(serviceAccount as ServiceAccount),
