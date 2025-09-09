@@ -50,7 +50,6 @@ export default defineConfig({
       './src/tailwind.css',
       '@fontsource-variable/quicksand',
       '@fontsource-variable/fredoka',
-      '@fontsource-variable/noto-sans-lao'
     ],
     favicon: "egglogo.svg",
     routeMiddleware: './src/routeData.ts',

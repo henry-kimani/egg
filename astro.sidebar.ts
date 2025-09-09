@@ -34,5 +34,14 @@ export const sidebar = [
       group("two.ccs208", { autogenerate: { directory: 'year2/ccs208' } }),
       group("two.ams209", { autogenerate: { directory: 'year2/ams209' } }),
     ]
+  }),
+  group("year3", {
+    items: [
+      group("three.ccs300", { autogenerate: { directory: 'year3/ccs300'} }),
+      group("three.ccs301", { autogenerate: { directory: 'year3/ccs301' } }),
+      group("three.ccs302", { autogenerate: { directory: 'year3/ccs302' } }),
+      group("three.ccs314", { autogenerate: { directory: 'year3/ccs314' } }),
+      group("three.sit312", { autogenerate: { directory: 'year3/sit312' } })
+    ]
   })
 ] satisfies StarlightUserConfig['sidebar'];

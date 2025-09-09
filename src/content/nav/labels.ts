@@ -23,7 +23,14 @@ export default {
   "two.ccs206": "CCS 206: National Security",
   "two.ccs207": "CCS 207: Penology",
   "two.ccs208": "CCS 208: Criminal Psychology",
-  "two.ams209": "AMS 209: Social Statistics"
+  "two.ams209": "AMS 209: Social Statistics",
+
+  year3: "Year Three",
+  "three.ccs300": "Physical and Technical Security",
+  "three.ccs301": "Research Methods",
+  "three.ccs302": "Emergency Management",
+  "three.ccs314": "Victimology",
+  "three.sit312": "Electronic Access"
 }
 
 export function userProfileEntry(pathname: string): SidebarLink {
