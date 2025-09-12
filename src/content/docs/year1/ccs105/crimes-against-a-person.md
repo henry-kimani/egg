@@ -142,6 +142,60 @@ less than 10 yrs to life.
 In common law, rape means kernal knowledge(sexual penetration) of a woman who 
 is not your wife using force without consent.
 
+Other types of penetration (anus, bu objects), didn't fulfil this requirement.
+This was treat as a sodomy laws.
+
+Since liqucid act is penal to vaginal penetration, the defendant must be a male.
+
+To prove common law rape, force must include:
+1. Extrincisic force
+2. Intrincisic force
+
+The state must prove the defendant used more force that is necessary. However, 
+today instrinsic force, the minimal threshold is force used in penetration, must
+be proven. Additionally, the state must prove 'no consent' from the victim.
+
+At common law to prove no consent required the victim to resist the defendant.
+
+##### Martial Rape Exception
+
+This exception removes criminal liability on the husband for forcing sexual
+penetration against will. Essentially, in common law the husband could not be 
+charged for raping his wife.
+
+Some of the reasons include:
+- Women were viewed a property transfered from the father to the husband, so the
+husband had the sole voice on the property.
+- The wife was assumed automatic content to sex.
+- Marriage and what happens in common law was considered a personal issue which
+was not acceptable for state of intervention.
+
+##### Improvements
+
+Other penerations were considered unlawful and fitted under the definition of 
+sexual assault e.g peneration of an object or finger.
+
+Because of this boarder definition of illegal act, there are no gender limitation
+of both defendant or victim.
+
+Consent is very difficult to prove in state.
+
+##### Mordern law of rape
+
+- Rape does not require penal penetration.
+- Penetration of any sexual part e.g penis, finger.
+- The defendant no longer required to be a man.
+- The standard of additional force by the accused has been replaced by instrinsic
+force standard.
+- If a victim is impaired or mentally impotent, the prof of force is unnecessary.
+- Martial relationship between the two is irrelevant as women are not their
+husband's property rather citizens. However, some jurisdictions have martial
+rape allowance mitigating level of rape.
+
+**Actus Reus**: Sexual penetration by force of threat of a person without consent.
+
+**Mens Rea**: Intent / Purpose
+
 #### Attempted Rape
 
 Attempting unlawful and intentional commit an act of peneration with his or her
