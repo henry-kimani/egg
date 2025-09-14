@@ -11,7 +11,7 @@ Scientific method is a systematic and organized approach used to investigate
 natural phenomena. 
 
 It is applied by scientist scholars to make observations and 
-formulate hypothesis, conduct experiments gather and analyze data and then draw
+formulate hypothesis, conduct experiments, gather and analyze data and then draw
 conclusions.
 
 ### The Scientific Process
@@ -68,7 +68,7 @@ involves the following steps:
 
 9. **Dissemination**
 
-    This involves communicating your research through e.g publishing.
+    This involves spreading and communicating your research through e.g publishing.
 
 10. **Peer review and repulation**
     
@@ -91,15 +91,47 @@ the developing world.
 
 #### Key characteristics of science
 
-1. Empirical observation of evidence
-2. Objectivety of facts as they are not subjective.
-3. Verifiability based on verifiable data.
-4. Systematic in nature.
-5. Replicability (repetability).
-6. Falsifiability: Verifiability for some preposition for statement theory or 
-hypothesis to proven wrong.
-7. Precision and accuracy: Scientific knowledge is precise, its not vague and the
-use of exact measurements.
+1. **Empirical**
+
+    Science relies on observations and experiments to gather evidence and data.
+
+2. **Objectivety**
+
+    This is the ability to see facts as they are, not as you might wish them to 
+    be. You have to guard against beliefs, wishes or values. You must set aside
+    all subjective considerations and prejudices.
+
+3. **Verifiability**
+    
+    Scientific findings rest upon sense data i.e data gathered through our senses.
+    They must be based on evidence that others can observe and measure.
+
+4. **Systematic**
+
+    Scientific research follows a sequence of procedures to collect and analyze
+    facts about the phenomena under study.
+
+5. **Replicability** (repetability).
+
+    Experiments and findings should be able to be reproduced by other scientists
+    to confirm their validity.
+    
+6. **Falsifiability**
+
+    Verifiability for some preposition for statement theory or hypothesis to 
+    proven wrong.
+
+7. **Precision**
+
+    Scientific knowledge is precise, its not vague and the use of exact 
+    measurements. For example, instead of "most of the people are against women
+    right to inheritance" say "95% of people are against women right to inheritance."
+
+8. **Accuracy**
+
+    This simply means truth and correctness of a statement or describing things
+    in exact words. For example, a physician will not say a patient has slightly
+    higher temperature, rather having the exact temperature.
 
 ### Research
 
