@@ -13,7 +13,9 @@ import { Icon } from "@astrojs/starlight/components";
 const currentPathname = Astro.url.pathname;
 
 // Allowed paths to show the focused mode button
-const isAllowedPathname = currentPathname.startsWith("/year1") || currentPathname.startsWith("/year2");;
+const isAllowedPathname = currentPathname.startsWith("/year1") ||
+  currentPathname.startsWith("/year2") ||
+  currentPathname.startsWith("/year3");
 ---
 { isAllowedPathname ?
 <focused-mode class="grid">
