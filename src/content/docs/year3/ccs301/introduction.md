@@ -133,22 +133,3 @@ the developing world.
     in exact words. For example, a physician will not say a patient has slightly
     higher temperature, rather having the exact temperature.
 
-### Research
-
-A systematic and organized process of inquring that aims to discorver new knowledge,
-investigate existing phenomena, answer specific questions or solve problems.
-
-It involves a structured and methodical approach of collecting and analyzing 
-information in order to gain deeper understading of a subject to contribute to
-the body of knowledge in a particular field.
-
-It can take forms and conducted in a variety of disciplines that exist including
-natural, social and humanities.
-
-#### Key components and characteristics of research
-
-1. Originates with a question of a problem.
-2. Purpose: be driven by a speparate purpose or objective e.g explore a new area
-of knowledge.
-3. Solve a particular problem.
-4. Systematic process.
