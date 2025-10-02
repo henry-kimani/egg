@@ -18,7 +18,15 @@ export default {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)'
-      }
+      },
+      keyframes: {
+        shimmer: {
+          'to': { 'background-position': '0% 0' },
+        }
+      },
+    },
+    animation: {
+      shimmer: "shimmer .5s infinite linear"
     },
     listStyleType: {
       "square" : "square",

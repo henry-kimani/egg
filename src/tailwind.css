@@ -16,14 +16,11 @@ https://tailwindcss.com/docs/adding-custom-styles#using-css-and-layer
   }
   nav, h4 {
     font-family: 'QuickSand Variable', sans-serif;
-  }/*
-  h1, h2, h3 {
-    font-family: 'Fredoka Variable', sans-serif;
   }
-  /*
-  strong {
-    font-family: 'Noto Sans Lao Variable', sans-serif;
-    letter-spacing: .01rem;
-    font-weight: 800;
-  }*/
+  .skeleton {
+    background: linear-gradient(-45deg, var(--sl-color-gray-6) 40%, var(--sl-color-gray-5) 50%, var(--sl-color-gray-6) 60%);
+    background-size: 300%;
+    background-position-x: 100%;
+  }
 }
+
