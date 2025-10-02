@@ -6,9 +6,6 @@ import { sidebar } from "./astro.sidebar";
 import { devServerFileWatcher } from "./config/dev-server-file-watcher";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
-
-import node from "@astrojs/node";
-
 import preact from "@astrojs/preact";
 
 // https://astro.build/config
@@ -55,12 +52,9 @@ export default defineConfig({
       ],
       favicon: "egglogo.svg",
       routeMiddleware: './src/routeData.ts',
-      prerender: false,
+      prerender: true,
     }),
     tailwind({ applyBaseStyles: false }), preact()
   ],
-  adapter: node({
-    mode: "standalone",
-  }),
-  output: 'server',
+  output: 'static',
 });
