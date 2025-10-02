@@ -51,16 +51,18 @@ const centerPageTitle = routeData.id === "signin";
 </style>
 
 <script>
-  import { $userInfo } from "@stores/userInfoStore";
+  import { auth } from "@firebase/client";
+  import { onAuthStateChanged } from "firebase/auth";
 
   const outputUserName = document.querySelector(".output-type") as HTMLSpanElement;
 
-  // Get the first name
-  $userInfo.subscribe(user => {
-    if (user) {
+  onAuthStateChanged(auth, user => {
+
+    if (user?.displayName) {
       const inputUsername = user.displayName.split(" ")[0]; // Get the first name
       outputUserName.textContent = inputUsername;
+    } else {
+      outputUserName.textContent = "Anonymous";
     }
   });
-
 </script>

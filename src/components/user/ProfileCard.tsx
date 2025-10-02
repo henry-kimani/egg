@@ -1,9 +1,11 @@
 import ProfileIcon from "@components/user/ProfileIcon";
 import SpecificHeading from '@components/headings/SpecificHeading';
-import { $userInfo } from '@stores/userInfoStore';
-import { useStore } from '@nanostores/preact';
 import SignInSignOut from "./SignInSignOut";
 import { ReactLink } from "@components/buttons/ReactLink";
+import { onAuthStateChanged } from "firebase/auth";
+import { useEffect, useState } from "preact/hooks";
+import { auth } from "@firebase/client";
+import ProfileCardSkeleton from "@components/skeletons/ProfileCardSkeleton";
 
 interface Props {
   iconSize: 'large' | 'small';
@@ -19,34 +21,70 @@ export default function ProfileCard(props: Props) {
 
   const { iconSize, description, showPargraph, button } = props;
 
-  const user = useStore($userInfo);
+  const [ userData, setUserData ] = useState<User>();
+  const [ isLoading, setIsLoading ] = useState(true);
+
+  useEffect(() => {
+    setIsLoading(true);
+
+    const subscriber = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUserData({
+          isLoggedIn: true,
+          uid: user.uid,
+          displayName: user.displayName || "Guest",
+          email: user.email,
+          photoURL: user.photoURL
+        });
+      } else {
+        setUserData({
+          isLoggedIn: false,
+          uid: "",
+          displayName: "Anonymous",
+          email: null,
+          photoURL: null
+        });
+      }
+    });
+
+    setIsLoading(false);
+
+    // Unsubscriber on unmount
+    return subscriber;
+  }, []);
 
   return (
-    <div class="flex">
-      <div>
-        <ProfileIcon
-          shape='egg'
-          size={iconSize}
-          photo={user.photoURL}
-        />
-      </div>
+    <>{ isLoading ?
+      <ProfileCardSkeleton /> :
 
-      <div>
-        <SpecificHeading heading='h3'>{ user.displayName }</SpecificHeading> 
-        <div class="grid gap-4">
-          { showPargraph && <div>{ user.email ? user.email : description }</div> }
+      <div class="flex">
 
-          {button ? 
-            <ReactLink
-              href={button.buttonHref}
-              size="sm"
-            >
-              {button.buttonContent}
-            </ReactLink>
-            : <SignInSignOut />
-          }
+        <div>
+          <ProfileIcon
+            shape='egg'
+            size={iconSize}
+            photo={userData?.photoURL}
+          />
         </div>
-      </div> 
-    </div>
+
+        <div>
+          <SpecificHeading heading='h3'>{ userData?.displayName }</SpecificHeading> 
+          <div class="grid gap-4">
+            { showPargraph && <div>{ userData?.email ? userData.email : description }</div> }
+
+            {button ? 
+              <ReactLink
+                className="px-3"
+                href={button.buttonHref}
+                size="sm"
+              >
+                {button.buttonContent}
+              </ReactLink>
+              : <SignInSignOut />
+            }
+          </div>
+        </div> 
+      </div> }
+    </>
   );
 }

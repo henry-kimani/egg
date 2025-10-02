@@ -22,9 +22,9 @@ interface ImportMetaEnv {
 type User = {
   isLoggedIn: boolean;
   uid: string;
-  displayName: string;
-  email: string;
-  photoURL: string | undefined;
+  displayName: string | null;
+  email: string | null;
+  photoURL: string | null;
 };
 
 declare namespace App {

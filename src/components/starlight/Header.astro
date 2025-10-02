@@ -11,6 +11,7 @@ import ThemeSelect from "./ThemeSelect.astro";
 import ModalFeedbackForm from "@components/modals/ModalFeedbackForm.astro";
 import ProfileCard from "@components/user/ProfileCard";
 import FocusedMode from "@components/FocusedMode.astro";
+import SignInSignOut from "@components/user/SignInSignOut";
 
 const shouldRenderSearch = 
   config.pagefind || config.components.Search !== '@astro/starlight/components/Search.astro';
@@ -33,7 +34,11 @@ const shouldRenderSearch =
           class="rounded-full"
           size="icon"
           variant="secondary"
-        ><span class="user-first-letter text-2xl"></span></AstroButton>
+        >
+          <user-first-letter>
+            <span class="user-first-letter text-2xl"></span>
+          </user-first-letter>
+        </AstroButton>
       </DropdownTrigger>
       <DropdownContent id="profile-dropdown-menu">
         {/* User Profile */}
@@ -58,12 +63,39 @@ const shouldRenderSearch =
 
         {/* SignIn and SignOut button */}
         <DropdownGroup border={false}>
-          <signin-signout />
+          <SignInSignOut 
+            client:load 
+            icon 
+            variant={"minimal"} 
+            className="text-[--sl-text-black] dark:text-white justify-start" 
+          />
         </DropdownGroup>
       </DropdownContent>
     </Dropdown>
   </div>
 </div>
+
+<script>
+import { auth } from "@firebase/client";
+import { onAuthStateChanged } from "firebase/auth";
+
+class UserFirstLetter extends HTMLElement {
+  userFirstLetter = this.querySelector(".user-first-letter") as HTMLSpanElement;
+
+  constructor() {
+    super();
+
+    onAuthStateChanged(auth, user => {
+      if (user?.displayName) {
+        this.userFirstLetter.textContent = user.displayName[0];
+      } else {
+        this.userFirstLetter.textContent = "A";
+      }
+    });
+  }
+}
+customElements.define("user-first-letter", UserFirstLetter);
+</script>
 
 <script>
 class ModalFeedbackForm extends HTMLElement {
@@ -79,60 +111,6 @@ class ModalFeedbackForm extends HTMLElement {
   }
 }
 customElements.define("modal-feedback-form", ModalFeedbackForm);
-</script>
-
-<script>
-import { $userInfo } from "@stores/userInfoStore";
-
-class SigninSignout extends HTMLElement {
-  userFirstLetter = document.querySelector(".user-first-letter") as HTMLSpanElement;
-
-  constructor() {
-    super();
-
-    $userInfo.subscribe( user => {
-      /* Change the first letter for the profile dropdown trigger button */
-      this.userFirstLetter.textContent = user.displayName[0];
-
-      if (user && user.isLoggedIn) {
-        this.renderToDom(this.renderSignOut());
-      } else {
-        this.renderToDom(this.renderSignIn());
-      }
-    })
-  }
-
-  renderSignOut() {
-    return `
-      <div class="sign-out-button">
-        <form action="/api/auth/signout" class="grid">
-          <button class="text-start hover:cursor-pointer w-full p-1 pl-12 rounded-md bg-transparent hover:bg-[--sl-color-gray-6] dark:hover:bg-[--sl-color-gray-5]">
-            Sign Out
-          </button>
-        </form>
-      </div>
-    `;
-  }
-
-  renderSignIn() {
-    return `
-      <div class="sign-in-button grid">
-        <a 
-          class="no-underline text-[--sl-color-white] p-1 pl-12 rounded-md hover:bg-[--sl-color-gray-6] dark:hover:bg-[--sl-color-gray-5]" 
-          href="/signin"
-        >Sign In</a>
-      </div>
-    `;
-  }
-
-  renderToDom(markUp: string) {
-    if (markUp) {
-      this.innerHTML = markUp;
-    }
-  }
-}
-
-customElements.define('signin-signout', SigninSignout);
 </script>
 
 <style>

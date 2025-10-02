@@ -6,7 +6,7 @@ import eggprofilesvg from "@assets/eggprofile.svg";
 interface Props {
   shape: "egg" | "circle";
   size: "small" | "large";
-  photo: string | undefined;
+  photo: string | null;
 }
 
 export default function ProfileIcon ({ shape, size, photo: photoURL }: Props) {

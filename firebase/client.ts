@@ -2,9 +2,6 @@ import { initializeApp } from "firebase/app";
 import { connectFirestoreEmulator, getFirestore } from "firebase/firestore";
 import { getAnalytics } from "firebase/analytics";
 import { connectAuthEmulator, getAuth } from "firebase/auth";
-import { getApps } from "firebase/app";
-
-const activeApps = getApps();
 
 export const firebaseConfig = {
   apiKey: import.meta.env.PUBLIC_FIREBASE_CLIENT_APIKEY,

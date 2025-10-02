@@ -1,8 +1,7 @@
 ---
 import ResponsiveTagline from "@components/paragraphs/ResponsiveTagline.astro";
 import StarlightSplashLayout from "@layouts/StarlightSplashLayout.astro";
-import AstroButton from "@components/buttons/AstroButton.astro";
-import { Icon } from "@astrojs/starlight/components";
+import SignIn from "@components/forms/Signin";
 
 /* Check if the User has already signed in */
 ---
@@ -17,45 +16,8 @@ import { Icon } from "@astrojs/starlight/components";
       </ResponsiveTagline>
     </div>
 
-    <div class="grid text-md md:w-96">
-      <AstroButton
-        variant="primary"
-        size="md"
-        id="sign-in-with-google"
-      >
-        Continue With Google
-        <Icon name="right-arrow" />
-      </AstroButton>
-    </div>
+    <SignIn client:load />
+
   </div>
 </StarlightSplashLayout>
 
-<script>
-import { auth } from "@firebase/client";
-import { GoogleAuthProvider, inMemoryPersistence, signInWithPopup } from "firebase/auth";
-
-const signInWithGoogle = document.getElementById("sign-in-with-google");
-
-auth.setPersistence(inMemoryPersistence);
-
-signInWithGoogle?.addEventListener("click", async() => {
-  const provider = new GoogleAuthProvider();
-  try {
-    const result = await signInWithPopup(auth, provider);
-
-    const idToken = await result.user.getIdToken();
-
-    const res = await fetch("/api/auth/signin", {
-      headers: {
-        'Authorization': `Bearer ${idToken}`,
-      }
-    });
-
-    if (res.redirected)
-      window.location.assign(res.url);
-  } catch(error) {
-    window.location.assign("/error");
-  }
-});
-
-</script>
