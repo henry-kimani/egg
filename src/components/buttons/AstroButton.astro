@@ -23,7 +23,7 @@ const Comp = asChild ? "slot":"button";
 ---
 
 <Comp
-  class={cn(astroButtonVariants({ variant, size, className }))}
+  class={cn(astroButtonVariants({ variant, size, className }), "px-3")}
   {...props}
 >
   <slot />

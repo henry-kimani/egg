@@ -17,7 +17,7 @@ function Button({
   const Comp = asChild ? Slot : "button";
 
   return <Comp
-    className={cn(reactButtonVariants({ variant, size, className }))}
+    className={cn(reactButtonVariants({ variant, size, className }), "px-3")}
     {...props}
   />
 }
