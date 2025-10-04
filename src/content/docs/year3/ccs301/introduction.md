@@ -94,6 +94,8 @@ the developing world.
 1. **Empirical**
 
     Science relies on observations and experiments to gather evidence and data.
+    This makes it be grounded on real world facts rather than assumptions,
+    opinions and traditions.
 
 2. **Objectivety**
 
@@ -109,17 +111,24 @@ the developing world.
 4. **Systematic**
 
     Scientific research follows a sequence of procedures to collect and analyze
-    facts about the phenomena under study.
+    facts about the phenomena under study. This helps ensure consistency and accuracy.
+    On the other hand, anecdotal or personal belief knowledge might lack systematic
+    scrutiny, making it less adaptable to new evidence.
 
 5. **Replicability** (repetability).
 
     Experiments and findings should be able to be reproduced by other scientists
-    to confirm their validity.
+    to confirm their validity. This builds in the confidence of the knowledge
+    produced. For example if a scientific show a link between diet and heart 
+    disease, other scientists should be able to replicate the study and confirm
+    the findings.
     
 6. **Falsifiability**
 
-    Verifiability for some preposition for statement theory or hypothesis to 
-    proven wrong.
+    Science-based knowledge is testible and falsifiable, meaning it can be proven
+    wrong if new evidence arises. This allows for the continous improvement and 
+    refinement of knowledge. For example, Einstein's theory of relativity can
+    be tested and potentially disapproven.
 
 7. **Precision**
 

@@ -2,6 +2,8 @@
 title: Reasearch Methods
 sidebar: 
     order: 2
+tableOfContents:
+    maxHeadingLevel: 4
 ---
 
 #### What research is not
@@ -18,7 +20,7 @@ A systematic and organized process of inquring that aims to discover new knowled
 investigate existing phenomena, answer specific questions or solve problems.
 
 It involves a structured and methodical approach of collecting, analyzing and interpreting
-information in order to gain deeper understading of a subject to contribute to
+information in order to gain deeper understanding of a subject to contribute to
 the body of knowledge in a particular field.
 
 It can take forms and conducted in a variety of disciplines that exist including
@@ -80,3 +82,109 @@ natural, social and humanities.
     tentative answer to the question completes the cycle. Research, however, is 
     rarely conclusive. For example, I exploring and area one comes across 
     addtional problems that need resolving and so the process must begin a new.
+
+
+#### Types of research
+
+1. **Basic research(pure research)**
+
+    - Aim: To expand knowledge and understanding without any specific practical
+    application.
+    - Characteristics: Its often theoretical and seeks to answer fundamental 
+    questions and may not have immediate real world applications.
+
+2. **Applied research**
+
+    - Aim: To solve specific practical problems or address practical issues.
+    - Characteristics: It focuses on solving real-world problems and often has
+    direct applications.
+
+3. **Quantitative research**
+
+    - Approach: It involves collecting and analyzing numerical data.
+    - Characteristics: It uses statistical methods to draw conclusions, measure
+    relationships and test hypothesis.
+
+4. **Qualitative research**
+
+    - Approach: It involves collecting non-numerical data such as text, images.
+    - Characteristics: It aims to understand phenomena in depth, often using
+    methods such as interviews, focus groups.
+
+5. **Descriptive research**
+
+    - Aim: It describes the characteristics of a phenomena or population.
+    - Characteristics: It focuses on providing an accurate and detailed account
+    of the subject under study without attempting to explain the causation.
+
+6. **Exploratory research**
+
+    - Aim: To explore a topic, problem or phenomena when little is known about it.
+    - Characteristics: Useful for generating hypotheses and gaining intial insights;
+    often precedes more structured research.
+
+7. **Correlational research**
+
+    - Aim: To explain the relationship between variables and identify causal 
+    factors.
+    - Characteristics: Focuses on understanding why something occurs and often
+    involves experimental or quasi-experimental designs.
+
+8. **Cross-sectional research**
+
+    - Timeframe: Data is collected at a single point in time.
+    - Characteristics: Examines a sample of individuals or cases at a specific
+    moment, providing a snapshot of the subject.
+
+9. **Longitudial research**
+
+    - Timeframe: Data is collected from the same individuals or cases over an
+    extended period of time.
+    - Characteristics: Allows for the study of changes and trends over time and
+    reveal casuality.
+
+10. **Action research**
+
+    - Aim: To address specific problems within a specific context.
+    - Characteristics: Involves collaboration between researches and practitioners
+    to solve real-world issues and implement solutions.
+
+11. **Experimental research** 
+
+    - Methods: It involves manipulating one or more variables to observe their
+    effects on other variables.
+    - Characteristics: Provides strong evidence for casuality but requires 
+    controlled conditions.
+
+12. **Case-study research**
+    
+    - Method: In-depth analysis of a single case of a few-cases.
+    - Characteristics: Useful for exploring complex and context specific phenomena
+    often used in social sciences and businesses.
+
+13. **Ethnographic research**
+
+    - Method: An immersive study of a specific cultural group or community.
+    - Characteristics: Focuses on understanding the culture, beliefs and practices
+    of a particular group.
+
+14. **Survey research**
+
+    - Method: It uses structured questionnaires and interviews to collect data
+    from a sample of a population.
+    - Characteristics: Commonly used for gathering information on attitudes,
+    opinions and behaviors.
+
+15. **Historical research**
+
+    - Method: Examines past events and documents to understand historical
+    developments.
+    - Characteristics: Relies on primary and secondary sources to reconstruct 
+    and analyze historical events.
+
+16. **Comparative research**
+
+    - Method: Involves comparing different groups, religions or time periods to
+    identify similarities and differences.
+    - Characteristics: It aims to gain insights into patterns, trends and variations
+    across contexts.
