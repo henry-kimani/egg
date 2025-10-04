@@ -3,7 +3,7 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import tailwind from '@astrojs/tailwind';
 import { sidebar } from "./astro.sidebar";
-import { devServerFileWatcher } from "./config/dev-server-file-watcher";
+import { devServerFileWatcher } from "./config/astroIntergrations/dev-server-file-watcher";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import preact from "@astrojs/preact";
