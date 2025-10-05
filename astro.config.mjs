@@ -54,7 +54,8 @@ export default defineConfig({
       routeMiddleware: './src/routeData.ts',
       prerender: true,
     }),
-    tailwind({ applyBaseStyles: false }), preact()
+    tailwind({ applyBaseStyles: false }), 
+    preact()
   ],
   output: 'static',
 });

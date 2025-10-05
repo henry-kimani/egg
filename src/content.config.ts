@@ -17,6 +17,6 @@ const releaseNotes = defineCollection({
 const docs = defineCollection({
   loader: docsLoader(), 
   schema: docsSchema(), 
-}    )
+});
 
 export const collections = { docs, releaseNotes };
