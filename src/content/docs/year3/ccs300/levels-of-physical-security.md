@@ -111,5 +111,23 @@ military bases and government special research sites.
 
 #### The psychology of maximum security
 
+The concept of maximum security is much more psychological than it is physical.
 
+To the casual criminal, a maximum security facility is a target to be given up
+on in favour for minimum security facilities.
+
+To the security directory, maximum security accurately describes the system of 
+protection designed to allow him or her to go home at night with the conviction,
+real or imagined, that his assets are safe.
+
+When the value of an asset exceeds the degree of the perceived risk, there will
+always be takers and for them to act, there will be desire and opportunity. The
+effectiveness of the system can be measured in terms of eliminating the 
+opportunity, and the psychology of the system can be measured in terms of 
+eliminating the desire.
+
+To reduce the desire, the criminal has to feel the risk outweighs the treasure
+and moves to another target. This can be achieved using lighting for observation,
+barriers that delay intrusion, an alarm that signal an intrusion and a security
+force that can neutralize intrusion.
 
