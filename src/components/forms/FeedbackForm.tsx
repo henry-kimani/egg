@@ -5,6 +5,7 @@ import { db } from "@firebase/client";
 
 export default function FeedbackForm() {
 
+  const [ message, setMessage ] = useState<string | undefined>();
   const [ input, setInput ] = useState<string | undefined>();
   const [ emoji, setEmoji ] = useState<string | undefined>();
 
@@ -22,8 +23,10 @@ export default function FeedbackForm() {
 
       setInput("");
       setEmoji("");
+      setMessage(undefined);
     } catch(error) {
       console.log(error);
+      setMessage("You have to be signed in to provide feedback.");
     }
   };
 
@@ -31,6 +34,7 @@ export default function FeedbackForm() {
     <form id="egg-form-feedback" onSubmit={onSubmit}>
       <label for="egg-form-feedback-input">
         <h2>FEEDBACK</h2>
+        { message && <div className="text-red-500">{message}</div> }
       </label>
 
       <div 
