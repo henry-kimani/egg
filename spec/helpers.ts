@@ -3,6 +3,7 @@ import { doc, setDoc } from "firebase/firestore";
 import { readFileSync } from "fs";
 import type { mockFeedback, mockUser } from "./mockData";
 import { expect } from "bun:test";
+import type { FeedbackFormType } from "./definitions";
 
 const projectId = `rules-spec-${Date.now()}`;
 const testEnvApp = await initializeTestEnvironment({
@@ -19,36 +20,37 @@ export function setup() {
     const auth = testEnvApp.authenticatedContext(user.uid);
     const db = auth.firestore();
 
-    writeMockData(db, data);
-
-    return db;
-  }
-
-  async function unAuthenticate(data: typeof mockFeedback) {
-    const unAuth = testEnvApp.unauthenticatedContext();
-    const db = unAuth.firestore();
-    
-    // Write mock data before rules
-    writeMockData(db, data); 
-
-    return db;
-  }
-
-  async function writeMockData(db, data: typeof mockFeedback) {
     if (data) {
       for (const key in data){
         const docRef = doc(db, key);
         await setDoc(docRef, data[key]);
       }
     }
+
+    return db;
+  }
+
+  async function unAuthenticate(data: FeedbackFormType) {
+    const unAuth = testEnvApp.unauthenticatedContext();
+    const db = unAuth.firestore();
+    
+    // Write mock data before rules
+    if (data) {
+      for (const key in data){
+        const docRef = doc(db, key);
+        await setDoc(docRef, data[key]);
+      }
+    }   
+
+    return db;
   }
 
   function customMatchers() {
     expect.extend({
-      async toAllow(expectation) {
+      async toAllowFirestore(actual: any) {
         let pass = false;
         try {
-          await assertSucceeds(expectation);
+          await assertSucceeds(actual);
           pass = true;
         } catch(err) { console.log(err) };
         return {
@@ -56,10 +58,10 @@ export function setup() {
           message: () => "Expected to succeed, but it failed."
         };
       },
-      async toDeny(expectation) {
+      async toDenyFirestore(actual: any) {
         let pass = false;
         try {
-          await assertFails(expectation);
+          await assertFails(actual);
           pass = true;
         } catch (err) { console.log(err) }
         return {

@@ -2,15 +2,38 @@ rules_version = '2';
 
 service cloud.firestore {
   match /databases/{database}/documents {
+    function existingData() {
+      return resource.data;
+    }
+
+    function incomingData() {
+      return request.resource.data;
+    }
+    
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
     function verifyFields(required, optional) {
       let allowedFields = required.concat(optional); // Creating an allow list
-      return request.resource.data.keys().hasAll(required) &&
-             request.resource.data.keys().hasOnly(allowedFields);
+
+      return 
+        incomingData().keys().hasAll(required) &&
+        incomingData().keys().hasOnly(allowedFields);
     }
 
     function verifyFeedbackCollectionTypes() {
-        return request.resource.data.feedback is string
-        && request.resource.data.createdAt is timestamp;
+      return 
+        incomingData().uid is string &&
+        incomingData().feedback is string &&
+        incomingData().createdAt is timestamp;
+    }
+
+    function verifyFieldsNotEmptyStrings() {
+      return 
+        !(incomingData().uid == '') &&
+        !(incomingData().feedback == '') &&
+        !(incomingData().createdAt == '');
     }
     
 
@@ -31,11 +54,12 @@ service cloud.firestore {
       allow update: if false;
       allow delete: if false;
 
-      // Required fields: feedback & createdAt
+      // Required fields: uid, feedback & createdAt
       // Optional field: emoji
-      allow create: if verifyFields(['feedback', 'createdAt'], ['feedback', 'emoji', 'createdAt'])
+      allow create: if verifyFields(['uid', 'feedback', 'createdAt'], ['uid', 'feedback', 'emoji', 'createdAt'])
         && verifyFeedbackCollectionTypes()
-        && !(request.resource.data.feedback == '') && !(request.resource.data.createdAt == '')
+        && verifyFieldsNotEmptyStrings()
+        && isSignedIn()
     }
   }
 }
