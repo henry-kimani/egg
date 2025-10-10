@@ -14,8 +14,8 @@ interface Props {
 const { dark: darkSrc, light: lightSrc, alt, loading } = Astro.props;
 
 const imageAttr = {
-  height: 400,
-  width: 400,
+  height: 800,
+  width: 800,
   loading,
 };
 ---
@@ -27,7 +27,7 @@ const imageAttr = {
 <style>
 img {
   object-fit: contain;
-  width: min(100%, 20rem);
+  width: min(100%, 25rem);
   height: auto;
   filter: drop-shadow(0 20px 13px rgb(0 0 0 / 0.03))
           drop-shadow(0 8px 5px rgb(0 0 0 / 0.08));
