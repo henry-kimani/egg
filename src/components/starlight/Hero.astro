@@ -1,19 +1,8 @@
 ---
 import TitleAndDescriptionCard from "../TitleAndDescriptionCard.astro";
-import ThemedImageContainer from "../ThemedImageContainer.astro";
 
 const { data } = Astro.locals.starlightRoute.entry;
-const { title=data.title, tagline, image, actions=[] } = data.hero || {};
-
-let darkImage: ImageMetadata;
-let lightImage: ImageMetadata;
-
-if (image ) {
-  if ("dark" in image) {
-    darkImage = image.dark;
-    lightImage = image.light;
-  }
-}
+const { title=data.title, tagline, actions=[] } = data.hero || {};
 
 ---
 <div class:list={["hero grid gap-7 md:gap-0 sm:grid-cols-2"]}>
@@ -35,19 +24,12 @@ if (image ) {
   */}
 
   <article class="grid place-items-center">
-    <video 
-      class="drop-shadow-lg dark:drop-shadow-xl w-full md:w-5/6"
-      poster="./src/assets/egg-thumbnail.png"
-      disablepictureinpicture controls
-    >
-      <source src="egg-hero-vid.mp4" type="video/mp4" />
-      { darkImage && <ThemedImageContainer
-        dark={darkImage || "/"}
-        light={lightImage || "/"}
-        alt={image?.alt || ""}
-        loading="eager"
-      /> }
-      </video>
+    <iframe
+      src="https://player.mux.com/FRC90000bhzJNV4RtVQgPC7GXoEzwol00RH01AvWzdcpFv00?metadata-video-title=100secs+of+Egg&video-title=100secs+of+Egg&accent-color=%23ea580c"
+      style="width: 95%; border: none; aspect-ratio: 16/9; margin: 2rem;"
+      allow="accelerometer; gyroscope; encrypted-media;"
+      allowfullscreen
+    ></iframe>
   </article>
 </div>
 
