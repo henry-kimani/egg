@@ -13,23 +13,23 @@ const date = latestReleaseNote.data.date;
 const features = latestReleaseNote.data.features;
 ---
 <GradientContainer 
-  classes="p-3 md:p-5 md:flex" 
+  classes="parent-container p-3 sm:p-5 md-[800px]:flex" 
   color="default"
 >
-  <div class="md:basis-1/4 flex w-full md:block">
+  <div class="release-note flex w-full md-[800px]:block">
     <div class="basis-1/2 ">
       <h1 class="!text-5xl !text-[var(--sl-color-gray-7)]">{latestReleaseNote.data.version}</h1>
     </div>
     <div class="basis-1/2  grid !m-0">
       <h3 class="!text-[var(--sl-color-gray-7)]">Released !</h3>
-      <span class="italic text-[var(--sl-color-gray-5)] dark:text-[var(--sl-color-gray-4)]">
+      <span class="italic text-[var(--sl-color-gray-6)] dark:text-[var(--sl-color-gray-4)]">
         <FormatDate {date} />
       </span>
     </div>
   </div>
 
-  <div class="w-full !mt-1 md:basis-3/4">
-    <div class="md:pl-8">
+  <div class="features w-full !mt-1">
+    <div class="sm:pl-8">
       <h3 class="!text-[var(--sl-color-gray-7)] !text-2xl">Features</h3>
       <ParentOfLists type="unordered">
         {features.map((feature, index) => (
@@ -50,5 +50,16 @@ const features = latestReleaseNote.data.features;
   </div>
 
 </GradientContainer>
+
+<style>
+@media (min-width:800px) {
+  .release-note {
+    flex-basis: 35%;
+  }
+  .features {
+    flex-basis: 65%;
+  }
+}
+</style>
 
 
