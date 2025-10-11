@@ -1,7 +1,7 @@
 import ReactButton from "@components/buttons/ReactButton";
 import { useState } from "preact/hooks";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
-import { db } from "@firebase/client";
+import { auth, db } from "@firebase/client";
 
 export default function FeedbackForm() {
 
@@ -16,6 +16,7 @@ export default function FeedbackForm() {
 
     try {
       await addDoc(collRef, {
+        uid: auth.currentUser?.uid,
         feedback: input,
         emoji: emoji || "",
         createdAt: serverTimestamp(),
@@ -49,7 +50,7 @@ export default function FeedbackForm() {
           onChange={(e) => setInput(e.currentTarget.value)}
           id="egg-form-feedback-input"
           placeholder="Your feedback is anonymous ..."
-          aria-placeholder="Share your feedback with us. It is anonymous"
+          aria-placeholder="Share your feedback with us."
           class={`w-full h-24 resize-none rounded-sm py-1 px-2
             bg-[var(--sl-color-black)] dark:bg-[var(--sl-color-gray-7)]
             focus:outline-none
