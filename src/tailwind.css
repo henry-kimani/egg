@@ -8,9 +8,15 @@ https://tailwindcss.com/docs/adding-custom-styles#using-css-and-layer
 */
 
 @layer base {
+  @font-face {
+    font-family: 'Fallback';
+    size-adjust: 93.3%;
+    ascent-override: 100%;
+    src: local('DejaVu Sans');
+  }
   :root {
     --radius: 0.5rem;
-    --sl-font: 'QuickSand Variable', sans-serif;
+    --sl-font: 'QuickSand Variable', 'Fallback', sans-serif;
     letter-spacing: .017rem;
     font-size: 16px;
   }

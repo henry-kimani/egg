@@ -18,10 +18,24 @@ const { rawHtml, isHero } = Astro.props;
 }
 
 <style>
+@font-face {
+  font-family: "FredokaOne";
+  src: url("/fonts/Fredoka-One.woff2")format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'FredokaOneFallback';
+  size-adjust: 90%;
+  font-weight: 700;
+  font-style: inherit;
+  src: local("FreeSans");
+}
 h1 {
-  font-size: clamp(var(--sl-text-5xl), calc(1rem + 5vw), var(--sl-text-6xl));
+  font-size: clamp(var(--sl-text-4xl), calc(1rem + 5vw), 3.7em);
   line-height: var(--sl-line-height-headings);
-  font-family: 'Fredoka Variable', sans-serif;
+  font-family: 'FredokaOne', 'FredokaOneFallback', sans-serif;
   font-weight: 700;
   color: var(--sl-color-white);
 }
