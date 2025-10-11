@@ -6,7 +6,7 @@
     "./spec/custom-matcher.d.ts"
   ],
   "exclude": [
-    "dist"
+    "dist", "spec", "public/egg-hero-vid.mp4"
   ],
   "compilerOptions": {
     "jsx": "react-jsx",

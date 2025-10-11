@@ -10,6 +10,7 @@ import preact from "@astrojs/preact";
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://egglious-web.web.app",
   markdown: {
     remarkPlugins: [remarkMath],
     rehypePlugins: [
@@ -26,7 +27,7 @@ export default defineConfig({
     starlight({
       title: 'Egg',
       logo: {
-        src: "./src/assets/egglogo.png",
+        src: "./public/egglogo.svg",
         alt: "Egg's Logo",
       },
       components: {
@@ -48,7 +49,6 @@ export default defineConfig({
       customCss: [
         './src/tailwind.css',
         '@fontsource-variable/quicksand',
-        '@fontsource-variable/fredoka',
       ],
       favicon: "egglogo.svg",
       routeMiddleware: './src/routeData.ts',

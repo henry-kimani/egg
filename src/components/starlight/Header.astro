@@ -44,7 +44,7 @@ const shouldRenderSearch =
         {/* User Profile */}
         <DropdownGroup border>
           <ProfileCard
-            client:load
+            client:idle
             iconSize="small"
             button={{
               buttonHref: "/dashboard/profile",
@@ -64,7 +64,7 @@ const shouldRenderSearch =
         {/* SignIn and SignOut button */}
         <DropdownGroup border={false}>
           <SignInSignOut 
-            client:load 
+            client:visible
             icon 
             variant={"minimal"} 
             className="text-[--sl-text-black] dark:text-white justify-start" 
