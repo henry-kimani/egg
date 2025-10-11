@@ -68,9 +68,14 @@ export default function ProfileCard(props: Props) {
         </div>
 
         <div>
-          <SpecificHeading heading='h3'>{ userData?.displayName }</SpecificHeading> 
+          <SpecificHeading heading='h3'>
+            {showPargraph ?
+              userData?.displayName :
+              (userData?.displayName && userData?.displayName.split(" ")[0]) 
+            }
+          </SpecificHeading> 
           <div class="grid gap-4">
-            { showPargraph && <div>{ userData?.email ? userData.email : description }</div> }
+            { showPargraph && <div className="overflow-hidden text-ellipsis">{ userData?.email ? userData.email : description }</div> }
 
             {button ? 
               <ReactLink
