@@ -6,7 +6,7 @@ const routeData = Astro.locals.starlightRoute;
 const pageTitle = routeData.entry.data.title;
 
 const isDashboardProfile = routeData.id === "dashboard/profile";
-const centerPageTitle = routeData.id === "signin";
+const centerPageTitle = routeData.id === "signin" || routeData.id === "about";
 
 ---
 

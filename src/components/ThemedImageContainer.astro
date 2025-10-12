@@ -20,14 +20,14 @@ const imageAttr = {
 };
 ---
 
-<Image src={darkSrc} {alt} {...imageAttr} class={"light:sl-hidden"} />
+<Image src={darkSrc} {alt} {...imageAttr} class={"light:sl-hidden w-full sm:w-3/4 md:w-4/6"} />
 
-<Image src={lightSrc} {alt} {...imageAttr} class={"dark:sl-hidden"} />
+<Image src={lightSrc} {alt} {...imageAttr} class={"dark:sl-hidden w-full sm:w-3/4 md:w-4/6"} />
 
 <style>
 img {
   object-fit: contain;
-  width: min(100%, 25rem);
+  width: 100%;
   height: auto;
   filter: drop-shadow(0 20px 13px rgb(0 0 0 / 0.03))
           drop-shadow(0 8px 5px rgb(0 0 0 / 0.08));

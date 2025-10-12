@@ -1,12 +1,13 @@
 ---
 import StarlightSplashLayout from "@layouts/StarlightSplashLayout.astro";
-import ThemedImageContainer from "@components/ThemedImageContainer.astro";
 import VariantLinkButton from "@components/buttons/VariantLinkButton.astro";
-import EggLogo from "@assets/egglogo.webp";
+import AboutImgMobile from "@assets/about-img-mobile-light.svg";
+import AboutImgDark from "@assets/about-img-dark.svg";
+import ThemedImageContainer from "@components/ThemedImageContainer.astro";
 
 export const prerender = true;
 
-const title = 'ABOUT';
+const title = 'About';
 const description = `Egg is an online platform, where you can get access to 
   criminology notes from any where in the world.`;
 ---
@@ -15,14 +16,12 @@ const description = `Egg is an online platform, where you can get access to
   <div class="w-full grid place-items-center">
     <div class="max-w-[45rem] text-lg">
 
-      <h1 class="text-center">Your Criminology Notes Hub</h1>
-
-      <div class="grid gap-4 place-items-center bg-orange-500/25">
-        <ThemedImageContainer
-          dark={EggLogo}
-          light={EggLogo}
-          alt="Egg's logo"
-          loading="eager"
+      <div class="grid place-items-center">
+        <ThemedImageContainer 
+          dark={AboutImgDark}
+          light={AboutImgMobile}
+          alt="Illustration of egg's about"
+          loading="lazy"
         />
       </div>
 
