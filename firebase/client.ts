@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
-import { connectFirestoreEmulator, getFirestore } from "firebase/firestore";
-import { getAnalytics } from "firebase/analytics";
-import { connectAuthEmulator, getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
+import { getAnalytics, isSupported } from "firebase/analytics";
+import { getAuth } from "firebase/auth";
 
 export const firebaseConfig = {
   apiKey: import.meta.env.PUBLIC_FIREBASE_CLIENT_APIKEY,
@@ -14,16 +14,19 @@ export const firebaseConfig = {
 };
 
 const initApp = () => {
-  if (!import.meta.env.PROD) {
+  const PROD = import.meta.env.PROD;
+
+  if (!PROD) {
     return initializeApp(firebaseConfig);
   }
 
-  return initializeApp();
+  return initializeApp(firebaseConfig);
 };
 
 export const app = initApp();
 export const db = getFirestore(app);
-// export const analytics = getAnalytics(app);
+export const analytics = isSupported().then(yes => yes ? getAnalytics() : null);
 export const auth = getAuth(app);
-connectAuthEmulator(auth, "http://localhost:9099");
-connectFirestoreEmulator(db, '127.0.0.1', 8080);
+
+//connectAuthEmulator(auth, "http://localhost:9099");
+//connectFirestoreEmulator(db, '127.0.0.1', 8080);

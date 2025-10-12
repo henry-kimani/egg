@@ -10,7 +10,10 @@
     "preview": "export PROD=true && astro preview",
     "astro": "astro",
     "test:firestore": "bun test spec/firestore/*.spec.ts --watch",
-    "test:auth": "bun test spec/auth/* --watch"
+    "test:auth": "bun test spec/auth/* --watch",
+    "deploy:main": "firebase deploy --only auth firestore hosting",
+    "deploy:preview": "firebase hosting:channel:deploy v002 --expires 3d",
+    "deploy:rules": "firebase deploy --only firestore:rules"
   },
   "dependencies": {
     "@astrojs/preact": "^4.0.11",
