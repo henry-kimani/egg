@@ -26,7 +26,6 @@ export default function FeedbackForm() {
       setEmoji("");
       setMessage(undefined);
     } catch(error) {
-      console.log(error);
       setMessage("You have to be signed in to provide feedback.");
     }
   };
@@ -49,7 +48,7 @@ export default function FeedbackForm() {
           value={input}
           onChange={(e) => setInput(e.currentTarget.value)}
           id="egg-form-feedback-input"
-          placeholder="Your feedback is anonymous ..."
+          placeholder="Share your thoughts with us ..."
           aria-placeholder="Share your feedback with us."
           class={`w-full h-24 resize-none rounded-sm py-1 px-2
             bg-[var(--sl-color-black)] dark:bg-[var(--sl-color-gray-7)]
