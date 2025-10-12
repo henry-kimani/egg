@@ -51,7 +51,6 @@ export default defineConfig({
         '@fontsource-variable/quicksand',
       ],
       favicon: "egglogo.svg",
-      routeMiddleware: './src/routeData.ts',
       prerender: true,
     }),
     tailwind({ applyBaseStyles: false }), 

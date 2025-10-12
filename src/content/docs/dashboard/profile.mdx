@@ -1,16 +1,12 @@
 ---
-import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
+title: Profile 🤩
+description: This is the user's dashboard
+tableOfContents: false
+---
 import WhatsNewPageHeader from "@components/whatsnewpage/WhatsNewPageHeader.astro";
 import ProfileCard from "@components/user/ProfileCard";
 import AcceptCookies from "@components/AcceptCookies.astro";
 
----
-<StarlightPage frontmatter={{
-  title: "Dashboard",
-  description: "This is the user dashboard",
-  tableOfContents: false
-}}
->
   <ProfileCard client:load 
     iconSize="large"
     description="Sign In to unlock all notes"
@@ -23,5 +19,4 @@ import AcceptCookies from "@components/AcceptCookies.astro";
 
   <WhatsNewPageHeader />
 
-</StarlightPage>
 

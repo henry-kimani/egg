@@ -4,9 +4,14 @@ import { group } from './config/sidebar';
 /* the utility function `group()` provides the labels from type inference. The
  * labels from the inference are defined separately*/
 
+/*
+ * Links, unlike groups, don't use the `group()` utility function*/
+
 export const sidebar = [
   group("start", {
-    items: [ '',
+    items: [ 
+      '', // Home
+      "dashboard/profile", // Profile
       group("docs", { autogenerate: { directory: "docs", collapsed: true } })
     ],
   }),

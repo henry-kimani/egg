@@ -1,5 +1,9 @@
 import type { SidebarLink } from "node_modules/@astrojs/starlight/utils/routing/types";
 
+/*
+ * This only defines groups not links. For link, they can be added directly in 
+ * the astro.sidebar.ts file */
+
 export default {
   start: "Dashboard",
   "docs": "Documentation",
@@ -32,15 +36,3 @@ export default {
   "three.ccs314": "Victimology",
   "three.sit312": "Electronic Access"
 }
-
-export function userProfileEntry(pathname: string): SidebarLink {
-  return {
-    type: "link",
-    label: "Profile 🤩",
-    href: "/dashboard/profile",
-    badge: undefined,
-    isCurrent: pathname === "/dashboard/profile",
-    attrs: {}
-  };
-};
-
