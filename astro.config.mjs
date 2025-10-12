@@ -7,6 +7,7 @@ import { devServerFileWatcher } from "./config/astroIntergrations/dev-server-fil
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import preact from "@astrojs/preact";
+import SeoHeadConfig from './seo.config';
 
 // https://astro.build/config
 export default defineConfig({
@@ -30,6 +31,7 @@ export default defineConfig({
         src: "./public/egglogo.svg",
         alt: "Egg's Logo",
       },
+      head: SeoHeadConfig(),
       components: {
         Hero: "./src/components/starlight/Hero.astro",
         Footer: "./src/components/starlight/Footer.astro",
