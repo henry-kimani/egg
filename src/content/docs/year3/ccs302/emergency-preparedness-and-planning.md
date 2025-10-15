@@ -32,4 +32,9 @@ developed through planning, training and exercising.
     - Personal Protective Equipment (PPE), which protects responders from the 
     effects of hazards
     - Communication equipment, which allows organizations to talk to one another
-    - Special search and rescue equipment, 
+    - Special search and rescue equipment, which allows responders to enter
+    compromized buildings, navigate hazardous waters or detect signs of life.
+
+3. Training
+
+    
