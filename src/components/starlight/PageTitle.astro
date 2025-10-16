@@ -15,13 +15,13 @@ const centerPageTitle = routeData.id === "signin" || routeData.id === "about";
     <h1 id={PAGE_TITLE_ID}>
       <span class="user-greeting">Greetings</span>&nbsp;
       <span 
-        class="username-dashboard output-type from-[var(--sl-color-accent)] to-red-600 dark:from-[var(--sl-color-accent-high)] dark:to-[var(--sl-color-accent-high)]">
+        class="output-type bg-linear-to-b bg-clip-text text-transparent from-accent-light to-red-600 dark:from-accent-dark dark:to-accent-dark">
       </span>
     </h1>
 ) : (
     <h1
       id={PAGE_TITLE_ID}
-      class={cn(`text-[var(--sl-color-accent)] dark:text-[var(--sl-color-accent-high)]`, 
+      class={cn(`text-accent-light dark:text-accent-dark`, 
       {
         "text-center" : centerPageTitle
       })}
@@ -40,12 +40,6 @@ const centerPageTitle = routeData.id === "signin" || routeData.id === "about";
     }
     .user-greeting {
       color: var(--sl-color-white);
-    }
-    .username-dashboard {
-      background-image: linear-gradient(var(--tw-gradient-stops));
-      background-clip: text;
-      text-fill-color: transparent;
-      -webkit-text-fill-color: transparent;
     }
   }
 </style>
