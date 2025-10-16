@@ -11,7 +11,14 @@ const { title=data.title, tagline, actions=[] } = data.hero || {};
     description={tagline || ""}
     align="hero"
     linkButtons={
-    actions.map(({ text: name, link: href, variant })=> ({ name, href, variant, icon: "right-arrow", theme: "simple" }))
+      actions.map(({ text: name, link: href, variant })=> 
+        ({ 
+          name, 
+          href, 
+          variant, 
+          icon: "right-arrow", 
+        })
+      )
     }
     parentClasses="stack" 
   />

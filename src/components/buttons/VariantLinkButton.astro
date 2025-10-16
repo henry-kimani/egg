@@ -16,16 +16,21 @@ interface Props extends VariantProps<typeof buttonStyles> {
 }
 
 const buttonStyles = cva([
-  "m-0 bg-(--sl-color-gray-7) dark:bg-(--sl-color-gray-6) dark:text-(--sl-color-gray-1) border-none"], {
-  variants: {
-    theme: {
-      default: "",
-      blue: "text-blue-700",
-      green: "text-green-600",
-      orange: "text-(--sl-color-accent) dark:bg-(--sl-color-gray-6) dark:text-(--sl-color-accent-high)"
+  "m-0 bg-(--sl-color-gray-7) dark:bg-(--sl-color-gray-6) dark:text-(--sl-color-gray-1) border-none"], 
+  {
+    variants: {
+      theme: {
+        default: "!bg-accent-light dark:!bg-accent-dark dark:!text-gray-900",
+        blue: "text-blue-700",
+        green: "text-green-600",
+        orange: "text-(--sl-color-accent) dark:bg-(--sl-color-gray-6) dark:text-(--sl-color-accent-high)"
+      }
+    },
+    defaultVariants: {
+      theme: "default"
     }
-  },
-}); 
+  }
+); 
 
 const { href, icon, variant, classes: className, theme } = Astro.props;
 ---
