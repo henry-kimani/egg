@@ -4,17 +4,18 @@
 interface Props {
   rawHtml?: string;
   isHero: boolean;
+  classes?: string;
 }
 
-const { rawHtml, isHero } = Astro.props;
+const { rawHtml, isHero, classes } = Astro.props;
 
 ---
 { isHero ?
-  <h1 set:html={rawHtml} />
+  <h1 class:list={classes} set:html={rawHtml} />
 :
-  <h2>
+  <h1 class:list={classes}>
     <slot />
-  </h2>
+  </h1>
 }
 
 <style>
@@ -30,7 +31,7 @@ const { rawHtml, isHero } = Astro.props;
   size-adjust: 90%;
   font-weight: 700;
   font-style: inherit;
-  src: local("FreeSans");
+  src: local("DejaVu Sans");
 }
 h1 {
   font-size: clamp(var(--sl-text-4xl), calc(1rem + 5vw), 3.7em);

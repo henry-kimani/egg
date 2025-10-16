@@ -2,12 +2,13 @@
 /*
  * Render a Title, a description, optinal linkcards and profile in a container.
  *
+ * 
  * Their placement is defined by the prop align.
  *
  */
 import ProfileIcon from "@components/user/ProfileIcon";
-import ResponsiveHeading from "@components/headings/ResponsiveHeading.astro";
-import ResponsiveTagline from "@components/paragraphs/ResponsiveTagline.astro";
+import HeroHeading from "@components/hero/HeroHeading.astro";
+import HeroTagline from "@components/hero/HeroTagline.astro";
 import { cn } from "@lib/utils";
 import VariantLinkButton from "@components/buttons/VariantLinkButton.astro";
 import type { ComponentProps } from "astro/types";
@@ -49,12 +50,12 @@ const isHero = align === "hero" || align === "center" ? true : false;
       </div>
     )}
     <div class="!m-0 grid place-items-center">
-      <ResponsiveHeading {isHero} rawHtml={title}>{title}</ResponsiveHeading>
+      <HeroHeading {isHero} rawHtml={title}>{title}</HeroHeading>
     </div>
   </div>
 
   <div>
-    <ResponsiveTagline {isHero} rawHtml={description} />
+    <HeroTagline {isHero} rawHtml={description} />
   </div>
 
   <div>

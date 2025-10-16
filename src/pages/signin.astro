@@ -1,5 +1,5 @@
 ---
-import ResponsiveTagline from "@components/paragraphs/ResponsiveTagline.astro";
+import HeroTagline from "@components/hero/HeroTagline.astro";
 import StarlightSplashLayout from "@layouts/StarlightSplashLayout.astro";
 import SignIn from "@components/forms/Signin";
 
@@ -11,9 +11,9 @@ import SignIn from "@components/forms/Signin";
 >
   <div class="grid place-items-center">
     <div>
-      <ResponsiveTagline isHero>
+      <HeroTagline isHero>
         Sign in to unlock all notes
-      </ResponsiveTagline>
+      </HeroTagline>
     </div>
 
     <SignIn client:load />
