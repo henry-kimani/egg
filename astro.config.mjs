@@ -1,7 +1,6 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
-import tailwind from '@astrojs/tailwind';
 import { sidebar } from "./astro.sidebar";
 import { devServerFileWatcher } from "./config/astroIntergrations/dev-server-file-watcher";
 import remarkMath from "remark-math";
@@ -9,15 +8,19 @@ import rehypeKatex from "rehype-katex";
 import preact from "@astrojs/preact";
 import SeoHeadConfig from './seo.config';
 
+import tailwindcss from "@tailwindcss/vite";
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://egglious-web.web.app",
+
   markdown: {
     remarkPlugins: [remarkMath],
     rehypePlugins: [
       [rehypeKatex, { /* Katex plugin options */ }]
     ],
   },
+
   integrations: [
     devServerFileWatcher([
       './config/*',
@@ -44,9 +47,9 @@ export default defineConfig({
         ThemeSelect: "./src/components/starlight/ThemeSelect.astro",
         TwoColumnContent: "./src/components/starlight/TwoColumnContent.astro",
       },
-      social: {
-        github: 'https://github.com/withastro/starlight',
-      },
+      social: [
+        { icon: "github", label: "Github", href: "https://github.com/henry-kimani" }
+      ],
       sidebar,
       customCss: [
         './src/tailwind.css',
@@ -55,8 +58,10 @@ export default defineConfig({
       favicon: "egglogo.svg",
       prerender: true,
     }),
-    tailwind({ applyBaseStyles: false }), 
     preact()
   ],
   output: 'static',
+  vite: {
+    plugins: [tailwindcss()],
+  },
 });
