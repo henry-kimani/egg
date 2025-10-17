@@ -58,8 +58,8 @@ export default function ProfileIcon ({ shape, size, photo: photoURL }: Props) {
   <div>{ size === "small" ? 
     <div
       class={`grid place-items-center w-10 h-10 
-        bg-[var(--sl-color-gray-6)] rounded-full border border-[var(--sl-color-gray-5)]
-        dark:bg-[var(--sl-color-black)]
+        bg-(--sl-color-gray-6) rounded-full border border-(--sl-color-gray-5)
+        dark:bg-(--sl-color-black)
       `}
     >
       {photoURL ? photoURL : "G"}
@@ -67,8 +67,8 @@ export default function ProfileIcon ({ shape, size, photo: photoURL }: Props) {
   :
     <div
       class={`grid place-items-center w-20 h-20
-        bg-[var(--sl-color-gray-6)] rounded-full border border-[var(--sl-color-gray-5)]
-        dark:bg-[var(--sl-color-black)]
+        bg-(--sl-color-gray-6) rounded-full border border-(--sl-color-gray-5)
+        dark:bg-(--sl-color-black)
       `}
     >
       {photoURL ? photoURL : "G"}

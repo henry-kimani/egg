@@ -38,8 +38,8 @@ export default function FeedbackForm() {
       </label>
 
       <div 
-        class={`mt-3 border-2 rounded-lg p-2
-          has-[:focus]:border-[var(--sl-color-accent)] has-[:focus]:dark:border-[var(--sl-color-accent-high)]
+        class={`mt-3 border-2 rounded-lg p-2 border-gray-200 dark:border-gray-700
+          has-[:focus]:border-accent-light has-[:focus]:dark:border-accent-dark
         `}
       >
         {/* Input */}
@@ -51,7 +51,7 @@ export default function FeedbackForm() {
           placeholder="Share your thoughts with us ..."
           aria-placeholder="Share your feedback with us."
           class={`w-full h-24 resize-none rounded-sm py-1 px-2
-            bg-[var(--sl-color-black)] dark:bg-[var(--sl-color-gray-7)]
+            bg-(--sl-color-black) dark:bg-(--sl-color-gray-7)
             focus:outline-none
           `}
         />
@@ -61,13 +61,13 @@ export default function FeedbackForm() {
           <div class="grid">
             <label 
               for="egg-emoji-feeling-select" 
-              class={`text-xs font-bold mb-1 text-[var(--sl-color-gray-3)]`}
+              class={`text-xs font-bold mb-1 text-(--sl-color-gray-3)`}
             >RATE THE SITE</label>
             <select 
               name="emoji-feeling"
               id="egg-emoji-feeling-select"
-              class={`bg-[var(--sl-color-gray-6)] py-2 px-3 rounded
-                focus:ring focus:outline-none focus:ring-[var(--sl-color-accent)] focus:ring-offset-2 dark:focus:ring-offset-[var(--sl-color-gray-5)]
+              class={`bg-(--sl-color-gray-6) py-2 px-3 rounded
+                focus:ring-3 focus:outline-hidden focus:ring-accent-light focus:ring-offset-2 dark:focus:ring-offset-(--sl-color-gray-5)
               `}
               defaultValue={emoji}
               onChange={(e) => setEmoji(e.currentTarget.value)}

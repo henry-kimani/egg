@@ -12,7 +12,7 @@ const { href, name } = Astro.props;
 <a 
   {href}
   class:list={[`hover:no-underline
-    text-[var(--sl-color-gray-2)] hover:text-[var(--sl-color-accent)] 
-    dark:text-white dark:hover:text-[var(--sl-color-accent-high)] 
+    text-(--sl-color-gray-2) hover:text-accent-light
+    dark:text-white dark:hover:text-accent-dark 
   `]}
 >{name}</a>

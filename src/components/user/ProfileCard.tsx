@@ -1,5 +1,4 @@
 import ProfileIcon from "@components/user/ProfileIcon";
-import SpecificHeading from '@components/headings/SpecificHeading';
 import SignInSignOut from "./SignInSignOut";
 import { ReactLink } from "@components/buttons/ReactLink";
 import { onAuthStateChanged } from "firebase/auth";
@@ -68,12 +67,12 @@ export default function ProfileCard(props: Props) {
         </div>
 
         <div>
-          <SpecificHeading heading='h3'>
+          <h3>
             {showPargraph ?
               userData?.displayName :
               (userData?.displayName && userData?.displayName.split(" ")[0]) 
             }
-          </SpecificHeading> 
+          </h3> 
           <div class="grid gap-4">
             { showPargraph && <div className="overflow-hidden text-ellipsis">{ userData?.email ? userData.email : description }</div> }
 

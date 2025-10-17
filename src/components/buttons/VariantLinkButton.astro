@@ -2,30 +2,42 @@
 /* Render diffrent buttons depending on theme */
 import { LinkButton } from "@astrojs/starlight/components";
 import { cn } from "@lib/utils";
-import { buttonThemes } from "@lib/themes";
-import { type ThemeVariants } from "@lib/themes";
 import { type StarlightIcon } from "@astrojs/starlight/types";
+import { cva, type VariantProps } from "class-variance-authority";
 
-interface VariantButton {
+interface Props extends VariantProps<typeof buttonStyles> {
   id?: string;
   classes?: string;
   icon: StarlightIcon | undefined;
-  theme: ThemeVariants;
   variant: "primary" | "secondary" | "minimal";
   buttonLabel?: string;
   iconLabel?: string;
-}
-
-interface Props extends VariantButton {
   href: string;
 }
 
-const { href, icon, variant, classes, theme } = Astro.props;
+const buttonStyles = cva([
+  "m-0 bg-(--sl-color-gray-7) dark:bg-(--sl-color-gray-6) dark:text-(--sl-color-gray-1) border-none"], 
+  {
+    variants: {
+      theme: {
+        default: "!bg-accent-light dark:!bg-accent-dark dark:!text-gray-900",
+        blue: "text-blue-700",
+        green: "text-green-600",
+        orange: "text-(--sl-color-accent) dark:bg-(--sl-color-gray-6) dark:text-(--sl-color-accent-high)"
+      }
+    },
+    defaultVariants: {
+      theme: "default"
+    }
+  }
+); 
+
+const { href, icon, variant, classes: className, theme } = Astro.props;
 ---
 
 <LinkButton
   {href} {icon} {variant}
-  class:list={cn([classes], buttonThemes(theme))}
+  class:list={cn(buttonStyles({ theme, className }))}
 >
   <slot/>
 </LinkButton>   

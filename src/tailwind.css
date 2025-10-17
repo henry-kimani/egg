@@ -1,32 +1,62 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@layer base, starlight, theme, components, utilities;
+
+@import '@astrojs/starlight-tailwind';
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities' layer(utilities);
+
+@theme {
+  /* Configure your Tailwind theme that will be used by Starlight.
+  https://starlight.astro.build/guides/css-and-tailwind/#styling-starlight-with-tailwind */
+
+  --color-accent-200: #eebe95;
+  --color-accent-600: #ea580c;
+  --color-accent-900: #4c2800;
+  --color-accent-950: #381c00;
+  --color-accent-light: var(--color-accent-600);
+  --color-accent-dark: var(--color-accent-200);
+
+  --color-gray-100: #f7f6f5;
+  --color-gray-200: #f0edeb;
+  --color-gray-300: #c4c1bf;
+  --color-gray-400: #908a85;
+  --color-gray-500: #5c5753;
+  --color-gray-600: #4c4743;
+  --color-gray-700: #3c3733;
+  --color-gray-800: #2b2622;
+  --color-gray-900: #1a1816;
+
+  --animate-shimmer: shimmer .5s infinite linear;
+
+  @keyframes shimmer {
+    to {
+      background-position: 0% 0;
+    }
+  }
+}
+
+@layer components {
+  .skeleton {
+    background: linear-gradient(-45deg, var(--sl-color-gray-6) 40%, var(--sl-color-gray-5) 50%, var(--sl-color-gray-6) 60%);
+    background-size: 300%;
+    background-position-x: 100%;
+  }
+}
 
 /*
 Add additional Tailwind styles to this file, for example with @layer:
 https://tailwindcss.com/docs/adding-custom-styles#using-css-and-layer
 */
 
-@layer base {
-  @font-face {
-    font-family: 'Fallback';
-    size-adjust: 93.3%;
-    ascent-override: 100%;
-    src: local('DejaVu Sans');
-  }
-  :root {
-    --radius: 0.5rem;
-    --sl-font: 'QuickSand Variable', 'Fallback', sans-serif;
-    letter-spacing: .017rem;
-    font-size: 16px;
-  }
-  nav, h4 {
-    font-family: 'QuickSand Variable', sans-serif;
-  }
-  .skeleton {
-    background: linear-gradient(-45deg, var(--sl-color-gray-6) 40%, var(--sl-color-gray-5) 50%, var(--sl-color-gray-6) 60%);
-    background-size: 300%;
-    background-position-x: 100%;
-  }
+@font-face {
+  font-family: 'Fallback';
+  size-adjust: 93.3%;
+  ascent-override: 100%;
+  src: local('DejaVu Sans');
+}
+:root {
+  --radius: 0.5rem;
+  --sl-font: 'QuickSand Variable', 'Fallback', sans-serif;
+  letter-spacing: .017rem;
+  font-size: 16px;
 }
 
