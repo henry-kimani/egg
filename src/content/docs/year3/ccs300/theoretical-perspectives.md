@@ -4,7 +4,7 @@ sidebar:
     order: 4
 ---
 
-### Crime Prevention Through Environmental Design
+## Crime Prevention Through Environmental Design
 
 CPTED is a concept to help us better understand the relationship between design
 and human behavior.
@@ -73,10 +73,10 @@ one or more buildings for residential use - can be divided into four categories.
     their invited guests and service people, with access controlled by locks or
     physical barriers.
 
-### CPTED strategies
+#### CPTED strategies
 
 Access control and surveillance are the primary design concepts of physical design,
-however, they are not mutuall exclusive, meaning certain strategies acheive both.
+however, they are not mutually exclusive, meaning certain strategies acheive both.
 
 Access control and surveillance design concepts emphasized mechanical or organized
 crime prevention techniques while overlooking attitudes, motivation and use of the
@@ -86,10 +86,10 @@ Therefore, more recent designs have shifted the emphasis to natural crime
 prevention techniques, attempting to use natural opportunities presented by the
 environment for crime prevetion. This lead to the emphasis of territoriality.
 
-#### Natural Access Control
+##### Natural Access Control
 
 Access control is a design concept directed primarily at **decreasing crime 
-opportunity**. It stragies are classified as:
+opportunity**. It strategies are classified as:
 - organized: e.g security officers
 - mechanical: e.g locks, lighting and alarms
 - natural: e.g spatial definition
@@ -97,7 +97,7 @@ opportunity**. It stragies are classified as:
 The primary thrust of access control strategy is to deny access to a crime target
 and to create a perception of risk in offenders.
 
-#### Natural Surveillance
+##### Natural Surveillance
 
 Surveillance on the otherhand, is directed at **keeping intruders under observation**.
 Its stragies are classified as:
@@ -109,7 +109,7 @@ The primary thrust, is to facilitate observation, although it may have its effec
 of an access control strategy by effectively keeping intruders out because of 
 increase perception of risk.
 
-#### Territorial Reinforcement
+##### Territorial Reinforcement
 
 The concept of territoriality suggests that physical design can contribute to a
 sense of territoriality. That is, physical design can create or extend a sphere
@@ -135,7 +135,7 @@ This is because natural strategies exploit the opportunities of the given
 environment both to naturally and routinely facilitate access control and 
 surveillance and to reinforce positive behavior in the use of the environment.
 
-### Benefits of CPTED
+## Benefits of CPTED
 
 In addition to dealing with the reduction of crime and fear problems, other
 benefits of CPTED include:
