@@ -1,7 +1,7 @@
 ---
 title: Emergency Preparedness and Planning
 sidebar:
-    order: 4
+    order: 5
 ---
 
 Preparedness, in the field of emergency management, is the state of readiness to
@@ -35,6 +35,38 @@ developed through planning, training and exercising.
     - Special search and rescue equipment, which allows responders to enter
     compromized buildings, navigate hazardous waters or detect signs of life.
 
-3. Training
+3. **Training**
 
-    
+    Training of emergency response officials allows them to conduct the tasks
+    required of them. 
+
+    Additionally, it is not enough to train traditional officials who participate 
+    in emergency management, but also the elected officials responsible for key
+    disaster-specific decisions, the businesses and non-governmental organizations
+    operating in the community.
+
+4. **Exercise**
+
+    The adage of "practise make perfect" is certainly true in emergency management.
+
+    Training is important for preparedness efforts, this is because the few 
+    officials who have experienced first hand disasters, have little applicable
+    experience to rely on when these events occur.
+
+    Practising can be in the form of, table-top exercises, functional exercises
+    and full-scale exercises and identifying shortfalls or failures in planning,
+    training, organization or equipment.
+
+5. **Evaluation and Improvement**
+
+    The final step in the preparedness cycle takes the lessons learnt and applies
+    them in future iterations.
+
+    Evaluation includes examing how the plans, equipment and trained staff respond
+    to imagined scenarios and identifying where changes in planning, equipment
+    and a more comprehensive training should be applied.
+
+    Improvement is enforced after the result of an actual disaster experience.
+    Since disaster show us the limits in our emergency management capabilities,
+    we are able to identify the cost ratio of future spending and dedication of 
+    time and staff resources.
