@@ -17,8 +17,8 @@ either
 
 Mitigation measures are generally focused on long-term measures on reducing or 
 eliminating the impacts of a hazard, as opposed to preparedness, that focuses
-on enhacing the capacity to respond. Therefore, preparedness is focused on short
--term recovery from an event.
+on enhacing the capacity to respond. Therefore, preparedness is focused on short-term
+recovery from an event.
 
 ### Guiding principles of Mitigation
 
