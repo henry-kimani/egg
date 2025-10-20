@@ -2,11 +2,9 @@
 import SidebarPersister from "@astrojs/starlight/components/SidebarPersister.astro";
 import SidebarSublist from "@astrojs/starlight/components/SidebarSublist.astro";
 import MobileMenuFooter from "@components/starlight/MobileMenuFooter.astro";
-import TabContainer from "../tabs/TabContainer.astro";
-import TabHeader from "../tabs/TabHeader.astro";
-import TabPanel from "../tabs/TabPanel.astro";
 
-const { sidebar } = Astro.locals.starlightRoute;
+const { sidebar, entry } = Astro.locals.starlightRoute;
+
 type SidebarEntry = typeof sidebar;
 
 // Make sure that all top level items in the side bar are groups not links
@@ -28,24 +26,15 @@ const isCurrent = (sidebar: SidebarEntry): boolean =>
 ---
 
 <SidebarPersister>
-  <TabContainer>
-    <Fragment slot="tab-list">
-      { // The prop initial styles the current tab and show's is corresponding panel
-        sidebar.map(({ label, entries }, index) => (
-          <TabHeader initial={isCurrent(entries)} index={index}>{label}</TabHeader>
-        ))
-      }
-    </Fragment>
-    {
-      sidebar.map(({ entries }, index) => (
-        <>
-          <TabPanel index={index}>
-            <SidebarSublist sublist={entries} />
-          </TabPanel>
-        </>
-      ))
-    }
-  </TabContainer>
+  <a href="/units">Units</a>
+  { sidebar.map(({ entries }) => (
+    <SidebarSublist 
+    sublist={
+        /* Only add the data in the sidebar that*/
+        entries.filter(e => e.label === entry.data.unitLabel)
+      } 
+    />
+  ))}
 </SidebarPersister>
 
 <div class="md:sl-hidden">
