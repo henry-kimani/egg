@@ -1,0 +1,32 @@
+---
+const { sidebar } = Astro.locals.starlightRoute;
+
+type YearNames = "Year One" | "Year Two" | "Year Three";
+
+function yearData(yearName: YearNames) {
+  return sidebar.filter((year) => year.label === yearName)[0];
+}
+
+const year1 = yearData("Year One");
+const year3 = yearData("Year Three");
+---
+
+<div>
+  <h3>Year 3</h3>
+  <div>
+    {
+      year3.type === "group" ? (
+        <div>
+          {year3.entries.map((unit, i) => {
+            // Don't include units with no topics
+            if (unit.type === "group" && unit.entries.length > 0) {
+              if (unit.entries[0].type === 'link') {
+                return <div><a href={unit.entries[0].href}>{unit.label}</a></div>
+              }
+            }
+          })}
+        </div>
+      ) : null
+    }
+  </div>
+</div>
