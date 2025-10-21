@@ -26,6 +26,7 @@
     }
     :global([data-focused-mode='true']) .right-sidebar-container {
       opacity: 0.2;
+      transition: ease-out .3s;
     }
     :global([data-focused-mode='true']) .right-sidebar-container:hover  {
       opacity: 1;
@@ -33,7 +34,7 @@
     .right-sidebar {
       position: fixed;
       top: 0;
-      border-inline-start: 1px solid var(--sl-color-hairline) !important;
+      /* border-inline-start: 1px solid var(--sl-color-hairline) !important;*/
       padding-top: var(--sl-nav-height);
       width: 100%;
       height: 100vh;

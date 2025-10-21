@@ -38,10 +38,10 @@ const { hasSidebar } = Astro.locals.starlightRoute;
 		inset-block-start: 0;
 		width: 100%;
 		height: var(--sl-nav-height);
-		border-bottom: 1px solid var(--sl-color-hairline-shade);
+    /* border-bottom: 1px solid var(--sl-color-hairline-shade); */
 		padding: var(--sl-nav-pad-y) var(--sl-nav-pad-x);
 		padding-inline-end: var(--sl-nav-pad-x);
-		background-color: var(--sl-color-bg-nav);
+    background-color: transparent;
 	}
 
 	:global([data-has-sidebar]) .header {
@@ -91,7 +91,7 @@ const { hasSidebar } = Astro.locals.starlightRoute;
 			--sl-sidebar-visibility: visible;
 			width: var(--sl-sidebar-width);
 			background-color: var(--sl-color-bg-sidebar);
-			border-inline-end: 1px solid var(--sl-color-hairline-shade);
+      /* border-inline-end: 1px solid var(--sl-color-hairline-shade);*/
     }
 
     /* Focused mode: only apply focused mode to bigger screens */

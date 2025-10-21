@@ -23,9 +23,9 @@ const shouldRenderSearch =
     <SiteTitle />
   </div>
 
-  <div class="search print:hidden">
+  {/* <div class="search print:hidden">
     {shouldRenderSearch && <Search />}
-  </div>
+</div> */}
 
   <div class="print:hidden flex items-center">
     <Dropdown>
@@ -152,18 +152,20 @@ customElements.define("modal-feedback-form", ModalFeedbackForm);
       ) / 2
     );
 
-    display: grid;
-    grid-template-columns: 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /*grid-template-columns: 
       /* 1. (site title): runs up until the main content column's left edge or
       * or the width of the title, which ever is the largest */
-      minmax(
+    /*minmax(
         calc(var(--__sidebar-width) + max(0rem, var(--__main-column-fr) - var(--sl-nav-gap))),
         auto
-      )
+    )*/
       /* 2. (search box): all the free space available. */
-      1fr
+    /* 1fr */
       /* 3. (right items): use the space that they need. */
-      auto;
+    /*auto; */
   }
   .search {
     width: 100%;
