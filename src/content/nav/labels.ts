@@ -4,9 +4,10 @@ import type { SidebarLink } from "node_modules/@astrojs/starlight/utils/routing/
  * This only defines groups not links. For link, they can be added directly in 
  * the astro.sidebar.ts file */
 
+
 export default {
-  start: "Dashboard",
-  "docs": "Documentation",
+  dashboard: "Dashboard",
+  docs: "Documentation",
   // values used in the sidebar
   year1: "Year One",
   "one.ccs100": "Introduction to Criminology",
@@ -35,4 +36,15 @@ export default {
   "three.ccs302": "Emergency Management",
   "three.ccs314": "Victimology",
   "three.sit312": "Electronic Access"
+}
+
+export function releaseNotesEntry(): SidebarLink {
+  return {
+    type: "link",
+    label: "What's New 👀",
+    href: "/release-notes",
+    badge: undefined,
+    isCurrent: false,
+    attrs: {}
+  }
 }

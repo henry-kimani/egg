@@ -1,5 +1,5 @@
 import { defineRouteMiddleware } from "@astrojs/starlight/route-data";
-import type { SidebarEntry } from "node_modules/@astrojs/starlight/utils/routing/types";
+import { releaseNotesEntry } from "./content/nav/labels";
 
 export const onRequest = defineRouteMiddleware((context) => {
   const routeData = context.locals.starlightRoute;
@@ -39,4 +39,11 @@ export const onRequest = defineRouteMiddleware((context) => {
       })
     }
   })
+
+  // Add release notes path to the sidebar
+  const dashboardSidebarEntries = routeData.sidebar[0];
+
+  if (dashboardSidebarEntries.type === "group") {
+    dashboardSidebarEntries.entries.push(releaseNotesEntry());
+  }
 });

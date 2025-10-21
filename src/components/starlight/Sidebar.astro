@@ -3,6 +3,7 @@ import SidebarPersister from "@astrojs/starlight/components/SidebarPersister.ast
 import SidebarSublist from "@astrojs/starlight/components/SidebarSublist.astro";
 import MobileMenuFooter from "@components/starlight/MobileMenuFooter.astro";
 
+const { pathname } = Astro.url;
 const { sidebar, entry } = Astro.locals.starlightRoute;
 
 type SidebarEntry = typeof sidebar;
@@ -23,18 +24,31 @@ const isCurrent = (sidebar: SidebarEntry): boolean =>
   .map(entry => entry.type === "link" ? entry.isCurrent : isCurrent(entry.entries))
   .some(entry => entry === true);
 
+// Match all the paths for courses
+const coursesRoutes = /^\/year.*/i;
+
+// Match docs route
+const docsRoute = /^\/docs.*/i;
 ---
 
 <SidebarPersister>
+  <a href="/dashboard/profile">Dashboard</a>
   <a href="/units">Units</a>
-  { sidebar.map(({ entries }) => (
-    <SidebarSublist 
-    sublist={
-        /* Only add the data in the sidebar that*/
-        entries.filter(e => e.label === entry.data.unitLabel)
-      } 
-    />
-  ))}
+  {coursesRoutes.test(pathname) ?
+
+    sidebar.map(({ entries }) => (
+      <SidebarSublist 
+        sublist={
+          /* Only add the data in the sidebar that*/
+          entries.filter(e => e.label === entry.data.unitLabel)
+        }
+      />
+    )):
+
+    docsRoute.test(pathname) ? 
+      <SidebarSublist sublist={sidebar[1].entries} /> : 
+      <SidebarSublist sublist={sidebar[0].entries} /> 
+  }
 </SidebarPersister>
 
 <div class="md:sl-hidden">

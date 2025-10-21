@@ -8,12 +8,19 @@ import { group } from './config/sidebar';
  * Links, unlike groups, don't use the `group()` utility function*/
 
 export const sidebar = [
-  group("start", {
+  group("dashboard", {
     items: [ 
       '', // Home
-      "dashboard/profile", // Profile
-      group("docs", { autogenerate: { directory: "docs", collapsed: true } })
+      "dashboard/profile",
+      "docs",
     ],
+  }),
+  group("docs", { 
+    items: [
+      "docs",
+      "docs/features",
+      "docs/tutorial"
+    ] 
   }),
   group("year1", {
     items: [
