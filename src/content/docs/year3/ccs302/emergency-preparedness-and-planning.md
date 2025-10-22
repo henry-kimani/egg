@@ -70,3 +70,18 @@ developed through planning, training and exercising.
     Since disaster show us the limits in our emergency management capabilities,
     we are able to identify the cost ratio of future spending and dedication of 
     time and staff resources.
+
+### Emergency Management Plan
+
+The reason for an emergency plan is simply that is saves lives and save money.
+The aim of an emergency plan is to reduce the risk of life and health that 
+individuals may face and to reduce the damage to property that often results 
+from an emergency.
+
+
+There are 4 steps in the emergency planning process:
+1. Establish a planning team
+2. Analyze capabilities and hazards
+3. Develop a plan
+4. Implement a plan
+

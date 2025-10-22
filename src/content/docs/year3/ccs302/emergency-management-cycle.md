@@ -168,4 +168,32 @@ affected communities.
 
 1. **Damage Assessment**
 
+    The first step of the recovery process is damage assessment. This involves
+    assessment teams - comprising of experts from various disciplines - surveying
+    the affected area to evaluate the extent of the damage to infrastructure,
+    buildings, utilities and natural resources.
+
+    The data collected during the assessment inform the development of recovery
+    plans and resource allocation.
+
 2. **Recovery Plans**
+
+    Based on the damage assessment, recovery plans are developed **to guide the
+    reconstruction and restoration efforts.** These plans outline the strategies,
+    priorities and timelines for rebuilding infrastructure, addressing social
+    needs and supporting economic recovery.
+
+    Recovery offers an opportunity to enhance community resilience and reduce 
+    future vulnerabilities.
+
+    Community resilience initialitives involve implementing measures to strengthen
+    infrastructure, improve emergency preparedness and foster social cohesion
+    and economic diversification.
+
+    Recovery also provides a chance to review and update existing policies and 
+    regulations to better prepare for future emergencies.
+
+    Long term planning ensures that the communities are better equipped to withstand
+    and recover from future hazards. The recovery phase involves **comprehensive
+    efforts to rebuild and support affected communities, aiming to restore
+    normalcy, enhance resilience and reduce future vulnerabilities.**
