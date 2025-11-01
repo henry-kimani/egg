@@ -1,0 +1,26 @@
+<div class="embla__slide">
+  <slot />
+</div>
+
+<style>
+:root {
+  --carousel-slide-height: 10em;
+  --carousel-padding: 1em;
+  --carousel-width: 17em;
+}
+.embla__slide {
+  margin-top: 0;
+  margin-right: .7em;
+  flex: 0 0 var(--carousel-width);
+  min-width: 0;
+  border: 2px solid var(--sl-color-hairline);
+  border-radius: var(--radius-lg);
+  padding: var(--carousel-padding);
+}
+
+@media (min-width: 50em) {
+  :root {
+    --carousel-width: 20em;
+  }
+}
+</style>

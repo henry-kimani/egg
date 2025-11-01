@@ -1,5 +1,9 @@
 ---
-const { sidebar } = Astro.locals.starlightRoute;
+import UnitsCarousel from "@components/carousel/UnitsCarousel.astro";
+import CarouselContainer from "@components/carousel/CarouselContainer.astro";
+import CarouselSlide from "@components/carousel/CarouselSlide.astro";
+import { ReactLink } from "./buttons/ReactLink";
+const { sidebar, entry } = Astro.locals.starlightRoute;
 
 type YearNames = "Year One" | "Year Two" | "Year Three";
 
@@ -7,25 +11,71 @@ function yearData(yearName: YearNames) {
   return sidebar.filter((year) => year.label === yearName)[0];
 }
 
-const year1 = yearData("Year One");
 const year3 = yearData("Year Three");
+const year1 = yearData("Year One");
 ---
 
-<div>
+<div class="pb-4 mb-5">
   <h3>Year 3</h3>
   <div>
     {
       year3.type === "group" ? (
-        <div>
-          {year3.entries.map((unit, i) => {
-            // Don't include units with no topics
-            if (unit.type === "group" && unit.entries.length > 0) {
-              if (unit.entries[0].type === 'link') {
-                return <div><a href={unit.entries[0].href}>{unit.label}</a></div>
+        <UnitsCarousel>
+          <CarouselContainer>
+            {year3.entries.map((unit) => {
+              // Don't include units with no topics
+              if (unit.type === "group" && unit.entries.length > 0) {
+                if (unit.entries[0].type === "link") {
+                  return (
+                    <CarouselSlide>
+                      <ReactLink
+                        href={unit.entries[0].href}
+                        variant={"minimal"}
+                        className="hover:!bg-none"
+                      >
+                        <h5>{unit.label}</h5>
+                      </ReactLink>
+                    </CarouselSlide>
+                  );
+                }
               }
-            }
-          })}
-        </div>
+            })}
+          </CarouselContainer>
+        </UnitsCarousel>
+      ) : null
+    }
+  </div>
+</div>
+
+
+<div class="pb-4 mb-5">
+  <h3>Year 1</h3>
+  <div>
+    {
+      year1.type === "group" ? (
+        <UnitsCarousel>
+          <CarouselContainer>
+            {year1.entries.map((unit) => {
+              // Don't include units with no topics
+              if (unit.type === "group" && unit.entries.length > 0) {
+                if (unit.entries[0].type === "link") {
+                  return (
+                    <CarouselSlide>
+                      <ReactLink
+                        href={unit.entries[0].href}
+                        variant={"minimal"}
+                        className="hover:!bg-none"
+                      >
+                        <h5>{unit.label}</h5>
+                        <p>{entry.data.description}</p>
+                      </ReactLink>
+                    </CarouselSlide>
+                  );
+                }
+              }
+            })}
+          </CarouselContainer>
+        </UnitsCarousel>
       ) : null
     }
   </div>
