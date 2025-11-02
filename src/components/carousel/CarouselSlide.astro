@@ -1,4 +1,11 @@
-<div class="embla__slide">
+---
+import type { HTMLAttributes } from 'astro/types'
+
+interface Props extends HTMLAttributes<"div">{}
+
+const { class: className } = Astro.props;
+---
+<div class:list={["embla__slide", className]}>
   <slot />
 </div>
 
@@ -15,7 +22,6 @@
   min-width: 0;
   border: 2px solid var(--sl-color-hairline);
   border-radius: var(--radius-lg);
-  padding: var(--carousel-padding);
 }
 
 @media (min-width: 50em) {

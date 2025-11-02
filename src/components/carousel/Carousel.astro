@@ -1,0 +1,74 @@
+---
+import AstroButton from "@components/buttons/AstroButton.astro";
+import { Icon } from "@astrojs/starlight/components";
+---
+<units-carousel class="embla">
+  <div class="embla__viewport">
+    <slot />
+  </div>
+  <div class="embla__buttons py-4">
+    <AstroButton
+      class={"embla__prev mt-0 rounded-full border-gray-300 text-gray-300"}
+      variant={"secondary"}
+      size={"icon"}
+    >
+      <Icon name="left-caret" label="scroll carousel to the left" />
+    </AstroButton>
+    <AstroButton
+      class={"embla__next mt-0 rounded-full border-gray-300 text-gray-300"}
+      variant={"secondary"}
+      size="icon"
+    >
+      <Icon name="right-caret" label="scroll carousel to the right" size="2rem" />
+    </AstroButton>
+  </div>
+</units-carousel>
+
+<script>
+import EmblaCarousel, { type EmblaCarouselType } from "embla-carousel";
+class UnitsCarousel extends HTMLElement {
+  private emblaApi: EmblaCarouselType;
+  private viewPortNode: HTMLElement | null;
+  private prevButton: HTMLButtonElement| null;
+  private nextButton: HTMLButtonElement | null;
+  private options = { loop: false };
+
+  constructor() {
+    super();
+
+    this.viewPortNode = this.querySelector(".embla__viewport");
+    this.prevButton = this.querySelector(".embla__prev");
+    this.nextButton = this.querySelector(".embla__next");
+
+    if (this.viewPortNode && this.prevButton && this.nextButton) {
+      this.emblaApi = EmblaCarousel(this.viewPortNode, this.options);
+
+      this.prevButton.addEventListener("click",
+        this.emblaApi.scrollPrev, false
+      );
+      this.nextButton.addEventListener("click",
+        this.emblaApi.scrollNext, false
+      );
+    }
+  }
+}
+
+customElements.define("units-carousel", UnitsCarousel);
+
+</script>
+
+<style>
+units-carousel {
+  overflow: hidden;
+  width: 100%;
+  display: grid;
+}
+
+.embla__buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1em;
+  width: 100%;
+  margin-top: 0;
+}
+</style>
