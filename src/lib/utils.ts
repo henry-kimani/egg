@@ -2,6 +2,10 @@ import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
 import type { CollectionEntry } from "astro:content"
 
+/*
+ * The first result of an array */
+export const FIRST_RESULT = 0;
+
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
@@ -12,4 +16,8 @@ export function sortByDate(collection: CollectionEntry<"releaseNotes">[]) {
 
 export function latestCollection(collection: CollectionEntry<"releaseNotes">[]) {
   return sortByDate(collection)[0];
+}
+
+export function stripSlashes(path: string) {
+  return path.slice(1, path.length - 1);
 }

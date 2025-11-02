@@ -1,73 +1,62 @@
 ---
-import AstroButton from "@components/buttons/AstroButton.astro";
-import { Icon } from "@astrojs/starlight/components";
+/**
+ * Render a carousel based on the given yearData
+ *
+ * @param yearName - name of the container
+ * @param yearData - the data you want to render
+ * */
+
+import { SidebarEntry } from "node_modules/@astrojs/starlight/utils/routing/types";
+import Carousel from "@components/carousel/Carousel.astro";
+import CarouselContainer from "@components/carousel/CarouselContainer.astro";
+import CarouselSlide from "@components/carousel/CarouselSlide.astro";
+import { getTitleAndDescription } from "@lib/data";
+
+interface Props {
+  yearName: string;
+  yearData: SidebarEntry;
+}
+
+const { yearName, yearData } = Astro.props;
 ---
-<units-carousel class="embla">
-  <div class="embla__viewport">
-    <slot />
-  </div>
-  <div class="embla__buttons">
-    <AstroButton
-      class={"embla__prev mt-0 rounded-full border-gray-300 text-gray-300"}
-      variant={"secondary"}
-      size={"icon"}
-    >
-      <Icon name="left-caret" label="scroll carousel to the left" />
-    </AstroButton>
-    <AstroButton
-      class={"embla__next mt-0 rounded-full border-gray-300 text-gray-300"}
-      variant={"secondary"}
-      size="icon"
-    >
-      <Icon name="right-caret" label="scroll carousel to the right" size="2rem" />
-    </AstroButton>
-  </div>
-</units-carousel>
 
-<script>
-import EmblaCarousel, { type EmblaCarouselType } from "embla-carousel";
-class UnitsCarousel extends HTMLElement {
-  private emblaApi: EmblaCarouselType;
-  private viewPortNode: HTMLElement | null;
-  private prevButton: HTMLButtonElement| null;
-  private nextButton: HTMLButtonElement | null;
-  private options = { loop: false };
-
-  constructor() {
-    super();
-
-    this.viewPortNode = this.querySelector(".embla__viewport");
-    this.prevButton = this.querySelector(".embla__prev");
-    this.nextButton = this.querySelector(".embla__next");
-
-    if (this.viewPortNode && this.prevButton && this.nextButton) {
-      this.emblaApi = EmblaCarousel(this.viewPortNode, this.options);
-
-      this.prevButton.addEventListener("click",
-        this.emblaApi.scrollPrev, false
-      );
-      this.nextButton.addEventListener("click",
-        this.emblaApi.scrollNext, false
-      );
+<div class="mb-5">
+  <h3>{yearName}</h3>
+  <div>
+    {
+      yearData.type === "group" ? (
+        <Carousel>
+          <CarouselContainer>
+            {yearData.entries.map((unit) => {
+              // Don't include units with no topics
+              if (unit.type === "group" && unit.entries.length > 0) {
+                if (unit.entries[0].type === "link") {
+                  return (
+                    <CarouselSlide
+                      class={"hover:bg-gray-100 dark:hover:bg-gray-800"}
+                    >
+                      <div class="relative flex flex-col p-4 h-full">
+                        <h5 class="">
+                          {unit.label}
+                          <a href={unit.entries[0].href} class="no-underline">
+                            <span class="absolute inset-0" />
+                          </a>
+                        </h5>
+                        <p class="text-gray-500 dark:text-gray-400">
+                          {
+                            getTitleAndDescription(unit.entries[0].href)
+                              ?.description
+                          }
+                        </p>
+                      </div>
+                    </CarouselSlide>
+                  );
+                }
+              }
+            })}
+          </CarouselContainer>
+        </Carousel>
+      ) : null
     }
-  }
-}
-
-customElements.define("units-carousel", UnitsCarousel);
-
-</script>
-
-<style>
-units-carousel {
-  overflow: hidden;
-  width: 100%;
-  display: grid;
-}
-
-.embla__buttons {
-  display: flex;
-  justify-content: flex-end;
-  gap: 1em;
-  width: 100%;
-}
-</style>
+  </div>
+</div>
