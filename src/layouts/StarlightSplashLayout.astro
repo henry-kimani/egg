@@ -8,10 +8,15 @@ interface Props {
   classes?: string;
 }
 
-const { title, description, classes } = Astro.props;
+const { title, description, classes, template } = Astro.props;
 ---
 <StarlightPage 
-  frontmatter={{ title, description, template: "splash" }}
+  frontmatter={{ 
+    title, 
+    description, 
+    template: template ? template : "splash",
+    pagefind: false
+  }}
   class:list={[ classes ]}
 >
   <slot>

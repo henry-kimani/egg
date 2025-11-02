@@ -13,7 +13,7 @@ import tailwindcss from "@tailwindcss/vite";
 // https://astro.build/config
 export default defineConfig({
   site: "https://egglious-web.web.app",
-
+  trailingSlash: "ignore",
   markdown: {
     remarkPlugins: [remarkMath],
     rehypePlugins: [
@@ -26,7 +26,6 @@ export default defineConfig({
       './config/*',
       './astro.sidebar.ts',
       './src/content/nav/*.ts',
-      './src/middleware.ts',
     ]),
     starlight({
       title: 'Egg',
@@ -46,6 +45,7 @@ export default defineConfig({
         PageSidebar: "./src/components/starlight/PageSidebar.astro", 
         ThemeSelect: "./src/components/starlight/ThemeSelect.astro",
         TwoColumnContent: "./src/components/starlight/TwoColumnContent.astro",
+        ContentPanel: "./src/components/starlight/ContentPanel.astro"
       },
       social: [
         { icon: "github", label: "Github", href: "https://github.com/henry-kimani" }
@@ -56,6 +56,7 @@ export default defineConfig({
         '@fontsource-variable/quicksand',
       ],
       favicon: "egglogo.svg",
+      routeMiddleware: "./src/routeData.ts",
       prerender: true,
     }),
     preact()

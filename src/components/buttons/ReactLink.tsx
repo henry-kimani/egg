@@ -14,8 +14,8 @@ export function ReactLink({
 ) {
   return (
     <a 
-      {...props}
       className={cn("no-underline", reactButtonVariants({ variant, size, className}))}
+      {...props}
     >{children}</a>
   );
 }

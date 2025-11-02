@@ -23,10 +23,10 @@ export const onRequest = defineRouteMiddleware((context) => {
     if (year.type === "group") {
       const units = year.entries;
 
-      units.map((topic, j) => {
+      units.map((topic, i) => {
         // Check all the topics in a unit
         if (topic.type === "group") {
-          const unitLabel = units[j].label;
+          const unitLabel = units[i].label;
           const topics = topic.entries;
 
           topics.map(t => {
