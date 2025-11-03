@@ -25,7 +25,12 @@
   --color-gray-800: #2b2622;
   --color-gray-900: #1a1816;
 
+  --color-bg-sidebarpane-light: rgba(247, 246, 245, .5);
+  --color-bg-sidebarpane-dark: rbga(25, 23, 21, .5);
+
   --animate-shimmer: shimmer .5s infinite linear;
+
+  --breakpoint-desktop: 72rem; /* 1152px - enable desktop when we hit this */
 
   @keyframes shimmer {
     to {

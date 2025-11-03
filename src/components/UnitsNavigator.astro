@@ -5,11 +5,13 @@ import { getYearSidebarData } from "@lib/data";
 const { sidebar } = Astro.locals.starlightRoute;
 
 const year3 = getYearSidebarData(sidebar, "Year Three");
+const year2 = getYearSidebarData(sidebar, "Year Two");
 const year1 = getYearSidebarData(sidebar, "Year One");
 ---
 
 <div class="flex flex-col gap-10">
   <UnitsCarousel yearName="Year 3" yearData={year3} />
+  <UnitsCarousel yearName="Year 2" yearData={year2} />
   <UnitsCarousel yearName="Year 1" yearData={year1} />
 </div>
 
