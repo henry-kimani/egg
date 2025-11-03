@@ -1,7 +1,7 @@
 ---
 title: Introduction
 sidebar:
-    order: 1
+    order: 2
 ---
 
 Physical security refers to the protection of people, property and assets from

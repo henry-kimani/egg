@@ -1,7 +1,7 @@
 ---
 title: Levels of Physical Security
 sidebar:
-    order: 2
+    order: 3
 ---
 
 ### Minimum Security 
