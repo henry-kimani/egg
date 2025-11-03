@@ -1,0 +1,29 @@
+---
+import { cn } from '@lib/utils';
+import type { HTMLAttributes } from 'astro/types';
+import { cva, type VariantProps } from 'class-variance-authority';
+
+
+interface Props 
+  extends HTMLAttributes<"div">,
+  VariantProps<typeof codeVariants> 
+{
+  unitCode: string;
+}
+
+const codeVariants = cva("text-xs p-1", {
+  variants: {
+    variant: {
+      gradient: "ps-3 border-s border-s-gray-300 dark:border-s-gray-500 text-gray-400",
+      card: "w-min rounded-md border border-accent-light text-accent-light dark:border-accent-dark dark:text-accent-dark bg-accent-light/20 dark:bg-accent-dark/10"
+    }
+  }
+})
+
+const { variant, unitCode, class: className, ...props } = Astro.props;
+---
+
+<div
+  class={cn(codeVariants({ variant, className }))}
+  {...props}
+>{unitCode.toUpperCase()}</div>
