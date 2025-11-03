@@ -6,20 +6,20 @@ import { Icon } from "@astrojs/starlight/components";
   <div class="embla__viewport">
     <slot />
   </div>
-  <div class="embla__buttons py-4">
+  <div class="embla__buttons py-4 *:border-2 *:!p-0 *:mt-0 *:rounded-full *:border-gray-300 *:text-gray-300 *:dark:border-gray-600 *:dark:text-gray-600">
     <AstroButton
-      class={"embla__prev mt-0 rounded-full border-gray-300 text-gray-300"}
+      class={"embla__prev"}
       variant={"secondary"}
       size={"icon"}
     >
-      <Icon name="left-caret" label="scroll carousel to the left" />
+      <Icon name="left-caret" label="scroll carousel to the left" size="2em"/>
     </AstroButton>
     <AstroButton
-      class={"embla__next mt-0 rounded-full border-gray-300 text-gray-300"}
+      class={"embla__next"}
       variant={"secondary"}
       size="icon"
     >
-      <Icon name="right-caret" label="scroll carousel to the right" size="2rem" />
+      <Icon name="right-caret" label="scroll carousel to the right" size="2em" />
     </AstroButton>
   </div>
 </units-carousel>
@@ -61,7 +61,6 @@ customElements.define("units-carousel", UnitsCarousel);
 units-carousel {
   overflow: hidden;
   width: 100%;
-  display: grid;
 }
 
 .embla__buttons {
@@ -70,5 +69,6 @@ units-carousel {
   gap: 1em;
   width: 100%;
   margin-top: 0;
+  padding-inline: 1em;
 }
 </style>
