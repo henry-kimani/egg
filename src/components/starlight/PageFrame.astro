@@ -6,7 +6,13 @@ const { hasSidebar } = Astro.locals.starlightRoute;
 ---
 
 <div class="page sl-flex">
-	<header class="header">
+  <header 
+    class="header backdrop-blur-md"
+    class:list={[
+      // If the page has a sidebar, remove the backdrop
+      { 'desktop:backdrop-blur-none': hasSidebar }
+    ]}
+  >
 		<slot name="header" />
 	</header>
 	{
@@ -40,8 +46,7 @@ const { hasSidebar } = Astro.locals.starlightRoute;
 		height: var(--sl-nav-height);
     /* border-bottom: 1px solid var(--sl-color-hairline-shade); */
 		padding: var(--sl-nav-pad-y) var(--sl-nav-pad-x);
-		padding-inline-end: var(--sl-nav-pad-x);
-    background-color: transparent;
+    padding-inline-end: var(--sl-nav-pad-x);
 	}
 
 	:global([data-has-sidebar]) .header {
@@ -83,14 +88,15 @@ const { hasSidebar } = Astro.locals.starlightRoute;
 		padding-inline-start: var(--sl-content-inline-start);
 	}
 
-	@media (min-width: 50rem) {
-		:global([data-has-sidebar]) .header {
-			padding-inline-start: var(--sl-nav-pad-x);
+  @media (min-width: 50rem) {
+    :global([data-has-sidebar]) .header {
+      /* Remove the padding that accomdated the sidebar button */
+      padding-inline-start: var(--sl-nav-pad-x);
 		}
 		.sidebar-pane {
 			--sl-sidebar-visibility: visible;
 			width: var(--sl-sidebar-width);
-			background-color: var(--sl-color-bg-sidebar);
+      /* background-color: var(--sl-color-bg-sidebar); */
       /* border-inline-end: 1px solid var(--sl-color-hairline-shade);*/
     }
 
