@@ -1,7 +1,9 @@
 ---
 import SidebarPersister from "@astrojs/starlight/components/SidebarPersister.astro";
-import SidebarSublist from "@astrojs/starlight/components/SidebarSublist.astro";
+import SidebarSublist from "@components/starlight/SidebarSublist.astro";
 import MobileMenuFooter from "@components/starlight/MobileMenuFooter.astro";
+import { ReactLink } from "@components/buttons/ReactLink";
+import { IconUserCircle, IconCarouselHorizontal } from "@tabler/icons-preact";
 
 const { pathname } = Astro.url;
 const { sidebar, entry } = Astro.locals.starlightRoute;
@@ -29,13 +31,27 @@ const coursesRoutes = /^\/year.*/i;
 
 // Match docs route
 const docsRoute = /^\/docs.*/i;
+
+const PROFILE = 0; // The first group in the array is profile
+const DOCS = 1; // The second group in the array is the documentation
 ---
 
 <SidebarPersister>
-  <a href="/dashboard/profile">Dashboard</a>
-  <a href="/units">Units</a>
-  {coursesRoutes.test(pathname) ?
+  <section class="grid gap-3">
+    <ReactLink
+      href="/dashboard/profile"
+      variant={"minimal"}
+      className="text-gray-500 hover:bg-gray-200 justify-start gap-4 ps-4"
+    ><IconUserCircle />Dashboard</ReactLink>
+    <ReactLink
+      href="/units"
+      variant={"minimal"}
+      className="text-gray-500 hover:bg-gray-200 justify-start gap-4 ps-4"
+    ><IconCarouselHorizontal />Units</ReactLink>
+  </section>
 
+  {coursesRoutes.test(pathname) ?
+  ( // Normal Units sidebar
     sidebar.map(({ entries }) => (
       <SidebarSublist 
         sublist={
@@ -43,15 +59,15 @@ const docsRoute = /^\/docs.*/i;
           entries.filter(e => e.label === entry.data.unitLabel)
         }
       />
-    )):
-
+    ))
+  ) : (
     docsRoute.test(pathname) ? 
-      <SidebarSublist sublist={sidebar[1].entries} /> : 
-      <SidebarSublist sublist={sidebar[0].entries} /> 
+      <SidebarSublist sublist={sidebar[DOCS].entries} /> : 
+      <SidebarSublist sublist={sidebar[PROFILE].entries} nested /> 
+    )
   }
 </SidebarPersister>
 
 <div class="md:sl-hidden">
   <MobileMenuFooter />
 </div>
-
