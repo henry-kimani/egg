@@ -121,7 +121,7 @@ can block entrance by a threat.
 
 1. **Qualitative Assessments**
 
-    They are normally used when the assest that are int need of protection are of 
+    They are normally used when the assest that are in need of protection are of 
     lower value or when data is not available. The results depends on the skills
     of the people involved. Risk is ussually given in abstract values e.g high,
     medium or low.
