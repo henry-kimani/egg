@@ -33,3 +33,14 @@ export function getTitleAndDescription(pathname: string) {
   })
     .filter(entry => entry !== undefined)[FIRST_RESULT];
 }
+
+
+/**
+ * Extract the unitCode from the pathname 
+ *
+ * @param pathname - the pathname to extract the unit code
+ * @example `/year1/ccs108/introduction` */
+export function getUnitcodeFromPathname(pathname: string) {
+  return pathname.split("/")[2];
+}
+
