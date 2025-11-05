@@ -1,6 +1,7 @@
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
 import type { CollectionEntry } from "astro:content"
+import type { SidebarGroup, SidebarEntry } from "@lib/types";
 
 /*
  * The first result of an array */
@@ -20,4 +21,14 @@ export function latestCollection(collection: CollectionEntry<"releaseNotes">[]) 
 
 export function stripSlashes(path: string) {
   return path.slice(1, path.length - 1);
+}
+
+/*
+ * Make sure that all top level items in the side bar are groups not links 
+ * */
+export function assertGroups(sidebar: SidebarEntry[]): asserts sidebar is SidebarGroup[] {
+  for (const entry of sidebar) {
+    if (entry.type !== "group")
+      throw new Error("Top-level links are not allowed in the docs");
+  }
 }

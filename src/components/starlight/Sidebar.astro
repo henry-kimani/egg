@@ -1,30 +1,13 @@
 ---
 import SidebarPersister from "@astrojs/starlight/components/SidebarPersister.astro";
-import SidebarSublist from "@components/starlight/SidebarSublist.astro";
+import SidebarDynamicLinks from "@components/starlight/SidebarDynamicLinks.astro";
 import MobileMenuFooter from "@components/starlight/MobileMenuFooter.astro";
-import { ReactLink } from "@components/buttons/ReactLink";
-import { IconUserCircle, IconCarouselHorizontal } from "@tabler/icons-preact";
+import SidebarStaticLinks from "@components/starlight/SidebarStaticLinks.astro";
+import { assertGroups, FIRST_RESULT } from "@lib/utils";
+import { getYearSidebarData } from "@lib/data";
 
-const { pathname } = Astro.url;
-const { sidebar, entry } = Astro.locals.starlightRoute;
-
-type SidebarEntry = typeof sidebar;
-
-// Make sure that all top level items in the side bar are groups not links
-type Group = Extract<SidebarEntry, { type: "group" }>;
-function assertGroups(sidebar: SidebarEntry): asserts sidebar is Group[] {
-  for (const entry of sidebar) {
-    if (entry.type !== "group")
-      throw new Error("Top-level links are not allowed in the docs");
-  }
-}
-assertGroups(sidebar);
-
-// Look up for the current page. The data is later used to show the current page
-const isCurrent = (sidebar: SidebarEntry): boolean =>
-  sidebar
-  .map(entry => entry.type === "link" ? entry.isCurrent : isCurrent(entry.entries))
-  .some(entry => entry === true);
+const PROFILE = 0; // The first group in the array is profile
+const DOCS = 1; // The second group in the array is the documentation
 
 // Match all the paths for courses
 const coursesRoutes = /^\/year.*/i;
@@ -32,38 +15,43 @@ const coursesRoutes = /^\/year.*/i;
 // Match docs route
 const docsRoute = /^\/docs.*/i;
 
-const PROFILE = 0; // The first group in the array is profile
-const DOCS = 1; // The second group in the array is the documentation
+const profileRoute = "/dashboard/profile";
+
+const { pathname } = Astro.url;
+const { sidebar, entry } = Astro.locals.starlightRoute;
+
+// Make sure the top level items are groups not links
+assertGroups(sidebar);
+
+const courseData = sidebar
+  .map((year) => year.entries.filter(
+    (unit) => unit.type === "group" && unit.label === entry.data.unitLabel
+  ))
+  .filter((e) => e !== undefined && e.length > 0)
+  .flat()[FIRST_RESULT];
+
 ---
 
 <SidebarPersister>
-  <section class="grid gap-3">
-    <ReactLink
-      href="/dashboard/profile"
-      variant={"minimal"}
-      className="text-gray-500 hover:bg-gray-200 justify-start gap-4 ps-4"
-    ><IconUserCircle />Dashboard</ReactLink>
-    <ReactLink
-      href="/units"
-      variant={"minimal"}
-      className="text-gray-500 hover:bg-gray-200 justify-start gap-4 ps-4"
-    ><IconCarouselHorizontal />Units</ReactLink>
-  </section>
+  <SidebarStaticLinks />
 
-  {coursesRoutes.test(pathname) ?
-  ( // Normal Units sidebar
-    sidebar.map(({ entries }) => (
-      <SidebarSublist 
-        sublist={
-          /* Only add the data in the sidebar that*/
-          entries.filter(e => e.label === entry.data.unitLabel)
-        }
-      />
-    ))
-  ) : (
-    docsRoute.test(pathname) ? 
-      <SidebarSublist sublist={sidebar[DOCS].entries} /> : 
-      <SidebarSublist sublist={sidebar[PROFILE].entries} nested /> 
+  {
+  // Topics Sidebar
+  /* Only show the "topics" in the sidebar that matches the selected "unit" */
+  coursesRoutes.test(pathname) && <SidebarDynamicLinks entry={courseData} />
+  }
+
+  {
+    // Documentation Sidebar - only show this sidebar if we are on a documentation route
+    docsRoute.test(pathname) && (
+      <SidebarDynamicLinks entry={sidebar[DOCS]} />
+    )
+  }
+
+  {
+    // Profile's Sidebar
+    pathname === profileRoute && (
+      <SidebarDynamicLinks entry={sidebar[PROFILE]} />
     )
   }
 </SidebarPersister>

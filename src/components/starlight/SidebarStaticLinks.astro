@@ -1,0 +1,15 @@
+---
+import { ReactLink } from "@components/buttons/ReactLink";
+import { IconUserCircle, IconCarouselHorizontal } from "@tabler/icons-preact";
+---
+  <section class="grid gap-3 *:justify-start *:gap-4 *:ps-4 *:text-gray-500 *:hover:bg-gray-200 *:dark:text-gray-300 *:dark:hover:bg-gray-800">
+    <ReactLink
+      href="/dashboard/profile"
+      variant={"minimal"}
+    ><IconUserCircle />Dashboard</ReactLink>
+    <ReactLink
+      href="/units"
+      variant={"minimal"}
+    ><IconCarouselHorizontal />Units</ReactLink>
+  </section>
+
