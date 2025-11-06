@@ -4,6 +4,7 @@ description: It is the scientific study of the physical, emotional/phychological
 sidebar:
     label: Course Outline
     order: 1
+lastUpdated: 2025-11-06
 ---
 
 This is an introduction to victimology.

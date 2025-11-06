@@ -1,6 +1,8 @@
 ---
 import { PAGE_TITLE_ID } from "node_modules/@astrojs/starlight/constants";
 import { cn } from "@lib/utils";
+import { coursesRoutes } from "@lib/regex";
+import { format } from "date-fns";
 
 const routeData = Astro.locals.starlightRoute;
 const pageTitle = routeData.entry.data.title;
@@ -8,22 +10,38 @@ const pageTitle = routeData.entry.data.title;
 const isDashboardProfile = routeData.id === "dashboard/profile";
 const centerPageTitle = routeData.id === "signin" || routeData.id === "about";
 
+/**
+ * Check the current path is a courses route
+ *
+ * All of those routes don't only have /year/ccs102 hence the length of four is
+ * used. Other routes have six e.g /year/ccs102/introduction */
+const isUnitHomepage =
+  coursesRoutes.test(Astro.url.pathname) &&
+  Astro.url.pathname.split("/").length == 4;
 ---
 
 {
   isDashboardProfile ? (
     <h1 id={PAGE_TITLE_ID}>
       <span class="user-greeting">Greetings</span>&nbsp;
-      <span 
-        class="output-type bg-linear-to-b bg-clip-text text-transparent from-accent-light to-red-600 dark:from-accent-dark dark:to-accent-dark">
-      </span>
+      <span class="output-type bg-linear-to-b bg-clip-text text-transparent from-accent-light to-red-600 dark:from-accent-dark dark:to-accent-dark"></span>
     </h1>
-) : (
+  ) : isUnitHomepage ? (
+    <div class="mb-10 grid gap-4 text-accent-light dark:text-accent-dark">
+      <h4>COURSE OUTLINE</h4>
+      <h1 id={PAGE_TITLE_ID}>{pageTitle}</h1>
+      {routeData.lastUpdated && (
+        <div class="text-sm italic flex gap-2">
+          <span class="text-(--sl-color-gray-4)">Last Updated</span>
+          <span>{format(routeData.lastUpdated, "PPP")}</span>
+        </div>
+      )}
+    </div>
+  ) : (
     <h1
       id={PAGE_TITLE_ID}
-      class={cn(`text-accent-light dark:text-accent-dark`, 
-      {
-        "text-center" : centerPageTitle
+      class={cn(`text-accent-light dark:text-accent-dark`, {
+        "text-center": centerPageTitle,
       })}
     >
       {pageTitle}
@@ -34,7 +52,7 @@ const centerPageTitle = routeData.id === "signin" || routeData.id === "about";
 <style>
   @layer starlight.core {
     h1 {
-      font-size: clamp(2em, calc(.5rem + 5vw), 3em);
+      font-size: clamp(2em, calc(0.5rem + 5vw), 3em);
       line-height: var(--sl-line-height-headings);
       font-weight: 600;
     }
@@ -48,10 +66,11 @@ const centerPageTitle = routeData.id === "signin" || routeData.id === "about";
   import { auth } from "@firebase/client";
   import { onAuthStateChanged } from "firebase/auth";
 
-  const outputUserName = document.querySelector(".output-type") as HTMLSpanElement;
+  const outputUserName = document.querySelector(
+    ".output-type"
+  ) as HTMLSpanElement;
 
-  onAuthStateChanged(auth, user => {
-
+  onAuthStateChanged(auth, (user) => {
     if (user?.displayName) {
       const inputUsername = user.displayName.split(" ")[0]; // Get the first name
       outputUserName.textContent = inputUsername;

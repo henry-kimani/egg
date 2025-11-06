@@ -4,6 +4,7 @@ description: The aim is to enable students to understand integration with other 
 sidebar:
     label: Course Outline
     order: 1
+lastUpdated: 2025-11-05
 ---
 
 

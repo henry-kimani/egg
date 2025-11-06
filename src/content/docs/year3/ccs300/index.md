@@ -4,4 +4,5 @@ description: Physical security, uses physical means to protect assets while tech
 sidebar:
     label: Course Outline
     order: 1
+lastUpdated: 2025-11-06
 ---
