@@ -1,6 +1,7 @@
 import type { SidebarEntry } from "node_modules/@astrojs/starlight/utils/routing/types";
 import { getCollection } from "astro:content";
 import { FIRST_RESULT, stripSlashes } from "@lib/utils";
+import type { SidebarGroup } from "./types";
 
 type YearNames = "Year One" | "Year Two" | "Year Three";
 
@@ -43,4 +44,21 @@ export function getTitleAndDescription(pathname: string) {
 export function getUnitcodeFromPathname(pathname: string) {
   return pathname.split("/")[2];
 }
+
+
+/** 
+ * Gets the topics associated with the specified `unitName`
+ *
+ * @param sidebar 
+ * @param unitName - The name of the unit used to retrived the associated topics
+ * */
+export function getCourseSidebarData(sidebar: SidebarGroup[], unitName: string) {
+  return sidebar
+    .map((year) => year.entries.filter(
+      (unit) => unit.type === "group" && unit.label === unitName
+    ))
+    .filter((e) => e !== undefined && e.length > 0)
+    .flat()[FIRST_RESULT];
+}
+
 

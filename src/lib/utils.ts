@@ -2,6 +2,7 @@ import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
 import type { CollectionEntry } from "astro:content"
 import type { SidebarGroup, SidebarEntry } from "@lib/types";
+import { matchFirstChar } from "@lib/regex";
 
 /*
  * The first result of an array */
@@ -31,4 +32,8 @@ export function assertGroups(sidebar: SidebarEntry[]): asserts sidebar is Sideba
     if (entry.type !== "group")
       throw new Error("Top-level links are not allowed in the docs");
   }
+}
+
+export function toSentenceCase(str: string) {
+  return str.replace(matchFirstChar, str[0].toUpperCase());
 }
