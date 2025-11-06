@@ -3,17 +3,14 @@ import SidebarPersister from "@astrojs/starlight/components/SidebarPersister.ast
 import SidebarDynamicLinks from "@components/starlight/SidebarDynamicLinks.astro";
 import MobileMenuFooter from "@components/starlight/MobileMenuFooter.astro";
 import SidebarStaticLinks from "@components/starlight/SidebarStaticLinks.astro";
-import { assertGroups, FIRST_RESULT } from "@lib/utils";
-import { getYearSidebarData } from "@lib/data";
+import { assertGroups } from "@lib/utils";
+import { getCourseSidebarData } from "@lib/data";
+import { coursesRoutes, docsRoute } from "@lib/regex";
 
 const PROFILE = 0; // The first group in the array is profile
 const DOCS = 1; // The second group in the array is the documentation
 
-// Match all the paths for courses
-const coursesRoutes = /^\/year.*/i;
 
-// Match docs route
-const docsRoute = /^\/docs.*/i;
 
 const profileRoute = "/dashboard/profile";
 
@@ -23,28 +20,23 @@ const { sidebar, entry } = Astro.locals.starlightRoute;
 // Make sure the top level items are groups not links
 assertGroups(sidebar);
 
-const courseData = sidebar
-  .map((year) => year.entries.filter(
-    (unit) => unit.type === "group" && unit.label === entry.data.unitLabel
-  ))
-  .filter((e) => e !== undefined && e.length > 0)
-  .flat()[FIRST_RESULT];
-
+const courseData = getCourseSidebarData(sidebar, entry.data.unitLabel);
 ---
 
 <SidebarPersister>
   <SidebarStaticLinks />
 
   {
-  // Topics Sidebar
-  /* Only show the "topics" in the sidebar that matches the selected "unit" */
-  coursesRoutes.test(pathname) && <SidebarDynamicLinks entry={courseData} />
+    // Topics Sidebar
+    /* Only show the "topics" in the sidebar that matches the selected "unit" */
+    coursesRoutes.test(pathname) && 
+    <SidebarDynamicLinks title="topics" entry={courseData} />
   }
 
   {
     // Documentation Sidebar - only show this sidebar if we are on a documentation route
     docsRoute.test(pathname) && (
-      <SidebarDynamicLinks entry={sidebar[DOCS]} />
+      <SidebarDynamicLinks title="documentation" entry={sidebar[DOCS]} />
     )
   }
 
