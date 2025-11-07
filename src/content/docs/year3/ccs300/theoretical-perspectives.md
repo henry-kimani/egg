@@ -4,10 +4,10 @@ sidebar:
     order: 5
 ---
 
-## Crime Prevention Through Environmental Design
 
-CPTED is a concept to help us better understand the relationship between design
-and human behavior.
+
+CPTED (Crime Prevention Through Environmental Design) is a concept to help us 
+better understand the relationship between design and human behavior.
 
 CPTED is a proactive approach to manipulate the physical environment and bring
 about the desired behavior of reduced criminal activity as well as reduced fear
@@ -73,7 +73,7 @@ one or more buildings for residential use - can be divided into four categories.
     their invited guests and service people, with access controlled by locks or
     physical barriers.
 
-#### CPTED strategies
+### CPTED strategies
 
 Access control and surveillance are the primary design concepts of physical design,
 however, they are not mutually exclusive, meaning certain strategies acheive both.
@@ -118,7 +118,7 @@ of influence so that users develop a sense of proprietorship.
 Natural access control and surveillance will promote more responsiveness by users
 in protecting their territory and promote greater perception of risk by offenders.
 
-### Maintenance
+##### Maintenance
 
 Care and maintenance allow for the continued space for its intented purpose as
 well as contributing to territorial reinforcement.
@@ -135,7 +135,7 @@ This is because natural strategies exploit the opportunities of the given
 environment both to naturally and routinely facilitate access control and 
 surveillance and to reinforce positive behavior in the use of the environment.
 
-## Benefits of CPTED
+### Benefits of CPTED
 
 In addition to dealing with the reduction of crime and fear problems, other
 benefits of CPTED include:
@@ -150,7 +150,7 @@ benefits of CPTED include:
     can be applied to entire neighborhoods and institutional settings to small
     to a small geographical location.
 
-2. **Intergration of preventiont approaches**
+2. **Integration of prevention approaches**
 
     CPTED strategies are derived from an opportunity model of criminal behavior
     that assumes the offenders behavior can be accounted for by understanding
