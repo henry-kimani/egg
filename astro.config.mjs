@@ -42,10 +42,10 @@ export default defineConfig({
         MobileMenuFooter: "./src/components/starlight/MobileMenuFooter.astro",
         PageTitle: "./src/components/starlight/PageTitle.astro",
         PageFrame: "./src/components/starlight/PageFrame.astro",
-        PageSidebar: "./src/components/starlight/PageSidebar.astro", 
         ThemeSelect: "./src/components/starlight/ThemeSelect.astro",
         TwoColumnContent: "./src/components/starlight/TwoColumnContent.astro",
-        ContentPanel: "./src/components/starlight/ContentPanel.astro"
+        ContentPanel: "./src/components/starlight/ContentPanel.astro",
+        MobileTableOfContents: "./src/components/starlight/MobileTableOfContents.astro",
       },
       social: [
         { icon: "github", label: "Github", href: "https://github.com/henry-kimani" }

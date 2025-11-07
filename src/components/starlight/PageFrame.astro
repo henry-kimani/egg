@@ -44,7 +44,7 @@ const { hasSidebar } = Astro.locals.starlightRoute;
 		inset-block-start: 0;
 		width: 100%;
 		height: var(--sl-nav-height);
-    /* border-bottom: 1px solid var(--sl-color-hairline-shade); */
+    border-bottom: 1px solid var(--sl-color-gray-6);
 		padding: var(--sl-nav-pad-y) var(--sl-nav-pad-x);
     padding-inline-end: var(--sl-nav-pad-x);
 	}
@@ -89,6 +89,9 @@ const { hasSidebar } = Astro.locals.starlightRoute;
 	}
 
   @media (min-width: 50rem) {
+    .header {
+      border-bottom: none;
+    }
     :global([data-has-sidebar]) .header {
       /* Remove the padding that accomdated the sidebar button */
       padding-inline-start: var(--sl-nav-pad-x);

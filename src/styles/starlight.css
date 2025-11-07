@@ -1,0 +1,30 @@
+/*
+* Styles that modify starlight
+*
+* This is prefered when we only want to change the default starlight styles and 
+* not the markup */
+
+@layer override {
+  .right-sidebar h2 {
+    font-size: var(--text-xs) !important;
+    text-transform: uppercase;
+    color: var(--sl-color-gray-4) !important;
+    font-weight: bold !important;
+  }
+
+  .right-sidebar a {
+    padding-bottom: .45rem !important;
+  }
+  .right-sidebar a[aria-current="true"] {
+    font-weight: 500;
+    color: var(--color-accent-light) !important;
+  }
+
+  [data-theme="dark"] .right-sidebar a[aria-current="true"] {
+    color: var(--color-accent-dark) !important;
+  }
+
+  .isMobile a {
+    border-top: none !important;
+  }
+}
