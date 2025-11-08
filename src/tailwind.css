@@ -1,8 +1,9 @@
-@layer base, starlight, theme, components, utilities;
+@layer base, override, starlight, theme, components, utilities;
 
 @import '@astrojs/starlight-tailwind';
 @import 'tailwindcss/theme.css' layer(theme);
 @import 'tailwindcss/utilities' layer(utilities);
+@import './styles/starlight.css' layer(override);
 
 @theme {
   /* Configure your Tailwind theme that will be used by Starlight.

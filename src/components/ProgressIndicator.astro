@@ -1,0 +1,80 @@
+<div class="progress-scroll-container" aria-hidden="true">
+  <svg viewBox="0 0 16 16">
+    <circle 
+      cx="8" 
+      cy="8"
+      r="7"
+      fill="none"
+      stroke="var(--sl-color-accent)"
+      stroke-width="1.5"
+    />
+    <path d="
+      M 5.5,8
+      L 8,4
+      L 10.5,8
+      M 8,11
+      L 8,4
+      " />
+  </svg>
+</div>
+
+<script>
+window.addEventListener("scroll", function() {
+  //  updateProgressScroll();
+});
+
+window.addEventListener("load", function() {
+  //updateProgressScroll();
+});
+
+function updateProgressScroll() {
+  if (document) {
+    const progressScroll = document.getElementById("progress-scroll");
+
+    if (progressScroll) {
+      /* .scrollTop - current scroll pos (in digits)*/
+      let scrollTop = window.scrollY || document.documentElement.scrollTop;
+      let scrollHeight = document.documentElement.scrollHeight - window.innerHeight; // Scrollable height
+      let progress = (scrollTop / scrollHeight) * 100;
+
+      progressScroll.style.width = progress + "%";
+    }
+  }
+}
+</script>
+
+<style>
+{/* Dont show in the hero page. Only show in pages with the sidebar and the table of contents */}
+html:is(:not([data-has-hero]), [data-has-sidebar], [data-has-toc]) .progress-scroll-container {
+  position: fixed;
+  bottom: 5rem;
+  right: 1rem;
+  width: 4rem;
+  height: 4rem;
+  background: lightblue;
+  z-index: 3;
+}
+
+#progress-scroll {
+  height: 100%;
+  width: 100%;
+}
+
+svg {
+  width: 100%;
+  fill: none;
+  outline: 1px solid hsl(210deg 10% 30%);
+}
+
+path {
+  stroke: var(--color-accent-light);
+  stroke-width: 1px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+circle {
+  stroke-dasharray: 20, 15;
+  stroke-linecap: square;
+}
+</style>

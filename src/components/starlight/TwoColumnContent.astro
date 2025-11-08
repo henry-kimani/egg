@@ -1,4 +1,7 @@
+---
+import ProgressIndicator from "@components/ProgressIndicator.astro";
 
+---
 <div class="lg:sl-flex">
   {
   Astro.locals.starlightRoute.toc && (
@@ -9,7 +12,10 @@
   </aside>
   )
   }
-  <div class="main-pane"><slot /></div>
+  <div class="relative main-pane">
+    <slot />
+    <ProgressIndicator />
+  </div>
 </div>
 
 <style>
