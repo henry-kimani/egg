@@ -1,7 +1,7 @@
 ---
 title: Emergency Mitigation
 sidebar:
-    order: 4
+    order: 5
 tableOfContents:
     minHeadingLevel: 3
     maxHeadingLevel: 4

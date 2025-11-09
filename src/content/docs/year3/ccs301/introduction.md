@@ -1,7 +1,7 @@
 ---
 title: Introduction
 sidebar:
-    order: 1 
+    order: 2
 ---
 
 Science is any system of knowledge concerned with the physical entiling unbiased

@@ -1,7 +1,7 @@
 ---
 title: Reasearch Methods
 sidebar: 
-    order: 2
+    order: 3
 tableOfContents:
     maxHeadingLevel: 4
 ---

@@ -1,7 +1,7 @@
 ---
 title: Emergency Management Cycle
 sidebar:
-    order: 2
+    order: 3
 ---
 
 Emergency managment encompases a wide range of activities aimed at reducing the 

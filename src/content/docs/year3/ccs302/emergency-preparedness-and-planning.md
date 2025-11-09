@@ -1,7 +1,7 @@
 ---
 title: Emergency Preparedness and Planning
 sidebar:
-    order: 5
+    order: 6
 ---
 
 Preparedness, in the field of emergency management, is the state of readiness to
