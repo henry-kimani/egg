@@ -1,5 +1,6 @@
 ---
 import MobileMenuToggle from '@components/starlight/MobileMenuToggle.astro';
+import ProgressIndicator from "@components/ProgressIndicator.astro";
 
 // Render the mobilemenutoggle button if the current page has a sidebar
 const { hasSidebar } = Astro.locals.starlightRoute;
@@ -28,6 +29,7 @@ const { hasSidebar } = Astro.locals.starlightRoute;
 		)
 	}
   <div class="main-frame"><slot /></div>
+  <ProgressIndicator />
 
 </div>
 

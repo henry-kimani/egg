@@ -90,7 +90,10 @@ class ScrollToTop extends HTMLElement {
 
   scrollToTop() {
     if (this.scrollToTopBtn) {
-      document.documentElement.scrollTop = 0;
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      })
     }
   }
 
@@ -105,26 +108,25 @@ customElements.define("scroll-to-top", ScrollToTop);
 
 <style>
 {/* Dont show in the hero page. Only show in pages with the sidebar and the table of contents */}
-html:is(:not([data-has-hero]), [data-has-sidebar], [data-has-toc]) .progress-scroll-container {
+progress-indicator {
   --progress-indicator-w: 3rem;
   position: fixed;
   bottom: 3rem;
   right: 1rem;
   width: var(--progress-indicator-w);
   height: var(--progress-indicator-w);
-  z-index: 3;
-}
-
-progress-indicator {
+  z-index: 100;
   background-color: var(--sl-color-gray-6);
   border-radius: 50%;
-}
-
-progress-indicator[aria-hidden="true"] {
   visibility: hidden;
 }
+
+html:is([data-has-sidebar], [data-has-toc]) progress-indicator[aria-hidden="false"] {
+  visibility: visible;
+}
 svg {
-  width: 100%;
+  width: var(--progress-indicator-w);
+  height: var(--progress-indicator-w);
   fill: none;
 }
 
@@ -149,6 +151,7 @@ button {
   width: 100%;
   height: 100%;
   border-radius: 50%;
+  background-color: var(--sl-color-gray-7);
 }
 
 </style>
