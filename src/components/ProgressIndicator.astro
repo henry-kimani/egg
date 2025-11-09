@@ -1,69 +1,107 @@
-<div class="progress-scroll-container" aria-hidden="true">
+<progress-indicator title="scroll to top" class="progress-scroll-container" aria-hidden="true">
   <svg viewBox="0 0 16 16">
     <circle 
       cx="8" 
       cy="8"
       r="7"
       fill="none"
-      stroke="var(--sl-color-accent)"
       stroke-width="1.5"
     />
-    <path d="
-      M 5.5,8
-      L 8,4
-      L 10.5,8
-      M 8,11
-      L 8,4
-      " />
+    <path 
+      d="
+        M 5.5,8
+        L 8,4
+        L 10.5,8
+        M 8,11
+        L 8,4
+      " 
+    />
   </svg>
-</div>
+</progress-indicator>
 
 <script>
-window.addEventListener("scroll", function() {
-  //  updateProgressScroll();
-});
 
-window.addEventListener("load", function() {
-  //updateProgressScroll();
-});
+class ProgressIndicator extends HTMLElement {
+  private circleProgressElem: SVGCircleElement | null;
+  private totalCircleProgress: number | undefined;
+  private scrollDelay: number = 200;
 
-function updateProgressScroll() {
-  if (document) {
-    const progressScroll = document.getElementById("progress-scroll");
+  constructor() {
+    super();
+    this.circleProgressElem = document.querySelector("circle");
+    this.totalCircleProgress = this.circleProgressElem?.getTotalLength();
 
-    if (progressScroll) {
-      /* .scrollTop - current scroll pos (in digits)*/
-      let scrollTop = window.scrollY || document.documentElement.scrollTop;
-      let scrollHeight = document.documentElement.scrollHeight - window.innerHeight; // Scrollable height
-      let progress = (scrollTop / scrollHeight) * 100;
-
-      progressScroll.style.width = progress + "%";
+    // Define the circle's circumfrence
+    if (this.circleProgressElem) {
+      this.circleProgressElem.style.strokeDasharray = String(this.totalCircleProgress);
     }
   }
+
+  updateProgressScroll() {
+    if (document) {
+
+      if (this.circleProgressElem && this.totalCircleProgress) {
+        let currentScrollHeight = window.scrollY || document.documentElement.scrollTop;
+        let totalScrollableHeight = document.documentElement.scrollHeight - window.innerHeight; // Scrollable height
+
+        this.toggleCircleElem(currentScrollHeight);
+
+        let scrollProgress = Math.abs((
+          (currentScrollHeight * this.totalCircleProgress) / totalScrollableHeight
+        ) - this.totalCircleProgress);
+
+        this.circleProgressElem.style.strokeDashoffset= String(scrollProgress);
+      }
+    }
+  }
+
+  /** Hide the parent element if the scroll position is at the top */
+  toggleCircleElem(currentScrollHeight: number) {
+    if (currentScrollHeight > this.scrollDelay) {
+      this.setAttribute("aria-hidden", "false");
+    } else {
+      this.setAttribute("aria-hidden", "true");
+    }
+  }
+
+  connectedCallback() {
+    /* Using an arrow function since they inherit the this arg */
+    window.addEventListener("scroll", () => {
+      this.updateProgressScroll();
+    });
+
+    window.addEventListener("load", () => {
+      this.updateProgressScroll();
+    });
+  }
 }
+
+customElements.define("progress-indicator", ProgressIndicator);
 </script>
 
 <style>
 {/* Dont show in the hero page. Only show in pages with the sidebar and the table of contents */}
 html:is(:not([data-has-hero]), [data-has-sidebar], [data-has-toc]) .progress-scroll-container {
+  --progress-indicator-w: 3rem;
   position: fixed;
-  bottom: 5rem;
+  bottom: 3rem;
   right: 1rem;
-  width: 4rem;
-  height: 4rem;
-  background: lightblue;
+  width: var(--progress-indicator-w);
+  height: var(--progress-indicator-w);
   z-index: 3;
 }
 
-#progress-scroll {
-  height: 100%;
-  width: 100%;
+progress-indicator {
+  background-color: var(--sl-color-gray-6);
+  border-radius: 50%;
 }
 
+progress-indicator[aria-hidden="true"] {
+  visibility: hidden;
+}
 svg {
   width: 100%;
   fill: none;
-  outline: 1px solid hsl(210deg 10% 30%);
 }
 
 path {
@@ -74,7 +112,12 @@ path {
 }
 
 circle {
-  stroke-dasharray: 20, 15;
-  stroke-linecap: square;
+  stroke: var(--color-accent-light);
+  stroke-linecap: round;
 }
+
+[data-theme="dark"] circle {
+  stroke: var(--color-accent-dark);
+}
+
 </style>
