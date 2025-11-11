@@ -14,7 +14,7 @@ export default {
   "one.ccs102": "Criminal Justice Systems",
   "one.ccs103": "Introduction to Sociology",
   "one.ccs104": "Language of Crime and Deviance",
-  "one.ccs105": "Introduction to Crimial Law",
+  "one.ccs105": "Introduction to Criminal Law",
   "one.ccs106": "Introduction to Criminal Investigation",
   "one.ccs108": "Introduction to Security Studies",
 
