@@ -27,4 +27,28 @@
   .isMobile a {
     border-top: none !important;
   }
+
+  site-search button[data-open-modal] {
+    border: none !important;
+    font-size: var(--text-xl) !important;
+    background-color: transparent !important;
+  }
+  .search {
+    position: relative;
+  }
+  site-search:hover::after{
+    content: "Search";
+    position: absolute;
+    top: 4em;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    background-color: var(--sl-color-gray-6);
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: var(--radius-md);
+    padding: .2em .7em;
+    transition: .3s;
+  }
+  site-search button svg ~ *{
+    display: none !important;
+  }
 }
