@@ -13,14 +13,17 @@ const date = latestReleaseNote.data.date;
 const features = latestReleaseNote.data.features;
 ---
 <GradientContainer 
-  classes="parent-container p-3 sm:p-5 md-[800px]:flex" 
+  classes="@container/whatsnew p-3 " 
   color="default"
 >
-  <div class="release-note flex w-full md-[800px]:block">
-    <div class="basis-1/2 ">
-      <h1 class="!text-4xl sm:!text-5xl !text-[var(--sl-color-gray-7)]">{latestReleaseNote.data.version}</h1>
+  <div class="@md/whatsnew:flex @sm/whatsnew:p-3 @md/whatsnew:p-5">
+    <div class="@md/whatsnew:basis-4/12 flex w-full @md/whatsnew:block">
+      <div class="basis-1/2 @md/whatsnew:mb-3">
+      <h1 class="!text-4xl @sm/whatsnew:!text-5xl !text-[var(--sl-color-gray-7)]">
+        {latestReleaseNote.data.version}
+      </h1>
     </div>
-    <div class="basis-1/2  grid !m-0">
+    <div class="basis-1/2 grid !m-0">
       <h3 class="!text-2xl !text-[var(--sl-color-gray-7)]">Released !</h3>
       <span class="italic text-[var(--sl-color-gray-6)] dark:text-[var(--sl-color-gray-4)]">
         <FormatDate {date} />
@@ -28,8 +31,8 @@ const features = latestReleaseNote.data.features;
     </div>
   </div>
 
-  <div class="features w-full !mt-1">
-    <div class="sm:pl-8">
+    <div class="@md/whatsnew:basis-8/12 w-full !mt-1">
+    <div class="@sm/whatsnew:pl-8">
       <h3 class="!text-[var(--sl-color-gray-7)] !text-2xl">Features</h3>
       <ParentOfLists type="unordered">
         {features.map((feature, index) => (
@@ -48,18 +51,6 @@ const features = latestReleaseNote.data.features;
       >Read More</VariantLinkButton>
     </div>
   </div>
-
+</div>
 </GradientContainer>
-
-<style>
-@media (min-width:800px) {
-  .release-note {
-    flex-basis: 35%;
-  }
-  .features {
-    flex-basis: 65%;
-  }
-}
-</style>
-
 
